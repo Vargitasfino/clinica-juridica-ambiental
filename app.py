@@ -12,70 +12,47 @@ st.set_page_config(
 )
 
 st.markdown("""
-    <style>
+<style>
+.main {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.stApp {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+h1, h2, h3 {
+    color: #667eea !important;
+}
+.stAlert {
+    background-color: rgba(102, 126, 234, 0.1);
+    border-left: 4px solid #667eea;
+}
+@media (max-width: 768px) {
     .main {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 0.5rem;
     }
-    .stApp {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    h1 {
+        font-size: 1.5rem !important;
     }
-    h1, h2, h3 {
-        color: #667eea !important;
+    h2 {
+        font-size: 1.3rem !important;
     }
-    .stAlert {
-        background-color: rgba(102, 126, 234, 0.1);
-        border-left: 4px solid #667eea;
+    h3 {
+        font-size: 1.1rem !important;
     }
-    </style>
-    """, unsafe_allow_html=True)
-    </style>
+    .dataframe {
+        font-size: 0.8rem;
+    }
+    [data-testid="stSidebar"] {
+        width: 250px !important;
+    }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+    .main {
+        padding: 1rem;
+    }
+}
+</style>
 """, unsafe_allow_html=True)
-    
-    /* Alertas */
-    .stAlert {
-        background-color: rgba(102, 126, 234, 0.1);
-        border-left: 4px solid #667eea;
-    }
-
-    /* RESPONSIVE DESIGN */
-    @media (max-width: 768px) {
-        .main {
-            padding: 0.5rem;
-        }
-        
-        h1 {
-            font-size: 1.5rem !important;
-        }
-        
-        h2 {
-            font-size: 1.3rem !important;
-        }
-        
-        h3 {
-            font-size: 1.1rem !important;
-        }
-        
-        /* Hacer tablas scrolleables en móvil */
-        .dataframe {
-            font-size: 0.8rem;
-        }
-        
-        /* Sidebar más pequeño en móvil */
-        [data-testid="stSidebar"] {
-            width: 250px !important;
-        }
-    }
-    
-    /* Para tablets */
-    @media (max-width: 1024px) and (min-width: 769px) {
-        .main {
-            padding: 1rem;
-        }
-    }
-    </style>
-    """, unsafe_allow_html=True)
-    </style>
-    """, unsafe_allow_html=True)
 
 st.title("⚖️ Clínica Jurídica-Ambiental: Calidad del Aire")
 st.markdown("### Normativas y Estándares Internacionales de Calidad del Aire")
