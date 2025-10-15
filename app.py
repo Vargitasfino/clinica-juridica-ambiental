@@ -27,6 +27,8 @@ st.markdown("""
         border-left: 4px solid #667eea;
     }
     </style>
+    """, unsafe_allow_html=True)
+    </style>
 """, unsafe_allow_html=True)
     
     /* Alertas */
