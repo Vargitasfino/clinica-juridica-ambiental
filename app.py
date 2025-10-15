@@ -13,19 +13,63 @@ st.set_page_config(
 
 st.markdown("""
     <style>
+    /* Fondo principal */
     .main {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 1rem;
     }
     .stApp {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
+    
+    /* Títulos */
     h1, h2, h3 {
         color: #667eea !important;
     }
+    
+    /* Alertas */
     .stAlert {
         background-color: rgba(102, 126, 234, 0.1);
         border-left: 4px solid #667eea;
     }
+    
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+        .main {
+            padding: 0.5rem;
+        }
+        
+        h1 {
+            font-size: 1.5rem !important;
+        }
+        
+        h2 {
+            font-size: 1.3rem !important;
+        }
+        
+        h3 {
+            font-size: 1.1rem !important;
+        }
+        
+        /* Hacer tablas scrolleables en móvil */
+        .dataframe {
+            font-size: 0.8rem;
+        }
+        
+        /* Sidebar más pequeño en móvil */
+        [data-testid="stSidebar"] {
+            width: 250px !important;
+        }
+    }
+    
+    /* Para tablets */
+    @media (max-width: 1024px) and (min-width: 769px) {
+        .main {
+            padding: 1rem;
+        }
+    }
+    </style>
+    """, unsafe_allow_html=True)
     </style>
     """, unsafe_allow_html=True)
 
