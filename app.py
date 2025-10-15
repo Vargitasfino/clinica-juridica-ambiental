@@ -45,19 +45,29 @@ h1, h2, h3 {
 }
 .stButton button {
     width: 100%;
-    border-radius: 8px;
-    border: 2px solid #667eea;
-    background-color: white;
-    color: #667eea;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    transition: all 0.3s;
+    border-radius: 25px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 .stButton button:hover {
-    background-color: #667eea;
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+.stButton button:active {
+    background-color: rgba(102, 126, 234, 0.9);
+    transform: scale(0.98);
+}
+div[data-testid="column"] button[kind="secondary"] {
+    background-color: rgba(102, 126, 234, 0.85);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
 }
 @media (max-width: 1024px) and (min-width: 769px) {
     .main {
@@ -75,35 +85,51 @@ st.markdown("---")
 # Menú de navegación con botones horizontales
 st.markdown("#### 📑 Navegación")
 
-col1, col2, col3, col4 = st.columns(4)
-
-with col1:
-    if st.button("🏠 Introducción", use_container_width=True):
-        st.session_state.pagina = "🏠 Introducción"
-    if st.button("🇵🇪 OEFA Perú", use_container_width=True):
-        st.session_state.pagina = "🇵🇪 OEFA Perú"
-
-with col2:
-    if st.button("🌐 OMS", use_container_width=True):
-        st.session_state.pagina = "🌐 OMS"
-    if st.button("🇺🇸 EPA (USA)", use_container_width=True):
-        st.session_state.pagina = "🇺🇸 EPA (USA)"
-
-with col3:
-    if st.button("🇨🇦 Canadá", use_container_width=True):
-        st.session_state.pagina = "🇨🇦 Canadá"
-    if st.button("📊 Comparación", use_container_width=True):
-        st.session_state.pagina = "📊 Comparación Normativas"
-
-with col4:
-    if st.button("⏳ Línea de Tiempo", use_container_width=True):
-        st.session_state.pagina = "⏳ Línea de Tiempo"
-    if st.button("📚 Recursos", use_container_width=True):
-        st.session_state.pagina = "📚 Recursos"
-
 # Inicializar página por defecto
 if 'pagina' not in st.session_state:
     st.session_state.pagina = "🏠 Introducción"
+
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    if st.button("🏠 Introducción", 
+                 use_container_width=True,
+                 type="secondary" if st.session_state.pagina == "🏠 Introducción" else "primary"):
+        st.session_state.pagina = "🏠 Introducción"
+    if st.button("🇵🇪 OEFA Perú", 
+                 use_container_width=True,
+                 type="secondary" if st.session_state.pagina == "🇵🇪 OEFA Perú" else "primary"):
+        st.session_state.pagina = "🇵🇪 OEFA Perú"
+
+with col2:
+    if st.button("🌐 OMS", 
+                 use_container_width=True,
+                 type="secondary" if st.session_state.pagina == "🌐 OMS" else "primary"):
+        st.session_state.pagina = "🌐 OMS"
+    if st.button("🇺🇸 EPA (USA)", 
+                 use_container_width=True,
+                 type="secondary" if st.session_state.pagina == "🇺🇸 EPA (USA)" else "primary"):
+        st.session_state.pagina = "🇺🇸 EPA (USA)"
+
+with col3:
+    if st.button("🇨🇦 Canadá", 
+                 use_container_width=True,
+                 type="secondary" if st.session_state.pagina == "🇨🇦 Canadá" else "primary"):
+        st.session_state.pagina = "🇨🇦 Canadá"
+    if st.button("📊 Comparación", 
+                 use_container_width=True,
+                 type="secondary" if st.session_state.pagina == "📊 Comparación Normativas" else "primary"):
+        st.session_state.pagina = "📊 Comparación Normativas"
+
+with col4:
+    if st.button("⏳ Línea de Tiempo", 
+                 use_container_width=True,
+                 type="secondary" if st.session_state.pagina == "⏳ Línea de Tiempo" else "primary"):
+        st.session_state.pagina = "⏳ Línea de Tiempo"
+    if st.button("📚 Recursos", 
+                 use_container_width=True,
+                 type="secondary" if st.session_state.pagina == "📚 Recursos" else "primary"):
+        st.session_state.pagina = "📚 Recursos"
 
 pagina = st.session_state.pagina
 
