@@ -8,7 +8,7 @@ st.set_page_config(
     page_title="Clínica Jurídica-Ambiental",
     page_icon="⚖️",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 st.markdown("""
@@ -42,9 +42,22 @@ h1, h2, h3 {
     .dataframe {
         font-size: 0.8rem;
     }
-    [data-testid="stSidebar"] {
-        width: 250px !important;
-    }
+}
+.stButton button {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid #667eea;
+    background-color: white;
+    color: #667eea;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+}
+.stButton button:hover {
+    background-color: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 @media (max-width: 1024px) and (min-width: 769px) {
     .main {
@@ -57,18 +70,44 @@ h1, h2, h3 {
 st.title("⚖️ Clínica Jurídica-Ambiental: Calidad del Aire")
 st.markdown("### Normativas y Estándares Internacionales de Calidad del Aire")
 
-st.sidebar.title("📑 Navegación")
-pagina = st.sidebar.radio(
-    "Selecciona una sección:",
-    ["🏠 Introducción",
-     "🇵🇪 OEFA Perú",
-     "🌐 OMS",
-     "🇺🇸 EPA (USA)",
-     "🇨🇦 Canadá",
-     "📊 Comparación Normativas",
-     "⏳ Línea de Tiempo",
-     "📚 Recursos"]
-)
+st.markdown("---")
+
+# Menú de navegación con botones horizontales
+st.markdown("#### 📑 Navegación")
+
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    if st.button("🏠 Introducción", use_container_width=True):
+        st.session_state.pagina = "🏠 Introducción"
+    if st.button("🇵🇪 OEFA Perú", use_container_width=True):
+        st.session_state.pagina = "🇵🇪 OEFA Perú"
+
+with col2:
+    if st.button("🌐 OMS", use_container_width=True):
+        st.session_state.pagina = "🌐 OMS"
+    if st.button("🇺🇸 EPA (USA)", use_container_width=True):
+        st.session_state.pagina = "🇺🇸 EPA (USA)"
+
+with col3:
+    if st.button("🇨🇦 Canadá", use_container_width=True):
+        st.session_state.pagina = "🇨🇦 Canadá"
+    if st.button("📊 Comparación", use_container_width=True):
+        st.session_state.pagina = "📊 Comparación Normativas"
+
+with col4:
+    if st.button("⏳ Línea de Tiempo", use_container_width=True):
+        st.session_state.pagina = "⏳ Línea de Tiempo"
+    if st.button("📚 Recursos", use_container_width=True):
+        st.session_state.pagina = "📚 Recursos"
+
+# Inicializar página por defecto
+if 'pagina' not in st.session_state:
+    st.session_state.pagina = "🏠 Introducción"
+
+pagina = st.session_state.pagina
+
+st.markdown("---")
 
 datos_normativas = {
     'Contaminante': ['PM2.5', 'PM2.5', 'PM10', 'PM10', 'SO₂', 'NO₂', 'NO₂', 'O₃', 'CO'],
