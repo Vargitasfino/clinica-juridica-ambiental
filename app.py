@@ -76,33 +76,33 @@ const AirQualityApp = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-indigo-900 mb-2">
-            ⚖️ Sistema Integral de Normativas de Calidad del Aire
+            Sistema Integral de Normativas de Calidad del Aire
           </h1>
           <p className="text-lg text-gray-700">
-            Caso 2: Central Termoeléctrica - Análisis de LMP en NOₓ/SO₂
+            Caso 2: Central Termoelectrica - Analisis de LMP en NOx/SO2
           </p>
           <p className="text-sm text-gray-600 mt-2">
-            Universidad Nacional de Moquegua | Prof. Dr. José Antonio Valeriano Zapana
+            Universidad Nacional de Moquegua | Prof. Dr. Jose Antonio Valeriano Zapana
           </p>
         </div>
 
         {/* Tabs principales */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-7 mb-6">
-            <TabsTrigger value="oms">🌍 OMS</TabsTrigger>
-            <TabsTrigger value="oefa">🇵🇪 OEFA</TabsTrigger>
-            <TabsTrigger value="epa">🇺🇸 EPA</TabsTrigger>
-            <TabsTrigger value="canada">🇨🇦 Canadá</TabsTrigger>
-            <TabsTrigger value="linea">⏳ Línea Tiempo</TabsTrigger>
-            <TabsTrigger value="plantas">⚡ Plantas</TabsTrigger>
-            <TabsTrigger value="pama">📋 PAMA</TabsTrigger>
+            <TabsTrigger value="oms">OMS</TabsTrigger>
+            <TabsTrigger value="oefa">OEFA Peru</TabsTrigger>
+            <TabsTrigger value="epa">EPA USA</TabsTrigger>
+            <TabsTrigger value="canada">Canada</TabsTrigger>
+            <TabsTrigger value="linea">Linea Tiempo</TabsTrigger>
+            <TabsTrigger value="plantas">Plantas</TabsTrigger>
+            <TabsTrigger value="pama">PAMA</TabsTrigger>
           </TabsList>
 
           {/* OMS */}
           <TabsContent value="oms">
             <Card>
               <CardHeader>
-                <CardTitle className="text-2xl">🌍 Organización Mundial de la Salud (OMS)</CardTitle>
+                <CardTitle className="text-2xl">Organizacion Mundial de la Salud (OMS)</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <Alert>
