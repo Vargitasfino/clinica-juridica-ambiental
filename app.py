@@ -69,41 +69,20 @@ st.markdown("""
         padding: 0.5rem 1rem;
     }
     
-    /* Botón del sidebar - FORZAR VISIBILIDAD */
+    /* ÚLTIMO INTENTO - MÁXIMA FUERZA BRUTA */
     button[kind="header"],
     button[kind="headerNoPadding"],
-    [data-testid="collapsedControl"],
-    [data-testid="baseButton-header"] {
-        background-color: rgba(255, 255, 255, 0.15) !important;
+    [data-testid="collapsedControl"] {
+        background-color: rgba(255, 255, 255, 0.2) !important;
         border-radius: 8px !important;
     }
     
-    button[kind="header"]:hover,
-    button[kind="headerNoPadding"]:hover,
-    [data-testid="collapsedControl"]:hover {
-        background-color: rgba(255, 255, 255, 0.25) !important;
-    }
-    
-    /* FLECHAS BLANCAS - USANDO FILTER INVERT */
+    /* INVERTIR COLORES DEL SVG COMPLETO */
     button[kind="header"] svg,
     button[kind="headerNoPadding"] svg,
-    [data-testid="collapsedControl"] svg,
-    [data-testid="baseButton-header"] svg {
-        filter: invert(1) brightness(2) !important;
-    }
-    
-    /* Alternativa: Forzar color directamente */
-    button[kind="header"] svg path,
-    button[kind="header"] svg polyline,
-    button[kind="header"] svg line,
-    button[kind="headerNoPadding"] svg path,
-    button[kind="headerNoPadding"] svg polyline,
-    button[kind="headerNoPadding"] svg line,
-    [data-testid="collapsedControl"] svg path,
-    [data-testid="collapsedControl"] svg polyline,
-    [data-testid="collapsedControl"] svg line {
-        stroke: white !important;
-        fill: white !important;
+    [data-testid="collapsedControl"] svg {
+        filter: brightness(0) invert(1) !important;
+        -webkit-filter: brightness(0) invert(1) !important;
     }
     
     /* Texto del sidebar MÁS VISIBLE */
