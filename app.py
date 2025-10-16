@@ -10,6 +10,13 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# LOGO UNAM en esquina superior derecha (usando imagen del repositorio)
+st.markdown("""
+<div style='position: fixed; top: 20px; right: 30px; z-index: 1000; background: white; padding: 12px; border-radius: 50%; box-shadow: 0 8px 25px rgba(0,0,0,0.3);'>
+    <img src='503814357_766012919086387_4448591935652251563_n (1).jpg' alt='UNAM' style='width: 70px; height: 70px; object-fit: contain;'>
+</div>
+""", unsafe_allow_html=True)
+
 # CSS Simple y Profesional
 st.markdown("""
 <style>
