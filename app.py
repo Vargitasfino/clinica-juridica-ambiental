@@ -1,16 +1,16 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
-import plotly.express as px
 
+# --- CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(
-    page_title="Marco Normativo del Aire - Peru",
-    page_icon="🌍",
+    page_title="Marco Normativo del Aire - Perú",
+    page_icon="🌬️",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# CSS ULTRA PREMIUM
+# --- CSS ULTRA PREMIUM (Tu diseño original, es excelente) ---
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -32,7 +32,7 @@ st.markdown("""
         width: 100%;
         height: 100%;
         background: 
-            radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.15) 0%, transparent 45%),
+            radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.15) 0%, transparent S45%),
             radial-gradient(circle at 85% 10%, rgba(14, 165, 233, 0.18) 0%, transparent 45%),
             radial-gradient(circle at 50% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 50%);
         z-index: 0;
@@ -44,11 +44,11 @@ st.markdown("""
     
     .mega-header {
         text-align: center;
-        padding: 80px 50px;
+        padding: 60px 40px;
         background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(14, 165, 233, 0.12) 50%, rgba(6, 78, 59, 0.08) 100%);
         backdrop-filter: blur(30px) saturate(200%);
         border-radius: 24px;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
         border: 1px solid rgba(34, 211, 238, 0.25);
         box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(34, 211, 238, 0.15), 0 0 100px rgba(6, 182, 212, 0.2);
         animation: fadeInUp 1s ease-out;
@@ -57,7 +57,7 @@ st.markdown("""
     }
     
     .mega-header h1 {
-        font-size: 4.5em !important;
+        font-size: 4em !important;
         font-weight: 900 !important;
         background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 25%, #67e8f9 50%, #22d3ee 75%, #06b6d4 100%);
         background-size: 200% auto;
@@ -72,87 +72,7 @@ st.markdown("""
     
     @keyframes shimmer { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
     
-    .mega-header .subtitle { color: #a5f3fc; font-size: 1.6em; font-weight: 700; margin-top: 25px; }
-    .mega-header .description { color: #67e8f9; font-size: 1.2em; margin-top: 20px; }
-    
-    .elite-glass {
-        background: linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.9) 100%);
-        backdrop-filter: blur(20px);
-        padding: 50px;
-        border-radius: 20px;
-        border: 1px solid rgba(6, 182, 212, 0.25);
-        margin: 30px 0;
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(6, 182, 212, 0.15);
-        transition: all 0.4s;
-        z-index: 1;
-    }
-    
-    .elite-glass:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 35px 100px rgba(0, 0, 0, 0.9), 0 0 80px rgba(6, 182, 212, 0.25);
-    }
-    
-    .elite-glass h2 {
-        font-size: 2.2em;
-        font-weight: 800;
-        background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin: 0 0 25px 0;
-    }
-    
-    .elite-glass p { color: #e0f2fe; line-height: 1.9; font-size: 1.05em; }
-    .elite-glass strong { color: #06b6d4; font-weight: 700; }
-    
-    .platinum-card {
-        background: linear-gradient(135deg, rgba(31, 41, 55, 0.95) 0%, rgba(17, 24, 39, 0.98) 100%);
-        padding: 45px;
-        border-radius: 20px;
-        margin: 30px 0;
-        border-left: 4px solid #06b6d4;
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), -4px 0 30px rgba(6, 182, 212, 0.25);
-        transition: all 0.5s;
-        z-index: 1;
-    }
-    
-    .platinum-card:hover {
-        transform: translateX(10px);
-        box-shadow: 0 35px 100px rgba(0, 0, 0, 0.9), -6px 0 50px rgba(6, 182, 212, 0.4);
-    }
-    
-    .platinum-card h3 { color: #06b6d4 !important; font-size: 1.9em; font-weight: 800; margin: 0 0 20px 0; }
-    .platinum-card p { color: #e0f2fe; font-size: 1.1em; line-height: 1.9; }
-    
-    .premium-badge {
-        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-        color: #000;
-        padding: 10px 26px;
-        border-radius: 25px;
-        font-size: 0.85em;
-        font-weight: 800;
-        display: inline-block;
-        margin-right: 15px;
-        box-shadow: 0 10px 30px rgba(6, 182, 212, 0.5);
-        text-transform: uppercase;
-    }
-    
-    .diamond-btn {
-        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-        color: #000;
-        padding: 18px 40px;
-        border-radius: 12px;
-        text-decoration: none;
-        display: inline-block;
-        margin: 12px 10px;
-        font-weight: 800;
-        box-shadow: 0 15px 40px rgba(6, 182, 212, 0.5);
-        transition: all 0.3s;
-    }
-    
-    .diamond-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 20px 60px rgba(6, 182, 212, 0.7);
-    }
+    .mega-header .subtitle { color: #a5f3fc; font-size: 1.4em; font-weight: 700; margin-top: 20px; }
     
     .stButton > button {
         width: 100%;
@@ -160,161 +80,191 @@ st.markdown("""
         color: #06b6d4;
         border: 1.5px solid rgba(6, 182, 212, 0.3);
         border-radius: 12px;
-        padding: 16px 20px;
+        padding: 14px 20px;
         font-weight: 700;
         transition: all 0.3s;
         text-transform: uppercase;
+        font-size: 0.9em;
     }
     
     .stButton > button:hover {
         background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
         color: #000;
         transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
     }
     
-    .dataframe {
-        background: rgba(17, 24, 39, 0.95) !important;
-        border-radius: 16px !important;
-        border: 1px solid rgba(6, 182, 212, 0.25) !important;
+    .stButton > button:focus {
+        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%) !important;
+        color: #000 !important;
+        box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4) !important;
     }
     
-    .dataframe thead tr th {
-        background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(14, 165, 233, 0.25) 100%) !important;
-        color: #06b6d4 !important;
-        font-weight: 800 !important;
-        padding: 18px !important;
+    .card {
+        background: linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.9) 100%);
+        backdrop-filter: blur(20px);
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid rgba(6, 182, 212, 0.25);
+        margin: 15px 0;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(6, 182, 212, 0.15);
+        transition: all 0.4s;
+        z-index: 1;
     }
     
-    .dataframe tbody tr td { color: #e0f2fe !important; padding: 16px !important; }
-    .dataframe tbody tr:hover { background: rgba(6, 182, 212, 0.1) !important; }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 35px 100px rgba(0, 0, 0, 0.9), 0 0 80px rgba(6, 182, 212, 0.25);
+    }
+    
+    .card h2 {
+        font-size: 1.8em;
+        font-weight: 800;
+        background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0 0 20px 0;
+    }
 </style>
 """, unsafe_allow_html=True)
 
+# --- CARGA DE DATOS ---
+@st.cache_data
+def load_data():
+    # Datos de Estándares de Calidad Ambiental (ECA) para Aire en Perú - D.S. N° 003-2017-MINAM
+    data_eca = {
+        'Contaminante': ['Dióxido de Azufre (SO₂)', 'Dióxido de Azufre (SO₂)', 'Material Particulado (PM₁₀)', 'Material Particulado (PM₁₀)', 'Material Particulado (PM₂.₅)', 'Material Particulado (PM₂.₅)', 'Monóxido de Carbono (CO)', 'Monóxido de Carbono (CO)', 'Ozono (O₃)', 'Dióxido de Nitrógeno (NO₂)', 'Plomo (Pb)', 'Sulfuro de Hidrógeno (H₂S)'],
+        'Periodo': ['24 horas', '1 hora', '24 horas', 'Anual', '24 horas', 'Anual', '8 horas', '1 hora', '8 horas', '1 hora', 'Mensual', '24 horas'],
+        'Valor': [80, 250, 100, 50, 50, 25, 10000, 30000, 100, 200, 1.5, 150],
+        'Unidad': ['µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³'],
+        'Base Legal': ['D.S. N° 003-2017-MINAM'] * 12
+    }
+    df_eca = pd.DataFrame(data_eca)
+
+    # Datos de las Guías de Calidad del Aire de la OMS (2021)
+    data_oms = {
+        'Contaminante': ['Dióxido de Azufre (SO₂)', 'Material Particulado (PM₁₀)', 'Material Particulado (PM₂.₅)', 'Material Particulado (PM₂.₅)', 'Monóxido de Carbono (CO)', 'Ozono (O₃)', 'Dióxido de Nitrógeno (NO₂)','Dióxido de Nitrógeno (NO₂)'],
+        'Periodo': ['24 horas', '24 horas', '24 horas', 'Anual', '24 horas', '8 horas (pico)', '24 horas', 'Anual'],
+        'Valor': [40, 45, 15, 5, 4000, 100, 25, 10],
+        'Unidad': ['µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³'],
+        'Base Legal': ['Guía OMS 2021'] * 8
+    }
+    df_oms = pd.DataFrame(data_oms)
+    return df_eca, df_oms
+
+df_eca, df_oms = load_data()
+
+# --- FUNCIONES DE PÁGINA ---
+def pagina_inicio():
+    st.markdown("<div class='card'><h2>Bienvenido al Dashboard Interactivo</h2></div>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.info("Esta herramienta permite explorar, comparar y entender el marco normativo que rige la calidad del aire en el Perú, contrastándolo con los estándares internacionales más exigentes.")
+    with col2:
+        st.warning("Navegue por las diferentes secciones utilizando los botones superiores para acceder a los Estándares de Calidad Ambiental (ECA), Límites Máximos Permisibles (LMP), y más.")
+    with col3:
+        st.error("Utilice los filtros en cada sección para analizar los datos de contaminantes específicos y visualizar comparativas clave.")
+
+def pagina_eca():
+    st.markdown("<div class='card'><h2>Explorador de Estándares de Calidad Ambiental (ECA)</h2></div>", unsafe_allow_html=True)
+    
+    contaminantes_unicos = df_eca['Contaminante'].unique()
+    contaminante_seleccionado = st.selectbox(
+        'Seleccione un contaminante para analizar:',
+        options=contaminantes_unicos,
+        index=2 # PM10 por defecto
+    )
+
+    st.markdown("---")
+    
+    col1, col2 = st.columns([1, 1])
+
+    with col1:
+        st.subheader(f"Valores para {contaminante_seleccionado}")
+        data_filtrada_eca = df_eca[df_eca['Contaminante'] == contaminante_seleccionado]
+        st.dataframe(data_filtrada_eca, use_container_width=True)
+
+        with st.expander("Ver Base Legal y Detalles"):
+            st.markdown("""
+            - **Decreto Supremo N° 003-2017-MINAM:** Aprueba los Estándares de Calidad Ambiental (ECA) para Aire y establece Disposiciones Complementarias.
+            - **Vigencia:** Los valores presentados son los vigentes a la fecha.
+            - **Finalidad:** Los ECA son el referente obligatorio para el diseño y aplicación de los instrumentos de gestión ambiental a nivel nacional. Miden la concentración de elementos en el aire en su condición de cuerpo receptor, y no sobre la fuente que los emite.
+            """)
+    
+    with col2:
+        st.subheader("Comparativa: Norma Peruana vs. Guía OMS")
+        
+        # Filtrar datos de OMS y ECA para el contaminante y un periodo comparable (ej. 24h)
+        data_oms_comp = df_oms[(df_oms['Contaminante'] == contaminante_seleccionado) & (df_oms['Periodo'].str.contains('24 horas'))]
+        data_eca_comp = df_eca[(df_eca['Contaminante'] == contaminante_seleccionado) & (df_eca['Periodo'].str.contains('24 horas'))]
+        
+        if not data_eca_comp.empty and not data_oms_comp.empty:
+            valor_eca = data_eca_comp['Valor'].iloc[0]
+            valor_oms = data_oms_comp['Valor'].iloc[0]
+            
+            fig = go.Figure(data=[
+                go.Bar(name='ECA Perú (D.S. 003-2017)', x=['Valor Límite (24h)'], y=[valor_eca], marker_color='#06b6d4', text=f"{valor_eca} µg/m³", textposition='auto'),
+                go.Bar(name='Guía OMS (2021)', x=['Valor Límite (24h)'], y=[valor_oms], marker_color='#ef4444', text=f"{valor_oms} µg/m³", textposition='auto')
+            ])
+            
+            fig.update_layout(
+                title=f'Comparativa de {contaminante_seleccionado} (24h)',
+                yaxis_title='Valor (µg/m³)',
+                plot_bgcolor='rgba(0,0,0,0)',
+                paper_bgcolor='rgba(0,0,0,0)',
+                font_color='#e0f2fe',
+                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+            )
+            st.plotly_chart(fig, use_container_width=True)
+        else:
+            st.warning(f"No se encontró un estándar comparable de 24 horas en la guía de la OMS para {contaminante_seleccionado} en esta base de datos.")
+
+
+def pagina_en_desarrollo(titulo):
+    st.markdown(f"<div class='card'><h2>{titulo}</h2></div>", unsafe_allow_html=True)
+    st.info("Esta sección se encuentra actualmente en desarrollo. Próximamente encontrará aquí herramientas interactivas y datos detallados.")
+    with st.expander("¿Qué contenido habrá en esta sección?"):
+        if "LMP" in titulo:
+            st.markdown("- Buscador de Límites Máximos Permisibles por sector industrial (Minería, Pesca, Hidrocarburos, etc.).\n- Comparativas entre los LMP de diferentes actividades.")
+        elif "Protocolo" in titulo:
+            st.markdown("- Guías descargables de los Protocolos Nacionales de Monitoreo de Calidad del Aire.\n- Checklists interactivos para asegurar el cumplimiento de los procedimientos.")
+        elif "Internacional" in titulo:
+            st.markdown("- Comparativas detalladas con normativas de la Unión Europea, EPA (EE.UU.), y otros países de la región.\n- Mapas interactivos de la calidad del aire a nivel global.")
+
+# --- CUERPO PRINCIPAL DE LA APLICACIÓN ---
+
+# Estado de la sesión para navegación
 if 'pagina' not in st.session_state:
     st.session_state.pagina = "Inicio"
 
+# Header
 st.markdown("""
 <div class='mega-header'>
     <h1>Marco Normativo de Calidad del Aire</h1>
-    <p class='subtitle'>Universidad Nacional de Moquegua</p>
-    <p class='description'>Herramienta Interactiva de Consulta | Normativas Peruanas e Internacionales</p>
+    <p class='subtitle'>Herramienta Interactiva de Consulta | Normativas Peruanas e Internacionales</p>
 </div>
 """, unsafe_allow_html=True)
 
-col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
+# Barra de Navegación
+cols = st.columns(5)
+botones = ["INICIO", "ECA", "LMP", "PROTOCOLO", "INTERNACIONAL"]
+paginas = ["Inicio", "ECA", "LMP", "Protocolo", "Internacional"]
 
-with col1:
-    if st.button("INICIO", use_container_width=True):
-        st.session_state.pagina = "Inicio"
-with col2:
-    if st.button("ECA", use_container_width=True):
-        st.session_state.pagina = "ECA"
-with col3:
-    if st.button("LMP", use_container_width=True):
-        st.session_state.pagina = "LMP"
-with col4:
-    if st.button("PROTOCOLO", use_container_width=True):
-        st.session_state.pagina = "Protocolo"
-with col5:
-    if st.button("LINEAMIENTO", use_container_width=True):
-        st.session_state.pagina = "Lineamiento"
-with col6:
-    if st.button("MEDIDAS", use_container_width=True):
-        st.session_state.pagina = "Medidas"
-with col7:
-    if st.button("INTERNACIONAL", use_container_width=True):
-        st.session_state.pagina = "Normativas"
+for col, boton, pagina in zip(cols, botones, paginas):
+    with col:
+        if st.button(boton, use_container_width=True):
+            st.session_state.pagina = pagina
 
 st.markdown("<br>", unsafe_allow_html=True)
 
+# Renderizado de la página seleccionada
 if st.session_state.pagina == "Inicio":
-    col1, col2 = st.columns([3, 2])
-    
-    with col1:
-        st.markdown("""
-        <div class='elite-glass'>
-            <h2>Sobre esta Herramienta</h2>
-            <p style='font-size: 1.15em;'>
-                Plataforma integral que reune el <strong>marco normativo completo</strong> sobre 
-                calidad del aire en Peru y el mundo.
-            </p>
-            <ul style='font-size: 1.1em; line-height: 2.5;'>
-                <li><strong>ECA:</strong> Estandares de Calidad Ambiental</li>
-                <li><strong>LMP:</strong> Limites Maximos Permisibles</li>
-                <li><strong>Protocolos:</strong> Monitoreo y medicion</li>
-                <li><strong>Lineamientos:</strong> Guias tecnicas</li>
-                <li><strong>Medidas de Control:</strong> Tecnologias</li>
-                <li><strong>Normativas Internacionales:</strong> OMS, EPA, Canada</li>
-            </ul>
-            <p style='margin-top: 35px; font-size: 1.1em;'>
-                Acceso directo a documentos oficiales con un solo click
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("<div class='elite-glass'><h2>Acceso Rapido</h2></div>", unsafe_allow_html=True)
-        
-        if st.button("Estandares ECA", use_container_width=True, type="primary"):
-            st.session_state.pagina = "ECA"
-        if st.button("Limites LMP", use_container_width=True):
-            st.session_state.pagina = "LMP"
-        if st.button("Protocolos", use_container_width=True):
-            st.session_state.pagina = "Protocolo"
-        if st.button("Lineamientos", use_container_width=True):
-            st.session_state.pagina = "Lineamiento"
-        if st.button("Control de Emisiones", use_container_width=True):
-            st.session_state.pagina = "Medidas"
-        if st.button("Normativas Mundial", use_container_width=True):
-            st.session_state.pagina = "Normativas"
-    
-    st.markdown("""
-    <div class='elite-glass'>
-        <h2>Comparacion Internacional - PM2.5 Anual</h2>
-        <p style='font-size: 1.05em;'>Estandares mas estrictos protegen mejor la salud publica</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    datos_comp = pd.DataFrame([
-        {'Entidad': 'OMS 2021', 'Valor': 5},
-        {'Entidad': 'EPA USA', 'Valor': 9},
-        {'Entidad': 'Canada', 'Valor': 8.8},
-        {'Entidad': 'OEFA Peru', 'Valor': 25}
-    ])
-    
-    fig = px.bar(datos_comp, x='Entidad', y='Valor', 
-                 color='Entidad',
-                 color_discrete_sequence=['#06b6d4', '#3b82f6', '#8b5cf6', '#ef4444'],
-                 text='Valor')
-    fig.update_traces(texttemplate='%{text} ug/m3', textposition='outside',
-                      marker=dict(line=dict(color='rgba(6, 182, 212, 0.4)', width=2)),
-                      textfont=dict(size=14, color='#e0f2fe'))
-    fig.update_layout(
-        height=550,
-        showlegend=False,
-        plot_bgcolor='rgba(0,0,0,0)',
-        paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='#e0f2fe', size=15),
-        xaxis=dict(showgrid=False, tickfont=dict(size=14, color='#22d3ee')),
-        yaxis=dict(showgrid=True, gridcolor='rgba(6, 182, 212, 0.15)', 
-                   title='Concentracion (ug/m3)', titlefont=dict(color='#06b6d4'))
-    )
-    st.plotly_chart(fig, use_container_width=True)
-    
+    pagina_inicio()
 elif st.session_state.pagina == "ECA":
-    st.info("Estandares de Calidad Ambiental - Contenido en desarrollo")
-    
+    pagina_eca()
 elif st.session_state.pagina == "LMP":
-    st.info("Limites Maximos Permisibles - Contenido en desarrollo")
-    
+    pagina_en_desarrollo("Límites Máximos Permisibles (LMP)")
 elif st.session_state.pagina == "Protocolo":
-    st.info("Protocolos de Monitoreo - Contenido en desarrollo")
-    
-elif st.session_state.pagina == "Lineamiento":
-    st.info("Lineamientos Tecnicos - Contenido en desarrollo")
-    
-elif st.session_state.pagina == "Medidas":
-    st.info("Medidas de Control - Contenido en desarrollo")
-    
-elif st.session_state.pagina == "Normativas":
-    st.info("Normativas Internacionales - Contenido en desarrollo")
+    pagina_en_desarrollo("Protocolos de Monitoreo")
+elif st.session_state.pagina == "Internacional":
+    pagina_en_desarrollo("Normativas Internacionales")
