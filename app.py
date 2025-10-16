@@ -61,34 +61,12 @@ st.markdown("""
     
     /* Sidebar profesional */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #132F4C 0%, #0A1929 100%);
-        border-right: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(180deg, #0A1929 0%, #132F4C 100%);
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
     }
     
     [data-testid="stSidebar"] .element-container {
         padding: 0.5rem 1rem;
-    }
-    
-    /* Texto del sidebar MÁS VISIBLE */
-    [data-testid="stSidebar"] h1,
-    [data-testid="stSidebar"] h2,
-    [data-testid="stSidebar"] h3,
-    [data-testid="stSidebar"] p,
-    [data-testid="stSidebar"] span,
-    [data-testid="stSidebar"] label {
-        color: #FFFFFF !important;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    /* Input de búsqueda más visible */
-    [data-testid="stSidebar"] input {
-        background: rgba(255, 255, 255, 0.15) !important;
-        color: white !important;
-        border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    }
-    
-    [data-testid="stSidebar"] input::placeholder {
-        color: rgba(255, 255, 255, 0.7) !important;
     }
     
     /* Header institucional */
@@ -143,30 +121,29 @@ st.markdown("""
     
     /* Breadcrumbs profesionales */
     .breadcrumb {
-        background: rgba(19, 47, 76, 0.8);
+        background: rgba(19, 47, 76, 0.6);
         backdrop-filter: blur(10px);
         padding: 0.75rem 1.5rem;
         border-radius: 8px;
         margin-bottom: 1.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.06);
         font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.95) !important;
+        color: var(--text-secondary);
     }
     
     .breadcrumb a {
-        color: #60A5FA !important;
+        color: var(--secondary-blue);
         text-decoration: none;
         transition: color 0.2s;
-        font-weight: 600;
     }
     
     .breadcrumb a:hover {
-        color: #00B8D9 !important;
+        color: var(--accent-teal);
     }
     
     .breadcrumb-separator {
         margin: 0 0.5rem;
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.3);
     }
     
     /* Cards corporativas premium */
@@ -289,14 +266,9 @@ st.markdown("""
     }
     
     .normative-card p {
-        color: rgba(255, 255, 255, 0.95) !important;
+        color: var(--text-secondary);
         line-height: 1.7;
         margin: 0.75rem 0;
-    }
-    
-    .normative-card strong {
-        color: white !important;
-        font-weight: 600;
     }
     
     /* Status badges profesionales */
@@ -459,21 +431,16 @@ st.markdown("""
     [data-testid="stMetricValue"] {
         font-size: 2.5rem;
         font-weight: 800;
-        color: #60A5FA !important;
+        color: var(--secondary-blue);
         letter-spacing: -0.02em;
-        text-shadow: 0 2px 8px rgba(96, 165, 250, 0.4);
     }
     
     [data-testid="stMetricLabel"] {
-        color: rgba(255, 255, 255, 0.95) !important;
+        color: var(--text-secondary);
         font-weight: 600;
         text-transform: uppercase;
         font-size: 0.85rem;
         letter-spacing: 0.05em;
-    }
-    
-    [data-testid="stMetricDelta"] {
-        color: rgba(255, 255, 255, 0.85) !important;
     }
     
     /* Expanders mejorados */
@@ -498,7 +465,7 @@ st.markdown("""
     
     /* Info boxes */
     .info-box {
-        background: linear-gradient(135deg, rgba(0, 184, 217, 0.2) 0%, rgba(0, 101, 255, 0.15) 100%);
+        background: linear-gradient(135deg, rgba(0, 184, 217, 0.15) 0%, rgba(0, 101, 255, 0.1) 100%);
         border-left: 4px solid var(--accent-teal);
         padding: 1.25rem;
         border-radius: 8px;
@@ -507,18 +474,14 @@ st.markdown("""
     }
     
     .info-box p {
-        color: rgba(255, 255, 255, 0.95) !important;
+        color: var(--text-secondary);
         margin: 0;
         line-height: 1.6;
     }
     
-    .info-box strong {
-        color: white !important;
-    }
-    
     /* Warning boxes */
     .warning-box {
-        background: linear-gradient(135deg, rgba(255, 179, 0, 0.2) 0%, rgba(255, 152, 0, 0.15) 100%);
+        background: linear-gradient(135deg, rgba(255, 179, 0, 0.15) 0%, rgba(255, 152, 0, 0.1) 100%);
         border-left: 4px solid var(--warning);
         padding: 1.25rem;
         border-radius: 8px;
@@ -527,23 +490,14 @@ st.markdown("""
     }
     
     .warning-box p {
-        color: rgba(255, 255, 255, 0.95) !important;
+        color: var(--text-secondary);
         margin: 0;
         line-height: 1.6;
     }
     
-    .warning-box strong {
-        color: white !important;
-    }
-    
-    .warning-box h4 {
-        color: white !important;
-        margin-top: 0;
-    }
-    
     /* Success boxes */
     .success-box {
-        background: linear-gradient(135deg, rgba(0, 200, 83, 0.2) 0%, rgba(0, 230, 118, 0.15) 100%);
+        background: linear-gradient(135deg, rgba(0, 200, 83, 0.15) 0%, rgba(0, 230, 118, 0.1) 100%);
         border-left: 4px solid var(--success);
         padding: 1.25rem;
         border-radius: 8px;
@@ -552,56 +506,39 @@ st.markdown("""
     }
     
     .success-box p {
-        color: rgba(255, 255, 255, 0.95) !important;
+        color: var(--text-secondary);
         margin: 0;
         line-height: 1.6;
-    }
-    
-    .success-box strong {
-        color: white !important;
-    }
-    
-    .success-box h4 {
-        color: white !important;
-        margin-top: 0;
-    }
-    
-    .success-box ol, .success-box ul {
-        color: rgba(255, 255, 255, 0.95) !important;
     }
     
     /* Footer corporativo */
     .corporate-footer {
         text-align: center;
-        background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(10, 25, 41, 0.98) 100%);
+        background: linear-gradient(135deg, rgba(19, 47, 76, 0.9) 0%, rgba(10, 25, 41, 0.95) 100%);
         backdrop-filter: blur(20px);
         padding: 3rem 2rem;
         border-radius: 12px;
         margin-top: 4rem;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3);
     }
     
-    .corporate-footer h3, .corporate-footer h4 {
-        color: white !important;
-        font-weight: 700;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-    
     .corporate-footer h3 {
+        color: var(--text-primary);
+        font-weight: 700;
         font-size: 1.5rem;
         margin: 0 0 0.5rem 0;
     }
     
     .corporate-footer p {
-        color: rgba(255, 255, 255, 0.9) !important;
+        color: var(--text-secondary);
         margin: 0.5rem 0;
         line-height: 1.6;
     }
     
     .corporate-footer .divider {
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
         margin: 1.5rem 0;
     }
     
@@ -882,7 +819,7 @@ if st.session_state.pagina == "Inicio":
         st.markdown("""
         <div class='corporate-card fade-in'>
             <h2>⚡ Acceso Directo</h2>
-            <p style='color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;'>
+            <p style='color: var(--text-secondary); margin-bottom: 1.5rem;'>
                 Navegue rápidamente a las secciones principales
             </p>
         </div>
@@ -914,7 +851,14 @@ if st.session_state.pagina == "Inicio":
         
         st.markdown("<br>", unsafe_allow_html=True)
         
-        st.info("💡 **Sugerencia:** Utilice el buscador del menú lateral para encontrar normativas específicas rápidamente.")
+        st.markdown("""
+        <div class='info-box'>
+            <p style='font-size: 0.9rem;'>
+                <strong>💡 Sugerencia:</strong> Utilice el buscador del menú lateral para encontrar 
+                normativas específicas rápidamente.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
     
     # Gráfico comparativo mejorado
     st.markdown("""
@@ -1516,50 +1460,50 @@ elif st.session_state.pagina == "Protocolo":
     # Proceso de monitoreo
     with st.expander("📋 Ver flujo de proceso de monitoreo de calidad del aire"):
         st.markdown("""
-        #### Proceso Completo de Monitoreo
+        ### Proceso Completo de Monitoreo
         
-        **1. Planificación**
+        #### 1️⃣ Planificación
         - Definición de objetivos del monitoreo
         - Selección de ubicación de estaciones (criterios de macro y microescala)
         - Determinación de parámetros y frecuencias de muestreo
         - Elaboración de Plan de Monitoreo
         
-        **2. Implementación**
+        #### 2️⃣ Implementación
         - Instalación y configuración de equipos
         - Calibración inicial con gases y patrones certificados
         - Verificación de condiciones ambientales del sitio
         - Inicio de operación según protocolo
         
-        **3. Operación y Mantenimiento**
+        #### 3️⃣ Operación y Mantenimiento
         - Calibraciones periódicas (diarias, semanales, mensuales)
         - Mantenimiento preventivo de equipos
         - Verificación de flujos y condiciones operativas
         - Registro de eventos y anomalías
         
-        **4. Aseguramiento de Calidad**
+        #### 4️⃣ Aseguramiento de Calidad
         - Auditorías internas y externas
         - Análisis de blancos y duplicados
         - Control de precisión y exactitud
         - Validación de datos
         
-        **5. Análisis de Laboratorio**
+        #### 5️⃣ Análisis de Laboratorio
         - Análisis gravimétrico (PM)
         - Análisis químico (metales, iones)
         - Control de calidad analítico
         - Certificados de análisis
         
-        **6. Gestión de Datos**
+        #### 6️⃣ Gestión de Datos
         - Transferencia y almacenamiento de datos
         - Validación estadística
         - Cálculo de promedios según ECA
         - Identificación de excedencias
         
-        **7. Reporte**
+        #### 7️⃣ Reporte
         - Informes técnicos periódicos
         - Reportes a autoridades competentes
         - Publicación de resultados (cuando aplique)
         - Acciones correctivas si hay excedencias
-        """, unsafe_allow_html=True)
+        """)
 
 # ===================== PÁGINA LINEAMIENTO =====================
 elif st.session_state.pagina == "Lineamiento":
@@ -1718,34 +1662,34 @@ elif st.session_state.pagina == "Lineamiento":
     # Categorías de inventario de emisiones
     with st.expander("📊 Ver categorías del Inventario de Emisiones Atmosféricas"):
         st.markdown("""
-        #### Categorías de Fuentes según R.M. 181-2016-MINAM
+        ### Categorías de Fuentes según R.M. 181-2016-MINAM
         
-        **1. Fuentes Puntuales**
-        - Definición: Emisiones identificables de chimeneas o ductos específicos
-        - Ejemplos: Industrias, centrales térmicas, fundiciones
-        - Datos requeridos: Caudal, concentración, temperatura, ubicación geográfica
+        #### 1. Fuentes Puntuales
+        - **Definición:** Emisiones identificables de chimeneas o ductos específicos
+        - **Ejemplos:** Industrias, centrales térmicas, fundiciones
+        - **Datos requeridos:** Caudal, concentración, temperatura, ubicación geográfica
         
-        **2. Fuentes de Área**
-        - Definición: Múltiples fuentes pequeñas agregadas geográficamente
-        - Ejemplos: Uso de solventes, panaderías, restaurantes, estaciones de servicio
-        - Datos requeridos: Consumo de combustible/materia prima, factores de emisión
+        #### 2. Fuentes de Área
+        - **Definición:** Múltiples fuentes pequeñas agregadas geográficamente
+        - **Ejemplos:** Uso de solventes, panaderías, restaurantes, estaciones de servicio
+        - **Datos requeridos:** Consumo de combustible/materia prima, factores de emisión
         
-        **3. Fuentes Móviles**
-        - Definición: Vehículos automotores en circulación
-        - Categorías: Livianos, pesados, motocicletas, transporte público
-        - Datos requeridos: Parque automotor, km recorridos, edad vehicular, tipo combustible
+        #### 3. Fuentes Móviles
+        - **Definición:** Vehículos automotores en circulación
+        - **Categorías:** Livianos, pesados, motocicletas, transporte público
+        - **Datos requeridos:** Parque automotor, km recorridos, edad vehicular, tipo combustible
         
-        **4. Fuentes Naturales**
-        - Definición: Emisiones de origen natural
-        - Ejemplos: Polvo fugitivo de suelos áridos, emisiones biogénicas
-        - Datos requeridos: Cobertura vegetal, características de suelo, meteorología
+        #### 4. Fuentes Naturales
+        - **Definición:** Emisiones de origen natural
+        - **Ejemplos:** Polvo fugitivo de suelos áridos, emisiones biogénicas
+        - **Datos requeridos:** Cobertura vegetal, características de suelo, meteorología
         
-        **5. Emisiones Fugitivas**
-        - Definición: Emisiones no canalizadas
-        - Ejemplos: Patio de minerales, vías no pavimentadas, demoliciones
-        - Datos requeridos: Superficie expuesta, contenido de humedad, velocidad del viento
+        #### 5. Emisiones Fugitivas
+        - **Definición:** Emisiones no canalizadas
+        - **Ejemplos:** Patio de minerales, vías no pavimentadas, demoliciones
+        - **Datos requeridos:** Superficie expuesta, contenido de humedad, velocidad del viento
         
-        #### Contaminantes a Inventariar
+        ### Contaminantes a Inventariar
         - Material Particulado (PM10, PM2.5, PST)
         - Óxidos de Nitrógeno (NOx)
         - Dióxido de Azufre (SO2)
@@ -1754,7 +1698,7 @@ elif st.session_state.pagina == "Lineamiento":
         - Metales pesados (Pb, As, Cd, Hg, según sector)
         - Gases de Efecto Invernadero (CO2, CH4, N2O)
         - Carbono Negro (BC)
-        """, unsafe_allow_html=True)
+        """)
 
 # ===================== PÁGINA MEDIDAS =====================
 elif st.session_state.pagina == "Medidas":
@@ -1960,47 +1904,47 @@ elif st.session_state.pagina == "Medidas":
     # Información adicional
     with st.expander("💡 Ver factores de selección de tecnología de control"):
         st.markdown("""
-        #### Factores Clave para Selección de Tecnología
+        ### Factores Clave para Selección de Tecnología
         
-        **1. Características del Efluente Gaseoso**
-        - Caudal volumétrico: m³/h o Nm³/h
-        - Temperatura: °C (afecta volumen y selección de materiales)
-        - Concentración de contaminante: mg/Nm³ o ppm
-        - Características químicas: pH, humedad, presencia de otros compuestos
-        - Concentración de polvo: puede requerir pre-tratamiento
+        #### 1. Características del Efluente Gaseoso
+        - **Caudal volumétrico:** m³/h o Nm³/h
+        - **Temperatura:** °C (afecta volumen y selección de materiales)
+        - **Concentración de contaminante:** mg/Nm³ o ppm
+        - **Características químicas:** pH, humedad, presencia de otros compuestos
+        - **Concentración de polvo:** puede requerir pre-tratamiento
         
-        **2. Requisitos Regulatorios**
-        - LMP aplicables: según sector y tipo de fuente
-        - ECA de zona: considerar impacto en calidad de aire ambiente
-        - Plazos de cumplimiento: gradualidad normativa
-        - Reporte y monitoreo: CEMS vs mediciones periódicas
+        #### 2. Requisitos Regulatorios
+        - **LMP aplicables:** según sector y tipo de fuente
+        - **ECA de zona:** considerar impacto en calidad de aire ambiente
+        - **Plazos de cumplimiento:** gradualidad normativa
+        - **Reporte y monitoreo:** CEMS vs mediciones periódicas
         
-        **3. Aspectos Técnicos**
-        - Eficiencia requerida: calculada según emisión actual y LMP
-        - Confiabilidad operativa: disponibilidad >95% típicamente requerida
-        - Vida útil de equipos: 15-25 años para equipos principales
-        - Espacio disponible: footprint de la instalación
-        - Servicios requeridos: energía eléctrica, agua, aire comprimido, vapor
+        #### 3. Aspectos Técnicos
+        - **Eficiencia requerida:** calculada según emisión actual y LMP
+        - **Confiabilidad operativa:** disponibilidad >95% típicamente requerida
+        - **Vida útil de equipos:** 15-25 años para equipos principales
+        - **Espacio disponible:** footprint de la instalación
+        - **Servicios requeridos:** energía eléctrica, agua, aire comprimido, vapor
         
-        **4. Aspectos Económicos**
-        - CAPEX (inversión inicial): equipos, instalación, ingeniería
-        - OPEX (costos operativos): energía, reactivos, mantenimiento, mano de obra
-        - Generación de residuos: tratamiento y disposición de residuos secundarios
-        - Valor presente neto (VPN): análisis de costo-beneficio a 20 años
+        #### 4. Aspectos Económicos
+        - **CAPEX (inversión inicial):** equipos, instalación, ingeniería
+        - **OPEX (costos operativos):** energía, reactivos, mantenimiento, mano de obra
+        - **Generación de residuos:** tratamiento y disposición de residuos secundarios
+        - **Valor presente neto (VPN):** análisis de costo-beneficio a 20 años
         
-        **5. Consideraciones Ambientales**
-        - Consumo energético: kWh/Nm³ tratado
-        - Consumo de agua: si aplica (scrubbers, FGD)
-        - Generación de residuos: lodos, catalizadores gastados, filtros
-        - Emisiones secundarias: CO2 de consumo energético
+        #### 5. Consideraciones Ambientales
+        - **Consumo energético:** kWh/Nm³ tratado
+        - **Consumo de agua:** si aplica (scrubbers, FGD)
+        - **Generación de residuos:** lodos, catalizadores gastados, filtros
+        - **Emisiones secundarias:** CO2 de consumo energético
         
-        **6. Mejores Técnicas Disponibles (MTD/BAT)**
-        - Documentos BREF europeos: referencia técnica de BAT
-        - Guías EPA: AP-42 y documentos sectoriales
-        - Benchmarking internacional: plantas similares en región
-        - Innovaciones tecnológicas: considerar mejoras disponibles
+        #### 6. Mejores Técnicas Disponibles (MTD/BAT)
+        - **Documentos BREF europeos:** referencia técnica de BAT
+        - **Guías EPA:** AP-42 y documentos sectoriales
+        - **Benchmarking internacional:** plantas similares en región
+        - **Innovaciones tecnológicas:** considerar mejoras disponibles
         
-        #### Proceso de Evaluación Recomendado
+        ### Proceso de Evaluación Recomendado
         1. Caracterización completa del efluente gaseoso
         2. Identificación de tecnologías técnicamente factibles
         3. Evaluación multicriterio (técnica, económica, ambiental)
@@ -2009,7 +1953,7 @@ elif st.session_state.pagina == "Medidas":
         6. Diseño de ingeniería detallada
         7. Implementación y puesta en marcha
         8. Monitoreo de desempeño y optimización continua
-        """, unsafe_allow_html=True)
+        """)
 
 # ===================== PÁGINA NORMATIVAS INTERNACIONALES =====================
 elif st.session_state.pagina == "Normativas":
