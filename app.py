@@ -24,7 +24,7 @@ st.markdown("""
     
     /* BACKGROUND OSCURO PROFESIONAL */
     .main {
-        background: #000000;
+        background: linear-gradient(180deg, #0a0f1e 0%, #050810 100%);
         position: relative;
         overflow: hidden;
     }
@@ -37,10 +37,10 @@ st.markdown("""
         width: 100%;
         height: 100%;
         background: 
-            radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
-            radial-gradient(circle at 85% 10%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
-            radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 90% 70%, rgba(236, 72, 153, 0.08) 0%, transparent 40%);
+            radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.15) 0%, transparent 45%),
+            radial-gradient(circle at 85% 10%, rgba(14, 165, 233, 0.18) 0%, transparent 45%),
+            radial-gradient(circle at 50% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
+            radial-gradient(circle at 90% 70%, rgba(56, 189, 248, 0.1) 0%, transparent 45%);
         z-index: 0;
         animation: breathe 8s ease-in-out infinite;
     }
@@ -102,15 +102,15 @@ st.markdown("""
     @keyframes glow-pulse {
         0%, 100% {
             box-shadow: 
-                0 0 40px rgba(16, 185, 129, 0.3),
-                0 0 80px rgba(16, 185, 129, 0.15),
-                0 20px 60px rgba(0, 0, 0, 0.5);
+                0 0 40px rgba(6, 182, 212, 0.35),
+                0 0 80px rgba(6, 182, 212, 0.2),
+                0 20px 60px rgba(0, 0, 0, 0.6);
         }
         50% {
             box-shadow: 
-                0 0 60px rgba(16, 185, 129, 0.4),
-                0 0 100px rgba(16, 185, 129, 0.2),
-                0 30px 80px rgba(0, 0, 0, 0.6);
+                0 0 60px rgba(6, 182, 212, 0.5),
+                0 0 100px rgba(6, 182, 212, 0.3),
+                0 30px 80px rgba(0, 0, 0, 0.7);
         }
     }
     
@@ -120,17 +120,17 @@ st.markdown("""
         padding: 80px 50px;
         background: 
             linear-gradient(135deg, 
-                rgba(16, 185, 129, 0.03) 0%,
-                rgba(5, 150, 105, 0.05) 50%,
-                rgba(4, 120, 87, 0.03) 100%);
+                rgba(6, 182, 212, 0.08) 0%,
+                rgba(14, 165, 233, 0.12) 50%,
+                rgba(6, 78, 59, 0.08) 100%);
         backdrop-filter: blur(30px) saturate(200%);
         border-radius: 24px;
         margin-bottom: 50px;
-        border: 1px solid rgba(16, 185, 129, 0.2);
+        border: 1px solid rgba(34, 211, 238, 0.25);
         box-shadow: 
-            0 30px 90px rgba(0, 0, 0, 0.8),
-            inset 0 1px 0 rgba(16, 185, 129, 0.1),
-            0 0 80px rgba(16, 185, 129, 0.15);
+            0 30px 90px rgba(0, 0, 0, 0.9),
+            inset 0 1px 0 rgba(34, 211, 238, 0.15),
+            0 0 100px rgba(6, 182, 212, 0.2);
         animation: fadeInUp 1s ease-out, glow-pulse 4s ease-in-out infinite;
         position: relative;
         z-index: 1;
@@ -147,11 +147,11 @@ st.markdown("""
         background: 
             repeating-conic-gradient(
                 from 0deg at 50% 50%,
-                rgba(16, 185, 129, 0.05) 0deg 30deg,
+                rgba(6, 182, 212, 0.06) 0deg 30deg,
                 transparent 30deg 60deg
             );
         animation: rotate-slow 30s linear infinite;
-        opacity: 0.3;
+        opacity: 0.4;
     }
     
     @keyframes rotate-slow {
@@ -163,10 +163,12 @@ st.markdown("""
         font-size: 4.5em !important;
         font-weight: 900 !important;
         background: linear-gradient(135deg, 
-            #10b981 0%, 
-            #34d399 30%,
-            #6ee7b7 60%,
-            #34d399 100%);
+            #06b6d4 0%, 
+            #22d3ee 25%,
+            #67e8f9 50%,
+            #22d3ee 75%,
+            #06b6d4 100%);
+        background-size: 200% auto;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -174,17 +176,17 @@ st.markdown("""
         position: relative;
         z-index: 2;
         letter-spacing: -0.03em;
-        text-shadow: 0 0 80px rgba(16, 185, 129, 0.3);
-        animation: shimmer-text 3s ease-in-out infinite;
+        text-shadow: 0 0 100px rgba(6, 182, 212, 0.5);
+        animation: shimmer-text 3s linear infinite;
     }
     
     @keyframes shimmer-text {
-        0%, 100% { filter: brightness(1); }
-        50% { filter: brightness(1.2); }
+        0% { background-position: 0% center; }
+        100% { background-position: 200% center; }
     }
     
     .mega-header .subtitle {
-        color: #d1fae5;
+        color: #a5f3fc;
         font-size: 1.6em;
         font-weight: 700;
         margin-top: 25px;
@@ -193,10 +195,11 @@ st.markdown("""
         letter-spacing: 0.02em;
         text-transform: uppercase;
         font-family: 'Space Grotesk', sans-serif;
+        text-shadow: 0 2px 20px rgba(6, 182, 212, 0.3);
     }
     
     .mega-header .description {
-        color: #a7f3d0;
+        color: #67e8f9;
         font-size: 1.2em;
         margin-top: 20px;
         font-weight: 500;
@@ -206,7 +209,7 @@ st.markdown("""
     }
     
     .mega-header .meta {
-        color: #6ee7b7;
+        color: #22d3ee;
         font-size: 1em;
         margin-top: 25px;
         position: relative;
@@ -222,12 +225,12 @@ st.markdown("""
         backdrop-filter: blur(20px) saturate(180%);
         padding: 50px;
         border-radius: 20px;
-        border: 1px solid rgba(16, 185, 129, 0.2);
+        border: 1px solid rgba(6, 182, 212, 0.25);
         margin: 30px 0;
         box-shadow: 
-            0 25px 70px rgba(0, 0, 0, 0.7),
-            inset 0 1px 0 rgba(16, 185, 129, 0.1),
-            0 0 60px rgba(16, 185, 129, 0.1);
+            0 25px 70px rgba(0, 0, 0, 0.8),
+            inset 0 1px 0 rgba(6, 182, 212, 0.15),
+            0 0 60px rgba(6, 182, 212, 0.15);
         animation: slideIn 0.8s ease-out;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
@@ -243,23 +246,23 @@ st.markdown("""
         height: 1px;
         background: linear-gradient(90deg, 
             transparent, 
-            rgba(16, 185, 129, 0.5), 
+            rgba(6, 182, 212, 0.6), 
             transparent);
     }
     
     .elite-glass:hover {
         transform: translateY(-5px);
         box-shadow: 
-            0 35px 100px rgba(0, 0, 0, 0.8),
-            inset 0 1px 0 rgba(16, 185, 129, 0.2),
-            0 0 80px rgba(16, 185, 129, 0.2);
-        border-color: rgba(16, 185, 129, 0.4);
+            0 35px 100px rgba(0, 0, 0, 0.9),
+            inset 0 1px 0 rgba(6, 182, 212, 0.25),
+            0 0 80px rgba(6, 182, 212, 0.25);
+        border-color: rgba(6, 182, 212, 0.4);
     }
     
     .elite-glass h2 {
         font-size: 2.2em;
         font-weight: 800;
-        background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+        background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin: 0 0 25px 0;
@@ -270,20 +273,20 @@ st.markdown("""
     .elite-glass h3 {
         font-size: 1.6em;
         font-weight: 700;
-        color: #6ee7b7;
+        color: #22d3ee;
         margin: 20px 0;
         letter-spacing: -0.01em;
     }
     
     .elite-glass p, .elite-glass li {
-        color: #d1fae5;
+        color: #e0f2fe;
         line-height: 1.9;
         font-size: 1.05em;
         font-weight: 400;
     }
     
     .elite-glass strong {
-        color: #10b981;
+        color: #06b6d4;
         font-weight: 700;
     }
     
@@ -296,11 +299,11 @@ st.markdown("""
         padding: 45px;
         border-radius: 20px;
         margin: 30px 0;
-        border-left: 4px solid #10b981;
+        border-left: 4px solid #06b6d4;
         box-shadow: 
-            0 25px 70px rgba(0, 0, 0, 0.7),
-            inset 0 1px 0 rgba(16, 185, 129, 0.1),
-            -4px 0 30px rgba(16, 185, 129, 0.2);
+            0 25px 70px rgba(0, 0, 0, 0.8),
+            inset 0 1px 0 rgba(6, 182, 212, 0.15),
+            -4px 0 30px rgba(6, 182, 212, 0.25);
         transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         animation: slideIn 0.8s ease-out;
         position: relative;
@@ -315,21 +318,21 @@ st.markdown("""
         right: 0;
         width: 200px;
         height: 200px;
-        background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%);
         border-radius: 50%;
     }
     
     .platinum-card:hover {
         transform: translateX(10px);
         box-shadow: 
-            0 35px 100px rgba(0, 0, 0, 0.8),
-            inset 0 1px 0 rgba(16, 185, 129, 0.2),
-            -6px 0 50px rgba(16, 185, 129, 0.3);
+            0 35px 100px rgba(0, 0, 0, 0.9),
+            inset 0 1px 0 rgba(6, 182, 212, 0.25),
+            -6px 0 50px rgba(6, 182, 212, 0.4);
         border-left-width: 6px;
     }
     
     .platinum-card h3 {
-        color: #10b981 !important;
+        color: #06b6d4 !important;
         font-size: 1.9em;
         font-weight: 800;
         margin: 0 0 20px 0;
@@ -340,7 +343,7 @@ st.markdown("""
     }
     
     .platinum-card p {
-        color: #d1fae5;
+        color: #e0f2fe;
         font-size: 1.1em;
         line-height: 1.9;
         margin: 20px 0;
@@ -349,13 +352,13 @@ st.markdown("""
     }
     
     .platinum-card strong {
-        color: #34d399;
+        color: #22d3ee;
         font-weight: 700;
     }
     
     /* BADGES PREMIUM */
     .premium-badge {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
         color: #000000;
         padding: 10px 26px;
         border-radius: 25px;
@@ -364,7 +367,7 @@ st.markdown("""
         display: inline-block;
         margin-right: 15px;
         box-shadow: 
-            0 10px 30px rgba(16, 185, 129, 0.4),
+            0 10px 30px rgba(6, 182, 212, 0.5),
             inset 0 1px 0 rgba(255, 255, 255, 0.3);
         letter-spacing: 0.05em;
         text-transform: uppercase;
@@ -374,8 +377,8 @@ st.markdown("""
     }
     
     .premium-badge.vigente {
-        background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);
+        background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+        box-shadow: 0 10px 30px rgba(6, 182, 212, 0.6);
     }
     
     .premium-badge.modificatoria {
@@ -395,7 +398,7 @@ st.markdown("""
     
     /* BOTONES PREMIUM */
     .diamond-btn {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
         color: #000000;
         padding: 18px 40px;
         border-radius: 12px;
@@ -405,7 +408,7 @@ st.markdown("""
         font-weight: 800;
         font-size: 1em;
         box-shadow: 
-            0 15px 40px rgba(16, 185, 129, 0.4),
+            0 15px 40px rgba(6, 182, 212, 0.5),
             inset 0 1px 0 rgba(255, 255, 255, 0.3);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
@@ -432,7 +435,7 @@ st.markdown("""
     .diamond-btn:hover {
         transform: translateY(-3px) scale(1.02);
         box-shadow: 
-            0 20px 60px rgba(16, 185, 129, 0.6),
+            0 20px 60px rgba(6, 182, 212, 0.7),
             inset 0 1px 0 rgba(255, 255, 255, 0.4);
     }
     
@@ -446,8 +449,8 @@ st.markdown("""
         background: linear-gradient(135deg, 
             rgba(31, 41, 55, 0.9) 0%, 
             rgba(17, 24, 39, 0.95) 100%);
-        color: #10b981;
-        border: 1.5px solid rgba(16, 185, 129, 0.3);
+        color: #06b6d4;
+        border: 1.5px solid rgba(6, 182, 212, 0.3);
         border-radius: 12px;
         padding: 16px 20px;
         font-weight: 700;
@@ -455,20 +458,20 @@ st.markdown("""
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         backdrop-filter: blur(10px);
         box-shadow: 
-            0 8px 24px rgba(0, 0, 0, 0.5),
-            inset 0 1px 0 rgba(16, 185, 129, 0.1);
+            0 8px 24px rgba(0, 0, 0, 0.6),
+            inset 0 1px 0 rgba(6, 182, 212, 0.1);
         letter-spacing: 0.02em;
         text-transform: uppercase;
         font-family: 'Space Grotesk', sans-serif;
     }
     
     .stButton > button:hover {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        border-color: #10b981;
+        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+        border-color: #06b6d4;
         color: #000000;
         transform: translateY(-2px);
         box-shadow: 
-            0 15px 40px rgba(16, 185, 129, 0.4),
+            0 15px 40px rgba(6, 182, 212, 0.5),
             inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
     
@@ -479,18 +482,18 @@ st.markdown("""
         padding: 15px;
         border-radius: 16px;
         backdrop-filter: blur(20px);
-        border: 1px solid rgba(16, 185, 129, 0.2);
+        border: 1px solid rgba(6, 182, 212, 0.2);
     }
     
     .stTabs [data-baseweb="tab"] {
         background: linear-gradient(135deg, 
             rgba(31, 41, 55, 0.9) 0%, 
             rgba(17, 24, 39, 0.9) 100%);
-        color: #6ee7b7;
+        color: #22d3ee;
         border-radius: 12px;
         padding: 14px 30px;
         font-weight: 700;
-        border: 1.5px solid rgba(16, 185, 129, 0.2);
+        border: 1.5px solid rgba(6, 182, 212, 0.2);
         transition: all 0.3s ease;
         letter-spacing: 0.02em;
         text-transform: uppercase;
@@ -499,15 +502,15 @@ st.markdown("""
     }
     
     .stTabs [data-baseweb="tab"]:hover {
-        border-color: rgba(16, 185, 129, 0.5);
+        border-color: rgba(6, 182, 212, 0.5);
         transform: translateY(-2px);
-        color: #10b981;
+        color: #06b6d4;
     }
     
     .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
         color: #000000;
-        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+        box-shadow: 0 10px 30px rgba(6, 182, 212, 0.5);
         border-color: transparent;
     }
     
@@ -516,18 +519,18 @@ st.markdown("""
         background: rgba(17, 24, 39, 0.95) !important;
         border-radius: 16px !important;
         overflow: hidden !important;
-        border: 1px solid rgba(16, 185, 129, 0.2) !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+        border: 1px solid rgba(6, 182, 212, 0.25) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
     }
     
     .dataframe thead tr th {
         background: linear-gradient(135deg, 
-            rgba(16, 185, 129, 0.15) 0%, 
-            rgba(5, 150, 105, 0.2) 100%) !important;
-        color: #10b981 !important;
+            rgba(6, 182, 212, 0.2) 0%, 
+            rgba(14, 165, 233, 0.25) 100%) !important;
+        color: #06b6d4 !important;
         font-weight: 800 !important;
         padding: 18px !important;
-        border-bottom: 2px solid rgba(16, 185, 129, 0.3) !important;
+        border-bottom: 2px solid rgba(6, 182, 212, 0.4) !important;
         text-transform: uppercase !important;
         letter-spacing: 0.05em !important;
         font-size: 0.85em !important;
@@ -536,15 +539,15 @@ st.markdown("""
     
     .dataframe tbody tr {
         transition: all 0.2s ease;
-        border-bottom: 1px solid rgba(16, 185, 129, 0.1) !important;
+        border-bottom: 1px solid rgba(6, 182, 212, 0.1) !important;
     }
     
     .dataframe tbody tr:hover {
-        background: rgba(16, 185, 129, 0.08) !important;
+        background: rgba(6, 182, 212, 0.1) !important;
     }
     
     .dataframe tbody tr td {
-        color: #d1fae5 !important;
+        color: #e0f2fe !important;
         padding: 16px !important;
         font-weight: 500 !important;
     }
@@ -553,14 +556,14 @@ st.markdown("""
     [data-testid="stMetricValue"] {
         font-size: 2.8em;
         font-weight: 900;
-        background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+        background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         letter-spacing: -0.02em;
     }
     
     [data-testid="stMetricLabel"] {
-        color: #6ee7b7 !important;
+        color: #22d3ee !important;
         font-weight: 700;
         font-size: 1.1em;
         text-transform: uppercase;
@@ -578,13 +581,13 @@ st.markdown("""
     }
     
     ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
         border-radius: 10px;
         border: 2px solid rgba(17, 24, 39, 0.8);
     }
     
     ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+        background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
     }
     
     /* TÍTULOS GLOBALES */
@@ -596,15 +599,15 @@ st.markdown("""
     
     /* LINKS */
     a {
-        color: #10b981;
+        color: #06b6d4;
         text-decoration: none;
         transition: all 0.3s ease;
         font-weight: 700;
     }
     
     a:hover {
-        color: #34d399;
-        text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+        color: #22d3ee;
+        text-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
     }
     
     /* SEPARADOR */
@@ -613,7 +616,7 @@ st.markdown("""
         height: 1px;
         background: linear-gradient(90deg, 
             transparent, 
-            rgba(16, 185, 129, 0.3), 
+            rgba(6, 182, 212, 0.4), 
             transparent);
         margin: 60px 0;
     }
@@ -732,7 +735,7 @@ if st.session_state.pagina == "Inicio":
     """, unsafe_allow_html=True)
     
     datos_comp = pd.DataFrame([
-        {'Entidad': 'OMS 2021', 'Valor': 5, 'Color': '#10b981'},
+        {'Entidad': 'OMS 2021', 'Valor': 5, 'Color': '#06b6d4'},
         {'Entidad': 'EPA USA', 'Valor': 9, 'Color': '#3b82f6'},
         {'Entidad': 'Canadá', 'Valor': 8.8, 'Color': '#8b5cf6'},
         {'Entidad': 'OEFA Perú', 'Valor': 25, 'Color': '#ef4444'}
@@ -740,28 +743,28 @@ if st.session_state.pagina == "Inicio":
     
     fig = px.bar(datos_comp, x='Entidad', y='Valor', 
                  color='Entidad',
-                 color_discrete_sequence=['#10b981', '#3b82f6', '#8b5cf6', '#ef4444'],
+                 color_discrete_sequence=['#06b6d4', '#3b82f6', '#8b5cf6', '#ef4444'],
                  title='',
                  text='Valor')
     fig.update_traces(texttemplate='%{text} μg/m³', textposition='outside',
-                      marker=dict(line=dict(color='rgba(16, 185, 129, 0.3)', width=2)),
-                      textfont=dict(size=14, color='#d1fae5', family='Space Grotesk'))
+                      marker=dict(line=dict(color='rgba(6, 182, 212, 0.4)', width=2)),
+                      textfont=dict(size=14, color='#e0f2fe', family='Space Grotesk'))
     fig.update_layout(
         height=550,
         showlegend=False,
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='#d1fae5', size=15, family='Space Grotesk'),
-        xaxis=dict(showgrid=False, tickfont=dict(size=14, color='#6ee7b7')),
-        yaxis=dict(showgrid=True, gridcolor='rgba(16, 185, 129, 0.1)', 
+        font=dict(color='#e0f2fe', size=15, family='Space Grotesk'),
+        xaxis=dict(showgrid=False, tickfont=dict(size=14, color='#22d3ee')),
+        yaxis=dict(showgrid=True, gridcolor='rgba(6, 182, 212, 0.15)', 
                    title='Concentración (μg/m³)', 
-                   titlefont=dict(color='#10b981'))
+                   titlefont=dict(color='#06b6d4'))
     )
     st.plotly_chart(fig, use_container_width=True)
 
 # ===================== PÁGINA ECA =====================
 elif st.session_state.pagina == "ECA":
-    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>📋 Estándares de Calidad Ambiental (ECA)</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>📋 Estándares de Calidad Ambiental (ECA)</h1>", unsafe_allow_html=True)
     
     st.markdown("""
     <div class='elite-glass'>
@@ -846,7 +849,7 @@ elif st.session_state.pagina == "ECA":
 
 # ===================== PÁGINA LMP =====================
 elif st.session_state.pagina == "LMP":
-    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>🏭 Límites Máximos Permisibles (LMP)</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>🏭 Límites Máximos Permisibles (LMP)</h1>", unsafe_allow_html=True)
     
     st.markdown("""
     <div class='elite-glass'>
@@ -922,35 +925,46 @@ elif st.session_state.pagina == "LMP":
     
     fig = go.Figure()
     fig.add_trace(go.Bar(name='Gas Natural', x=lmp_termo['Contaminante'], y=lmp_termo['Gas Natural'],
-                         marker_color='#10b981', text=lmp_termo['Gas Natural'],
-                         marker=dict(line=dict(color='rgba(16, 185, 129, 0.3)', width=2))))
+                         marker_color='#06b6d4', text=lmp_termo['Gas Natural'],
+                         marker=dict(line=dict(color='rgba(6, 182, 212, 0.4)', width=2))))
     fig.add_trace(go.Bar(name='Diesel', x=lmp_termo['Contaminante'], y=lmp_termo['Diesel'],
                          marker_color='#f59e0b', text=lmp_termo['Diesel'],
-                         marker=dict(line=dict(color='rgba(245, 158, 11, 0.3)', width=2))))
+                         marker=dict(line=dict(color='rgba(245, 158, 11, 0.4)', width=2))))
     fig.add_trace(go.Bar(name='Residual', x=lmp_termo['Contaminante'], y=lmp_termo['Residual'],
                          marker_color='#ef4444', text=lmp_termo['Residual'],
-                         marker=dict(line=dict(color='rgba(239, 68, 68, 0.3)', width=2))))
+                         marker=dict(line=dict(color='rgba(239, 68, 68, 0.4)', width=2))))
     
     fig.update_traces(texttemplate='%{text}', textposition='outside',
-                      textfont=dict(size=14, color='#d1fae5', family='Space Grotesk'))
+                      textfont=dict(size=14, color='#e0f2fe', family='Space Grotesk'))
     fig.update_layout(
         barmode='group',
         height=500,
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='#d1fae5', family='Space Grotesk', size=14),
-        xaxis=dict(showgrid=False, tickfont=dict(color='#6ee7b7')),
-        yaxis=dict(showgrid=True, gridcolor='rgba(16, 185, 129, 0.1)', 
-                   title='mg/Nm³', titlefont=dict(color='#10b981')),
+        font=dict(color='#e0f2fe', family='Space Grotesk', size=14),
+        xaxis=dict(showgrid=False, tickfont=dict(color='#22d3ee')),
+        yaxis=dict(showgrid=True, gridcolor='rgba(6, 182, 212, 0.15)', 
+                   title='mg/Nm³', titlefont=dict(color='#06b6d4')),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1,
-                   bgcolor='rgba(17, 24, 39, 0.9)', bordercolor='rgba(16, 185, 129, 0.3)', borderwidth=1,
-                   font=dict(color='#d1fae5'))
+                   bgcolor='rgba(17, 24, 39, 0.9)', bordercolor='rgba(6, 182, 212, 0.3)', borderwidth=1,
+                   font=dict(color='#e0f2fe'))
     )
     st.plotly_chart(fig, use_container_width=True)
 
 # ===================== PÁGINA PROTOCOLO =====================
 elif st.session_state.pagina == "Protocolo":
-    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>📖 Protocolos de Monitoreo</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>📖 Protocolos de Monitoreo</h1>", unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='elite-glass'>
+        <h2>📜 ¿Qué son los Protocolos?</h2>
+        <p style='font-size: 1.2em;'>
+            Los protocolos establecen <strong>procedimientos estandarizados</strong> para el monitoreo 
+            de calidad del aire y medición de emisiones. Garantizan que las mediciones sean comparables 
+            y confiables a nivel nacional.
+        </p>
+    </div>
+    """, unsafe_allow_html=True) font-family: Space Grotesk;'>📖 Protocolos de Monitoreo</h1>", unsafe_allow_html=True)
     
     st.markdown("""
     <div class='elite-glass'>
@@ -1031,7 +1045,7 @@ elif st.session_state.pagina == "Protocolo":
 
 # ===================== PÁGINA LINEAMIENTO =====================
 elif st.session_state.pagina == "Lineamiento":
-    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>📐 Lineamientos Técnicos</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>📐 Lineamientos Técnicos</h1>", unsafe_allow_html=True)
     
     st.markdown("""
     <div class='elite-glass'>
@@ -1115,7 +1129,7 @@ elif st.session_state.pagina == "Lineamiento":
 
 # ===================== PÁGINA MEDIDAS =====================
 elif st.session_state.pagina == "Medidas":
-    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>🛡️ Medidas de Control de Emisiones</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>🛡️ Medidas de Control de Emisiones</h1>", unsafe_allow_html=True)
     
     st.markdown("""
     <div class='elite-glass'>
@@ -1200,7 +1214,7 @@ elif st.session_state.pagina == "Medidas":
 
 # ===================== PÁGINA NORMATIVAS INTERNACIONALES =====================
 elif st.session_state.pagina == "Normativas":
-    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>🌍 Normativas Internacionales</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>🌍 Normativas Internacionales</h1>", unsafe_allow_html=True)
     
     tab1, tab2, tab3, tab4 = st.tabs(["🌍 OMS", "🇺🇸 EPA USA", "🇨🇦 Canadá", "📊 Comparación"])
     
@@ -1244,7 +1258,7 @@ elif st.session_state.pagina == "Normativas":
             ['CO', None, 4000, 'μg/m³ (24h)']
         ], columns=['Contaminante', 'Anual', '24 horas', 'Unidad'])
         
-        st.markdown("<h3 style='text-align: center; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.8em; font-family: Space Grotesk;'>📊 Valores Guía OMS 2021</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.8em; font-family: Space Grotesk;'>📊 Valores Guía OMS 2021</h3>", unsafe_allow_html=True)
         st.dataframe(oms_tabla, use_container_width=True, hide_index=True, height=280)
     
     with tab2:
@@ -1287,7 +1301,7 @@ elif st.session_state.pagina == "Normativas":
             ['CO', None, '9 ppm (8h)', None, '1971']
         ], columns=['Contaminante', 'Anual', 'Corto Plazo', 'Unidad', 'Última Actualización'])
         
-        st.markdown("<h3 style='text-align: center; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.8em; font-family: Space Grotesk;'>📊 Estándares EPA (NAAQS)</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.8em; font-family: Space Grotesk;'>📊 Estándares EPA (NAAQS)</h3>", unsafe_allow_html=True)
         st.dataframe(epa_tabla, use_container_width=True, hide_index=True, height=280)
     
     with tab3:
@@ -1329,14 +1343,14 @@ elif st.session_state.pagina == "Normativas":
             ['SO2', 70, 65, 'ppb', '1h']
         ], columns=['Contaminante', 'Estándar 2020', 'Meta 2025', 'Unidad', 'Período'])
         
-        st.markdown("<h3 style='text-align: center; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.8em; font-family: Space Grotesk;'>📊 Estándares CAAQS - Evolución</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.8em; font-family: Space Grotesk;'>📊 Estándares CAAQS - Evolución</h3>", unsafe_allow_html=True)
         st.dataframe(canada_tabla, use_container_width=True, hide_index=True, height=240)
     
     with tab4:
-        st.markdown("<h2 style='text-align: center; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.5em; font-family: Space Grotesk;'>📊 Comparación Internacional - PM2.5</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.5em; font-family: Space Grotesk;'>📊 Comparación Internacional - PM2.5</h2>", unsafe_allow_html=True)
         
         comparacion = pd.DataFrame([
-            {'Entidad': 'OMS 2021', 'Anual': 5, '24h': 15, 'Color': '#10b981'},
+            {'Entidad': 'OMS 2021', 'Anual': 5, '24h': 15, 'Color': '#06b6d4'},
             {'Entidad': 'EPA USA 2024', 'Anual': 9, '24h': 35, 'Color': '#3b82f6'},
             {'Entidad': 'Canadá 2025', 'Anual': 8, '24h': 25, 'Color': '#8b5cf6'},
             {'Entidad': 'OEFA Perú', 'Anual': 25, '24h': 50, 'Color': '#ef4444'}
@@ -1347,33 +1361,33 @@ elif st.session_state.pagina == "Normativas":
             x=comparacion['Entidad'],
             y=comparacion['Anual'],
             name='Anual',
-            marker_color=['#10b981', '#3b82f6', '#8b5cf6', '#ef4444'],
+            marker_color=['#06b6d4', '#3b82f6', '#8b5cf6', '#ef4444'],
             text=comparacion['Anual'],
-            marker=dict(line=dict(color='rgba(16, 185, 129, 0.3)', width=2))
+            marker=dict(line=dict(color='rgba(6, 182, 212, 0.4)', width=2))
         ))
         fig.add_trace(go.Bar(
             x=comparacion['Entidad'],
             y=comparacion['24h'],
             name='24 horas',
-            marker_color=['#34d399', '#60a5fa', '#a78bfa', '#f87171'],
+            marker_color=['#22d3ee', '#60a5fa', '#a78bfa', '#f87171'],
             text=comparacion['24h'],
-            marker=dict(line=dict(color='rgba(16, 185, 129, 0.3)', width=2))
+            marker=dict(line=dict(color='rgba(6, 182, 212, 0.4)', width=2))
         ))
         
         fig.update_traces(texttemplate='%{text} μg/m³', textposition='outside',
-                          textfont=dict(size=14, color='#d1fae5', family='Space Grotesk'))
+                          textfont=dict(size=14, color='#e0f2fe', family='Space Grotesk'))
         fig.update_layout(
             barmode='group',
             height=550,
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#d1fae5', size=15, family='Space Grotesk'),
-            xaxis=dict(showgrid=False, tickfont=dict(size=14, color='#6ee7b7')),
-            yaxis=dict(showgrid=True, gridcolor='rgba(16, 185, 129, 0.1)', 
-                       title='Concentración (μg/m³)', titlefont=dict(color='#10b981')),
+            font=dict(color='#e0f2fe', size=15, family='Space Grotesk'),
+            xaxis=dict(showgrid=False, tickfont=dict(size=14, color='#22d3ee')),
+            yaxis=dict(showgrid=True, gridcolor='rgba(6, 182, 212, 0.15)', 
+                       title='Concentración (μg/m³)', titlefont=dict(color='#06b6d4')),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1,
-                       bgcolor='rgba(17, 24, 39, 0.9)', bordercolor='rgba(16, 185, 129, 0.3)', 
-                       borderwidth=1, font=dict(color='#d1fae5'))
+                       bgcolor='rgba(17, 24, 39, 0.9)', bordercolor='rgba(6, 182, 212, 0.3)', 
+                       borderwidth=1, font=dict(color='#e0f2fe'))
         )
         
         st.plotly_chart(fig, use_container_width=True)
@@ -1401,18 +1415,18 @@ elif st.session_state.pagina == "Normativas":
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; 
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 150, 105, 0.08) 100%); 
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(14, 165, 233, 0.12) 100%); 
             backdrop-filter: blur(30px) saturate(200%); 
             padding: 70px 50px; 
             border-radius: 24px; 
             margin-top: 70px; 
-            border: 1px solid rgba(16, 185, 129, 0.2); 
-            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.25); 
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(6, 182, 212, 0.15);
             position: relative;
             overflow: hidden;'>
     <div style='position: absolute; top: 0; left: 0; width: 100%; height: 2px; 
-                background: linear-gradient(90deg, transparent, #10b981, transparent);'></div>
-    <h2 style='background: linear-gradient(135deg, #10b981 0%, #34d399 100%); 
+                background: linear-gradient(90deg, transparent, #06b6d4, transparent);'></div>
+    <h2 style='background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); 
                -webkit-background-clip: text; 
                -webkit-text-fill-color: transparent; 
                margin: 0; 
@@ -1422,24 +1436,24 @@ st.markdown("""
                font-family: Space Grotesk;'>
         Universidad Nacional de Moquegua
     </h2>
-    <p style='color: #d1fae5; font-size: 1.4em; margin: 25px 0; font-weight: 700; 
+    <p style='color: #a5f3fc; font-size: 1.4em; margin: 25px 0; font-weight: 700; 
               text-transform: uppercase; letter-spacing: 0.1em; font-family: Space Grotesk;'>
         Facultad de Ingeniería y Arquitectura
     </p>
-    <p style='color: #a7f3d0; margin: 18px 0; font-size: 1.1em; font-weight: 500;'>
-        <strong style='color: #10b981;'>Curso:</strong> Contaminación y Control Atmosférico
+    <p style='color: #67e8f9; margin: 18px 0; font-size: 1.1em; font-weight: 500;'>
+        <strong style='color: #06b6d4;'>Curso:</strong> Contaminación y Control Atmosférico
     </p>
-    <p style='color: #a7f3d0; margin: 18px 0; font-size: 1.1em; font-weight: 500;'>
-        <strong style='color: #10b981;'>Docente:</strong> Prof. Dr. José Antonio Valeriano Zapana
+    <p style='color: #67e8f9; margin: 18px 0; font-size: 1.1em; font-weight: 500;'>
+        <strong style='color: #06b6d4;'>Docente:</strong> Prof. Dr. José Antonio Valeriano Zapana
     </p>
-    <div style='margin-top: 40px; padding-top: 35px; border-top: 1px solid rgba(16, 185, 129, 0.2);'>
-        <p style='color: #6ee7b7; font-size: 1.05em; font-weight: 700; letter-spacing: 0.02em;'>
+    <div style='margin-top: 40px; padding-top: 35px; border-top: 1px solid rgba(6, 182, 212, 0.25);'>
+        <p style='color: #22d3ee; font-size: 1.05em; font-weight: 700; letter-spacing: 0.02em;'>
             2024-2025 | Herramienta Interactiva de Consulta de Marco Normativo del Aire
         </p>
-        <p style='color: #10b981; font-size: 0.95em; margin-top: 18px; font-weight: 600;'>
+        <p style='color: #06b6d4; font-size: 0.95em; margin-top: 18px; font-weight: 600;'>
             Desarrollado con Streamlit & Plotly | Datos oficiales de MINAM, OMS, EPA y CCME
         </p>
-        <p style='color: #34d399; font-size: 0.85em; margin-top: 12px; font-weight: 500; opacity: 0.8;'>
+        <p style='color: #22d3ee; font-size: 0.85em; margin-top: 12px; font-weight: 500; opacity: 0.9;'>
             Diseño Premium • Actualización Continua • Acceso Instantáneo
         </p>
     </div>
