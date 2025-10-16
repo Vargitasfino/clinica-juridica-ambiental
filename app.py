@@ -1940,44 +1940,451 @@ elif st.session_state.pagina == "Normativas":
         <div class='corporate-card fade-in'>
             <h2>🌍 Organización Mundial de la Salud (OMS)</h2>
             <p style='font-size: 1.05rem;'>
-                La OMS establece las <strong>directrices glob</strong>
-        </p>
+                La OMS establece las <strong>directrices globales más estrictas</strong> para proteger 
+                la salud pública de la contaminación del aire basándose en la mejor evidencia científica disponible.
+            </p>
+            
+            <div class='success-box' style='margin-top: 1.5rem;'>
+                <p><strong>✓ Referencia mundial:</strong> Las guías OMS son reconocidas internacionalmente como 
+                la mejor evidencia científica disponible sobre efectos de la contaminación del aire en la salud.</p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
         
-        <div class='success-box' style='margin-top: 1.5rem;'>
-            <p><strong>✓ Referencia mundial:</strong> Las guías OMS son reconocidas internacionalmente como 
-            la mejor evidencia científica disponible sobre efectos de la contaminación del aire en la salud.</p>
+        st.markdown("""
+        <div class='normative-card internacional fade-in'>
+            <span class='status-badge internacional'>● GUÍAS 2021</span>
+            <h3>WHO Global Air Quality Guidelines 2021</h3>
+            <p style='font-size: 1.05rem; margin: 1rem 0;'>
+                <strong>Directrices Mundiales de Calidad del Aire</strong>
+            </p>
+            <p>
+                Primera actualización mayor desde 2005. Reduce niveles recomendados en 50% para PM2.5 basándose en 
+                más de 500 estudios científicos que demuestran efectos adversos en salud incluso a concentraciones 
+                muy bajas. Establece guías para PM2.5, PM10, O3, NO2, SO2 y CO, con metas intermedias para 
+                implementación gradual en países en desarrollo.
+            </p>
+            <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                <strong>Publicación:</strong> 22 de septiembre de 2021 | 
+                <strong>Impacto:</strong> Referencia mundial
+            </p>
+            <a href='https://www.who.int/publications/i/item/9789240034228' 
+               target='_blank' class='corporate-button'>
+                📄 Ver Directrices OMS 2021 (Inglés)
+            </a>
+            <a href='https://www.who.int/es/news-room/feature-stories/detail/what-are-the-who-air-quality-guidelines' 
+               target='_blank' class='corporate-button'>
+                📖 Resumen Ejecutivo en Español
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Tabla OMS
+        oms_tabla = pd.DataFrame([
+            ['PM2.5', 5, 15, 'μg/m³', 'Media anual / 24h'],
+            ['PM10', 15, 45, 'μg/m³', 'Media anual / 24h'],
+            ['NO2', 10, 25, 'μg/m³', 'Media anual / 24h'],
+            ['SO2', None, 40, 'μg/m³', '24 horas'],
+            ['O3', None, 100, 'μg/m³', 'Pico estacional (8h)'],
+            ['CO', None, 4, 'mg/m³', '24 horas']
+        ], columns=['Contaminante', 'Anual', '24 horas', 'Unidad', 'Período'])
+        
+        st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📊 Valores Guía OMS 2021</h3>", unsafe_allow_html=True)
+        st.dataframe(oms_tabla, use_container_width=True, hide_index=True, height=280)
+        
+        st.markdown("""
+        <div class='info-box' style='margin-top: 1.5rem;'>
+            <p><strong>💡 Metas Intermedias:</strong> La OMS también establece 4 niveles intermedios (IT-1 a IT-4) 
+            para países que no pueden alcanzar inmediatamente las guías finales, permitiendo una mejora progresiva 
+            de la calidad del aire.</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with tab2:
+        st.markdown("""
+        <div class='corporate-card fade-in'>
+            <h2>🇺🇸 Environmental Protection Agency (EPA)</h2>
+            <p style='font-size: 1.05rem;'>
+                La EPA de Estados Unidos establece los <strong>National Ambient Air Quality Standards (NAAQS)</strong>, 
+                estándares vinculantes de cumplimiento obligatorio que se revisan cada 5 años basándose en la mejor 
+                ciencia disponible.
+            </p>
+            
+            <div class='success-box' style='margin-top: 1.5rem;'>
+                <p><strong>✓ Sistema dual:</strong> La EPA establece estándares primarios (protección de salud) 
+                y secundarios (protección de bienestar público, incluyendo vegetación, visibilidad, edificios).</p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='normative-card internacional fade-in'>
+            <span class='status-badge internacional'>● NAAQS 2024</span>
+            <h3>National Ambient Air Quality Standards</h3>
+            <p style='font-size: 1.05rem; margin: 1rem 0;'>
+                <strong>Estándares Nacionales de Calidad del Aire Ambiente</strong>
+            </p>
+            <p>
+                Última actualización: PM2.5 anual reducido de 12 a 9.0 μg/m³ (febrero 2024), el cambio más 
+                significativo desde 2012. Los NAAQS son legalmente vinculantes y su cumplimiento es monitoreado 
+                en todo el territorio estadounidense. Estados que no cumplen deben implementar State Implementation 
+                Plans (SIPs) con medidas correctivas.
+            </p>
+            <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                <strong>Base legal:</strong> Clean Air Act (1970, enmendado 1990) | 
+                <strong>Revisión:</strong> Cada 5 años
+            </p>
+            <a href='https://www.epa.gov/criteria-air-pollutants/naaqs-table' 
+               target='_blank' class='corporate-button'>
+                📄 Ver Tabla Completa NAAQS
+            </a>
+            <a href='https://www.epa.gov/pm-pollution/national-ambient-air-quality-standards-naaqs-pm' 
+               target='_blank' class='corporate-button'>
+                📖 Estándares PM Detallados
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        epa_tabla = pd.DataFrame([
+            ['PM2.5', '9.0 (P)', '35 (P)', 'μg/m³', '2024', 'Anual / 24h'],
+            ['PM2.5', '15.0 (S)', '35 (S)', 'μg/m³', '2012', 'Anual / 24h (secundario)'],
+            ['PM10', None, '150 (P,S)', 'μg/m³', '2012', '24 horas'],
+            ['NO2', '53 (P,S)', '100 (P)', 'ppb', '2010', 'Anual / 1h'],
+            ['SO2', None, '75 (P)', 'ppb', '2010', '1 hora (percentil 99)'],
+            ['O3', None, '70 (P,S)', 'ppb', '2015', '8h (4to máximo anual)'],
+            ['CO', None, '9 ppm (P)', 'ppm', '1971', '8 horas'],
+            ['CO', None, '35 ppm (P)', 'ppm', '1971', '1 hora'],
+            ['Pb', '0.15 (P,S)', None, 'μg/m³', '2008', 'Promedio móvil 3 meses']
+        ], columns=['Contaminante', 'Anual', 'Corto Plazo', 'Unidad', 'Última Actualización', 'Forma del Estándar'])
+        
+        st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📊 Estándares EPA (NAAQS)</h3>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center; color: var(--text-secondary); margin-bottom: 1rem;'>(P) = Primario (salud) | (S) = Secundario (bienestar)</p>", unsafe_allow_html=True)
+        st.dataframe(epa_tabla, use_container_width=True, hide_index=True, height=400)
+        
+        st.markdown("""
+        <div class='warning-box' style='margin-top: 1.5rem;'>
+            <p><strong>⚠️ Designaciones de no cumplimiento:</strong> Áreas que exceden NAAQS son designadas como 
+            "nonattainment" y deben desarrollar planes de mejora con cronograma específico. El incumplimiento 
+            persistente puede resultar en sanciones federales.</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with tab3:
+        st.markdown("""
+        <div class='corporate-card fade-in'>
+            <h2>🇨🇦 Canadian Ambient Air Quality Standards (CAAQS)</h2>
+            <p style='font-size: 1.05rem;'>
+                Canadá utiliza un <strong>sistema de mejora continua</strong> con estándares que se actualizan 
+                progresivamente cada 5 años. La gestión se realiza por Air Zones con sistema de clasificación 
+                por colores que determina las acciones requeridas.
+            </p>
+            
+            <div class='success-box' style='margin-top: 1.5rem;'>
+                <p><strong>✓ Enfoque innovador:</strong> Sistema de "Management Levels" (Verde, Amarillo, Naranja, Rojo) 
+                que vincula automáticamente el nivel de calidad del aire con acciones de gestión obligatorias.</p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='normative-card internacional fade-in'>
+            <span class='status-badge internacional'>● CAAQS 2020-2025</span>
+            <h3>Canadian Ambient Air Quality Standards</h3>
+            <p style='font-size: 1.05rem; margin: 1rem 0;'>
+                <strong>Estándares Canadienses de Calidad del Aire Ambiente</strong>
+            </p>
+            <p>
+                Sistema de gestión por Air Zones implementado nacionalmente. Los estándares 2020 están en vigor 
+                y los estándares 2025 entrarán en vigencia próximamente. El sistema incluye objetivos a 2030. 
+                Cada provincia y territorio gestiona sus Air Zones con obligación de reportar anualmente al 
+                Canadian Council of Ministers of the Environment (CCME).
+            </p>
+            <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                <strong>Base legal:</strong> Canadian Environmental Protection Act | 
+                <strong>Coordinación:</strong> CCME
+            </p>
+            <a href='https://www.ccme.ca/en/air-quality-report' 
+               target='_blank' class='corporate-button'>
+                📄 Ver Reporte CAAQS Anual
+            </a>
+            <a href='https://www.canada.ca/en/environment-climate-change/services/air-quality-health-index.html' 
+               target='_blank' class='corporate-button'>
+                📖 Índice de Calidad del Aire
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        canada_tabla = pd.DataFrame([
+            ['PM2.5', 8.8, 8.0, 6.0, 'μg/m³', 'Anual (percentil 98 de promedios diarios)'],
+            ['PM2.5', 27, 25, 20, 'μg/m³', '24h (percentil 98)'],
+            ['O3', 62, 60, 56, 'ppb', '8h (4to valor máximo anual)'],
+            ['NO2', 60, 50, 42, 'ppb', '1h (percentil 98 anual)'],
+            ['SO2', 70, 65, 50, 'ppb', '1h (percentil 99 anual)']
+        ], columns=['Contaminante', 'Estándar 2020', 'Meta 2025', 'Objetivo 2030', 'Unidad', 'Forma del Estándar'])
+        
+        st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📊 Evolución de Estándares CAAQS</h3>", unsafe_allow_html=True)
+        st.dataframe(canada_tabla, use_container_width=True, hide_index=True, height=250)
+        
+        # Sistema de Air Zone Management
+        st.markdown("""
+        <div class='corporate-card' style='margin-top: 2rem;'>
+            <h3>🎯 Sistema de Gestión por Air Zones</h3>
+            <p style='color: var(--text-secondary); margin-bottom: 1.5rem;'>
+                Clasificación por niveles de gestión según cumplimiento de CAAQS
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            <div style='background: linear-gradient(135deg, rgba(0, 200, 83, 0.15), rgba(0, 230, 118, 0.1)); 
+                        padding: 1.5rem; border-radius: 10px; border-left: 4px solid #00C853; margin: 0.5rem 0;'>
+                <h4 style='color: #00C853; margin: 0 0 0.5rem 0;'>🟢 Verde - Buena Gestión</h4>
+                <p style='color: var(--text-secondary); font-size: 0.95rem; margin: 0;'>
+                    Cumple todos los CAAQS. Mantener acciones actuales de gestión.
+                </p>
+            </div>
+            
+            <div style='background: linear-gradient(135deg, rgba(255, 179, 0, 0.15), rgba(255, 152, 0, 0.1)); 
+                        padding: 1.5rem; border-radius: 10px; border-left: 4px solid #FFB300; margin: 0.5rem 0;'>
+                <h4 style='color: #FFB300; margin: 0 0 0.5rem 0;'>🟡 Amarillo - Gestión Activa</h4>
+                <p style='color: var(--text-secondary); font-size: 0.95rem; margin: 0;'>
+                    Se acerca a exceder CAAQS. Implementar medidas preventivas.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div style='background: linear-gradient(135deg, rgba(255, 87, 34, 0.15), rgba(244, 67, 54, 0.1)); 
+                        padding: 1.5rem; border-radius: 10px; border-left: 4px solid #FF5722; margin: 0.5rem 0;'>
+                <h4 style='color: #FF5722; margin: 0 0 0.5rem 0;'>🟠 Naranja - Acción Obligatoria</h4>
+                <p style='color: var(--text-secondary); font-size: 0.95rem; margin: 0;'>
+                    Excede CAAQS. Plan de gestión obligatorio con metas y cronograma.
+                </p>
+            </div>
+            
+            <div style='background: linear-gradient(135deg, rgba(211, 47, 47, 0.15), rgba(198, 40, 40, 0.1)); 
+                        padding: 1.5rem; border-radius: 10px; border-left: 4px solid #D32F2F; margin: 0.5rem 0;'>
+                <h4 style='color: #D32F2F; margin: 0 0 0.5rem 0;'>🔴 Rojo - Intervención Urgente</h4>
+                <p style='color: var(--text-secondary); font-size: 0.95rem; margin: 0;'>
+                    Excede significativamente CAAQS. Plan de acción inmediato y estricto.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+    
+    with tab4:
+        st.markdown("<h2 style='text-align: center; margin-bottom: 2rem;'>📊 Análisis Comparativo Internacional</h2>", unsafe_allow_html=True)
+        
+        # Comparación PM2.5
+        st.markdown("""
+        <div class='corporate-card fade-in'>
+            <h3>Comparación PM2.5 - Estándar Más Crítico para Salud</h3>
+            <p style='color: var(--text-secondary); margin-bottom: 1rem;'>
+                Valores anuales y de 24 horas según cada jurisdicción
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        comparacion = pd.DataFrame([
+            {'Entidad': 'OMS 2021', 'Anual': 5, '24h': 15, 'Región': 'Global'},
+            {'Entidad': 'EPA USA 2024', 'Anual': 9, '24h': 35, 'Región': 'América'},
+            {'Entidad': 'Canadá 2025', 'Anual': 8, '24h': 25, 'Región': 'América'},
+            {'Entidad': 'OEFA Perú', 'Anual': 25, '24h': 50, 'Región': 'América'}
+        ])
+        
+        fig = go.Figure()
+        
+        fig.add_trace(go.Bar(
+            name='Anual',
+            x=comparacion['Entidad'],
+            y=comparacion['Anual'],
+            marker=dict(
+                color=['#00C853', '#0065FF', '#8b5cf6', '#FFB300'],
+                line=dict(color='rgba(255,255,255,0.2)', width=1)
+            ),
+            text=comparacion['Anual'],
+            texttemplate='%{text} μg/m³',
+            textposition='outside'
+        ))
+        
+        fig.add_trace(go.Bar(
+            name='24 horas',
+            x=comparacion['Entidad'],
+            y=comparacion['24h'],
+            marker=dict(
+                color=['#66BB6A', '#42A5F5', '#BA68C8', '#FFA726'],
+                line=dict(color='rgba(255,255,255,0.2)', width=1)
+            ),
+            text=comparacion['24h'],
+            texttemplate='%{text} μg/m³',
+            textposition='outside'
+        ))
+        
+        fig.update_layout(
+            barmode='group',
+            height=550,
+            plot_bgcolor='rgba(0,0,0,0)',
+            paper_bgcolor='rgba(0,0,0,0)',
+            font=dict(color='#E3E8EF', size=13, family='Inter'),
+            xaxis=dict(showgrid=False, title=''),
+            yaxis=dict(
+                showgrid=True,
+                gridcolor='rgba(255,255,255,0.06)',
+                title='Concentración (μg/m³)',
+                range=[0, 60]
+            ),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="right",
+                x=1,
+                bgcolor='rgba(19, 47, 76, 0.8)',
+                bordercolor='rgba(255,255,255,0.1)',
+                borderwidth=1
+            )
+        )
+        
+        st.plotly_chart(fig, use_container_width=True)
+        
+        # Tabla comparativa completa
+        st.markdown("""
+        <div class='corporate-card' style='margin-top: 2rem;'>
+            <h3>Tabla Comparativa Completa de Estándares</h3>
+            <p style='color: var(--text-secondary); margin-bottom: 1rem;'>
+                Comparación de todos los contaminantes criterio
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        tabla_completa = pd.DataFrame([
+            ['PM2.5 Anual', '5 μg/m³', '9 μg/m³', '8 μg/m³', '25 μg/m³', '⚠️ Perú 5x más permisivo'],
+            ['PM2.5 24h', '15 μg/m³', '35 μg/m³', '25 μg/m³', '50 μg/m³', '⚠️ Perú 3.3x más permisivo'],
+            ['PM10 Anual', '15 μg/m³', 'No establece', 'No establece', '50 μg/m³', '⚠️ Perú 3.3x más permisivo'],
+            ['PM10 24h', '45 μg/m³', '150 μg/m³', 'No establece', '100 μg/m³', '✓ Perú más estricto que EPA'],
+            ['NO2 Anual', '10 μg/m³', '100 μg/m³', '113 μg/m³', '100 μg/m³', '⚠️ Perú 10x más permisivo'],
+            ['NO2 1h', '25 μg/m³', '188 μg/m³', '113 μg/m³', '200 μg/m³', '⚠️ Perú 8x más permisivo'],
+            ['SO2 24h', '40 μg/m³', 'No establece', 'No establece', '250 μg/m³', '⚠️ Perú 6.25x más permisivo'],
+            ['O3 8h', '100 μg/m³', '137 μg/m³', '120 μg/m³', '100 μg/m³', '✓ Perú igual a OMS'],
+            ['CO 8h', '4 mg/m³', '10 mg/m³', 'No establece', '10 mg/m³', '⚠️ Perú 2.5x más permisivo']
+        ], columns=['Contaminante/Período', 'OMS 2021', 'EPA USA', 'Canadá 2025', 'Perú (ECA)', 'Evaluación'])
+        
+        st.dataframe(tabla_completa, use_container_width=True, hide_index=True, height=400)
+        
+        # Análisis y conclusiones
+        st.markdown("""
+        <div class='corporate-card' style='margin-top: 2rem;'>
+            <h3>💡 Análisis Comparativo y Recomendaciones</h3>
+            
+            <div style='margin-top: 1.5rem;'>
+                <h4 style='color: #00B8D9; font-size: 1.1rem;'>Principales Hallazgos:</h4>
+                <ul style='color: var(--text-secondary); line-height: 1.8; margin-top: 1rem;'>
+                    <li><strong>Material Particulado Fino (PM2.5):</strong> El estándar peruano anual (25 μg/m³) 
+                    es 5 veces más permisivo que la recomendación OMS (5 μg/m³) y 2.8 veces más alto que EPA USA (9 μg/m³). 
+                    Esta brecha representa el mayor desafío normativo nacional.</li>
+                    
+                    <li><strong>Dióxido de Nitrógeno (NO2):</strong> Perú tiene uno de los estándares más permisivos 
+                    internacionalmente. La OMS 2021 redujo su recomendación a 10 μg/m³ anual, 10 veces más estricto 
+                    que el ECA peruano.</li>
+                    
+                    <li><strong>Dióxido de Azufre (SO2):</strong> El estándar peruano de 24h (250 μg/m³) contrasta con 
+                    la guía OMS (40 μg/m³). EPA eliminó el estándar de 24h y usa uno de 1h más estricto.</li>
+                    
+                    <li><strong>Ozono (O3):</strong> Perú mantiene un estándar alineado con OMS (100 μg/m³ en 8h), 
+                    siendo uno de los pocos parámetros donde la normativa nacional es competitiva internacionalmente.</li>
+                    
+                    <li><strong>PM10:</strong> Paradójicamente, el estándar peruano de 24h para PM10 (100 μg/m³) es 
+                    más estricto que el de EPA (150 μg/m³), aunque menos que OMS (45 μg/m³).</li>
+                </ul>
+            </div>
+            
+            <div class='warning-box' style='margin-top: 2rem;'>
+                <h4 style='margin-top: 0;'>⚠️ Implicaciones para Salud Pública</h4>
+                <p>
+                    La evidencia científica revisada por la OMS en 2021 demuestra que <strong>no existe un umbral seguro</strong> 
+                    para material particulado: incluso concentraciones bajas causan efectos adversos en salud. Los estándares 
+                    más permisivos implican mayor carga de enfermedad y mortalidad prematura en la población peruana.
+                </p>
+            </div>
+            
+            <div class='success-box' style='margin-top: 1.5rem;'>
+                <h4 style='margin-top: 0;'>✓ Recomendaciones Estratégicas</h4>
+                <ol style='color: var(--text-secondary); line-height: 1.8; padding-left: 1.2rem;'>
+                    <li><strong>Actualización Gradual de ECA:</strong> Implementar una hoja de ruta de 10 años con 
+                    metas intermedias progresivas hacia estándares similares a EPA y eventualmente OMS.</li>
+                    
+                    <li><strong>Priorización de PM2.5:</strong> Enfocar esfuerzos iniciales en reducir el estándar 
+                    de PM2.5 anual, el contaminante con mayor impacto en salud pública.</li>
+                    
+                    <li><strong>Fortalecimiento de Redes de Monitoreo:</strong> Expandir la red de estaciones para 
+                    tener datos representativos nacionales antes de endurecer estándares.</li>
+                    
+                    <li><strong>Incentivos para Cumplimiento:</strong> Desarrollar programas de incentivos técnicos 
+                    y financieros para que industrias inviertan en tecnologías de control más efectivas.</li>
+                    
+                    <li><strong>Gestión de Calidad de Aire Local:</strong> Adoptar sistema similar al de Canadá 
+                    (Air Zones) con clasificación por colores y acciones de gestión vinculadas.</li>
+                    
+                    <li><strong>Comunicación de Riesgos:</strong> Implementar índices de calidad del aire de fácil 
+                    comprensión pública con recomendaciones de salud específicas.</li>
+                    
+                    <li><strong>Inventarios de Emisiones:</strong> Completar inventarios nacionales detallados para 
+                    identificar fuentes prioritarias de reducción.</li>
+                    
+                    <li><strong>Colaboración Internacional:</strong> Aprender de experiencias de países con normativas 
+                    más estrictas y buscar cooperación técnica y financiera.</li>
+                </ol>
+            </div>
+            
+            <div class='info-box' style='margin-top: 1.5rem;'>
+                <p><strong>📈 Tendencia Global:</strong> Todos los países analizados muestran una tendencia clara 
+                hacia estándares más estrictos basados en nueva evidencia científica. Perú debe evaluar actualizar 
+                sus ECA para mantenerse alineado con mejores prácticas internacionales y proteger adecuadamente 
+                la salud de su población.</p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+# ===================== FOOTER CORPORATIVO =====================
+st.markdown("""
+<div class='corporate-footer'>
+    <h3>Universidad Nacional de Moquegua</h3>
+    <p style='font-size: 1.1rem; margin-top: 0.5rem;'>Facultad de Ingeniería y Arquitectura</p>
+    
+    <div class='divider'></div>
+    
+    <div style='display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: left; max-width: 1000px; margin: 2rem auto 0;'>
+        <div>
+            <h4 style='color: #00B8D9; margin-bottom: 0.75rem;'>📚 Curso</h4>
+            <p>Contaminación y Control Atmosférico</p>
+        </div>
+        
+        <div>
+            <h4 style='color: #00B8D9; margin-bottom: 0.75rem;'>👨‍🏫 Docente</h4>
+            <p>Prof. Dr. José Antonio Valeriano Zapana</p>
+        </div>
+        
+        <div>
+            <h4 style='color: #00B8D9; margin-bottom: 0.75rem;'>🔄 Actualización</h4>
+            <p>Octubre 2024 - Ciclo 2024-II</p>
+        </div>
+        
+        <div>
+            <h4 style='color: #00B8D9; margin-bottom: 0.75rem;'>🛠️ Tecnología</h4>
+            <p>Streamlit • Plotly • Python</p>
         </div>
     </div>
-    """, unsafe_allow_html=True)
-
-st.markdown("""
-<div class='normative-card internacional fade-in'>
-    <span class='status-badge internacional'>● GUÍAS 2021</span>
-    <h3>WHO Global Air Quality Guidelines 2021</h3>
-    <p style='font-size: 1.05rem; margin: 1rem 0;'>
-        <strong>Directrices Mundiales de Calidad del Aire</strong>
+    
+    <div class='divider'></div>
+    
+    <p style='font-size: 0.9rem; opacity: 0.8; margin-top: 1.5rem;'>
+        Sistema Integral de Consulta de Marco Normativo de Calidad del Aire
     </p>
-    <p>
-        Primera actualización mayor desde 2005. Reduce niveles recomendados en 50% para PM2.5 basándose en 
-        más de 500 estudios científicos que demuestran efectos adversos en salud incluso a concentraciones 
-        muy bajas. Establece guías para PM2.5, PM10, O3, NO2, SO2 y CO, con metas intermedias para 
-        implementación gradual en países en desarrollo.
+    <p style='font-size: 0.85rem; opacity: 0.6; margin-top: 0.5rem;'>
+        Datos oficiales: MINAM • OEFA • OMS • EPA • CCME | © 2024 UNAM
     </p>
-    <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-        <strong>Publicación:</strong> 22 de septiembre de 2021 | 
-        <strong>Impacto:</strong> Referencia mundial
-    </p>
-    <a href='https://www.who.int/publications/i/item/9789240034228' 
-       target='_blank' class='corporate-button'>
-        📄 Ver Directrices OMS 2021 (Inglés)
-    </a>
-    <a href='https://www.who.int/es/news-room/feature-stories/detail/what-are-the-who-air-quality-guidelines' 
-       target='_blank' class='corporate-button'>
-        📖 Resumen Ejecutivo en Español
-    </a>
 </div>
-""", unsafe_allow_html=True)
-
-# Resto del código continúa...
-# [El código es muy extenso, continúo en el siguiente mensaje]
 """, unsafe_allow_html=True)
