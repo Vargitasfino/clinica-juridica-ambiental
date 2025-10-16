@@ -1301,6 +1301,46 @@ elif st.session_state.pagina == "Normativas":
             ['CO', None, '9 ppm (8h)', None, '1971']
         ], columns=['Contaminante', 'Anual', 'Corto Plazo', 'Unidad', 'Última Actualización'])
         
+    with tab2:
+        st.markdown("""
+        <div class='elite-glass'>
+            <h2>🇺🇸 Environmental Protection Agency (EPA)</h2>
+            <p style='font-size: 1.15em;'>
+                La EPA de EE.UU. establece los <strong>National Ambient Air Quality Standards (NAAQS)</strong>, 
+                estándares vinculantes que se actualizan basándose en revisiones científicas periódicas.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='platinum-card'>
+            <span class='premium-badge vigente'>2024</span>
+            <h3>NAAQS - National Ambient Air Quality Standards</h3>
+            <p style='font-size: 1.1em;'>
+                <strong>Estándares Nacionales de Calidad del Aire Ambiente</strong><br><br>
+                Última actualización: PM2.5 anual reducido de 12 a 9.0 μg/m³ (febrero 2024). 
+                Incluye estándares primarios (salud) y secundarios (bienestar).
+            </p>
+            <a href='https://www.epa.gov/criteria-air-pollutants/naaqs-table' 
+               target='_blank' class='diamond-btn'>
+                📄 Ver Tabla Completa NAAQS
+            </a>
+            <a href='https://www.epa.gov/pm-pollution/national-ambient-air-quality-standards-naaqs-pm' 
+               target='_blank' class='diamond-btn'>
+                📖 Estándares PM Detallados
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        epa_tabla = pd.DataFrame([
+            ['PM2.5', 9.0, 35, 'μg/m³', '2024'],
+            ['PM10', None, 150, 'μg/m³', '2012'],
+            ['NO2', 53, 100, 'ppb', '2010'],
+            ['SO2', None, 75, 'ppb (1h)', '2010'],
+            ['O3', None, 70, 'ppb (8h)', '2015'],
+            ['CO', None, '9 ppm (8h)', None, '1971']
+        ], columns=['Contaminante', 'Anual', 'Corto Plazo', 'Unidad', 'Última Actualización'])
+        
         st.markdown("<h3 style='text-align: center; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.8em; font-family: Space Grotesk;'>📊 Estándares EPA (NAAQS)</h3>", unsafe_allow_html=True)
         st.dataframe(epa_tabla, use_container_width=True, hide_index=True, height=280)
     
