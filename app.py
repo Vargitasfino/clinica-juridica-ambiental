@@ -90,7 +90,7 @@ st.markdown("""
         border-color: rgba(255, 255, 255, 0.6) !important;
     }
     
-    /* FORZAR BLANCO EN LOS SVG (FLECHAS) */
+    /* FORZAR LAS FLECHAS (››) A SER COMPLETAMENTE BLANCAS */
     button[kind="header"] svg,
     button[kind="headerNoPadding"] svg,
     [data-testid="collapsedControl"] svg,
@@ -99,9 +99,9 @@ st.markdown("""
         fill: #FFFFFF !important;
         color: #FFFFFF !important;
         stroke: #FFFFFF !important;
-        filter: brightness(3) drop-shadow(0 0 2px white) !important;
     }
     
+    /* TODOS los elementos dentro del SVG - BLANCOS */
     button[kind="header"] svg *,
     button[kind="headerNoPadding"] svg *,
     [data-testid="collapsedControl"] svg *,
@@ -112,10 +112,31 @@ st.markdown("""
         stroke: #FFFFFF !important;
     }
     
-    /* SUPER FUERZA - Cualquier path dentro del sidebar */
-    section[data-testid="stSidebar"] svg path,
-    button svg path {
+    /* PATH específico - BLANCO PURO */
+    button[kind="header"] svg path,
+    button[kind="headerNoPadding"] svg path,
+    [data-testid="collapsedControl"] svg path,
+    [data-testid="baseButton-header"] svg path,
+    section[data-testid="stSidebar"] button svg path {
         fill: #FFFFFF !important;
+        stroke: #FFFFFF !important;
+    }
+    
+    /* POLYLINE (si las flechas usan polyline) - BLANCO */
+    button[kind="header"] svg polyline,
+    button[kind="headerNoPadding"] svg polyline,
+    [data-testid="collapsedControl"] svg polyline,
+    section[data-testid="stSidebar"] button svg polyline {
+        stroke: #FFFFFF !important;
+        fill: none !important;
+    }
+    
+    /* LINE (si las flechas usan line) - BLANCO */
+    button[kind="header"] svg line,
+    button[kind="headerNoPadding"] svg line,
+    [data-testid="collapsedControl"] svg line,
+    section[data-testid="stSidebar"] button svg line {
+        stroke: #FFFFFF !important;
     }
     
     /* Texto del sidebar MÁS VISIBLE */
