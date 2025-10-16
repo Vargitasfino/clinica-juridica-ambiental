@@ -61,12 +61,34 @@ st.markdown("""
     
     /* Sidebar profesional */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0A1929 0%, #132F4C 100%);
-        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(180deg, #132F4C 0%, #0A1929 100%);
+        border-right: 1px solid rgba(255, 255, 255, 0.12);
     }
     
     [data-testid="stSidebar"] .element-container {
         padding: 0.5rem 1rem;
+    }
+    
+    /* Texto del sidebar MÁS VISIBLE */
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3,
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] label {
+        color: #FFFFFF !important;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    /* Input de búsqueda más visible */
+    [data-testid="stSidebar"] input {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: white !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    [data-testid="stSidebar"] input::placeholder {
+        color: rgba(255, 255, 255, 0.7) !important;
     }
     
     /* Header institucional */
@@ -121,29 +143,30 @@ st.markdown("""
     
     /* Breadcrumbs profesionales */
     .breadcrumb {
-        background: rgba(19, 47, 76, 0.6);
+        background: rgba(19, 47, 76, 0.8);
         backdrop-filter: blur(10px);
         padding: 0.75rem 1.5rem;
         border-radius: 8px;
         margin-bottom: 1.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         font-size: 0.9rem;
-        color: var(--text-secondary);
+        color: rgba(255, 255, 255, 0.95) !important;
     }
     
     .breadcrumb a {
-        color: var(--secondary-blue);
+        color: #60A5FA !important;
         text-decoration: none;
         transition: color 0.2s;
+        font-weight: 600;
     }
     
     .breadcrumb a:hover {
-        color: var(--accent-teal);
+        color: #00B8D9 !important;
     }
     
     .breadcrumb-separator {
         margin: 0 0.5rem;
-        color: rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.5);
     }
     
     /* Cards corporativas premium */
