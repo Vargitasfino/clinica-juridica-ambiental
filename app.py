@@ -665,7 +665,11 @@ if 'busqueda' not in st.session_state:
 
 # Sidebar profesional
 with st.sidebar:
-    st.markdown("### 🔍 NAVEGACIÓN RÁPIDA")
+    st.markdown("""
+    <h3 style='color: white; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'>
+        🔍 NAVEGACIÓN RÁPIDA
+    </h3>
+    """, unsafe_allow_html=True)
     
     st.markdown("---")
     
@@ -675,7 +679,11 @@ with st.sidebar:
     
     st.markdown("---")
     
-    st.markdown("#### 📋 SECCIONES")
+    st.markdown("""
+    <h4 style='color: white; font-weight: 700; font-size: 1rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'>
+        📋 SECCIONES
+    </h4>
+    """, unsafe_allow_html=True)
     
     if st.button("🏠 Inicio", use_container_width=True, key="nav_inicio"):
         st.session_state.pagina = "Inicio"
@@ -700,7 +708,11 @@ with st.sidebar:
     
     st.markdown("---")
     
-    st.markdown("#### 📊 ESTADÍSTICAS")
+    st.markdown("""
+    <h4 style='color: white; font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'>
+        📊 ESTADÍSTICAS
+    </h4>
+    """, unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     with col1:
         st.metric("Normativas", "18+")
@@ -709,7 +721,11 @@ with st.sidebar:
     
     st.markdown("---")
     
-    st.markdown("#### ℹ️ INFORMACIÓN")
+    st.markdown("""
+    <h4 style='color: white; font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'>
+        ℹ️ INFORMACIÓN
+    </h4>
+    """, unsafe_allow_html=True)
     st.markdown("""
     <div class='info-box'>
         <p style='font-size: 0.85rem;'><strong>Última actualización:</strong><br>Octubre 2024</p>
@@ -718,12 +734,14 @@ with st.sidebar:
     
     with st.expander("📞 Contacto"):
         st.markdown("""
-        **Universidad Nacional de Moquegua**  
-        Facultad de Ingeniería y Arquitectura
+        <p style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
+        <strong style='color: white;'>Universidad Nacional de Moquegua</strong><br>
+        Facultad de Ingeniería y Arquitectura<br><br>
         
-        📧 contacto@unam.edu.pe  
+        📧 contacto@unam.edu.pe<br>
         📱 +51 XXX XXX XXX
-        """)
+        </p>
+        """, unsafe_allow_html=True)
 
 # Header institucional premium
 st.markdown(f"""
