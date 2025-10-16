@@ -69,6 +69,22 @@ st.markdown("""
         padding: 0.5rem 1rem;
     }
     
+    /* Botón de colapsar sidebar MÁS VISIBLE */
+    [data-testid="collapsedControl"] {
+        color: white !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    [data-testid="collapsedControl"]:hover {
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+    }
+    
+    [data-testid="collapsedControl"] svg {
+        fill: white !important;
+        color: white !important;
+    }
+    
     /* Texto del sidebar MÁS VISIBLE */
     [data-testid="stSidebar"] h1,
     [data-testid="stSidebar"] h2,
