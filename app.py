@@ -18,20 +18,13 @@ st.markdown("""
     .stApp {background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);}
     
     .logo-container {
-        position: fixed;
+        position: absolute;
         top: 20px;
         right: 30px;
-        z-index: 1000;
         background: white;
         padding: 10px;
-        border-radius: 12px;
+        border-radius: 50%;
         box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    }
-    
-    .logo-container img {
-        width: 80px;
-        height: 80px;
-        object-fit: contain;
     }
     
     .content-box {
@@ -123,12 +116,22 @@ st.markdown("""
 # HEADER
 st.markdown("""
 <div class='header-box'>
-    <h1>🌍 Marco Normativo de Calidad del Aire</h1>
-    <p style='color: white; font-size: 1.3em; margin-top: 15px;'>
+    <div style='display: flex; align-items: center; justify-content: center; gap: 30px; margin-bottom: 20px;'>
+        <div class='logo-container'>
+            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/UNSA_escudo.png/240px-UNSA_escudo.png' alt='UNAM' style='width:90px; height:90px; object-fit:contain;'>
+        </div>
+        <div style='text-align: left;'>
+            <h1 style='margin: 0; font-size: 2.5em;'>Marco Normativo de Calidad del Aire</h1>
+            <p style='color: white; font-size: 1.1em; margin: 10px 0 0 0; opacity: 0.95;'>
+                Universidad Nacional de Moquegua
+            </p>
+        </div>
+    </div>
+    <p style='color: white; font-size: 1.2em; margin-top: 10px;'>
         Herramienta de Consulta - Normativas Peruanas e Internacionales
     </p>
-    <p style='color: rgba(255,255,255,0.8); margin-top: 10px;'>
-        Universidad Nacional de Moquegua | Prof. Dr. José Antonio Valeriano Zapana
+    <p style='color: rgba(255,255,255,0.8); margin-top: 8px; font-size: 0.95em;'>
+        Prof. Dr. José Antonio Valeriano Zapana | 2024-2025
     </p>
 </div>
 """, unsafe_allow_html=True)
