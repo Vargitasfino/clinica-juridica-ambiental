@@ -882,7 +882,7 @@ if st.session_state.pagina == "Inicio":
         st.markdown("""
         <div class='corporate-card fade-in'>
             <h2>⚡ Acceso Directo</h2>
-            <p style='color: var(--text-secondary); margin-bottom: 1.5rem;'>
+            <p style='color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;'>
                 Navegue rápidamente a las secciones principales
             </p>
         </div>
@@ -914,14 +914,7 @@ if st.session_state.pagina == "Inicio":
         
         st.markdown("<br>", unsafe_allow_html=True)
         
-        st.markdown("""
-        <div class='info-box'>
-            <p style='font-size: 0.9rem;'>
-                <strong>💡 Sugerencia:</strong> Utilice el buscador del menú lateral para encontrar 
-                normativas específicas rápidamente.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.info("💡 **Sugerencia:** Utilice el buscador del menú lateral para encontrar normativas específicas rápidamente.")
     
     # Gráfico comparativo mejorado
     st.markdown("""
