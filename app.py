@@ -71,43 +71,62 @@ st.markdown("""
     
     /* Botón de colapsar/expandir sidebar - MUY VISIBLE */
     [data-testid="collapsedControl"],
-    button[kind="header"] {
+    button[kind="header"],
+    [data-testid="baseButton-header"],
+    [data-testid="stSidebarNav"] button {
         color: white !important;
-        background: rgba(255, 255, 255, 0.15) !important;
+        background: rgba(255, 255, 255, 0.2) !important;
         border-radius: 8px !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
     }
     
     [data-testid="collapsedControl"]:hover,
-    button[kind="header"]:hover {
-        background: rgba(255, 255, 255, 0.3) !important;
+    button[kind="header"]:hover,
+    [data-testid="baseButton-header"]:hover,
+    [data-testid="stSidebarNav"] button:hover {
+        background: rgba(255, 255, 255, 0.4) !important;
         color: white !important;
+        border-color: rgba(255, 255, 255, 0.5) !important;
     }
     
-    /* SVG del botón - BLANCO PURO */
+    /* TODAS las flechas - BLANCO PURO */
     [data-testid="collapsedControl"] svg,
-    button[kind="header"] svg {
-        fill: white !important;
-        color: white !important;
-        stroke: white !important;
+    button[kind="header"] svg,
+    [data-testid="baseButton-header"] svg,
+    [data-testid="stSidebarNav"] svg,
+    .st-emotion-cache-1gulkj5 svg,
+    button[data-testid] svg {
+        fill: #FFFFFF !important;
+        color: #FFFFFF !important;
+        stroke: #FFFFFF !important;
         opacity: 1 !important;
     }
     
     [data-testid="collapsedControl"] svg path,
-    button[kind="header"] svg path {
-        fill: white !important;
-        stroke: white !important;
+    button[kind="header"] svg path,
+    [data-testid="baseButton-header"] svg path,
+    [data-testid="stSidebarNav"] svg path,
+    button[data-testid] svg path {
+        fill: #FFFFFF !important;
+        stroke: #FFFFFF !important;
+        color: #FFFFFF !important;
     }
     
-    /* Botón cuando el sidebar está cerrado */
-    [data-testid="baseButton-header"] {
-        background: rgba(255, 255, 255, 0.15) !important;
-        color: white !important;
+    /* Forzar blanco en TODOS los paths del SVG */
+    svg path {
+        fill: inherit !important;
     }
     
-    [data-testid="baseButton-header"] svg {
-        fill: white !important;
-        color: white !important;
-        stroke: white !important;
+    /* Botón específico en la esquina superior izquierda */
+    .st-emotion-cache-1gulkj5,
+    [class*="st-emotion-cache"] button[kind="header"] {
+        background: rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    .st-emotion-cache-1gulkj5 svg,
+    [class*="st-emotion-cache"] button[kind="header"] svg {
+        fill: #FFFFFF !important;
+        filter: brightness(2) !important;
     }
     
     /* Texto del sidebar MÁS VISIBLE */
