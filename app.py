@@ -116,18 +116,11 @@ st.markdown("""
 # HEADER
 st.markdown("""
 <div class='header-box'>
-    <div style='display: flex; align-items: center; justify-content: center; gap: 30px; margin-bottom: 20px;'>
-        <div class='logo-container'>
-            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/UNSA_escudo.png/240px-UNSA_escudo.png' alt='UNAM' style='width:90px; height:90px; object-fit:contain;'>
-        </div>
-        <div style='text-align: left;'>
-            <h1 style='margin: 0; font-size: 2.5em;'>Marco Normativo de Calidad del Aire</h1>
-            <p style='color: white; font-size: 1.1em; margin: 10px 0 0 0; opacity: 0.95;'>
-                Universidad Nacional de Moquegua
-            </p>
-        </div>
-    </div>
-    <p style='color: white; font-size: 1.2em; margin-top: 10px;'>
+    <h1>🌍 Marco Normativo de Calidad del Aire</h1>
+    <p style='color: white; font-size: 1.2em; margin-top: 15px;'>
+        Universidad Nacional de Moquegua
+    </p>
+    <p style='color: rgba(255,255,255,0.9); margin-top: 10px; font-size: 1.1em;'>
         Herramienta de Consulta - Normativas Peruanas e Internacionales
     </p>
     <p style='color: rgba(255,255,255,0.8); margin-top: 8px; font-size: 0.95em;'>
