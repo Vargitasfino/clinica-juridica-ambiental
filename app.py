@@ -228,7 +228,78 @@ with col7:
 st.markdown("<br>", unsafe_allow_html=True)
 
 if st.session_state.pagina == "Inicio":
-    st.success("Bienvenido al sistema de consulta de normativas de calidad del aire")
+    col1, col2 = st.columns([3, 2])
+    
+    with col1:
+        st.markdown("""
+        <div class='elite-glass'>
+            <h2>Sobre esta Herramienta</h2>
+            <p style='font-size: 1.15em;'>
+                Plataforma integral que reune el <strong>marco normativo completo</strong> sobre 
+                calidad del aire en Peru y el mundo.
+            </p>
+            <ul style='font-size: 1.1em; line-height: 2.5;'>
+                <li><strong>ECA:</strong> Estandares de Calidad Ambiental</li>
+                <li><strong>LMP:</strong> Limites Maximos Permisibles</li>
+                <li><strong>Protocolos:</strong> Monitoreo y medicion</li>
+                <li><strong>Lineamientos:</strong> Guias tecnicas</li>
+                <li><strong>Medidas de Control:</strong> Tecnologias</li>
+                <li><strong>Normativas Internacionales:</strong> OMS, EPA, Canada</li>
+            </ul>
+            <p style='margin-top: 35px; font-size: 1.1em;'>
+                Acceso directo a documentos oficiales con un solo click
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("<div class='elite-glass'><h2>Acceso Rapido</h2></div>", unsafe_allow_html=True)
+        
+        if st.button("Estandares ECA", use_container_width=True, type="primary"):
+            st.session_state.pagina = "ECA"
+        if st.button("Limites LMP", use_container_width=True):
+            st.session_state.pagina = "LMP"
+        if st.button("Protocolos", use_container_width=True):
+            st.session_state.pagina = "Protocolo"
+        if st.button("Lineamientos", use_container_width=True):
+            st.session_state.pagina = "Lineamiento"
+        if st.button("Control de Emisiones", use_container_width=True):
+            st.session_state.pagina = "Medidas"
+        if st.button("Normativas Mundial", use_container_width=True):
+            st.session_state.pagina = "Normativas"
+    
+    st.markdown("""
+    <div class='elite-glass'>
+        <h2>Comparacion Internacional - PM2.5 Anual</h2>
+        <p style='font-size: 1.05em;'>Estandares mas estrictos protegen mejor la salud publica</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    datos_comp = pd.DataFrame([
+        {'Entidad': 'OMS 2021', 'Valor': 5},
+        {'Entidad': 'EPA USA', 'Valor': 9},
+        {'Entidad': 'Canada', 'Valor': 8.8},
+        {'Entidad': 'OEFA Peru', 'Valor': 25}
+    ])
+    
+    fig = px.bar(datos_comp, x='Entidad', y='Valor', 
+                 color='Entidad',
+                 color_discrete_sequence=['#06b6d4', '#3b82f6', '#8b5cf6', '#ef4444'],
+                 text='Valor')
+    fig.update_traces(texttemplate='%{text} ug/m3', textposition='outside',
+                      marker=dict(line=dict(color='rgba(6, 182, 212, 0.4)', width=2)),
+                      textfont=dict(size=14, color='#e0f2fe'))
+    fig.update_layout(
+        height=550,
+        showlegend=False,
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(color='#e0f2fe', size=15),
+        xaxis=dict(showgrid=False, tickfont=dict(size=14, color='#22d3ee')),
+        yaxis=dict(showgrid=True, gridcolor='rgba(6, 182, 212, 0.15)', 
+                   title='Concentracion (ug/m3)', titlefont=dict(color='#06b6d4'))
+    )
+    st.plotly_chart(fig, use_container_width=True)
     
 elif st.session_state.pagina == "ECA":
     st.info("Estandares de Calidad Ambiental - Contenido en desarrollo")
