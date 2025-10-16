@@ -17,6 +17,23 @@ st.markdown("""
     .main {background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);}
     .stApp {background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);}
     
+    .logo-container {
+        position: fixed;
+        top: 20px;
+        right: 30px;
+        z-index: 1000;
+        background: white;
+        padding: 10px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+    
+    .logo-container img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+    }
+    
     .content-box {
         background: white;
         padding: 30px;
