@@ -69,20 +69,45 @@ st.markdown("""
         padding: 0.5rem 1rem;
     }
     
-    /* Botón de colapsar sidebar MÁS VISIBLE */
-    [data-testid="collapsedControl"] {
+    /* Botón de colapsar/expandir sidebar - MUY VISIBLE */
+    [data-testid="collapsedControl"],
+    button[kind="header"] {
         color: white !important;
-        background: rgba(255, 255, 255, 0.1) !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-radius: 8px !important;
     }
     
-    [data-testid="collapsedControl"]:hover {
-        background: rgba(255, 255, 255, 0.2) !important;
+    [data-testid="collapsedControl"]:hover,
+    button[kind="header"]:hover {
+        background: rgba(255, 255, 255, 0.3) !important;
         color: white !important;
     }
     
-    [data-testid="collapsedControl"] svg {
+    /* SVG del botón - BLANCO PURO */
+    [data-testid="collapsedControl"] svg,
+    button[kind="header"] svg {
         fill: white !important;
         color: white !important;
+        stroke: white !important;
+        opacity: 1 !important;
+    }
+    
+    [data-testid="collapsedControl"] svg path,
+    button[kind="header"] svg path {
+        fill: white !important;
+        stroke: white !important;
+    }
+    
+    /* Botón cuando el sidebar está cerrado */
+    [data-testid="baseButton-header"] {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: white !important;
+    }
+    
+    [data-testid="baseButton-header"] svg {
+        fill: white !important;
+        color: white !important;
+        stroke: white !important;
     }
     
     /* Texto del sidebar MÁS VISIBLE */
