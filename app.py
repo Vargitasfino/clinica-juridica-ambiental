@@ -289,9 +289,14 @@ st.markdown("""
     }
     
     .normative-card p {
-        color: var(--text-secondary);
+        color: rgba(255, 255, 255, 0.95) !important;
         line-height: 1.7;
         margin: 0.75rem 0;
+    }
+    
+    .normative-card strong {
+        color: white !important;
+        font-weight: 600;
     }
     
     /* Status badges profesionales */
@@ -454,16 +459,21 @@ st.markdown("""
     [data-testid="stMetricValue"] {
         font-size: 2.5rem;
         font-weight: 800;
-        color: var(--secondary-blue);
+        color: #60A5FA !important;
         letter-spacing: -0.02em;
+        text-shadow: 0 2px 8px rgba(96, 165, 250, 0.4);
     }
     
     [data-testid="stMetricLabel"] {
-        color: var(--text-secondary);
+        color: rgba(255, 255, 255, 0.95) !important;
         font-weight: 600;
         text-transform: uppercase;
         font-size: 0.85rem;
         letter-spacing: 0.05em;
+    }
+    
+    [data-testid="stMetricDelta"] {
+        color: rgba(255, 255, 255, 0.85) !important;
     }
     
     /* Expanders mejorados */
@@ -488,7 +498,7 @@ st.markdown("""
     
     /* Info boxes */
     .info-box {
-        background: linear-gradient(135deg, rgba(0, 184, 217, 0.15) 0%, rgba(0, 101, 255, 0.1) 100%);
+        background: linear-gradient(135deg, rgba(0, 184, 217, 0.2) 0%, rgba(0, 101, 255, 0.15) 100%);
         border-left: 4px solid var(--accent-teal);
         padding: 1.25rem;
         border-radius: 8px;
@@ -497,14 +507,18 @@ st.markdown("""
     }
     
     .info-box p {
-        color: var(--text-secondary);
+        color: rgba(255, 255, 255, 0.95) !important;
         margin: 0;
         line-height: 1.6;
     }
     
+    .info-box strong {
+        color: white !important;
+    }
+    
     /* Warning boxes */
     .warning-box {
-        background: linear-gradient(135deg, rgba(255, 179, 0, 0.15) 0%, rgba(255, 152, 0, 0.1) 100%);
+        background: linear-gradient(135deg, rgba(255, 179, 0, 0.2) 0%, rgba(255, 152, 0, 0.15) 100%);
         border-left: 4px solid var(--warning);
         padding: 1.25rem;
         border-radius: 8px;
@@ -513,14 +527,23 @@ st.markdown("""
     }
     
     .warning-box p {
-        color: var(--text-secondary);
+        color: rgba(255, 255, 255, 0.95) !important;
         margin: 0;
         line-height: 1.6;
     }
     
+    .warning-box strong {
+        color: white !important;
+    }
+    
+    .warning-box h4 {
+        color: white !important;
+        margin-top: 0;
+    }
+    
     /* Success boxes */
     .success-box {
-        background: linear-gradient(135deg, rgba(0, 200, 83, 0.15) 0%, rgba(0, 230, 118, 0.1) 100%);
+        background: linear-gradient(135deg, rgba(0, 200, 83, 0.2) 0%, rgba(0, 230, 118, 0.15) 100%);
         border-left: 4px solid var(--success);
         padding: 1.25rem;
         border-radius: 8px;
@@ -529,39 +552,56 @@ st.markdown("""
     }
     
     .success-box p {
-        color: var(--text-secondary);
+        color: rgba(255, 255, 255, 0.95) !important;
         margin: 0;
         line-height: 1.6;
+    }
+    
+    .success-box strong {
+        color: white !important;
+    }
+    
+    .success-box h4 {
+        color: white !important;
+        margin-top: 0;
+    }
+    
+    .success-box ol, .success-box ul {
+        color: rgba(255, 255, 255, 0.95) !important;
     }
     
     /* Footer corporativo */
     .corporate-footer {
         text-align: center;
-        background: linear-gradient(135deg, rgba(19, 47, 76, 0.9) 0%, rgba(10, 25, 41, 0.95) 100%);
+        background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(10, 25, 41, 0.98) 100%);
         backdrop-filter: blur(20px);
         padding: 3rem 2rem;
         border-radius: 12px;
         margin-top: 4rem;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3);
     }
     
-    .corporate-footer h3 {
-        color: var(--text-primary);
+    .corporate-footer h3, .corporate-footer h4 {
+        color: white !important;
         font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .corporate-footer h3 {
         font-size: 1.5rem;
         margin: 0 0 0.5rem 0;
     }
     
     .corporate-footer p {
-        color: var(--text-secondary);
+        color: rgba(255, 255, 255, 0.9) !important;
         margin: 0.5rem 0;
         line-height: 1.6;
     }
     
     .corporate-footer .divider {
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         margin: 1.5rem 0;
     }
     
