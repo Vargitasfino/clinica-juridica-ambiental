@@ -953,14 +953,14 @@ elif st.session_state.pagina == "LMP":
 
 # ===================== PÁGINA PROTOCOLO =====================
 elif st.session_state.pagina == "Protocolo":
-    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>📖 Protocolos de Monitoreo</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>Protocolos de Monitoreo</h1>", unsafe_allow_html=True)
     
     st.markdown("""
     <div class='elite-glass'>
-        <h2>📜 ¿Qué son los Protocolos?</h2>
+        <h2>Que son los Protocolos</h2>
         <p style='font-size: 1.2em;'>
             Los protocolos establecen <strong>procedimientos estandarizados</strong> para el monitoreo 
-            de calidad del aire y medición de emisiones. Garantizan que las mediciones sean comparables 
+            de calidad del aire y medicion de emisiones. Garantizan que las mediciones sean comparables 
             y confiables a nivel nacional.
         </p>
     </div>
@@ -969,15 +969,15 @@ elif st.session_state.pagina == "Protocolo":
     st.markdown("""
     <div class='platinum-card'>
         <span class='premium-badge vigente'>VIGENTE</span>
-        <h3>R.D. N° 1404-2005/DIGESA/SA</h3>
+        <h3>R.D. N 1404-2005/DIGESA/SA</h3>
         <p style='font-size: 1.1em;'>
-            <strong>Protocolo de Monitoreo de Calidad del Aire y Gestión de Datos</strong><br><br>
-            Define procedimientos técnicos para el monitoreo de calidad del aire ambiente en todo el 
-            territorio nacional. Incluye métodos de muestreo, calibración y análisis.
+            <strong>Protocolo de Monitoreo de Calidad del Aire y Gestion de Datos</strong><br><br>
+            Define procedimientos tecnicos para el monitoreo de calidad del aire ambiente en todo el 
+            territorio nacional. Incluye metodos de muestreo, calibracion y analisis.
         </p>
         <a href='http://www.digesa.minsa.gob.pe/DEPA/protocolo_calidad_aire.pdf' 
            target='_blank' class='diamond-btn'>
-            📄 Descargar Protocolo DIGESA
+            Descargar Protocolo DIGESA
         </a>
     </div>
     """, unsafe_allow_html=True)
@@ -985,15 +985,15 @@ elif st.session_state.pagina == "Protocolo":
     st.markdown("""
     <div class='platinum-card'>
         <span class='premium-badge vigente'>VIGENTE</span>
-        <h3>R.M. N° 026-2000-ITINCI/DM</h3>
+        <h3>R.M. N 026-2000-ITINCI/DM</h3>
         <p style='font-size: 1.1em;'>
             <strong>Protocolo de Monitoreo para el Sector Industrial</strong><br><br>
-            Aprueba protocolos específicos de monitoreo de calidad de aire y emisiones para 
+            Aprueba protocolos especificos de monitoreo de calidad de aire y emisiones para 
             actividades industriales y manufactureras.
         </p>
         <a href='https://www.minam.gob.pe/wp-content/uploads/2017/04/RM-026-2000-ITINCI.pdf' 
            target='_blank' class='diamond-btn'>
-            📄 Ver Protocolo PRODUCE
+            Ver Protocolo PRODUCE
         </a>
     </div>
     """, unsafe_allow_html=True)
@@ -1001,23 +1001,23 @@ elif st.session_state.pagina == "Protocolo":
     st.markdown("""
     <div class='platinum-card'>
         <span class='premium-badge vigente'>VIGENTE</span>
-        <h3>R.D. N° 195-2010-MEM/AAM</h3>
+        <h3>R.D. N 195-2010-MEM/AAM</h3>
         <p style='font-size: 1.1em;'>
             <strong>Protocolo para Calderos y Hornos</strong><br><br>
-            Procedimientos para el monitoreo de emisiones atmosféricas en calderos y hornos 
-            industriales. Incluye métodos isocinéticos y análisis de gases.
+            Procedimientos para el monitoreo de emisiones atmosfericas en calderos y hornos 
+            industriales. Incluye metodos isocineticos y analisis de gases.
         </p>
         <a href='http://www.minem.gob.pe/minem/archivos/RD%20195-2010-AAM.pdf' 
            target='_blank' class='diamond-btn'>
-            📄 Descargar Protocolo MEM
+            Descargar Protocolo MEM
         </a>
     </div>
     """, unsafe_allow_html=True)
     
     st.markdown("""
     <div class='elite-glass'>
-        <h2>🔬 Métodos de Referencia EPA Adoptados en Perú</h2>
-        <p style='font-size: 1.05em;'>Métodos estandarizados de la Agencia de Protección Ambiental de EE.UU.</p>
+        <h2>Metodos de Referencia EPA Adoptados en Peru</h2>
+        <p style='font-size: 1.05em;'>Metodos estandarizados de la Agencia de Proteccion Ambiental de EE.UU.</p>
     </div>
     """, unsafe_allow_html=True)
     
