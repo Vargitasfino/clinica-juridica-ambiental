@@ -1111,7 +1111,18 @@ elif st.session_state.pagina == "Protocolo":
 
 # ===================== PÁGINA LINEAMIENTO =====================
 elif st.session_state.pagina == "Lineamiento":
-    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>📐 Lineamientos Técnicos</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; font-size: 3.5em; background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Space Grotesk;'>Lineamientos Tecnicos</h1>", unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='elite-glass'>
+        <h2>Que son los Lineamientos</h2>
+        <p style='font-size: 1.2em;'>
+            Los lineamientos son <strong>guias tecnicas y operativas</strong> que complementan la 
+            normativa legal y orientan su implementacion practica. Proporcionan metodologias y 
+            procedimientos especificos.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("""
     <div class='elite-glass'>
