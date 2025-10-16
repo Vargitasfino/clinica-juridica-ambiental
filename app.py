@@ -43,20 +43,6 @@ st.markdown("""
     
     .main {
         background: transparent;
-        padding-top: 0 !important;
-    }
-    
-    /* Ocultar espacio superior blanco */
-    .block-container {
-        padding-top: 1rem !important;
-    }
-    
-    header {
-        background: transparent !important;
-    }
-    
-    [data-testid="stHeader"] {
-        background: transparent !important;
     }
     
     /* Sidebar profesional */
@@ -95,28 +81,25 @@ st.markdown("""
     .institutional-header h1 {
         font-size: 2.5rem;
         font-weight: 800;
-        color: white !important;
+        color: white;
         margin: 0 0 0.5rem 0;
         letter-spacing: -0.02em;
         line-height: 1.2;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
     
     .institutional-header .subtitle {
         font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.95) !important;
+        color: rgba(255, 255, 255, 0.95);
         font-weight: 500;
         margin: 0.5rem 0;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     
     .institutional-header .metadata {
         font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.85) !important;
+        color: rgba(255, 255, 255, 0.75);
         margin-top: 1rem;
         padding-top: 1rem;
         border-top: 1px solid rgba(255, 255, 255, 0.15);
-        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     
     /* Breadcrumbs profesionales */
@@ -183,11 +166,10 @@ st.markdown("""
     }
     
     .corporate-card h2, .corporate-card h3 {
-        color: white !important;
+        color: var(--text-primary);
         font-weight: 700;
         margin-top: 0;
         letter-spacing: -0.01em;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
     
     .corporate-card h2 {
@@ -198,14 +180,6 @@ st.markdown("""
     .corporate-card h3 {
         font-size: 1.4rem;
         margin-bottom: 0.75rem;
-    }
-    
-    .corporate-card h4 {
-        color: white !important;
-        font-weight: 600;
-        font-size: 1.2rem;
-        margin-top: 1rem;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     
     .corporate-card p, .corporate-card li {
@@ -258,11 +232,10 @@ st.markdown("""
     }
     
     .normative-card h3 {
-        color: white !important;
+        color: var(--text-primary);
         font-weight: 700;
         font-size: 1.35rem;
         margin: 0 0 1rem 0;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
     
     .normative-card p {
@@ -1062,7 +1035,7 @@ elif st.session_state.pagina == "ECA":
     # Información adicional
     with st.expander("ℹ️ Ver información adicional sobre contaminantes criterio"):
         st.markdown("""
-        #### Contaminantes Criterio Regulados
+        ### Contaminantes Criterio Regulados
         
         **Material Particulado (PM2.5 y PM10)**
         - Partículas sólidas o líquidas suspendidas en el aire
@@ -1104,7 +1077,7 @@ elif st.session_state.pagina == "ECA":
         - Hidrocarburo aromático policíclico (HAP)
         - Fuentes: combustión incompleta de materia orgánica
         - Efectos: cancerígeno, mutagénico
-        """, unsafe_allow_html=True)
+        """)
 
 # ===================== PÁGINA LMP =====================
 elif st.session_state.pagina == "LMP":
