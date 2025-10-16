@@ -964,7 +964,73 @@ elif st.session_state.pagina == "Protocolo":
             y confiables a nivel nacional.
         </p>
     </div>
-    """, unsafe_allow_html=True) font-family: Space Grotesk;'>📖 Protocolos de Monitoreo</h1>", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='platinum-card'>
+        <span class='premium-badge vigente'>VIGENTE</span>
+        <h3>R.D. N° 1404-2005/DIGESA/SA</h3>
+        <p style='font-size: 1.1em;'>
+            <strong>Protocolo de Monitoreo de Calidad del Aire y Gestión de Datos</strong><br><br>
+            Define procedimientos técnicos para el monitoreo de calidad del aire ambiente en todo el 
+            territorio nacional. Incluye métodos de muestreo, calibración y análisis.
+        </p>
+        <a href='http://www.digesa.minsa.gob.pe/DEPA/protocolo_calidad_aire.pdf' 
+           target='_blank' class='diamond-btn'>
+            📄 Descargar Protocolo DIGESA
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='platinum-card'>
+        <span class='premium-badge vigente'>VIGENTE</span>
+        <h3>R.M. N° 026-2000-ITINCI/DM</h3>
+        <p style='font-size: 1.1em;'>
+            <strong>Protocolo de Monitoreo para el Sector Industrial</strong><br><br>
+            Aprueba protocolos específicos de monitoreo de calidad de aire y emisiones para 
+            actividades industriales y manufactureras.
+        </p>
+        <a href='https://www.minam.gob.pe/wp-content/uploads/2017/04/RM-026-2000-ITINCI.pdf' 
+           target='_blank' class='diamond-btn'>
+            📄 Ver Protocolo PRODUCE
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='platinum-card'>
+        <span class='premium-badge vigente'>VIGENTE</span>
+        <h3>R.D. N° 195-2010-MEM/AAM</h3>
+        <p style='font-size: 1.1em;'>
+            <strong>Protocolo para Calderos y Hornos</strong><br><br>
+            Procedimientos para el monitoreo de emisiones atmosféricas en calderos y hornos 
+            industriales. Incluye métodos isocinéticos y análisis de gases.
+        </p>
+        <a href='http://www.minem.gob.pe/minem/archivos/RD%20195-2010-AAM.pdf' 
+           target='_blank' class='diamond-btn'>
+            📄 Descargar Protocolo MEM
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='elite-glass'>
+        <h2>🔬 Métodos de Referencia EPA Adoptados en Perú</h2>
+        <p style='font-size: 1.05em;'>Métodos estandarizados de la Agencia de Protección Ambiental de EE.UU.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    metodos = pd.DataFrame([
+        ['PM10', 'EPA Method 40 CFR Part 50, Appendix J', 'Gravimétrico'],
+        ['PM2.5', 'EPA Method 40 CFR Part 50, Appendix L', 'Gravimétrico'],
+        ['SO2', 'EPA Method 40 CFR Part 50, Appendix A-1', 'Fluorescencia UV'],
+        ['NO2', 'EPA Method 40 CFR Part 50, Appendix F', 'Quimioluminiscencia'],
+        ['CO', 'EPA Method 40 CFR Part 50, Appendix C', 'Infrarrojo no dispersivo'],
+        ['O3', 'EPA Method 40 CFR Part 50, Appendix D', 'Fotometría UV']
+    ], columns=['Contaminante', 'Método EPA', 'Técnica Analítica'])
+    
+    st.dataframe(metodos, use_container_width=True, hide_index=True, height=320) font-family: Space Grotesk;'>📖 Protocolos de Monitoreo</h1>", unsafe_allow_html=True)
     
     st.markdown("""
     <div class='elite-glass'>
