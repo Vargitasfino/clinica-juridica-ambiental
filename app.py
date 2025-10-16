@@ -1022,12 +1022,12 @@ elif st.session_state.pagina == "Protocolo":
     """, unsafe_allow_html=True)
     
     metodos = pd.DataFrame([
-        ['PM10', 'EPA Method 40 CFR Part 50, Appendix J', 'Gravimétrico'],
-        ['PM2.5', 'EPA Method 40 CFR Part 50, Appendix L', 'Gravimétrico'],
-        ['SO2', 'EPA Method 40 CFR Part 50, Appendix A-1', 'Fluorescencia UV'],
-        ['NO2', 'EPA Method 40 CFR Part 50, Appendix F', 'Quimioluminiscencia'],
-        ['CO', 'EPA Method 40 CFR Part 50, Appendix C', 'Infrarrojo no dispersivo'],
-        ['O3', 'EPA Method 40 CFR Part 50, Appendix D', 'Fotometría UV']
+        ['PM10', 'EPA Method 40 CFR Part 50 Appendix J', 'Gravimétrico'],
+        ['PM2.5', 'EPA Method 40 CFR Part 50 Appendix L', 'Gravimétrico'],
+        ['SO2', 'EPA Method 40 CFR Part 50 Appendix A-1', 'Fluorescencia UV'],
+        ['NO2', 'EPA Method 40 CFR Part 50 Appendix F', 'Quimioluminiscencia'],
+        ['CO', 'EPA Method 40 CFR Part 50 Appendix C', 'Infrarrojo no dispersivo'],
+        ['O3', 'EPA Method 40 CFR Part 50 Appendix D', 'Fotometría UV']
     ], columns=['Contaminante', 'Método EPA', 'Técnica Analítica'])
     
     st.dataframe(metodos, use_container_width=True, hide_index=True, height=320) font-family: Space Grotesk;'>📖 Protocolos de Monitoreo</h1>", unsafe_allow_html=True)
