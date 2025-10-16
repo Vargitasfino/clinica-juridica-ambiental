@@ -1,628 +1,328 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, ScatterChart, Scatter } from 'recharts';
+import streamlit as st
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
 
-const AirQualityApp = () => {
-  const [activeTab, setActiveTab] = useState('oms');
+# Configuración de la página
+st.set_page_config(
+    page_title="Sistema de Calidad del Aire",
+    page_icon="🌍",
+    layout="wide"
+)
 
-  const airStandards = {
-    pm25: [
-      { entidad: 'OMS 2021', anual: 5, dia24h: 15 },
-      { entidad: 'OEFA Peru', anual: 25, dia24h: 50 },
-      { entidad: 'EPA USA', anual: 9, dia24h: 35 },
-      { entidad: 'Canada', anual: 8.8, dia24h: 27 }
-    ],
-    pm10: [
-      { entidad: 'OMS 2021', anual: 15, dia24h: 45 },
-      { entidad: 'OEFA Peru', anual: 50, dia24h: 100 },
-      { entidad: 'EPA USA', anual: null, dia24h: 150 },
-      { entidad: 'Canada', anual: null, dia24h: 50 }
-    ],
-    no2: [
-      { entidad: 'OMS 2021', anual: 10, dia24h: 25, hora1: null },
-      { entidad: 'OEFA Peru', anual: 100, dia24h: null, hora1: 200 },
-      { entidad: 'EPA USA', anual: 53, dia24h: null, hora1: 100 },
-      { entidad: 'Canada', anual: null, dia24h: null, hora1: 60 }
-    ],
-    so2: [
-      { entidad: 'OMS 2021', dia24h: 40 },
-      { entidad: 'OEFA Peru', dia24h: 250 },
-      { entidad: 'EPA USA', hora1: 75 },
-      { entidad: 'Canada', hora1: 70 }
-    ],
-    o3: [
-      { entidad: 'OMS 2021', hora8: 100 },
-      { entidad: 'OEFA Peru', hora8: 100 },
-      { entidad: 'EPA USA', hora8: 70 },
-      { entidad: 'Canada', hora8: 62 }
-    ]
-  };
+# Estilo CSS personalizado
+st.markdown("""
+<style>
+    .main {
+        background: linear-gradient(to bottom right, #EFF6FF, #E0E7FF);
+    }
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        padding: 10px 20px;
+        background-color: white;
+        border-radius: 8px;
+    }
+</style>
+""", unsafe_allow_html=True)
 
-  const lmpThermoelectric = [
-    { contaminante: 'NOx', gasNatural: 320, diesel: 850, residual: 2000, unidad: 'mg/Nm3' },
-    { contaminante: 'SO2', gasNatural: null, diesel: 1700, residual: 3500, unidad: 'mg/Nm3' },
-    { contaminante: 'PM', gasNatural: 50, diesel: 150, residual: 350, unidad: 'mg/Nm3' }
-  ];
+# Título principal
+st.markdown("<h1 style='text-align: center; color: #312E81;'>Sistema Integral de Normativas de Calidad del Aire</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size: 18px;'>Caso 2: Central Termoeléctrica - Análisis de LMP en NOx/SO2</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #6B7280;'>Universidad Nacional de Moquegua | Prof. Dr. José Antonio Valeriano Zapana</p>", unsafe_allow_html=True)
+st.markdown("---")
 
-  const timeline = [
-    { año: 2001, evento: 'D.S. 074-2001-PCM - Primeros ECA Aire Peru', entidad: 'OEFA' },
-    { año: 2005, evento: 'OMS - Guias Calidad del Aire', entidad: 'OMS' },
-    { año: 2010, evento: 'D.S. 003-2010-MINAM - LMP Termoelectricas', entidad: 'OEFA' },
-    { año: 2013, evento: 'EPA - PM2.5 Anual reducido a 12 ug/m3', entidad: 'EPA' },
-    { año: 2017, evento: 'D.S. 003-2017-MINAM - ECA Aire mas estrictos', entidad: 'OEFA' },
-    { año: 2019, evento: 'D.S. 010-2019-MINAM - Modificatoria ECA', entidad: 'OEFA' },
-    { año: 2020, evento: 'EPA - Fortalece PM2.5', entidad: 'EPA' },
-    { año: 2021, evento: 'OMS - Nuevas Directrices (50% mas estrictas)', entidad: 'OMS' },
-    { año: 2022, evento: 'Canada - Actualizacion CAAQS', entidad: 'Canada' },
-    { año: 2024, evento: 'EPA - PM2.5 Anual a 9.0 ug/m3', entidad: 'EPA' }
-  ];
+# Datos
+air_standards = {
+    'pm25': pd.DataFrame([
+        {'entidad': 'OMS 2021', 'anual': 5, 'dia24h': 15},
+        {'entidad': 'OEFA Peru', 'anual': 25, 'dia24h': 50},
+        {'entidad': 'EPA USA', 'anual': 9, 'dia24h': 35},
+        {'entidad': 'Canada', 'anual': 8.8, 'dia24h': 27}
+    ]),
+    'pm10': pd.DataFrame([
+        {'entidad': 'OMS 2021', 'anual': 15, 'dia24h': 45},
+        {'entidad': 'OEFA Peru', 'anual': 50, 'dia24h': 100},
+        {'entidad': 'EPA USA', 'anual': None, 'dia24h': 150},
+        {'entidad': 'Canada', 'anual': None, 'dia24h': 50}
+    ]),
+    'no2': pd.DataFrame([
+        {'entidad': 'OMS 2021', 'anual': 10, 'dia24h': 25, 'hora1': None},
+        {'entidad': 'OEFA Peru', 'anual': 100, 'dia24h': None, 'hora1': 200},
+        {'entidad': 'EPA USA', 'anual': 53, 'dia24h': None, 'hora1': 100},
+        {'entidad': 'Canada', 'anual': None, 'dia24h': None, 'hora1': 60}
+    ]),
+    'so2': pd.DataFrame([
+        {'entidad': 'OMS 2021', 'dia24h': 40, 'hora1': None},
+        {'entidad': 'OEFA Peru', 'dia24h': 250, 'hora1': None},
+        {'entidad': 'EPA USA', 'dia24h': None, 'hora1': 75},
+        {'entidad': 'Canada', 'dia24h': None, 'hora1': 70}
+    ]),
+    'o3': pd.DataFrame([
+        {'entidad': 'OMS 2021', 'hora8': 100},
+        {'entidad': 'OEFA Peru', 'hora8': 100},
+        {'entidad': 'EPA USA', 'hora8': 70},
+        {'entidad': 'Canada', 'hora8': 62}
+    ])
+}
 
-  const plantasComparacion = [
-    { tipo: 'Hidroelectrica', emisionNOx: 0, emisionSO2: 0, emisionPM: 0, impactoAire: 'Nulo' },
-    { tipo: 'Termoelectrica Gas', emisionNOx: 280, emisionSO2: 0, emisionPM: 40, impactoAire: 'Moderado' },
-    { tipo: 'Termoelectrica Diesel', emisionNOx: 750, emisionSO2: 1500, emisionPM: 130, impactoAire: 'Alto' },
-    { tipo: 'Termoelectrica Carbon', emisionNOx: 1800, emisionSO2: 3200, emisionPM: 320, impactoAire: 'Muy Alto' }
-  ];
+lmp_thermoelectric = pd.DataFrame([
+    {'contaminante': 'NOx', 'gasNatural': 320, 'diesel': 850, 'residual': 2000, 'unidad': 'mg/Nm3'},
+    {'contaminante': 'SO2', 'gasNatural': None, 'diesel': 1700, 'residual': 3500, 'unidad': 'mg/Nm3'},
+    {'contaminante': 'PM', 'gasNatural': 50, 'diesel': 150, 'residual': 350, 'unidad': 'mg/Nm3'}
+])
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-indigo-900 mb-2">
-            Sistema Integral de Normativas de Calidad del Aire
-          </h1>
-          <p className="text-lg text-gray-700">
-            Caso 2: Central Termoelectrica - Analisis de LMP en NOx/SO2
-          </p>
-          <p className="text-sm text-gray-600 mt-2">
-            Universidad Nacional de Moquegua | Prof. Dr. Jose Antonio Valeriano Zapana
-          </p>
-        </div>
+timeline = pd.DataFrame([
+    {'año': 2001, 'evento': 'D.S. 074-2001-PCM - Primeros ECA Aire Peru', 'entidad': 'OEFA'},
+    {'año': 2005, 'evento': 'OMS - Guías Calidad del Aire', 'entidad': 'OMS'},
+    {'año': 2010, 'evento': 'D.S. 003-2010-MINAM - LMP Termoeléctricas', 'entidad': 'OEFA'},
+    {'año': 2013, 'evento': 'EPA - PM2.5 Anual reducido a 12 ug/m3', 'entidad': 'EPA'},
+    {'año': 2017, 'evento': 'D.S. 003-2017-MINAM - ECA Aire más estrictos', 'entidad': 'OEFA'},
+    {'año': 2019, 'evento': 'D.S. 010-2019-MINAM - Modificatoria ECA', 'entidad': 'OEFA'},
+    {'año': 2020, 'evento': 'EPA - Fortalece PM2.5', 'entidad': 'EPA'},
+    {'año': 2021, 'evento': 'OMS - Nuevas Directrices (50% más estrictas)', 'entidad': 'OMS'},
+    {'año': 2022, 'evento': 'Canada - Actualización CAAQS', 'entidad': 'Canada'},
+    {'año': 2024, 'evento': 'EPA - PM2.5 Anual a 9.0 ug/m3', 'entidad': 'EPA'}
+])
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-7 mb-6">
-            <TabsTrigger value="oms">OMS</TabsTrigger>
-            <TabsTrigger value="oefa">OEFA Peru</TabsTrigger>
-            <TabsTrigger value="epa">EPA USA</TabsTrigger>
-            <TabsTrigger value="canada">Canada</TabsTrigger>
-            <TabsTrigger value="linea">Linea Tiempo</TabsTrigger>
-            <TabsTrigger value="plantas">Plantas</TabsTrigger>
-            <TabsTrigger value="pama">PAMA</TabsTrigger>
-          </TabsList>
+plantas_comparacion = pd.DataFrame([
+    {'tipo': 'Hidroeléctrica', 'emisionNOx': 0, 'emisionSO2': 0, 'emisionPM': 0, 'impactoAire': 'Nulo'},
+    {'tipo': 'Termoeléctrica Gas', 'emisionNOx': 280, 'emisionSO2': 0, 'emisionPM': 40, 'impactoAire': 'Moderado'},
+    {'tipo': 'Termoeléctrica Diesel', 'emisionNOx': 750, 'emisionSO2': 1500, 'emisionPM': 130, 'impactoAire': 'Alto'},
+    {'tipo': 'Termoeléctrica Carbón', 'emisionNOx': 1800, 'emisionSO2': 3200, 'emisionPM': 320, 'impactoAire': 'Muy Alto'}
+])
 
-          <TabsContent value="oms">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl">Organizacion Mundial de la Salud (OMS)</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <Alert>
-                  <AlertDescription>
-                    Las directrices de la OMS 2021 son las mas estrictas del mundo. Representan niveles 
-                    de calidad del aire que protegen la salud publica segun la mejor evidencia cientifica disponible.
-                  </AlertDescription>
-                </Alert>
+# Tabs principales
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+    "🌍 OMS", "🇵🇪 OEFA Peru", "🇺🇸 EPA USA", "🇨🇦 Canada", 
+    "📅 Línea Tiempo", "⚡ Plantas", "📋 PAMA"
+])
 
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-indigo-800">Material Particulado PM2.5</h3>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={airStandards.pm25}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="entidad" />
-                      <YAxis label={{ value: 'ug/m3', angle: -90, position: 'insideLeft' }} />
-                      <Tooltip />
-                      <Legend />
-                      <Bar dataKey="anual" fill="#4f46e5" name="Anual" />
-                      <Bar dataKey="dia24h" fill="#818cf8" name="24 horas" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                  <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                    <p className="text-sm"><strong>OMS 2021:</strong> Anual 5 ug/m3, 24h 15 ug/m3</p>
-                    <p className="text-sm mt-2"><strong>Impacto en salud:</strong> Enfermedades cardiovasculares, 
-                    cancer de pulmon, muerte prematura. PM2.5 es el contaminante mas peligroso por su tamano microscopico.</p>
-                  </div>
-                </div>
+# TAB 1: OMS
+with tab1:
+    st.header("Organización Mundial de la Salud (OMS)")
+    st.info("Las directrices de la OMS 2021 son las más estrictas del mundo. Representan niveles de calidad del aire que protegen la salud pública según la mejor evidencia científica disponible.")
+    
+    st.subheader("Material Particulado PM2.5")
+    fig_pm25 = go.Figure()
+    fig_pm25.add_trace(go.Bar(x=air_standards['pm25']['entidad'], y=air_standards['pm25']['anual'], name='Anual', marker_color='#4f46e5'))
+    fig_pm25.add_trace(go.Bar(x=air_standards['pm25']['entidad'], y=air_standards['pm25']['dia24h'], name='24 horas', marker_color='#818cf8'))
+    fig_pm25.update_layout(title='Estándares PM2.5 (μg/m³)', barmode='group', height=400)
+    st.plotly_chart(fig_pm25, use_container_width=True)
+    
+    st.info("**OMS 2021:** Anual 5 μg/m³, 24h 15 μg/m³\n\n**Impacto en salud:** Enfermedades cardiovasculares, cáncer de pulmón, muerte prematura. PM2.5 es el contaminante más peligroso por su tamaño microscópico.")
+    
+    st.subheader("Material Particulado PM10")
+    fig_pm10 = go.Figure()
+    fig_pm10.add_trace(go.Bar(x=air_standards['pm10']['entidad'], y=air_standards['pm10']['anual'], name='Anual', marker_color='#10b981'))
+    fig_pm10.add_trace(go.Bar(x=air_standards['pm10']['entidad'], y=air_standards['pm10']['dia24h'], name='24 horas', marker_color='#6ee7b7'))
+    fig_pm10.update_layout(title='Estándares PM10 (μg/m³)', barmode='group', height=400)
+    st.plotly_chart(fig_pm10, use_container_width=True)
+    
+    st.subheader("Dióxido de Nitrógeno (NO2)")
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("OMS 2021 - Anual", "10 μg/m³")
+    with col2:
+        st.metric("OMS 2021 - 24h", "25 μg/m³")
+    with col3:
+        st.metric("OEFA Peru - Anual", "100 μg/m³")
+    st.caption("**Fuente principal:** Tráfico vehicular, termoeléctricas. **Efectos:** Irritación respiratoria, asma, precursor de ozono.")
+    
+    st.subheader("Dióxido de Azufre (SO2)")
+    fig_so2 = go.Figure()
+    fig_so2.add_trace(go.Bar(x=air_standards['so2']['entidad'], y=air_standards['so2']['dia24h'], name='24 horas', marker_color='#ef4444'))
+    fig_so2.add_trace(go.Bar(x=air_standards['so2']['entidad'], y=air_standards['so2']['hora1'], name='1 hora', marker_color='#f87171'))
+    fig_so2.update_layout(title='Estándares SO2 (μg/m³)', barmode='group', height=350)
+    st.plotly_chart(fig_so2, use_container_width=True)
+    st.caption("**Fuente:** Quema de carbón, refinación de petróleo, fundición de metales. **Impacto:** Lluvia ácida, irritación respiratoria severa.")
+    
+    st.subheader("Ozono Troposférico (O3)")
+    fig_o3 = go.Figure()
+    fig_o3.add_trace(go.Bar(x=air_standards['o3']['entidad'], y=air_standards['o3']['hora8'], name='8 horas', marker_color='#8b5cf6'))
+    fig_o3.update_layout(title='Estándares O3 (μg/m³)', height=350)
+    st.plotly_chart(fig_o3, use_container_width=True)
+    st.caption("**Contaminante secundario:** No se emite directamente, se forma por reacción fotoquímica entre NOx y VOCs bajo luz solar. Niveles más altos en días soleados.")
 
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-indigo-800">Material Particulado PM10</h3>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={airStandards.pm10}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="entidad" />
-                      <YAxis label={{ value: 'ug/m3', angle: -90, position: 'insideLeft' }} />
-                      <Tooltip />
-                      <Legend />
-                      <Bar dataKey="anual" fill="#10b981" name="Anual" />
-                      <Bar dataKey="dia24h" fill="#6ee7b7" name="24 horas" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
+# TAB 2: OEFA
+with tab2:
+    st.header("OEFA - Organismo de Evaluación y Fiscalización Ambiental")
+    st.info("**Marco legal principal:** D.S. N° 003-2017-MINAM (ECA Aire) y D.S. N° 003-2010-MINAM (LMP para Termoeléctricas)")
+    
+    st.subheader("Estándares de Calidad Ambiental (ECA) - Aire")
+    eca_data = pd.DataFrame([
+        ['PM2.5', '24 horas', 50, 'μg/m³'],
+        ['PM2.5', 'Anual', 25, 'μg/m³'],
+        ['PM10', '24 horas', 100, 'μg/m³'],
+        ['PM10', 'Anual', 50, 'μg/m³'],
+        ['NO2', '1 hora', 200, 'μg/m³'],
+        ['NO2', 'Anual', 100, 'μg/m³'],
+        ['SO2', '24 horas', 250, 'μg/m³'],
+        ['O3', '8 horas', 100, 'μg/m³'],
+        ['CO', '8 horas', 10000, 'μg/m³'],
+        ['CO', '1 hora', 30000, 'μg/m³']
+    ], columns=['Contaminante', 'Periodo', 'Valor ECA', 'Unidad'])
+    st.dataframe(eca_data, use_container_width=True, hide_index=True)
+    
+    st.subheader("Límites Máximos Permisibles (LMP) - Termoeléctricas")
+    st.caption("D.S. N° 003-2010-MINAM | Se miden en la chimenea (punto de emisión)")
+    st.dataframe(lmp_thermoelectric, use_container_width=True, hide_index=True)
+    
+    st.warning("**Caso 2:** Tu central termoeléctrica reporta excedencias de LMP de NOx y SO2 durante arranques y paradas programadas. Estos valores aplican en condiciones normales de operación.")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.success("**ECA (Receptor)**\n- Se mide en el ambiente\n- Protege salud pública\n- Puede tener múltiples fuentes\n- Ejemplo: Estación de monitoreo en población")
+    with col2:
+        st.success("**LMP (Fuente)**\n- Se mide en la chimenea\n- Responsabilidad del titular\n- Control de emisiones industriales\n- Ejemplo: Chimenea de termoeléctrica")
 
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-indigo-800">Dioxido de Nitrogeno (NO2)</h3>
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="p-4 bg-yellow-50 rounded-lg text-center">
-                      <p className="text-2xl font-bold text-yellow-700">10</p>
-                      <p className="text-sm">ug/m3 Anual</p>
-                      <p className="text-xs text-gray-600">OMS 2021</p>
-                    </div>
-                    <div className="p-4 bg-orange-50 rounded-lg text-center">
-                      <p className="text-2xl font-bold text-orange-700">25</p>
-                      <p className="text-sm">ug/m3 24h</p>
-                      <p className="text-xs text-gray-600">OMS 2021</p>
-                    </div>
-                    <div className="p-4 bg-red-50 rounded-lg text-center">
-                      <p className="text-2xl font-bold text-red-700">100</p>
-                      <p className="text-sm">ug/m3 Anual</p>
-                      <p className="text-xs text-gray-600">OEFA Peru</p>
-                    </div>
-                  </div>
-                  <p className="text-sm mt-3 text-gray-700">
-                    <strong>Fuente principal:</strong> Trafico vehicular, termoelectricas. 
-                    <strong> Efectos:</strong> Irritacion respiratoria, asma, precursor de ozono.
-                  </p>
-                </div>
+# TAB 3: EPA
+with tab3:
+    st.header("EPA - Environmental Protection Agency (USA)")
+    st.info("**NAAQS (National Ambient Air Quality Standards):** Estándares primarios (salud) y secundarios (bienestar público, visibilidad, ecosistemas)")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader("Estándares Actuales")
+        st.metric("PM2.5 Anual", "9.0 μg/m³", help="2024")
+        st.metric("PM2.5 24h", "35 μg/m³")
+        st.metric("PM10 24h", "150 μg/m³")
+        st.metric("O3 8h", "0.070 ppm")
+        st.metric("SO2 1h", "75 ppb")
+    
+    with col2:
+        st.subheader("Evolución PM2.5 Anual")
+        evolucion_data = pd.DataFrame([
+            {'año': 1997, 'valor': 15},
+            {'año': 2006, 'valor': 15},
+            {'año': 2012, 'valor': 12},
+            {'año': 2024, 'valor': 9}
+        ])
+        fig_evol = px.line(evolucion_data, x='año', y='valor', markers=True, 
+                           title='Reducción del 40% desde 1997')
+        fig_evol.update_traces(line_color='#8b5cf6', line_width=3)
+        st.plotly_chart(fig_evol, use_container_width=True)
+    
+    st.success("**Implementación**\n- Estados desarrollan SIP (State Implementation Plans)\n- Zonas de no cumplimiento requieren medidas adicionales\n- Sistema de permisos de emisión\n- Monitoreo continuo obligatorio")
 
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-indigo-800">Dioxido de Azufre (SO2)</h3>
-                  <ResponsiveContainer width="100%" height={250}>
-                    <BarChart data={airStandards.so2}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="entidad" />
-                      <YAxis label={{ value: 'ug/m3', angle: -90, position: 'insideLeft' }} />
-                      <Tooltip />
-                      <Bar dataKey="dia24h" fill="#ef4444" name="24 horas" />
-                      <Bar dataKey="hora1" fill="#f87171" name="1 hora" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                  <p className="text-sm mt-3 text-gray-700">
-                    <strong>Fuente:</strong> Quema de carbon, refinacion de petroleo, fundicion de metales.
-                    <strong> Impacto:</strong> Lluvia acida, irritacion respiratoria severa.
-                  </p>
-                </div>
+# TAB 4: Canada
+with tab4:
+    st.header("Canada - CAAQS (Canadian Ambient Air Quality Standards)")
+    st.info("Sistema de gestión por **Air Zones** con mejora continua. Estándares se actualizan cada 5 años.")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader("Estándares 2020-2025")
+        canada_data = pd.DataFrame([
+            ['PM2.5 (24h)', 27, 25],
+            ['PM2.5 (Anual)', 8.8, 8.0],
+            ['O3 (8h)', 62, 60],
+            ['NO2 (1h)', 60, 50],
+            ['SO2 (1h)', 70, 65]
+        ], columns=['Contaminante', '2020', '2025'])
+        st.dataframe(canada_data, use_container_width=True, hide_index=True)
+    
+    with col2:
+        st.subheader("Gestión por Air Zones")
+        st.success("**Verde - Achievement:** Cumple estándares")
+        st.warning("**Amarillo - Management:** Requiere gestión")
+        st.error("**Naranja - Action:** Acciones requeridas")
+        st.error("**Rojo - Critical:** Intervención urgente")
+    
+    st.info("**Innovación Canadiense:** Canadá es líder en monitoreo satelital de calidad del aire, modelamiento atmosférico avanzado, y gestión de incendios forestales. Enfoque de mejora continua con estándares progresivamente más estrictos basados en evidencia científica.")
 
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-indigo-800">Ozono Troposferico (O3)</h3>
-                  <ResponsiveContainer width="100%" height={250}>
-                    <BarChart data={airStandards.o3}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="entidad" />
-                      <YAxis label={{ value: 'ug/m3', angle: -90, position: 'insideLeft' }} />
-                      <Tooltip />
-                      <Bar dataKey="hora8" fill="#8b5cf6" name="8 horas" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                  <p className="text-sm mt-3 text-gray-700">
-                    <strong>Contaminante secundario:</strong> No se emite directamente, se forma por reaccion 
-                    fotoquimica entre NOx y VOCs bajo luz solar. Niveles mas altos en dias soleados.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
+# TAB 5: Línea de Tiempo
+with tab5:
+    st.header("Línea de Tiempo - Evolución de Normativas de Aire")
+    
+    for idx, row in timeline.iterrows():
+        color = {
+            'OEFA': '🟣',
+            'OMS': '🟢',
+            'EPA': '🔵',
+            'Canada': '🟠'
+        }.get(row['entidad'], '⚪')
+        
+        st.markdown(f"{color} **{row['año']} - {row['entidad']}**")
+        st.caption(row['evento'])
+        st.divider()
 
-          <TabsContent value="oefa">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl">OEFA - Organismo de Evaluacion y Fiscalizacion Ambiental</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <Alert className="bg-indigo-50 border-indigo-200">
-                  <AlertDescription>
-                    <strong>Marco legal principal:</strong> D.S. N 003-2017-MINAM (ECA Aire) y 
-                    D.S. N 003-2010-MINAM (LMP para Termoelectricas)
-                  </AlertDescription>
-                </Alert>
+# TAB 6: Plantas
+with tab6:
+    st.header("Comparación: Plantas Hidroeléctricas vs Termoeléctricas")
+    st.info("Las plantas hidroeléctricas NO emiten contaminantes atmosféricos, mientras que las termoeléctricas son una fuente significativa de NOx, SO2 y PM.")
+    
+    st.subheader("Emisiones por Tipo de Planta (mg/Nm³)")
+    fig_plantas = go.Figure()
+    fig_plantas.add_trace(go.Bar(x=plantas_comparacion['tipo'], y=plantas_comparacion['emisionNOx'], name='NOx', marker_color='#fbbf24'))
+    fig_plantas.add_trace(go.Bar(x=plantas_comparacion['tipo'], y=plantas_comparacion['emisionSO2'], name='SO2', marker_color='#ef4444'))
+    fig_plantas.add_trace(go.Bar(x=plantas_comparacion['tipo'], y=plantas_comparacion['emisionPM'], name='PM', marker_color='#6b7280'))
+    fig_plantas.update_layout(barmode='group', height=400)
+    st.plotly_chart(fig_plantas, use_container_width=True)
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.success("**Hidroeléctrica - Ventajas ambientales:**\n- Cero emisiones atmosféricas\n- Energía renovable\n- No requiere LMP de aire\n- No contribuye al cambio climático")
+    with col2:
+        st.error("**Termoeléctrica - Características:**\n- Alta emisión de NOx y SO2\n- Contribuye a lluvia ácida\n- Requiere cumplir LMP estrictos\n- Emisiones de CO2")
 
-                <div>
-                  <h3 className="text-xl font-semibold mb-3">Estandares de Calidad Ambiental (ECA) - Aire</h3>
-                  <div className="overflow-x-auto">
-                    <table className="w-full border-collapse border border-gray-300">
-                      <thead className="bg-indigo-100">
-                        <tr>
-                          <th className="border p-2">Contaminante</th>
-                          <th className="border p-2">Periodo</th>
-                          <th className="border p-2">Valor ECA</th>
-                          <th className="border p-2">Unidad</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr><td className="border p-2">PM2.5</td><td className="border p-2">24 horas</td><td className="border p-2 font-bold">50</td><td className="border p-2">ug/m3</td></tr>
-                        <tr><td className="border p-2">PM2.5</td><td className="border p-2">Anual</td><td className="border p-2 font-bold">25</td><td className="border p-2">ug/m3</td></tr>
-                        <tr><td className="border p-2">PM10</td><td className="border p-2">24 horas</td><td className="border p-2 font-bold">100</td><td className="border p-2">ug/m3</td></tr>
-                        <tr><td className="border p-2">PM10</td><td className="border p-2">Anual</td><td className="border p-2 font-bold">50</td><td className="border p-2">ug/m3</td></tr>
-                        <tr className="bg-yellow-50"><td className="border p-2">NO2</td><td className="border p-2">1 hora</td><td className="border p-2 font-bold">200</td><td className="border p-2">ug/m3</td></tr>
-                        <tr className="bg-yellow-50"><td className="border p-2">NO2</td><td className="border p-2">Anual</td><td className="border p-2 font-bold">100</td><td className="border p-2">ug/m3</td></tr>
-                        <tr className="bg-red-50"><td className="border p-2">SO2</td><td className="border p-2">24 horas</td><td className="border p-2 font-bold">250</td><td className="border p-2">ug/m3</td></tr>
-                        <tr><td className="border p-2">O3</td><td className="border p-2">8 horas</td><td className="border p-2 font-bold">100</td><td className="border p-2">ug/m3</td></tr>
-                        <tr><td className="border p-2">CO</td><td className="border p-2">8 horas</td><td className="border p-2 font-bold">10,000</td><td className="border p-2">ug/m3</td></tr>
-                        <tr><td className="border p-2">CO</td><td className="border p-2">1 hora</td><td className="border p-2 font-bold">30,000</td><td className="border p-2">ug/m3</td></tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+# TAB 7: PAMA
+with tab7:
+    st.header("Plan de Adecuación y Manejo Ambiental (PAMA)")
+    st.info("El PAMA permite a las empresas adecuarse gradualmente a los LMP mediante inversiones en tecnología de control de emisiones.")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader("Objetivos del PAMA")
+        st.markdown("""
+        - Cumplir con LMP vigentes
+        - Reducir emisiones progresivamente
+        - Implementar mejores tecnologías disponibles
+        - Mantener operatividad económica
+        - Proteger salud pública
+        """)
+    
+    with col2:
+        st.subheader("Plazos Típicos")
+        st.markdown("""
+        - **Diagnóstico:** 3 meses
+        - **Ingeniería:** 6-9 meses
+        - **Adquisición:** 6-12 meses
+        - **Instalación:** 12-18 meses
+        - **Pruebas:** 3-6 meses
+        - **Total:** 24-36 meses
+        """)
+    
+    st.subheader("Costos Estimados de Tecnologías de Control")
+    tecnologias = pd.DataFrame([
+        ['Sistema SCR', 'NOx', '>90%', '$2-5 millones', '12-18 meses'],
+        ['Desulfuración (FGD)', 'SO2', '>95%', '$5-10 millones', '18-24 meses'],
+        ['Quemadores Low-NOx', 'NOx', '30-50%', '$500k-1M', '6-12 meses'],
+        ['Filtros de mangas', 'PM', '>99%', '$1-3 millones', '9-15 meses']
+    ], columns=['Tecnología', 'Contaminante', 'Eficiencia', 'Costo (USD)', 'Plazo'])
+    st.dataframe(tecnologias, use_container_width=True, hide_index=True)
+    
+    st.warning("""
+    **Caso 2: Central Termoeléctrica**
+    
+    Tu caso involucra una central que reporta excedencias de LMP de NOx y SO2 **durante arranques y paradas programadas**, 
+    y alega cumplimiento parcial del PAMA.
+    
+    **Preguntas clave para análisis:**
+    1. ¿Las excedencias durante arranques/paradas están contempladas en la normativa?
+    2. ¿El PAMA incluye medidas para estos eventos operacionales?
+    3. ¿Existe reincidencia o es la primera vez?
+    4. ¿Hay atenuantes (inversión en tecnología) o agravantes (impacto en población)?
+    5. ¿Qué medidas técnicas inmediatas se pueden implementar?
+    """)
 
-                <div>
-                  <h3 className="text-xl font-semibold mb-3">Limites Maximos Permisibles (LMP) - Termoelectricas</h3>
-                  <p className="text-sm mb-3 text-gray-700">
-                    D.S. N 003-2010-MINAM | Se miden en la chimenea (punto de emision)
-                  </p>
-                  <div className="overflow-x-auto">
-                    <table className="w-full border-collapse border border-gray-300">
-                      <thead className="bg-green-100">
-                        <tr>
-                          <th className="border p-2">Contaminante</th>
-                          <th className="border p-2">Gas Natural</th>
-                          <th className="border p-2">Diesel</th>
-                          <th className="border p-2">Residual</th>
-                          <th className="border p-2">Unidad</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {lmpThermoelectric.map((row, idx) => (
-                          <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                            <td className="border p-2 font-semibold">{row.contaminante}</td>
-                            <td className="border p-2 text-center">{row.gasNatural || '---'}</td>
-                            <td className="border p-2 text-center font-bold text-orange-700">{row.diesel || '---'}</td>
-                            <td className="border p-2 text-center">{row.residual || '---'}</td>
-                            <td className="border p-2">{row.unidad}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  
-                  <Alert className="mt-4">
-                    <AlertDescription>
-                      <strong>Caso 2:</strong> Tu central termoelectrica reporta excedencias de LMP de NOx 
-                      y SO2 durante arranques y paradas programadas. Estos valores aplican en condiciones normales de operacion.
-                    </AlertDescription>
-                  </Alert>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <h4 className="font-bold text-blue-900 mb-2">ECA (Receptor)</h4>
-                    <ul className="text-sm space-y-1">
-                      <li>Se mide en el ambiente</li>
-                      <li>Protege salud publica</li>
-                      <li>Puede tener multiples fuentes</li>
-                      <li>Ejemplo: Estacion de monitoreo en poblacion</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 bg-green-50 rounded-lg">
-                    <h4 className="font-bold text-green-900 mb-2">LMP (Fuente)</h4>
-                    <ul className="text-sm space-y-1">
-                      <li>Se mide en la chimenea</li>
-                      <li>Responsabilidad del titular</li>
-                      <li>Control de emisiones industriales</li>
-                      <li>Ejemplo: Chimenea de termoelectrica</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="epa">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl">EPA - Environmental Protection Agency (USA)</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <Alert className="bg-blue-50 border-blue-200">
-                  <AlertDescription>
-                    <strong>NAAQS (National Ambient Air Quality Standards):</strong> Estandares primarios 
-                    (salud) y secundarios (bienestar publico, visibilidad, ecosistemas)
-                  </AlertDescription>
-                </Alert>
-
-                <div className="grid grid-cols-2 gap-6">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3">Estandares Actuales</h3>
-                    <div className="space-y-2">
-                      <div className="p-3 bg-purple-50 rounded">
-                        <p className="font-semibold">PM2.5</p>
-                        <p className="text-sm">Anual: <strong>9.0 ug/m3</strong> (2024)</p>
-                        <p className="text-sm">24h: <strong>35 ug/m3</strong></p>
-                      </div>
-                      <div className="p-3 bg-blue-50 rounded">
-                        <p className="font-semibold">PM10</p>
-                        <p className="text-sm">24h: <strong>150 ug/m3</strong></p>
-                      </div>
-                      <div className="p-3 bg-yellow-50 rounded">
-                        <p className="font-semibold">O3</p>
-                        <p className="text-sm">8h: <strong>0.070 ppm</strong></p>
-                      </div>
-                      <div className="p-3 bg-red-50 rounded">
-                        <p className="font-semibold">SO2</p>
-                        <p className="text-sm">1h: <strong>75 ppb</strong></p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3">Evolucion PM2.5 Anual</h3>
-                    <ResponsiveContainer width="100%" height={200}>
-                      <LineChart data={[
-                        { año: 1997, valor: 15 },
-                        { año: 2006, valor: 15 },
-                        { año: 2012, valor: 12 },
-                        { año: 2024, valor: 9 }
-                      ]}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="año" />
-                        <YAxis />
-                        <Tooltip />
-                        <Line type="monotone" dataKey="valor" stroke="#8b5cf6" strokeWidth={3} />
-                      </LineChart>
-                    </ResponsiveContainer>
-                    <p className="text-xs text-gray-600 mt-2">
-                      Reduccion del 40% desde 1997 basada en evidencia cientifica
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-4 bg-green-50 rounded-lg">
-                  <h4 className="font-semibold text-green-900 mb-2">Implementacion</h4>
-                  <ul className="text-sm space-y-1">
-                    <li>Estados desarrollan SIP (State Implementation Plans)</li>
-                    <li>Zonas de no cumplimiento requieren medidas adicionales</li>
-                    <li>Sistema de permisos de emision</li>
-                    <li>Monitoreo continuo obligatorio</li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="canada">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl">Canada - CAAQS (Canadian Ambient Air Quality Standards)</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <Alert>
-                  <AlertDescription>
-                    Sistema de gestion por <strong>Air Zones</strong> con mejora continua. 
-                    Estandares se actualizan cada 5 años.
-                  </AlertDescription>
-                </Alert>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3">Estandares 2020-2025</h3>
-                    <div className="overflow-x-auto">
-                      <table className="w-full border text-sm">
-                        <thead className="bg-red-100">
-                          <tr>
-                            <th className="border p-2">Contaminante</th>
-                            <th className="border p-2">2020</th>
-                            <th className="border p-2">2025</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr><td className="border p-2">PM2.5 (24h)</td><td className="border p-2">27</td><td className="border p-2">25</td></tr>
-                          <tr><td className="border p-2">PM2.5 (Anual)</td><td className="border p-2">8.8</td><td className="border p-2">8.0</td></tr>
-                          <tr><td className="border p-2">O3 (8h)</td><td className="border p-2">62</td><td className="border p-2">60</td></tr>
-                          <tr><td className="border p-2">NO2 (1h)</td><td className="border p-2">60</td><td className="border p-2">50</td></tr>
-                          <tr><td className="border p-2">SO2 (1h)</td><td className="border p-2">70</td><td className="border p-2">65</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3">Gestion por Air Zones</h3>
-                    <div className="space-y-2">
-                      <div className="p-3 bg-green-100 rounded">
-                        <p className="font-semibold">Verde - Achievement</p>
-                        <p className="text-xs">Cumple estandares</p>
-                      </div>
-                      <div className="p-3 bg-yellow-100 rounded">
-                        <p className="font-semibold">Amarillo - Management</p>
-                        <p className="text-xs">Requiere gestion</p>
-                      </div>
-                      <div className="p-3 bg-orange-100 rounded">
-                        <p className="font-semibold">Naranja - Action</p>
-                        <p className="text-xs">Acciones requeridas</p>
-                      </div>
-                      <div className="p-3 bg-red-100 rounded">
-                        <p className="font-semibold">Rojo - Critical</p>
-                        <p className="text-xs">Intervencion urgente</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-4 bg-blue-50 rounded-lg">
-                  <h4 className="font-semibold mb-2">Innovacion Canadiense</h4>
-                  <p className="text-sm">
-                    Canada es lider en monitoreo satelital de calidad del aire, modelamiento atmosferico 
-                    avanzado, y gestion de incendios forestales. Enfoque de mejora continua con 
-                    estandares progresivamente mas estrictos basados en evidencia cientifica.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="linea">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl">Linea de Tiempo - Evolucion de Normativas de Aire</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {timeline.map((item, idx) => (
-                    <div key={idx} className={`p-3 rounded-lg border-l-4 ${
-                      item.entidad === 'OEFA' ? 'bg-purple-50 border-purple-500' :
-                      item.entidad === 'OMS' ? 'bg-green-50 border-green-500' :
-                      item.entidad === 'EPA' ? 'bg-blue-50 border-blue-500' :
-                      'bg-orange-50 border-orange-500'
-                    }`}>
-                      <p className="font-semibold">{item.año} - {item.entidad}</p>
-                      <p className="text-sm text-gray-700">{item.evento}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="plantas">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl">Comparacion: Plantas Hidroelectricas vs Termoelectricas</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <Alert className="bg-blue-50">
-                  <AlertDescription>
-                    Las plantas hidroelectricas NO emiten contaminantes atmosfericos, mientras que las 
-                    termoelectricas son una fuente significativa de NOx, SO2 y PM.
-                  </AlertDescription>
-                </Alert>
-
-                <div>
-                  <h3 className="text-lg font-semibold mb-3">Emisiones por Tipo de Planta (mg/Nm3)</h3>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={plantasComparacion}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="tipo" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Bar dataKey="emisionNOx" fill="#fbbf24" name="NOx" />
-                      <Bar dataKey="emisionSO2" fill="#ef4444" name="SO2" />
-                      <Bar dataKey="emisionPM" fill="#6b7280" name="PM" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-green-50 rounded-lg border-2 border-green-500">
-                    <h4 className="font-bold text-green-900 mb-3">Hidroelectrica</h4>
-                    <p className="text-sm mb-2"><strong>Ventajas ambientales:</strong></p>
-                    <ul className="text-sm space-y-1">
-                      <li>Cero emisiones atmosfericas</li>
-                      <li>Energia renovable</li>
-                      <li>No requiere LMP de aire</li>
-                      <li>No contribuye al cambio climatico</li>
-                    </ul>
-                  </div>
-
-                  <div className="p-4 bg-red-50 rounded-lg border-2 border-red-500">
-                    <h4 className="font-bold text-red-900 mb-3">Termoelectrica</h4>
-                    <p className="text-sm mb-2"><strong>Caracteristicas:</strong></p>
-                    <ul className="text-sm space-y-1">
-                      <li>Alta emision de NOx y SO2</li>
-                      <li>Contribuye a lluvia acida</li>
-                      <li>Requiere cumplir LMP estrictos</li>
-                      <li>Emisiones de CO2</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="pama">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl">Plan de Adecuacion y Manejo Ambiental (PAMA)</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <Alert>
-                  <AlertDescription>
-                    El PAMA permite a las empresas adecuarse gradualmente a los LMP mediante inversiones 
-                    en tecnologia de control de emisiones.
-                  </AlertDescription>
-                </Alert>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <h4 className="font-semibold mb-2">Objetivos del PAMA</h4>
-                    <ul className="text-sm space-y-1">
-                      <li>Cumplir con LMP vigentes</li>
-                      <li>Reducir emisiones progresivamente</li>
-                      <li>Implementar mejores tecnologias disponibles</li>
-                      <li>Mantener operatividad economica</li>
-                      <li>Proteger salud publica</li>
-                    </ul>
-                  </div>
-
-                  <div className="p-4 bg-green-50 rounded-lg">
-                    <h4 className="font-semibold mb-2">Plazos Tipicos</h4>
-                    <ul className="text-sm space-y-1">
-                      <li><strong>Diagnostico:</strong> 3 meses</li>
-                      <li><strong>Ingenieria:</strong> 6-9 meses</li>
-                      <li><strong>Adquisicion:</strong> 6-12 meses</li>
-                      <li><strong>Instalacion:</strong> 12-18 meses</li>
-                      <li><strong>Pruebas:</strong> 3-6 meses</li>
-                      <li><strong>Total:</strong> 24-36 meses</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold mb-3">Costos Estimados de Tecnologias de Control</h4>
-                  <div className="overflow-x-auto">
-                    <table className="w-full border text-sm">
-                      <thead className="bg-indigo-100">
-                        <tr>
-                          <th className="border p-2">Tecnologia</th>
-                          <th className="border p-2">Contaminante</th>
-                          <th className="border p-2">Eficiencia</th>
-                          <th className="border p-2">Costo (USD)</th>
-                          <th className="border p-2">Plazo</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr><td className="border p-2">Sistema SCR</td><td className="border p-2">NOx</td><td className="border p-2">&gt;90%</td><td className="border p-2">$2-5 millones</td><td className="border p-2">12-18 meses</td></tr>
-                        <tr><td className="border p-2">Desulfuracion (FGD)</td><td className="border p-2">SO2</td><td className="border p-2">&gt;95%</td><td className="border p-2">$5-10 millones</td><td className="border p-2">18-24 meses</td></tr>
-                        <tr><td className="border p-2">Quemadores Low-NOx</td><td className="border p-2">NOx</td><td className="border p-2">30-50%</td><td className="border p-2">$500k-1M</td><td className="border p-2">6-12 meses</td></tr>
-                        <tr><td className="border p-2">Filtros de mangas</td><td className="border p-2">PM</td><td className="border p-2">&gt;99%</td><td className="border p-2">$1-3 millones</td><td className="border p-2">9-15 meses</td></tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                <div className="p-4 bg-yellow-50 rounded-lg">
-                  <h4 className="font-semibold mb-2">Caso 2: Central Termoelectrica</h4>
-                  <p className="text-sm mb-2">
-                    Tu caso involucra una central que reporta excedencias de LMP de NOx y SO2 <strong>durante 
-                    arranques y paradas programadas</strong>, y alega cumplimiento parcial del PAMA.
-                  </p>
-                  <p className="text-sm font-semibold">Preguntas clave para analisis:</p>
-                  <ul className="text-sm space-y-1 mt-2">
-                    <li>1. Las excedencias durante arranques/paradas estan contempladas en la normativa?</li>
-                    <li>2. El PAMA incluye medidas para estos eventos operacionales?</li>
-                    <li>3. Existe reincidencia o es la primera vez?</li>
-                    <li>4. Hay atenuantes (inversion en tecnologia) o agravantes (impacto en poblacion)?</li>
-                    <li>5. Que medidas tecnicas inmediatas se pueden implementar?</li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        <div className="mt-8 p-4 bg-white rounded-lg shadow text-center">
-          <p className="text-sm text-gray-600">
-            <strong>Universidad Nacional de Moquegua</strong> | Facultad de Ingenieria y Arquitectura
-          </p>
-          <p className="text-sm text-gray-600">
-            Curso: Contaminacion y Control Atmosferico | Prof. Dr. Jose Antonio Valeriano Zapana
-          </p>
-          <p className="text-xs text-gray-500 mt-2">
-            2024-2025 | Sistema basado en normativas oficiales de OEFA, OMS, EPA y Canada
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default AirQualityApp;
+# Footer
+st.markdown("---")
+st.markdown("""
+<div style='text-align: center; padding: 20px; background-color: white; border-radius: 10px;'>
+    <p><strong>Universidad Nacional de Moquegua</strong> | Facultad de Ingeniería y Arquitectura</p>
+    <p>Curso: Contaminación y Control Atmosférico | Prof. Dr. José Antonio Valeriano Zapana</p>
+    <p style='font-size: 12px; color: #6B7280;'>2024-2025 | Sistema basado en normativas oficiales de OEFA, OMS, EPA y Canada</p>
+</div>
+""", unsafe_allow_html=True)
