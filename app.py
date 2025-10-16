@@ -673,9 +673,41 @@ with st.sidebar:
     
     st.markdown("---")
     
-    # Búsqueda
-    busqueda = st.text_input("🔎 Buscar normativa...", placeholder="Ej: PM2.5, ECA, protocolo...")
-    st.session_state.busqueda = busqueda
+    # Búsqueda con funcionalidad
+    busqueda = st.text_input("🔎 Buscar normativa...", placeholder="Ej: PM2.5, ECA, protocolo...", key="search_input")
+    
+    # Sistema de búsqueda inteligente
+    if busqueda:
+        busqueda_lower = busqueda.lower()
+        
+        # Diccionario de palabras clave por página
+        keywords = {
+            "ECA": ["eca", "estándar", "estandar", "calidad ambiental", "pm2.5", "pm10", "no2", "so2", "co", "o3", "ozono", "003-2017", "010-2019", "074-2001"],
+            "LMP": ["lmp", "límite", "limite", "máximo permisible", "maximo permisible", "emisión", "emision", "termoeléctrica", "termoelectrica", "vehicular", "minería", "mineria", "003-2010", "011-2009", "010-2010"],
+            "Protocolo": ["protocolo", "monitoreo", "digesa", "medición", "medicion", "muestreo", "1404-2005", "026-2000", "195-2010"],
+            "Lineamiento": ["lineamiento", "inventario", "alerta", "estado de alerta", "181-2016", "009-2003", "1278"],
+            "Medidas": ["medida", "control", "tecnología", "tecnologia", "filtro", "precipitador", "scrubber", "fgd", "scr", "nox", "28611"],
+            "Normativas": ["internacional", "oms", "who", "epa", "usa", "canadá", "canada", "naaqs", "caaqs", "guía", "guia"]
+        }
+        
+        # Buscar coincidencias
+        mejor_match = None
+        max_coincidencias = 0
+        
+        for pagina, palabras in keywords.items():
+            coincidencias = sum(1 for palabra in palabras if palabra in busqueda_lower)
+            if coincidencias > max_coincidencias:
+                max_coincidencias = coincidencias
+                mejor_match = pagina
+        
+        # Si encuentra coincidencia, mostrar sugerencia
+        if mejor_match and max_coincidencias > 0:
+            st.success(f"✓ Encontrado en: **{mejor_match}**")
+            if st.button(f"Ir a {mejor_match}", use_container_width=True, type="primary", key="search_go"):
+                st.session_state.pagina = mejor_match
+                st.rerun()
+        else:
+            st.warning("⚠️ No se encontraron resultados. Intenta con: ECA, LMP, Protocolo, PM2.5, etc.")
     
     st.markdown("---")
     
