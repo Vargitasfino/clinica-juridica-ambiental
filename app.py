@@ -69,74 +69,33 @@ st.markdown("""
         padding: 0.5rem 1rem;
     }
     
-    /* FORZAR BLANCO EN EL BOTÓN DEL SIDEBAR - ESQUINA SUPERIOR IZQUIERDA */
+    /* Botón del sidebar - solo ajuste visual sutil */
     button[kind="header"],
     button[kind="headerNoPadding"],
     [data-testid="collapsedControl"],
-    [data-testid="baseButton-header"],
-    .css-1v0mbdj,
-    .css-1gulkj5,
-    section[data-testid="stSidebar"] button:first-child {
-        background-color: rgba(255, 255, 255, 0.25) !important;
-        color: #FFFFFF !important;
-        border: 2px solid rgba(255, 255, 255, 0.4) !important;
+    [data-testid="baseButton-header"] {
+        background-color: rgba(255, 255, 255, 0.1) !important;
         border-radius: 8px !important;
     }
     
     button[kind="header"]:hover,
     button[kind="headerNoPadding"]:hover,
     [data-testid="collapsedControl"]:hover {
-        background-color: rgba(255, 255, 255, 0.5) !important;
-        border-color: rgba(255, 255, 255, 0.6) !important;
+        background-color: rgba(255, 255, 255, 0.2) !important;
     }
     
-    /* FORZAR LAS FLECHAS (››) A SER COMPLETAMENTE BLANCAS */
+    /* FLECHAS (››) BLANCAS - SIMPLE Y DIRECTO */
     button[kind="header"] svg,
-    button[kind="headerNoPadding"] svg,
-    [data-testid="collapsedControl"] svg,
-    [data-testid="baseButton-header"] svg,
-    section[data-testid="stSidebar"] button svg {
-        fill: #FFFFFF !important;
-        color: #FFFFFF !important;
-        stroke: #FFFFFF !important;
-    }
-    
-    /* TODOS los elementos dentro del SVG - BLANCOS */
     button[kind="header"] svg *,
+    button[kind="headerNoPadding"] svg,
     button[kind="headerNoPadding"] svg *,
+    [data-testid="collapsedControl"] svg,
     [data-testid="collapsedControl"] svg *,
-    [data-testid="baseButton-header"] svg *,
-    section[data-testid="stSidebar"] button svg * {
-        fill: #FFFFFF !important;
-        color: #FFFFFF !important;
-        stroke: #FFFFFF !important;
-    }
-    
-    /* PATH específico - BLANCO PURO */
-    button[kind="header"] svg path,
-    button[kind="headerNoPadding"] svg path,
-    [data-testid="collapsedControl"] svg path,
-    [data-testid="baseButton-header"] svg path,
-    section[data-testid="stSidebar"] button svg path {
-        fill: #FFFFFF !important;
-        stroke: #FFFFFF !important;
-    }
-    
-    /* POLYLINE (si las flechas usan polyline) - BLANCO */
-    button[kind="header"] svg polyline,
-    button[kind="headerNoPadding"] svg polyline,
-    [data-testid="collapsedControl"] svg polyline,
-    section[data-testid="stSidebar"] button svg polyline {
-        stroke: #FFFFFF !important;
-        fill: none !important;
-    }
-    
-    /* LINE (si las flechas usan line) - BLANCO */
-    button[kind="header"] svg line,
-    button[kind="headerNoPadding"] svg line,
-    [data-testid="collapsedControl"] svg line,
-    section[data-testid="stSidebar"] button svg line {
-        stroke: #FFFFFF !important;
+    [data-testid="baseButton-header"] svg,
+    [data-testid="baseButton-header"] svg * {
+        fill: white !important;
+        stroke: white !important;
+        color: white !important;
     }
     
     /* Texto del sidebar MÁS VISIBLE */
