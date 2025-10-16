@@ -682,15 +682,15 @@ if 'busqueda' not in st.session_state:
 # Sidebar profesional
 with st.sidebar:
     st.markdown("""
-    <h3 style='color: white; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'>
+    <h3 style='color: white; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; margin-top: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'>
         🔍 NAVEGACIÓN RÁPIDA
     </h3>
     """, unsafe_allow_html=True)
     
-    st.markdown("---")
+    st.markdown("<div style='margin: 0.5rem 0;'></div>", unsafe_allow_html=True)
     
     # Búsqueda con funcionalidad
-    busqueda = st.text_input("🔎 Buscar normativa...", placeholder="Ej: PM2.5, ECA, protocolo...", key="search_input")
+    busqueda = st.text_input("🔎 Buscar normativa...", placeholder="Ej: PM2.5, ECA, protocolo...", key="search_input", label_visibility="collapsed")
     
     # Sistema de búsqueda inteligente
     if busqueda:
@@ -725,10 +725,10 @@ with st.sidebar:
         else:
             st.warning("⚠️ No se encontraron resultados. Intenta con: ECA, LMP, Protocolo, PM2.5, etc.")
     
-    st.markdown("---")
+    st.markdown("<div style='margin: 0.75rem 0;'></div>", unsafe_allow_html=True)
     
     st.markdown("""
-    <h4 style='color: white; font-weight: 700; font-size: 1rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'>
+    <h4 style='color: white; font-weight: 700; font-size: 1rem; margin-bottom: 0.75rem; margin-top: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'>
         📋 SECCIONES
     </h4>
     """, unsafe_allow_html=True)
