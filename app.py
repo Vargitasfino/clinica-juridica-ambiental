@@ -43,6 +43,20 @@ st.markdown("""
     
     .main {
         background: transparent;
+        padding-top: 0 !important;
+    }
+    
+    /* Ocultar espacio superior blanco */
+    .block-container {
+        padding-top: 1rem !important;
+    }
+    
+    header {
+        background: transparent !important;
+    }
+    
+    [data-testid="stHeader"] {
+        background: transparent !important;
     }
     
     /* Sidebar profesional */
@@ -81,25 +95,28 @@ st.markdown("""
     .institutional-header h1 {
         font-size: 2.5rem;
         font-weight: 800;
-        color: white;
+        color: white !important;
         margin: 0 0 0.5rem 0;
         letter-spacing: -0.02em;
         line-height: 1.2;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
     
     .institutional-header .subtitle {
         font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.95);
+        color: rgba(255, 255, 255, 0.95) !important;
         font-weight: 500;
         margin: 0.5rem 0;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     
     .institutional-header .metadata {
         font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.75);
+        color: rgba(255, 255, 255, 0.85) !important;
         margin-top: 1rem;
         padding-top: 1rem;
         border-top: 1px solid rgba(255, 255, 255, 0.15);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     
     /* Breadcrumbs profesionales */
@@ -166,10 +183,11 @@ st.markdown("""
     }
     
     .corporate-card h2, .corporate-card h3 {
-        color: var(--text-primary);
+        color: white !important;
         font-weight: 700;
         margin-top: 0;
         letter-spacing: -0.01em;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
     
     .corporate-card h2 {
@@ -180,6 +198,14 @@ st.markdown("""
     .corporate-card h3 {
         font-size: 1.4rem;
         margin-bottom: 0.75rem;
+    }
+    
+    .corporate-card h4 {
+        color: white !important;
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     
     .corporate-card p, .corporate-card li {
@@ -232,10 +258,11 @@ st.markdown("""
     }
     
     .normative-card h3 {
-        color: var(--text-primary);
+        color: white !important;
         font-weight: 700;
         font-size: 1.35rem;
         margin: 0 0 1rem 0;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
     
     .normative-card p {
@@ -1035,7 +1062,7 @@ elif st.session_state.pagina == "ECA":
     # Información adicional
     with st.expander("ℹ️ Ver información adicional sobre contaminantes criterio"):
         st.markdown("""
-        ### Contaminantes Criterio Regulados
+        #### Contaminantes Criterio Regulados
         
         **Material Particulado (PM2.5 y PM10)**
         - Partículas sólidas o líquidas suspendidas en el aire
@@ -1077,7 +1104,7 @@ elif st.session_state.pagina == "ECA":
         - Hidrocarburo aromático policíclico (HAP)
         - Fuentes: combustión incompleta de materia orgánica
         - Efectos: cancerígeno, mutagénico
-        """)
+        """, unsafe_allow_html=True)
 
 # ===================== PÁGINA LMP =====================
 elif st.session_state.pagina == "LMP":
@@ -1433,50 +1460,50 @@ elif st.session_state.pagina == "Protocolo":
     # Proceso de monitoreo
     with st.expander("📋 Ver flujo de proceso de monitoreo de calidad del aire"):
         st.markdown("""
-        ### Proceso Completo de Monitoreo
+        #### Proceso Completo de Monitoreo
         
-        #### 1️⃣ Planificación
+        **1. Planificación**
         - Definición de objetivos del monitoreo
         - Selección de ubicación de estaciones (criterios de macro y microescala)
         - Determinación de parámetros y frecuencias de muestreo
         - Elaboración de Plan de Monitoreo
         
-        #### 2️⃣ Implementación
+        **2. Implementación**
         - Instalación y configuración de equipos
         - Calibración inicial con gases y patrones certificados
         - Verificación de condiciones ambientales del sitio
         - Inicio de operación según protocolo
         
-        #### 3️⃣ Operación y Mantenimiento
+        **3. Operación y Mantenimiento**
         - Calibraciones periódicas (diarias, semanales, mensuales)
         - Mantenimiento preventivo de equipos
         - Verificación de flujos y condiciones operativas
         - Registro de eventos y anomalías
         
-        #### 4️⃣ Aseguramiento de Calidad
+        **4. Aseguramiento de Calidad**
         - Auditorías internas y externas
         - Análisis de blancos y duplicados
         - Control de precisión y exactitud
         - Validación de datos
         
-        #### 5️⃣ Análisis de Laboratorio
+        **5. Análisis de Laboratorio**
         - Análisis gravimétrico (PM)
         - Análisis químico (metales, iones)
         - Control de calidad analítico
         - Certificados de análisis
         
-        #### 6️⃣ Gestión de Datos
+        **6. Gestión de Datos**
         - Transferencia y almacenamiento de datos
         - Validación estadística
         - Cálculo de promedios según ECA
         - Identificación de excedencias
         
-        #### 7️⃣ Reporte
+        **7. Reporte**
         - Informes técnicos periódicos
         - Reportes a autoridades competentes
         - Publicación de resultados (cuando aplique)
         - Acciones correctivas si hay excedencias
-        """)
+        """, unsafe_allow_html=True)
 
 # ===================== PÁGINA LINEAMIENTO =====================
 elif st.session_state.pagina == "Lineamiento":
@@ -1635,34 +1662,34 @@ elif st.session_state.pagina == "Lineamiento":
     # Categorías de inventario de emisiones
     with st.expander("📊 Ver categorías del Inventario de Emisiones Atmosféricas"):
         st.markdown("""
-        ### Categorías de Fuentes según R.M. 181-2016-MINAM
+        #### Categorías de Fuentes según R.M. 181-2016-MINAM
         
-        #### 1. Fuentes Puntuales
-        - **Definición:** Emisiones identificables de chimeneas o ductos específicos
-        - **Ejemplos:** Industrias, centrales térmicas, fundiciones
-        - **Datos requeridos:** Caudal, concentración, temperatura, ubicación geográfica
+        **1. Fuentes Puntuales**
+        - Definición: Emisiones identificables de chimeneas o ductos específicos
+        - Ejemplos: Industrias, centrales térmicas, fundiciones
+        - Datos requeridos: Caudal, concentración, temperatura, ubicación geográfica
         
-        #### 2. Fuentes de Área
-        - **Definición:** Múltiples fuentes pequeñas agregadas geográficamente
-        - **Ejemplos:** Uso de solventes, panaderías, restaurantes, estaciones de servicio
-        - **Datos requeridos:** Consumo de combustible/materia prima, factores de emisión
+        **2. Fuentes de Área**
+        - Definición: Múltiples fuentes pequeñas agregadas geográficamente
+        - Ejemplos: Uso de solventes, panaderías, restaurantes, estaciones de servicio
+        - Datos requeridos: Consumo de combustible/materia prima, factores de emisión
         
-        #### 3. Fuentes Móviles
-        - **Definición:** Vehículos automotores en circulación
-        - **Categorías:** Livianos, pesados, motocicletas, transporte público
-        - **Datos requeridos:** Parque automotor, km recorridos, edad vehicular, tipo combustible
+        **3. Fuentes Móviles**
+        - Definición: Vehículos automotores en circulación
+        - Categorías: Livianos, pesados, motocicletas, transporte público
+        - Datos requeridos: Parque automotor, km recorridos, edad vehicular, tipo combustible
         
-        #### 4. Fuentes Naturales
-        - **Definición:** Emisiones de origen natural
-        - **Ejemplos:** Polvo fugitivo de suelos áridos, emisiones biogénicas
-        - **Datos requeridos:** Cobertura vegetal, características de suelo, meteorología
+        **4. Fuentes Naturales**
+        - Definición: Emisiones de origen natural
+        - Ejemplos: Polvo fugitivo de suelos áridos, emisiones biogénicas
+        - Datos requeridos: Cobertura vegetal, características de suelo, meteorología
         
-        #### 5. Emisiones Fugitivas
-        - **Definición:** Emisiones no canalizadas
-        - **Ejemplos:** Patio de minerales, vías no pavimentadas, demoliciones
-        - **Datos requeridos:** Superficie expuesta, contenido de humedad, velocidad del viento
+        **5. Emisiones Fugitivas**
+        - Definición: Emisiones no canalizadas
+        - Ejemplos: Patio de minerales, vías no pavimentadas, demoliciones
+        - Datos requeridos: Superficie expuesta, contenido de humedad, velocidad del viento
         
-        ### Contaminantes a Inventariar
+        #### Contaminantes a Inventariar
         - Material Particulado (PM10, PM2.5, PST)
         - Óxidos de Nitrógeno (NOx)
         - Dióxido de Azufre (SO2)
@@ -1671,7 +1698,7 @@ elif st.session_state.pagina == "Lineamiento":
         - Metales pesados (Pb, As, Cd, Hg, según sector)
         - Gases de Efecto Invernadero (CO2, CH4, N2O)
         - Carbono Negro (BC)
-        """)
+        """, unsafe_allow_html=True)
 
 # ===================== PÁGINA MEDIDAS =====================
 elif st.session_state.pagina == "Medidas":
@@ -1877,47 +1904,47 @@ elif st.session_state.pagina == "Medidas":
     # Información adicional
     with st.expander("💡 Ver factores de selección de tecnología de control"):
         st.markdown("""
-        ### Factores Clave para Selección de Tecnología
+        #### Factores Clave para Selección de Tecnología
         
-        #### 1. Características del Efluente Gaseoso
-        - **Caudal volumétrico:** m³/h o Nm³/h
-        - **Temperatura:** °C (afecta volumen y selección de materiales)
-        - **Concentración de contaminante:** mg/Nm³ o ppm
-        - **Características químicas:** pH, humedad, presencia de otros compuestos
-        - **Concentración de polvo:** puede requerir pre-tratamiento
+        **1. Características del Efluente Gaseoso**
+        - Caudal volumétrico: m³/h o Nm³/h
+        - Temperatura: °C (afecta volumen y selección de materiales)
+        - Concentración de contaminante: mg/Nm³ o ppm
+        - Características químicas: pH, humedad, presencia de otros compuestos
+        - Concentración de polvo: puede requerir pre-tratamiento
         
-        #### 2. Requisitos Regulatorios
-        - **LMP aplicables:** según sector y tipo de fuente
-        - **ECA de zona:** considerar impacto en calidad de aire ambiente
-        - **Plazos de cumplimiento:** gradualidad normativa
-        - **Reporte y monitoreo:** CEMS vs mediciones periódicas
+        **2. Requisitos Regulatorios**
+        - LMP aplicables: según sector y tipo de fuente
+        - ECA de zona: considerar impacto en calidad de aire ambiente
+        - Plazos de cumplimiento: gradualidad normativa
+        - Reporte y monitoreo: CEMS vs mediciones periódicas
         
-        #### 3. Aspectos Técnicos
-        - **Eficiencia requerida:** calculada según emisión actual y LMP
-        - **Confiabilidad operativa:** disponibilidad >95% típicamente requerida
-        - **Vida útil de equipos:** 15-25 años para equipos principales
-        - **Espacio disponible:** footprint de la instalación
-        - **Servicios requeridos:** energía eléctrica, agua, aire comprimido, vapor
+        **3. Aspectos Técnicos**
+        - Eficiencia requerida: calculada según emisión actual y LMP
+        - Confiabilidad operativa: disponibilidad >95% típicamente requerida
+        - Vida útil de equipos: 15-25 años para equipos principales
+        - Espacio disponible: footprint de la instalación
+        - Servicios requeridos: energía eléctrica, agua, aire comprimido, vapor
         
-        #### 4. Aspectos Económicos
-        - **CAPEX (inversión inicial):** equipos, instalación, ingeniería
-        - **OPEX (costos operativos):** energía, reactivos, mantenimiento, mano de obra
-        - **Generación de residuos:** tratamiento y disposición de residuos secundarios
-        - **Valor presente neto (VPN):** análisis de costo-beneficio a 20 años
+        **4. Aspectos Económicos**
+        - CAPEX (inversión inicial): equipos, instalación, ingeniería
+        - OPEX (costos operativos): energía, reactivos, mantenimiento, mano de obra
+        - Generación de residuos: tratamiento y disposición de residuos secundarios
+        - Valor presente neto (VPN): análisis de costo-beneficio a 20 años
         
-        #### 5. Consideraciones Ambientales
-        - **Consumo energético:** kWh/Nm³ tratado
-        - **Consumo de agua:** si aplica (scrubbers, FGD)
-        - **Generación de residuos:** lodos, catalizadores gastados, filtros
-        - **Emisiones secundarias:** CO2 de consumo energético
+        **5. Consideraciones Ambientales**
+        - Consumo energético: kWh/Nm³ tratado
+        - Consumo de agua: si aplica (scrubbers, FGD)
+        - Generación de residuos: lodos, catalizadores gastados, filtros
+        - Emisiones secundarias: CO2 de consumo energético
         
-        #### 6. Mejores Técnicas Disponibles (MTD/BAT)
-        - **Documentos BREF europeos:** referencia técnica de BAT
-        - **Guías EPA:** AP-42 y documentos sectoriales
-        - **Benchmarking internacional:** plantas similares en región
-        - **Innovaciones tecnológicas:** considerar mejoras disponibles
+        **6. Mejores Técnicas Disponibles (MTD/BAT)**
+        - Documentos BREF europeos: referencia técnica de BAT
+        - Guías EPA: AP-42 y documentos sectoriales
+        - Benchmarking internacional: plantas similares en región
+        - Innovaciones tecnológicas: considerar mejoras disponibles
         
-        ### Proceso de Evaluación Recomendado
+        #### Proceso de Evaluación Recomendado
         1. Caracterización completa del efluente gaseoso
         2. Identificación de tecnologías técnicamente factibles
         3. Evaluación multicriterio (técnica, económica, ambiental)
@@ -1926,7 +1953,7 @@ elif st.session_state.pagina == "Medidas":
         6. Diseño de ingeniería detallada
         7. Implementación y puesta en marcha
         8. Monitoreo de desempeño y optimización continua
-        """)
+        """, unsafe_allow_html=True)
 
 # ===================== PÁGINA NORMATIVAS INTERNACIONALES =====================
 elif st.session_state.pagina == "Normativas":
