@@ -96,29 +96,37 @@ st.markdown("""
         text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
     
-    /* Input de búsqueda más visible */
-    [data-testid="stSidebar"] input {
-        background: rgba(255, 255, 255, 0.15) !important;
-        color: white !important;
-        border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    }
-    
-    [data-testid="stSidebar"] input::placeholder {
-        color: rgba(255, 255, 255, 0.7) !important;
-    }
-    
-    /* CRÍTICO: Color del texto mientras escribes */
+    /* Input de búsqueda ULTRA VISIBLE - TODOS LOS SELECTORES */
     [data-testid="stSidebar"] input,
     [data-testid="stSidebar"] input:focus,
-    [data-testid="stSidebar"] textarea {
-        color: white !important;
-        -webkit-text-fill-color: white !important;
+    [data-testid="stSidebar"] input:active,
+    [data-testid="stSidebar"] input:hover,
+    [data-testid="stSidebar"] textarea,
+    [data-testid="stSidebar"] [data-baseweb="input"] input,
+    [data-testid="stSidebar"] [data-baseweb="base-input"] input,
+    [data-testid="stSidebar"] .stTextInput input,
+    [data-testid="stSidebar"] .stTextInput > div > div > input {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: #FFFFFF !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        -webkit-text-fill-color: #FFFFFF !important;
+        caret-color: #FFFFFF !important;
     }
     
-    /* También para el valor del input */
-    [data-testid="stSidebar"] [data-baseweb="input"] input {
-        color: white !important;
-        -webkit-text-fill-color: white !important;
+    /* Placeholder visible */
+    [data-testid="stSidebar"] input::placeholder,
+    [data-testid="stSidebar"] textarea::placeholder {
+        color: rgba(255, 255, 255, 0.7) !important;
+        opacity: 1 !important;
+    }
+    
+    /* Forzar en TODOS los estados */
+    [data-testid="stSidebar"] input:-webkit-autofill,
+    [data-testid="stSidebar"] input:-webkit-autofill:hover,
+    [data-testid="stSidebar"] input:-webkit-autofill:focus {
+        -webkit-text-fill-color: #FFFFFF !important;
+        -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.15) inset !important;
+        transition: background-color 5000s ease-in-out 0s;
     }
     
     /* Header institucional */
