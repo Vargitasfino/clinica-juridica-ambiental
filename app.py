@@ -620,269 +620,8 @@ st.markdown("""
         background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         margin: 1.5rem 0;
     }
-    /* ESTILOS PARA LA LÍNEA DE TIEMPO */
-    .timeline {
-        position: relative;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 0;
-    }
-
-    .timeline-item {
-        display: grid;
-        grid-template-columns: 120px 1fr;
-        gap: 2rem;
-        margin-bottom: 3rem;
-        position: relative;
-        animation: slideInTimeline 0.6s ease-out backwards;
-    }
-
-    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
-    .timeline-item:nth-child(6) { animation-delay: 0.6s; }
-    .timeline-item:nth-child(7) { animation-delay: 0.7s; }
-    .timeline-item:nth-child(8) { animation-delay: 0.8s; }
-    .timeline-item:nth-child(9) { animation-delay: 0.9s; }
-
-    @keyframes slideInTimeline {
-        from {
-            opacity: 0;
-            transform: translateX(-30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    .timeline-marker {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .timeline-dot {
-        width: 20px;
-        height: 20px;
-        background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-        border-radius: 50%;
-        border: 4px solid rgba(19, 47, 76, 0.9);
-        box-shadow: 0 0 0 4px rgba(0, 101, 255, 0.2),
-                    0 0 20px rgba(0, 101, 255, 0.4);
-        position: relative;
-        z-index: 2;
-        transition: all 0.3s ease;
-    }
-
-    .timeline-item:hover .timeline-dot {
-        transform: scale(1.3);
-        box-shadow: 0 0 0 6px rgba(0, 101, 255, 0.3),
-                    0 0 30px rgba(0, 101, 255, 0.6);
-    }
-
-    .timeline-dot.highlight-dot {
-        width: 26px;
-        height: 26px;
-        background: linear-gradient(135deg, #FFB300, #FF6F00);
-        box-shadow: 0 0 0 4px rgba(19, 47, 76, 0.9),
-                    0 0 0 8px rgba(255, 179, 0, 0.3),
-                    0 0 30px rgba(255, 179, 0, 0.5);
-        animation: pulse 2s ease-in-out infinite;
-    }
-
-    .timeline-dot.future-dot {
-        background: linear-gradient(135deg, #8b5cf6, #6366f1);
-        box-shadow: 0 0 0 4px rgba(19, 47, 76, 0.9),
-                    0 0 20px rgba(139, 92, 246, 0.4);
-    }
-
-    @keyframes pulse {
-        0%, 100% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.15);
-        }
-    }
-
-    .timeline-line {
-        width: 3px;
-        height: 100%;
-        background: linear-gradient(180deg, 
-            rgba(0, 101, 255, 0.5) 0%, 
-            rgba(0, 101, 255, 0.2) 100%);
-        position: absolute;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .timeline-item:last-child .timeline-line {
-        display: none;
-    }
-
-    .timeline-year {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--accent-teal);
-        text-align: right;
-        padding-top: 0.5rem;
-        letter-spacing: 0.05em;
-    }
-
-    .timeline-year.highlight-year {
-        font-size: 1.3rem;
-        color: #FFB300;
-        text-shadow: 0 2px 8px rgba(255, 179, 0, 0.4);
-    }
-
-    .timeline-year.future-year {
-        color: #8b5cf6;
-    }
-
-    .timeline-card {
-        background: linear-gradient(135deg, rgba(19, 47, 76, 0.7) 0%, rgba(26, 58, 82, 0.6) 100%);
-        backdrop-filter: blur(10px);
-        padding: 1.75rem;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-left: 4px solid var(--primary-blue);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .timeline-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, var(--primary-blue), transparent);
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-
-    .timeline-card:hover {
-        transform: translateX(8px) translateY(-4px);
-        border-left-color: var(--accent-teal);
-        box-shadow: 0 12px 32px rgba(0, 82, 204, 0.4);
-    }
-
-    .timeline-card:hover::before {
-        opacity: 1;
-    }
-
-    .timeline-card.highlight-card {
-        background: linear-gradient(135deg, rgba(255, 179, 0, 0.15) 0%, rgba(255, 111, 0, 0.1) 100%);
-        border-left-color: #FFB300;
-        border-left-width: 5px;
-        box-shadow: 0 12px 32px rgba(255, 179, 0, 0.3);
-    }
-
-    .timeline-card.highlight-card:hover {
-        border-left-color: #FF6F00;
-        box-shadow: 0 16px 48px rgba(255, 179, 0, 0.5);
-    }
-
-    .timeline-card.future-card {
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(99, 102, 241, 0.1) 100%);
-        border-left-color: #8b5cf6;
-        border-style: dashed;
-    }
-
-    .timeline-icon {
-        font-size: 2rem;
-        margin-bottom: 0.75rem;
-        display: inline-block;
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-    }
-
-    .timeline-card h4 {
-        color: white;
-        font-size: 1.15rem;
-        font-weight: 700;
-        margin: 0 0 0.5rem 0;
-        letter-spacing: -0.01em;
-    }
-
-    .timeline-title {
-        color: var(--text-primary);
-        font-size: 1.05rem;
-        font-weight: 600;
-        margin: 0.5rem 0;
-    }
-
-    .timeline-desc {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        line-height: 1.6;
-        margin: 0.75rem 0 1rem 0;
-    }
-
-    .timeline-badge {
-        display: inline-block;
-        padding: 0.4rem 0.9rem;
-        border-radius: 6px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .timeline-badge.active {
-        background: linear-gradient(135deg, var(--success), #00E676);
-        color: white;
-    }
-
-    .timeline-badge.historical {
-        background: linear-gradient(135deg, #546E7A, #78909C);
-        color: white;
-    }
-
-    .timeline-badge.future {
-        background: linear-gradient(135deg, #8b5cf6, #6366f1);
-        color: white;
-    }
-
-    .timeline-badge.highlight-badge {
-        background: linear-gradient(135deg, #FFB300, #FF6F00);
-        color: #000;
-        font-weight: 700;
-        padding: 0.5rem 1.1rem;
-        font-size: 0.85rem;
-    }
     
-    @media (max-width: 768px) {
-        .timeline-item {
-            grid-template-columns: 80px 1fr;
-            gap: 1rem;
-        }
-        
-        .timeline-year {
-            font-size: 0.95rem;
-        }
-        
-        .timeline-card {
-            padding: 1.25rem;
-        }
-        
-        .timeline-card h4 {
-            font-size: 1rem;
-        }
-        
-        .timeline-icon {
-            font-size: 1.5rem;
-        }
-    }
-    /* Scrollbar personalizada */
+    /* pro */
     ::-webkit-scrollbar {
         width: 10px;
         height: 10px;
@@ -917,6 +656,34 @@ st.markdown("""
         animation: fadeInUp 0.6s ease-out;
     }
     
+    /* Estilos para la línea de tiempo */
+    .timeline-event {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .timeline-event::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transition: left 0.5s;
+    }
+    
+    .timeline-event:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    
+    .timeline-event:hover::before {
+        left: 100%;
+    }
+    
     /* Responsive */
     @media (max-width: 768px) {
         .institutional-header h1 {
@@ -929,6 +696,15 @@ st.markdown("""
         
         .normative-card {
             padding: 1.5rem;
+        }
+        
+        .timeline-event {
+            padding: 0.75rem;
+        }
+        
+        .timeline-event div {
+            flex-direction: column;
+            text-align: center;
         }
     }
 </style>
@@ -1131,74 +907,157 @@ if st.session_state.pagina == "Inicio":
                 legal actualizada.
             </p>
             
-            <h3 style='font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;'>Contenido del Sistema</h3>
+            <h3 style='font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1.5rem;'>⏳ Línea de Tiempo Normativa</h3>
             
-            <div style='display: grid; gap: 1rem;'>
-                <div style='display: flex; align-items: start; gap: 1rem;'>
-                    <span style='font-size: 1.5rem;'>📋</span>
-                    <div>
-                        <strong style='color: var(--text-primary);'>Estándares de Calidad Ambiental (ECA)</strong><br>
-                        <span style='color: var(--text-secondary); font-size: 0.95rem;'>
-                            Concentraciones máximas en aire ambiente para protección de salud pública
-                        </span>
-                    </div>
-                </div>
+            <!-- Línea de tiempo interactiva -->
+            <div style="position: relative; margin: 2rem 0;">
+                <!-- Línea central -->
+                <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 3px; height: 100%; background: linear-gradient(180deg, #00B8D9, #0065FF); border-radius: 2px;"></div>
                 
-                <div style='display: flex; align-items: start; gap: 1rem;'>
-                    <span style='font-size: 1.5rem;'>🏭</span>
-                    <div>
-                        <strong style='color: var(--text-primary);'>Límites Máximos Permisibles (LMP)</strong><br>
-                        <span style='color: var(--text-secondary); font-size: 0.95rem;'>
-                            Emisiones máximas permitidas en la fuente por sector productivo
-                        </span>
+                <!-- Eventos de la línea de tiempo -->
+                <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    
+                    <!-- Evento 2024 -->
+                    <div style="display: flex; align-items: center; gap: 2rem;">
+                        <div style="flex: 1; text-align: right;">
+                            <div class="timeline-event" style="background: linear-gradient(135deg, #00C853, #00E676); padding: 1rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 200, 83, 0.3);">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 1.8rem;">🌍</span>
+                                    <strong style="color: white; font-size: 1.1rem;">Actualización EPA USA</strong>
+                                </div>
+                                <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 0.9rem;">
+                                    PM2.5 anual reducido de 12 a 9.0 μg/m³
+                                </p>
+                            </div>
+                        </div>
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #00C853, #00E676); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; box-shadow: 0 4px 12px rgba(0, 200, 83, 0.4); position: relative; z-index: 2;">
+                            2024
+                        </div>
+                        <div style="flex: 1;"></div>
                     </div>
-                </div>
-                
-                <div style='display: flex; align-items: start; gap: 1rem;'>
-                    <span style='font-size: 1.5rem;'>📖</span>
-                    <div>
-                        <strong style='color: var(--text-primary);'>Protocolos de Monitoreo</strong><br>
-                        <span style='color: var(--text-secondary); font-size: 0.95rem;'>
-                            Procedimientos estandarizados para medición y análisis de calidad del aire
-                        </span>
+
+                    <!-- Evento 2021 -->
+                    <div style="display: flex; align-items: center; gap: 2rem;">
+                        <div style="flex: 1;"></div>
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #00B8D9, #26C6DA); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; box-shadow: 0 4px 12px rgba(0, 184, 217, 0.4); position: relative; z-index: 2;">
+                            2021
+                        </div>
+                        <div style="flex: 1;">
+                            <div class="timeline-event" style="background: linear-gradient(135deg, #00B8D9, #26C6DA); padding: 1rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 184, 217, 0.3);">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 1.8rem;">🏥</span>
+                                    <strong style="color: white; font-size: 1.1rem;">Guías OMS Actualizadas</strong>
+                                </div>
+                                <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 0.9rem;">
+                                    Nueva evidencia científica reduce PM2.5 anual a 5 μg/m³
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div style='display: flex; align-items: start; gap: 1rem;'>
-                    <span style='font-size: 1.5rem;'>📐</span>
-                    <div>
-                        <strong style='color: var(--text-primary);'>Lineamientos Técnicos</strong><br>
-                        <span style='color: var(--text-secondary); font-size: 0.95rem;'>
-                            Guías operativas para implementación de normativas y gestión ambiental
-                        </span>
+
+                    <!-- Evento 2019 -->
+                    <div style="display: flex; align-items: center; gap: 2rem;">
+                        <div style="flex: 1; text-align: right;">
+                            <div class="timeline-event" style="background: linear-gradient(135deg, #FF6F00, #FF9800); padding: 1rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 1.8rem;">📝</span>
+                                    <strong style="color: white; font-size: 1.1rem;">Modificatoria ECA</strong>
+                                </div>
+                                <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 0.9rem;">
+                                    D.S. N° 010-2019-MINAM actualiza parámetros ECA
+                                </p>
+                            </div>
+                        </div>
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF6F00, #FF9800); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; box-shadow: 0 4px 12px rgba(255, 111, 0, 0.4); position: relative; z-index: 2;">
+                            2019
+                        </div>
+                        <div style="flex: 1;"></div>
                     </div>
-                </div>
-                
-                <div style='display: flex; align-items: start; gap: 1rem;'>
-                    <span style='font-size: 1.5rem;'>🛡️</span>
-                    <div>
-                        <strong style='color: var(--text-primary);'>Tecnologías de Control</strong><br>
-                        <span style='color: var(--text-secondary); font-size: 0.95rem;'>
-                            Sistemas y medidas para reducción de emisiones atmosféricas
-                        </span>
+
+                    <!-- Evento 2017 -->
+                    <div style="display: flex; align-items: center; gap: 2rem;">
+                        <div style="flex: 1;"></div>
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #0052CC, #0065FF); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; box-shadow: 0 4px 12px rgba(0, 82, 204, 0.4); position: relative; z-index: 2;">
+                            2017
+                        </div>
+                        <div style="flex: 1;">
+                            <div class="timeline-event" style="background: linear-gradient(135deg, #0052CC, #0065FF); padding: 1rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 1.8rem;">🇵🇪</span>
+                                    <strong style="color: white; font-size: 1.1rem;">Nuevos ECA Perú</strong>
+                                </div>
+                                <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 0.9rem;">
+                                    D.S. N° 003-2017-MINAM establece ECA actualizados
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div style='display: flex; align-items: start; gap: 1rem;'>
-                    <span style='font-size: 1.5rem;'>🌍</span>
-                    <div>
-                        <strong style='color: var(--text-primary);'>Referencias Internacionales</strong><br>
-                        <span style='color: var(--text-secondary); font-size: 0.95rem;'>
-                            Estándares de OMS, EPA USA y Canadá para análisis comparativo
-                        </span>
+
+                    <!-- Evento 2010 -->
+                    <div style="display: flex; align-items: center; gap: 2rem;">
+                        <div style="flex: 1; text-align: right;">
+                            <div class="timeline-event" style="background: linear-gradient(135deg, #8E24AA, #AB47BC); padding: 1rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(142, 36, 170, 0.3);">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 1.8rem;">🏭</span>
+                                    <strong style="color: white; font-size: 1.1rem;">LMP Sectoriales</strong>
+                                </div>
+                                <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 0.9rem;">
+                                    D.S. 003-2010 (termoeléctricas) y 010-2010 (industrias)
+                                </p>
+                            </div>
+                        </div>
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #8E24AA, #AB47BC); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; box-shadow: 0 4px 12px rgba(142, 36, 170, 0.4); position: relative; z-index: 2;">
+                            2010
+                        </div>
+                        <div style="flex: 1;"></div>
                     </div>
+
+                    <!-- Evento 2001 -->
+                    <div style="display: flex; align-items: center; gap: 2rem;">
+                        <div style="flex: 1;"></div>
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #546E7A, #78909C); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; box-shadow: 0 4px 12px rgba(84, 110, 122, 0.4); position: relative; z-index: 2;">
+                            2001
+                        </div>
+                        <div style="flex: 1;">
+                            <div class="timeline-event" style="background: linear-gradient(135deg, #546E7A, #78909C); padding: 1rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(84, 110, 122, 0.3);">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 1.8rem;">📜</span>
+                                    <strong style="color: white; font-size: 1.1rem;">Primeros ECA Perú</strong>
+                                </div>
+                                <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 0.9rem;">
+                                    D.S. N° 074-2001-PCM establece primeros estándares nacionales
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            
+
+            <!-- Leyenda de la línea de tiempo -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem; padding: 1.5rem; background: rgba(19, 47, 76, 0.6); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #00C853, #00E676);"></div>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Internacional</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #0052CC, #0065FF);"></div>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Nacional - ECA</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #8E24AA, #AB47BC);"></div>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Nacional - LMP</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #FF6F00, #FF9800);"></div>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Modificatorias</span>
+                </div>
+            </div>
+
             <div class='success-box' style='margin-top: 2rem;'>
-                <p><strong>✓ Acceso directo</strong> a documentos oficiales con enlaces actualizados<br>
-                <strong>✓ Visualizaciones</strong> interactivas para análisis comparativo<br>
-                <strong>✓ Información técnica</strong> validada y referencias normativas completas</p>
+                <p><strong>📈 Evolución Normativa:</strong> Perú ha avanzado significativamente desde 2001<br>
+                <strong>🌍 Tendencia Global:</strong> Estándares internacionales se vuelven más estrictos<br>
+                <strong>🔍 Análisis Comparativo:</strong> Brecha entre normativa nacional e internacional se reduce progresivamente</p>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -1598,7 +1457,7 @@ elif st.session_state.pagina == "LMP":
             plomo, arsénico y otros metales pesados específicos de procesos metalúrgicos.
         </p>
         <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-            <strong>Publicación:</strong> 19 de julio de 1996 | 
+            <strong>Publicación:</strong> 19 de julio of 1996 | 
             <strong>Sector:</strong> Minería y Metalurgia
         </p>
         <a href='http://www.minem.gob.pe/minem/archivos/file/DGAAM/legislacion/resolucion/RM-315-96.pdf' 
@@ -2706,7 +2565,7 @@ elif st.session_state.pagina == "Normativas":
                     que el ECA peruano.</li>
                     
                     <li><strong>Dióxido de Azufre (SO2):</strong> El estándar peruano de 24h (250 μg/m³) contrasta con 
-                    la guía OMS (40 μg/m³). EPA eliminó el estándar de 24h y usa uno de 1h más estricto.</li>
+                    la guía OMS (40 μg/m³). EPA eliminó el estándar de 24h и usa uno de 1h más estricto.</li>
                     
                     <li><strong>Ozono (O3):</strong> Perú mantiene un estándar alineado con OMS (100 μg/m³ en 8h), 
                     siendo uno de los pocos parámetros donde la normativa nacional es competitiva internacionalmente.</li>
