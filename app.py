@@ -107,6 +107,20 @@ st.markdown("""
         color: rgba(255, 255, 255, 0.7) !important;
     }
     
+    /* CRÍTICO: Color del texto mientras escribes */
+    [data-testid="stSidebar"] input,
+    [data-testid="stSidebar"] input:focus,
+    [data-testid="stSidebar"] textarea {
+        color: white !important;
+        -webkit-text-fill-color: white !important;
+    }
+    
+    /* También para el valor del input */
+    [data-testid="stSidebar"] [data-baseweb="input"] input {
+        color: white !important;
+        -webkit-text-fill-color: white !important;
+    }
+    
     /* Header institucional */
     .institutional-header {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.95) 0%, rgba(0, 101, 255, 0.9) 100%);
