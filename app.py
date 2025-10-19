@@ -860,7 +860,7 @@ if st.session_state.pagina == "Inicio":
     
     col1, col2 = st.columns([2, 1])
     
-   with col1:
+    with col1:
         st.markdown("""
         <div class='corporate-card fade-in'>
             <h2>📚 Sistema de Consulta Normativo</h2>
@@ -1062,8 +1062,7 @@ if st.session_state.pagina == "Inicio":
         Se recomienda evaluar una actualización gradual de los ECA nacionales para una mejor protección de la salud pública.</p>
     </div>
     """, unsafe_allow_html=True)
-
-# ===================== PÁGINA ECA =====================
+    # ===================== PÁGINA ECA =====================
 elif st.session_state.pagina == "ECA":
     
     st.markdown("""
@@ -1744,7 +1743,6 @@ elif st.session_state.pagina == "Lineamiento":
         </a>
     </div>
     """, unsafe_allow_html=True)
-    
     # Tabla de niveles de alerta
     st.markdown("""
     <div class='corporate-card fade-in'>
