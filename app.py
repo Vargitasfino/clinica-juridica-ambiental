@@ -860,7 +860,7 @@ if st.session_state.pagina == "Inicio":
     
     col1, col2 = st.columns([2, 1])
     
-    with col1:
+   with col1:
         st.markdown("""
         <div class='corporate-card fade-in'>
             <h2>📚 Sistema de Consulta Normativo</h2>
