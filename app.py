@@ -36,7 +36,8 @@ st.markdown("""
     }
     
     /* MEJORA CRÍTICA: Componentes nativos de Streamlit más visibles */
-    div[data-testid="stMarkdownContainer"] > div[data-testid="stAlert"] {
+    div[data-testid="stMarkdownContainer"] >
+    div[data-testid="stAlert"] {
         background-color: rgba(96, 165, 250, 0.3) !important;
         border: 1px solid rgba(96, 165, 250, 0.5) !important;
         border-left: 4px solid #60A5FA !important;
@@ -358,7 +359,6 @@ st.markdown("""
         background: linear-gradient(135deg, #FF6F00 0%, #FF9800 100%);
         color: white;
     }
-    
     .corporate-button {
         display: inline-flex;
         align-items: center;
@@ -1341,7 +1341,7 @@ elif st.session_state.pagina == "LMP":
             <strong>Publicación:</strong> 19 de julio de 1996 | 
             <strong>Sector:</strong> Minería y Metalurgia
         </p>
-        <a href='https://www.minem.gob.pe/minem/archivos/file/Mineria/LEGISLACION/1996/julio/RM315-96.pdf' 
+        <a href='https://sinia.minam.gob.pe/normas/niveles-maximos-permisibles-elementos-compuestos-presentes-emisiones' 
            target='_blank' class='corporate-button'>
             📄 Ver R.M. 315-96-EM/VMM
         </a>
@@ -1427,8 +1427,7 @@ elif st.session_state.pagina == "LMP":
     st.plotly_chart(fig_lmp, use_container_width=True)
     
     st.info("**Nota técnica:** Los límites son más estrictos para combustibles más limpios. El gas natural tiene los LMP más bajos debido a su menor contenido de azufre y mejor eficiencia de combustión, mientras que el residual (combustóleo) tiene los límites más permisivos debido a su mayor contenido de impurezas.")
-
-# ===================== PÁGINA PROTOCOLO =====================
+    # ===================== PÁGINA PROTOCOLO =====================
 elif st.session_state.pagina == "Protocolo":
     
     st.markdown("""
@@ -1462,7 +1461,7 @@ elif st.session_state.pagina == "Protocolo":
             <strong>Publicación:</strong> 11 de noviembre de 2005 | 
             <strong>Entidad:</strong> DIGESA-MINSA
         </p>
-        <a href='https://www.digesa.minsa.gob.pe/DEPA/informes_tecnicos/GRUPO%20DE%20USO%20CONSULTA/PROTOCOLO%20DE%20CALIDAD%20DE%20AIRE.pdf' 
+        <a href='https://sinia.minam.gob.pe/documentos/protocolo-monitoreo-calidad-aire-gestion-datos' 
            target='_blank' class='corporate-button'>
             📄 Descargar Protocolo DIGESA
         </a>
@@ -1508,9 +1507,9 @@ elif st.session_state.pagina == "Protocolo":
             <strong>Publicación:</strong> 12 de agosto de 2010 | 
             <strong>Sector:</strong> Energía y Minas
         </p>
-        <a href='https://www.minem.gob.pe/minem/archivos/RD%20195-2010-MEM-AAM.pdf' 
+        <a href='https://sinia.minam.gob.pe/normas/aprueban-lineamientos-emision-opiniones-tecnicas-protocolos' 
            target='_blank' class='corporate-button'>
-            📄 Descargar R.D. 195-2010-MEM/AAM
+            📄 Ver Legislación MINEM
         </a>
     </div>
     """, unsafe_allow_html=True)
@@ -1531,7 +1530,7 @@ elif st.session_state.pagina == "Protocolo":
             <strong>Publicación:</strong> 14 de mayo de 2009 | 
             <strong>Sector:</strong> Minería
         </p>
-        <a href='https://www.minem.gob.pe/minem/archivos/file/DGAAM/guias/aire.pdf' 
+        <a href='https://sinia.minam.gob.pe/normas/protocolo-monitoreo-calidad-agua-aire-subsector-mineria' 
            target='_blank' class='corporate-button'>
             📄 Ver R.M. 247-2009-MEM/DM
         </a>
@@ -1663,7 +1662,7 @@ elif st.session_state.pagina == "Lineamiento":
             <strong>Publicación:</strong> 25 de junio de 2003 | 
             <strong>Entidad:</strong> MINSA
         </p>
-        <a href='https://cdn.www.gob.pe/uploads/document/file/356694/DS_009-2003-SA.pdf' 
+        <a href='https://sinia.minam.gob.pe/normas/reglamento-niveles-estados-alerta-nacionales-contaminantes-del-aire' 
            target='_blank' class='corporate-button'>
             📄 Descargar D.S. 009-2003-SA
         </a>
@@ -1720,6 +1719,191 @@ elif st.session_state.pagina == "Lineamiento":
     st.dataframe(niveles, use_container_width=True, hide_index=True, height=500)
     
     st.warning("**⚠️ Protocolo de activación:** Las autoridades ambientales y de salud deben activar los niveles de alerta cuando se registren o pronostiquen concentraciones en los rangos establecidos. Las medidas incluyen difusión masiva de información, restricción de actividades, y en casos de emergencia, la declaratoria de estado de emergencia ambiental.")
+    # ===================== PÁGINA MEDIDAS =====================
+elif st.session_state.pagina == "Medidas":
+    
+    st.markdown("""
+    <div class='corporate-card fade-in'>
+        <h2>🛡️ Medidas y Tecnologías de Control de Emisiones</h2>
+        <p style='font-size: 1.05rem;'>
+            Las tecnologías de control son <strong>sistemas y equipos diseñados para reducir las emisiones</strong> 
+            de contaminantes atmosféricos desde fuentes puntuales. Su implementación es obligatoria para cumplir 
+            con los LMP establecidos y representan la mejor tecnología disponible económicamente viable (BATEA).
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.info("**Marco legal:** La Ley General del Ambiente (Ley 28611) establece la obligación de implementar medidas de prevención y control de la contaminación del aire, priorizando tecnologías limpias y sistemas de reducción de emisiones.")
+    
+    st.markdown("""
+    <div class='normative-card vigente fade-in'>
+        <span class='status-badge vigente'>● VIGENTE</span>
+        <h3>Ley N° 28611 - Ley General del Ambiente</h3>
+        <p style='font-size: 1.05rem; margin: 1rem 0;'>
+            <strong>Título II, Capítulo 3: De la Calidad Ambiental</strong>
+        </p>
+        <p>
+            Establece la obligación legal de implementar medidas de prevención, control y remediación de la 
+            contaminación del aire. Define responsabilidades de titulares de actividades productivas para 
+            adoptar tecnologías limpias, sistemas de tratamiento de emisiones y programas de monitoreo continuo.
+        </p>
+        <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+            <strong>Publicación:</strong> 15 de octubre de 2005 | 
+            <strong>Ámbito:</strong> Marco general ambiental
+        </p>
+        <a href='https://www.minam.gob.pe/wp-content/uploads/2017/04/Ley-N%C2%B0-28611.pdf' 
+           target='_blank' class='corporate-button'>
+            📄 Ver Ley 28611
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='normative-card vigente fade-in'>
+        <span class='status-badge vigente'>● VIGENTE</span>
+        <h3>D.S. N° 012-2005-EM</h3>
+        <p style='font-size: 1.05rem; margin: 1rem 0;'>
+            <strong>Reglamento de Plan de Cierre de Minas - Control de Emisiones</strong>
+        </p>
+        <p>
+            Incluye obligaciones específicas de implementación y mantenimiento de sistemas de control de 
+            emisiones atmosféricas durante las fases de operación, cierre progresivo y cierre final de 
+            operaciones mineras. Define responsabilidades técnicas y financieras para asegurar el cumplimiento 
+            a largo plazo.
+        </p>
+        <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+            <strong>Publicación:</strong> 05 de agosto de 2005 | 
+            <strong>Sector:</strong> Minería
+        </p>
+        <a href='https://www.minem.gob.pe/minem/archivos/file/Mineria/LEGISLACION/2005/agosto/DS012-2005.pdf' 
+           target='_blank' class='corporate-button'>
+            📄 Ver D.S. 012-2005-EM
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='normative-card ntp fade-in'>
+        <span class='status-badge ntp'>● NORMAS TÉCNICAS</span>
+        <h3>Normas Técnicas Peruanas (NTP) - INACAL</h3>
+        <p style='font-size: 1.05rem; margin: 1rem 0;'>
+            <strong>Gestión Ambiental del Aire - Metodologías y Terminología</strong>
+        </p>
+        <p>
+            <strong>NTP 900.058:2019</strong> - Gestión Ambiental. Calidad del Aire. Métodos de muestreo<br>
+            <strong>NTP 900.030:2003</strong> - Gestión Ambiental. Calidad del Aire. Terminología<br>
+            <strong>NTP-ISO 9169:2014</strong> - Calidad del aire. Determinación de características de funcionamiento<br><br>
+            Normas técnicas que establecen procedimientos estandarizados para evaluación de eficiencia de 
+            sistemas de control, métodos de medición de emisiones, y terminología técnica normalizada.
+        </p>
+        <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+            <strong>Entidad emisora:</strong> Instituto Nacional de Calidad (INACAL)
+        </p>
+        <a href='https://www.inacal.gob.pe/cid/categoria/normas-tecnicas-peruanas' 
+           target='_blank' class='corporate-button'>
+            📄 Ver Catálogo NTP INACAL
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='corporate-card fade-in'>
+        <h2>🔧 Tecnologías de Control de Emisiones por Contaminante</h2>
+        <p style='color: var(--text-secondary); margin-bottom: 1rem;'>
+            Principales sistemas utilizados en la industria peruana para cumplimiento de LMP
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    tecnologias = pd.DataFrame([
+        ['Material Particulado', 'Filtros de mangas (Baghouse)', '>99%', 'Captación por filtración textil', 'Media-Alta', 'Alto', 'Industria general'],
+        ['Material Particulado', 'Precipitadores electrostáticos (ESP)', '95-99%', 'Carga eléctrica y colección', 'Alta', 'Medio', 'Termoeléctricas, cemento'],
+        ['Material Particulado', 'Ciclones', '70-90%', 'Separación por fuerza centrífuga', 'Baja', 'Bajo', 'Pre-tratamiento'],
+        ['Material Particulado', 'Lavadores húmedos (Scrubbers)', '85-95%', 'Absorción líquido-gas', 'Media', 'Medio', 'Industria química'],
+        ['SO2', 'Desulfuración húmeda (FGD)', '>95%', 'Absorción con caliza/cal + agua', 'Muy Alta', 'Alto', 'Termoeléctricas, fundiciones'],
+        ['SO2', 'Desulfuración seca (SDA)', '80-95%', 'Inyección de sorbente seco', 'Alta', 'Medio-Alto', 'Industria general'],
+        ['SO2', 'Scrubber de doble álcali', '90-98%', 'Absorción NaOH regenerativo', 'Alta', 'Alto', 'Metalurgia'],
+        ['NOx', 'Reducción Catalítica Selectiva (SCR)', '>90%', 'Reducción con NH3/urea + catalizador', 'Muy Alta', 'Muy Alto', 'Termoeléctricas, cemento'],
+        ['NOx', 'Reducción No Catalítica (SNCR)', '40-60%', 'Inyección térmica de urea', 'Media', 'Medio', 'Calderos, hornos'],
+        ['NOx', 'Quemadores Low-NOx', '30-50%', 'Control de combustión (T y O2)', 'Media', 'Bajo-Medio', 'Calderos industriales'],
+        ['NOx', 'Recirculación de gases (FGR)', '20-40%', 'Reducción T de llama', 'Baja-Media', 'Bajo', 'Calderos pequeños'],
+        ['COVs', 'Oxidación térmica', '>95%', 'Combustión 700-850°C', 'Alta', 'Alto', 'Química, pinturas'],
+        ['COVs', 'Oxidación catalítica', '>90%', 'Combustión catalítica 350-450°C', 'Alta', 'Medio-Alto', 'Imprentas, recubrimientos'],
+        ['COVs', 'Adsorción carbón activado', '85-95%', 'Captura en microporos', 'Media', 'Medio', 'Baja concentración'],
+        ['COVs', 'Condensación criogénica', '80-90%', 'Enfriamiento bajo punto rocío', 'Alta', 'Alto', 'Recuperación solventes'],
+        ['CO', 'Oxidación catalítica', '>98%', 'Conversión CO a CO2', 'Media-Alta', 'Medio', 'Escape vehicular, hornos']
+    ], columns=['Contaminante', 'Tecnología', 'Eficiencia', 'Principio de Operación', 'Complejidad', 'Costo', 'Aplicación Principal'])
+    
+    st.dataframe(tecnologias, use_container_width=True, hide_index=True, height=650)
+    
+    st.markdown("""
+    <div class='corporate-card fade-in'>
+        <h2>📊 Comparación de Eficiencias de Remoción</h2>
+        <p style='color: var(--text-secondary); margin-bottom: 1rem;'>
+            Eficiencia típica de principales tecnologías de control
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    eficiencias_data = pd.DataFrame([
+        {'Tecnología': 'Filtros mangas', 'Eficiencia': 99.5, 'Tipo': 'Material Particulado'},
+        {'Tecnología': 'ESP', 'Eficiencia': 97, 'Tipo': 'Material Particulado'},
+        {'Tecnología': 'Ciclones', 'Eficiencia': 80, 'Tipo': 'Material Particulado'},
+        {'Tecnología': 'FGD Húmedo', 'Eficiencia': 97, 'Tipo': 'SO2'},
+        {'Tecnología': 'SDA Seco', 'Eficiencia': 87.5, 'Tipo': 'SO2'},
+        {'Tecnología': 'SCR', 'Eficiencia': 92, 'Tipo': 'NOx'},
+        {'Tecnología': 'SNCR', 'Eficiencia': 50, 'Tipo': 'NOx'},
+        {'Tecnología': 'Low-NOx', 'Eficiencia': 40, 'Tipo': 'NOx'},
+        {'Tecnología': 'Oxidación térmica', 'Eficiencia': 97, 'Tipo': 'COVs'},
+        {'Tecnología': 'Carbón activado', 'Eficiencia': 90, 'Tipo': 'COVs'}
+    ])
+    
+    fig2 = px.bar(
+        eficiencias_data,
+        x='Tecnología',
+        y='Eficiencia',
+        color='Tipo',
+        color_discrete_map={
+            'Material Particulado': '#00B8D9',
+            'SO2': '#FFB300',
+            'NOx': '#00C853',
+            'COVs': '#D32F2F'
+        },
+        text='Eficiencia'
+    )
+    
+    fig2.update_traces(
+        texttemplate='%{text}%',
+        textposition='outside',
+        marker=dict(line=dict(color='rgba(255,255,255,0.2)', width=1))
+    )
+    
+    fig2.update_layout(
+        height=500,
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(color='#E3E8EF', size=12, family='Inter'),
+        xaxis=dict(showgrid=False, title='', tickangle=-45),
+        yaxis=dict(
+            showgrid=True,
+            gridcolor='rgba(255,255,255,0.06)',
+            title='Eficiencia de Remoción (%)',
+            range=[0, 105]
+        ),
+        legend=dict(
+            title='Tipo de Contaminante',
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="right",
+            x=1,
+            bgcolor='rgba(19, 47, 76, 0.8)',
+            bordercolor='rgba(255,255,255,0.1)',
+            borderwidth=1
+        )
+    )
+    
+    st.plotly_chart(fig2, use_container_width=True)
     # ===================== PÁGINA NORMATIVAS INTERNACIONALES =====================
 elif st.session_state.pagina == "Normativas":
     
@@ -1942,63 +2126,3 @@ elif st.session_state.pagina == "Normativas":
         st.plotly_chart(fig3, use_container_width=True)
         
         st.warning("**⚠️ Análisis:** El estándar peruano de PM2.5 anual (25 μg/m³) es 5 veces más permisivo que la OMS (5 μg/m³) y 2.8 veces más alto que EPA USA (9 μg/m³). Se recomienda actualización gradual de los ECA nacionales.")
-        # ===================== FOOTER SIMPLE Y GARANTIZADO =====================
-st.markdown("---")
-st.markdown("<br>", unsafe_allow_html=True)
-
-col_f1, col_f2, col_f3, col_f4 = st.columns(4)
-
-with col_f1:
-    st.markdown("""
-    <div style='text-align: center; padding: 1rem;'>
-        <div style='font-size: 2.5rem;'>🎓</div>
-        <p style='color: #00B8D9; font-weight: 700; font-size: 0.9rem; margin: 0.5rem 0;'>UNIVERSIDAD</p>
-        <p style='color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;'>Universidad Nacional<br>de Moquegua</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col_f2:
-    st.markdown("""
-    <div style='text-align: center; padding: 1rem;'>
-        <div style='font-size: 2.5rem;'>📚</div>
-        <p style='color: #00B8D9; font-weight: 700; font-size: 0.9rem; margin: 0.5rem 0;'>CURSO</p>
-        <p style='color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;'>Contaminación y<br>Control Atmosférico</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col_f3:
-    st.markdown("""
-    <div style='text-align: center; padding: 1rem;'>
-        <div style='font-size: 2.5rem;'>👨‍🏫</div>
-        <p style='color: #00B8D9; font-weight: 700; font-size: 0.9rem; margin: 0.5rem 0;'>DOCENTE</p>
-        <p style='color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;'>Prof. Dr. José Antonio<br>Valeriano Zapana</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col_f4:
-    st.markdown("""
-    <div style='text-align: center; padding: 1rem;'>
-        <div style='font-size: 2.5rem;'>📅</div>
-        <p style='color: #00B8D9; font-weight: 700; font-size: 0.9rem; margin: 0.5rem 0;'>ACTUALIZACIÓN</p>
-        <p style='color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;'>Octubre 2024<br>Ciclo 2024-II</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-st.markdown("<br>", unsafe_allow_html=True)
-
-st.markdown("""
-<div style='text-align: center; padding: 2rem 1rem; background: rgba(19, 47, 76, 0.5); border-radius: 10px; margin-top: 2rem;'>
-    <p style='color: rgba(255,255,255,0.95); font-size: 1rem; font-weight: 600; margin: 0.5rem 0;'>
-        🌍 Sistema Integral de Consulta de Marco Normativo de Calidad del Aire
-    </p>
-    <p style='color: rgba(255,255,255,0.7); font-size: 0.9rem; margin: 0.5rem 0;'>
-        💻 Streamlit • Plotly • Python
-    </p>
-    <p style='color: rgba(255,255,255,0.6); font-size: 0.85rem; margin: 0.5rem 0;'>
-        📊 MINAM • OEFA • OMS • EPA • CCME
-    </p>
-    <p style='color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-top: 1rem;'>
-        © 2024 UNAM - Facultad de Ingeniería y Arquitectura
-    </p>
-</div>
-""", unsafe_allow_html=True)
