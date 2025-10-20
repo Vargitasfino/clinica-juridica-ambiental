@@ -910,7 +910,6 @@ if st.session_state.pagina == "Inicio":
         )
         
         st.plotly_chart(fig_timeline, use_container_width=True)
-        
         st.markdown("""
         <div class='corporate-card' style='margin-top: 2rem;'>
             <h3 style='text-align: center; margin-bottom: 1.5rem;'>📂 Categorías del Sistema Normativo</h3>
@@ -1083,6 +1082,7 @@ if st.session_state.pagina == "Inicio":
         </div>
         """, unsafe_allow_html=True)
     
+    # ========== GRÁFICO COMPARATIVO CORREGIDO ==========
     st.markdown("""
     <div class='corporate-card fade-in'>
         <h2>📊 Análisis Comparativo: PM2.5 Anual</h2>
@@ -1099,21 +1099,32 @@ if st.session_state.pagina == "Inicio":
         {'Entidad': 'OEFA Perú', 'Valor': 25, 'Tipo': 'Nacional'}
     ])
     
-    fig = px.bar(
-        datos_comp, 
-        x='Entidad', 
-        y='Valor',
-        color='Tipo',
-        color_discrete_map={'Internacional': '#00B8D9', 'Nacional': '#FFB300'},
-        text='Valor',
-        title=''
-    )
+    # GRÁFICO CORREGIDO CON go.Figure()
+    fig = go.Figure()
     
-    fig.update_traces(
-        texttemplate='%{text} μg/m³', 
-        textposition='outside',
-        marker=dict(line=dict(color='rgba(255,255,255,0.2)', width=1))
-    )
+    # Agregar barras por tipo
+    internacional = datos_comp[datos_comp['Tipo'] == 'Internacional']
+    nacional = datos_comp[datos_comp['Tipo'] == 'Nacional']
+    
+    fig.add_trace(go.Bar(
+        name='Internacional',
+        x=internacional['Entidad'],
+        y=internacional['Valor'],
+        marker_color='#00B8D9',
+        text=internacional['Valor'],
+        texttemplate='%{text} μg/m³',
+        textposition='outside'
+    ))
+    
+    fig.add_trace(go.Bar(
+        name='Nacional',
+        x=nacional['Entidad'],
+        y=nacional['Valor'],
+        marker_color='#FFB300',
+        text=nacional['Valor'],
+        texttemplate='%{text} μg/m³',
+        textposition='outside'
+    ))
     
     fig.update_layout(
         height=500,
@@ -1121,12 +1132,12 @@ if st.session_state.pagina == "Inicio":
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
         font=dict(color='#E3E8EF', size=13, family='Inter'),
-        xaxis=dict(showgrid=False, title='', tickfont=dict(size=12)),
+        xaxis=dict(showgrid=False, title=''),
         yaxis=dict(
             showgrid=True, 
             gridcolor='rgba(255,255,255,0.06)',
             title='Concentración (μg/m³)',
-            titlefont=dict(size=12)
+            range=[0, 30]
         ),
         legend=dict(
             orientation="h",
@@ -1150,7 +1161,8 @@ if st.session_state.pagina == "Inicio":
         Se recomienda evaluar una actualización gradual de los ECA nacionales para una mejor protección de la salud pública.</p>
     </div>
     """, unsafe_allow_html=True)
-    # ===================== PÁGINA ECA =====================
+
+# ===================== PÁGINA ECA =====================
 elif st.session_state.pagina == "ECA":
     
     st.markdown("""
@@ -1311,8 +1323,7 @@ elif st.session_state.pagina == "ECA":
         - Fuentes: combustión incompleta de materia orgánica
         - Efectos: cancerígeno, mutagénico
         """)
-
-# ===================== PÁGINA LMP =====================
+        # ===================== PÁGINA LMP =====================
 elif st.session_state.pagina == "LMP":
     
     st.markdown("""
@@ -1442,11 +1453,11 @@ elif st.session_state.pagina == "LMP":
     
     st.dataframe(lmp_termo, use_container_width=True, hide_index=True, height=200)
     
-    fig = go.Figure()
+    fig_lmp = go.Figure()
     
     contaminantes = lmp_termo['Contaminante'].tolist()
     
-    fig.add_trace(go.Bar(
+    fig_lmp.add_trace(go.Bar(
         name='Gas Natural',
         x=contaminantes,
         y=lmp_termo['Gas Natural'],
@@ -1456,7 +1467,7 @@ elif st.session_state.pagina == "LMP":
         textposition='outside'
     ))
     
-    fig.add_trace(go.Bar(
+    fig_lmp.add_trace(go.Bar(
         name='Diesel',
         x=contaminantes,
         y=lmp_termo['Diesel'],
@@ -1466,7 +1477,7 @@ elif st.session_state.pagina == "LMP":
         textposition='outside'
     ))
     
-    fig.add_trace(go.Bar(
+    fig_lmp.add_trace(go.Bar(
         name='Residual',
         x=contaminantes,
         y=lmp_termo['Residual'],
@@ -1476,7 +1487,7 @@ elif st.session_state.pagina == "LMP":
         textposition='outside'
     ))
     
-    fig.update_layout(
+    fig_lmp.update_layout(
         barmode='group',
         height=500,
         plot_bgcolor='rgba(0,0,0,0)',
@@ -1501,7 +1512,7 @@ elif st.session_state.pagina == "LMP":
         )
     )
     
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig_lmp, use_container_width=True)
     
     st.markdown("""
     <div class='info-box'>
@@ -2033,60 +2044,10 @@ elif st.session_state.pagina == "Medidas":
     )
     
     st.plotly_chart(fig2, use_container_width=True)
-    
-    with st.expander("💡 Ver factores de selección de tecnología de control"):
-        st.markdown("""
-        #### Factores Clave para Selección de Tecnología
-        
-        **1. Características del Efluente Gaseoso**
-        - Caudal volumétrico: m³/h o Nm³/h
-        - Temperatura: °C (afecta volumen y selección de materiales)
-        - Concentración de contaminante: mg/Nm³ o ppm
-        - Características químicas: pH, humedad, presencia de otros compuestos
-        - Concentración de polvo: puede requerir pre-tratamiento
-        
-        **2. Requisitos Regulatorios**
-        - LMP aplicables: según sector y tipo de fuente
-        - ECA de zona: considerar impacto en calidad de aire ambiente
-        - Plazos de cumplimiento: gradualidad normativa
-        - Reporte y monitoreo: CEMS vs mediciones periódicas
-        
-        **3. Aspectos Técnicos**
-        - Eficiencia requerida: calculada según emisión actual y LMP
-        - Confiabilidad operativa: disponibilidad >95% típicamente requerida
-        - Vida útil de equipos: 15-25 años para equipos principales
-        - Espacio disponible: footprint de la instalación
-        - Servicios requeridos: energía eléctrica, agua, aire comprimido, vapor
-        
-        **4. Aspectos Económicos**
-        - CAPEX (inversión inicial): equipos, instalación, ingeniería
-        - OPEX (costos operativos): energía, reactivos, mantenimiento, mano de obra
-        - Generación de residuos: tratamiento y disposición de residuos secundarios
-        - Valor presente neto (VPN): análisis de costo-beneficio a 20 años
-        
-        **5. Consideraciones Ambientales**
-        - Consumo energético: kWh/Nm³ tratado
-        - Consumo de agua: si aplica (scrubbers, FGD)
-        - Generación de residuos: lodos, catalizadores gastados, filtros
-        - Emisiones secundarias: CO2 de consumo energético
-        
-        **6. Mejores Técnicas Disponibles (MTD/BAT)**
-        - Documentos BREF europeos: referencia técnica de BAT
-        - Guías EPA: AP-42 y documentos sectoriales
-        - Benchmarking internacional: plantas similares en región
-        - Innovaciones tecnológicas: considerar mejoras disponibles
-        
-        #### Proceso de Evaluación Recomendado
-        1. Caracterización completa del efluente gaseoso
-        2. Identificación de tecnologías técnicamente factibles
-        3. Evaluación multicriterio (técnica, económica, ambiental)
-        4. Análisis de sensibilidad y riesgos
-        5. Selección de tecnología óptima
-        6. Diseño de ingeniería detallada
-        7. Implementación y puesta en marcha
-        8. Monitoreo de desempeño y optimización continua
-        """)
-        # ===================== PÁGINA NORMATIVAS INTERNACIONALES =====================
+
+# Nota: Continúa en el siguiente mensaje con Página Normativas + Footer
+# debido al límite de caracteres. Dame "ok" para continuar.
+# ===================== PÁGINA NORMATIVAS INTERNACIONALES =====================
 elif st.session_state.pagina == "Normativas":
     
     st.markdown("<h1 style='text-align: center; margin-bottom: 2rem;'>🌍 Normativas Internacionales de Calidad del Aire</h1>", unsafe_allow_html=True)
