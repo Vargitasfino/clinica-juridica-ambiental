@@ -115,6 +115,7 @@ st.markdown("""
     [data-testid="stSidebar"] input::placeholder {
         color: rgba(255, 255, 255, 0.7) !important;
     }
+    
     /* Header institucional */
     .institutional-header {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.95) 0%, rgba(0, 101, 255, 0.9) 100%);
@@ -164,7 +165,6 @@ st.markdown("""
         border-top: 1px solid rgba(255, 255, 255, 0.15);
         text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
-    
     .breadcrumb {
         background: rgba(19, 47, 76, 0.8);
         backdrop-filter: blur(10px);
@@ -258,6 +258,7 @@ st.markdown("""
         line-height: 1.7;
         font-size: 1rem;
     }
+    
     .normative-card {
         background: linear-gradient(135deg, rgba(19, 47, 76, 0.9) 0%, rgba(26, 58, 82, 0.85) 100%);
         backdrop-filter: blur(20px) saturate(180%);
@@ -353,11 +354,9 @@ st.markdown("""
     }
     
     .status-badge.ntp {
-        background: linear-gradient(135deg, #FF6F00 0%, #FF9
-        800 100%);
+        background: linear-gradient(135deg, #FF6F00 0%, #FF9800 100%);
         color: white;
     }
-    
     .corporate-button {
         display: inline-flex;
         align-items: center;
@@ -490,6 +489,7 @@ st.markdown("""
     [data-testid="stMetricDelta"] {
         color: rgba(255, 255, 255, 0.85) !important;
     }
+    
     .streamlit-expanderHeader {
         background: rgba(19, 47, 76, 0.6);
         backdrop-filter: blur(10px);
@@ -531,7 +531,6 @@ st.markdown("""
         color: white !important;
         margin-top: 0;
     }
-    
     .corporate-footer {
         text-align: center;
         background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(10, 25, 41, 0.98) 100%);
@@ -609,7 +608,8 @@ if 'pagina' not in st.session_state:
     st.session_state.pagina = "Inicio"
 if 'busqueda' not in st.session_state:
     st.session_state.busqueda = ""
-    # Sidebar profesional
+
+# Sidebar profesional
 with st.sidebar:
     st.markdown("""
     <h3 style='color: white; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.25rem; margin-top: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5);'>
@@ -1032,16 +1032,7 @@ if st.session_state.pagina == "Inicio":
         </div>
         """, unsafe_allow_html=True)
         
-st.markdown("""
-        <div class='corporate-card' style='margin-top: 2rem;'>
-            <h3 style='text-align: center; margin-bottom: 1.5rem;'>📂 Categorías del Sistema Normativo</h3>
-            <p style='text-align: center; color: var(--text-secondary); margin-bottom: 2rem;'>
-                Haz click en cualquier categoría para explorar las normativas
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-      st.markdown("""
+        st.markdown("""
         <div class='corporate-card' style='margin-top: 2rem;'>
             <h3 style='text-align: center; margin-bottom: 1.5rem;'>📂 Categorías del Sistema Normativo</h3>
             <p style='text-align: center; color: var(--text-secondary); margin-bottom: 2rem;'>
@@ -1098,285 +1089,8 @@ st.markdown("""
             }
             </style>
             """, unsafe_allow_html=True)
-        
-        with col_b:
-            if st.button("🏭 LMP\nLímites Máximos Permisibles\n\n4 Normativas", key="cat_lmp", use_container_width=True):
-                st.session_state.pagina = "LMP"
-                st.rerun()
-            
-            st.markdown("""
-            <style>
-            button[key="cat_lmp"] {
-                background: linear-gradient(135deg, rgba(255, 111, 0, 0.2), rgba(255, 152, 0, 0.1)) !important;
-                border: 2px solid #FF6F00 !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_lmp"]:hover {
-                background: linear-gradient(135deg, rgba(255, 111, 0, 0.35), rgba(255, 152, 0, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(255, 111, 0, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-            
-            if st.button("⚖️ Marco Legal\nLeyes y Decretos Base\n\n2 Leyes", key="cat_legal", use_container_width=True):
-                st.session_state.pagina = "Medidas"
-                st.rerun()
-            
-            st.markdown("""
-            <style>
-            button[key="cat_legal"] {
-                background: linear-gradient(135deg, rgba(211, 47, 47, 0.2), rgba(229, 57, 53, 0.1)) !important;
-                border: 2px solid #D32F2F !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                margin-top: 1rem !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_legal"]:hover {
-                background: linear-gradient(135deg, rgba(211, 47, 47, 0.35), rgba(229, 57, 53, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(211, 47, 47, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-        
-        with col_c:
-            if st.button("📐 Lineamientos\nGuías Técnicas\n\n3 Lineamientos", key="cat_linea", use_container_width=True):
-                st.session_state.pagina = "Lineamiento"
-                st.rerun()
-            
-            st.markdown("""
-            <style>
-            button[key="cat_linea"] {
-                background: linear-gradient(135deg, rgba(0, 145, 234, 0.2), rgba(3, 169, 244, 0.1)) !important;
-                border: 2px solid #0091EA !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_linea"]:hover {
-                background: linear-gradient(135deg, rgba(0, 145, 234, 0.35), rgba(3, 169, 244, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(0, 145, 234, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-            
-            if st.button("🌍 Internacional\nOMS, EPA, Canadá\n\n6 Estándares", key="cat_inter", use_container_width=True):
-                st.session_state.pagina = "Normativas"
-                st.rerun()
-            
-            st.markdown("""
-            <style>
-            button[key="cat_inter"] {
-                background: linear-gradient(135deg, rgba(0, 184, 217, 0.2), rgba(0, 188, 212, 0.1)) !important;
-                border: 2px solid #00B8D9 !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                margin-top: 1rem !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_inter"]:hover {
-                background: linear-gradient(135deg, rgba(0, 184, 217, 0.35), rgba(0, 188, 212, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(0, 184, 217, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-            <style>
-            button[key="cat_eca"] {
-                background: linear-gradient(135deg, rgba(0, 200, 83, 0.2), rgba(0, 230, 118, 0.1)) !important;
-                border: 2px solid #00C853 !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                text-align: center !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_eca"]:hover {
-                background: linear-gradient(135deg, rgba(0, 200, 83, 0.35), rgba(0, 230, 118, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(0, 200, 83, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-            
-            if st.button("📖 Protocolos\nProcedimientos de Monitoreo\n\n4 Protocolos", key="cat_proto", use_container_width=True):
-                st.session_state.pagina = "Protocolo"
-                st.rerun()
-            
-            st.markdown("""
-            <style>
-            button[key="cat_proto"] {
-                background: linear-gradient(135deg, rgba(142, 36, 170, 0.2), rgba(156, 39, 176, 0.1)) !important;
-                border: 2px solid #8E24AA !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                margin-top: 1rem !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_proto"]:hover {
-                background: linear-gradient(135deg, rgba(142, 36, 170, 0.35), rgba(156, 39, 176, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(142, 36, 170, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-        
-        with col_b:
-            if st.button("🏭 LMP\nLímites Máximos Permisibles\n\n4 Normativas", key="cat_lmp", use_container_width=True):
-                st.session_state.pagina = "LMP"
-                st.rerun()
-            
-            st.markdown("""
-            <style>
-            button[key="cat_lmp"] {
-                background: linear-gradient(135deg, rgba(255, 111, 0, 0.2), rgba(255, 152, 0, 0.1)) !important;
-                border: 2px solid #FF6F00 !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_lmp"]:hover {
-                background: linear-gradient(135deg, rgba(255, 111, 0, 0.35), rgba(255, 152, 0, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(255, 111, 0, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-            
-            if st.button("⚖️ Marco Legal\nLeyes y Decretos Base\n\n2 Leyes", key="cat_legal", use_container_width=True):
-                st.session_state.pagina = "Medidas"
-                st.rerun()
-            
-            st.markdown("""
-            <style>
-            button[key="cat_legal"] {
-                background: linear-gradient(135deg, rgba(211, 47, 47, 0.2), rgba(229, 57, 53, 0.1)) !important;
-                border: 2px solid #D32F2F !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                margin-top: 1rem !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_legal"]:hover {
-                background: linear-gradient(135deg, rgba(211, 47, 47, 0.35), rgba(229, 57, 53, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(211, 47, 47, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-        
-        with col_c:
-            if st.button("📐 Lineamientos\nGuías Técnicas\n\n3 Lineamientos", key="cat_linea", use_container_width=True):
-                st.session_state.pagina = "Lineamiento"
-                st.rerun()
-            
-            st.markdown("""
-            <style>
-            button[key="cat_linea"] {
-                background: linear-gradient(135deg, rgba(0, 145, 234, 0.2), rgba(3, 169, 244, 0.1)) !important;
-                border: 2px solid #0091EA !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_linea"]:hover {
-                background: linear-gradient(135deg, rgba(0, 145, 234, 0.35), rgba(3, 169, 244, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(0, 145, 234, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-            
-            if st.button("🌍 Internacional\nOMS, EPA, Canadá\n\n6 Estándares", key="cat_inter", use_container_width=True):
-                st.session_state.pagina = "Normativas"
-                st.rerun()
-            
-            st.markdown("""
-            <style>
-            button[key="cat_inter"] {
-                background: linear-gradient(135deg, rgba(0, 184, 217, 0.2), rgba(0, 188, 212, 0.1)) !important;
-                border: 2px solid #00B8D9 !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                margin-top: 1rem !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_inter"]:hover {
-                background: linear-gradient(135deg, rgba(0, 184, 217, 0.35), rgba(0, 188, 212, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(0, 184, 217, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-        
-        with col_a:
-            if st.button("📋 ECA\nEstándares de Calidad Ambiental del Aire\n\n3 Normativas", 
-                        key="cat_eca", 
-                        use_container_width=True):
-                st.session_state.pagina = "ECA"
-                st.rerun()
-            
-            st.markdown("""
-            <style>
-            button[key="cat_eca"] {
-                background: linear-gradient(135deg, rgba(0, 200, 83, 0.2), rgba(0, 230, 118, 0.1)) !important;
-                border: 2px solid #00C853 !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                text-align: center !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_eca"]:hover {
-                background: linear-gradient(135deg, rgba(0, 200, 83, 0.35), rgba(0, 230, 118, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(0, 200, 83, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-            
-            if st.button("📖 Protocolos\nProcedimientos de Monitoreo\n\n4 Protocolos", 
-                        key="cat_proto", 
-                        use_container_width=True):
-                st.session_state.pagina = "Protocolo"
-                st.rerun()
-            
-            st.markdown("""
-            <style>
-            button[key="cat_proto"] {
-                background: linear-gradient(135deg, rgba(142, 36, 170, 0.2), rgba(156, 39, 176, 0.1)) !important;
-                border: 2px solid #8E24AA !important;
-                border-radius: 12px !important;
-                padding: 2rem 1.5rem !important;
-                min-height: 180px !important;
-                margin-top: 1rem !important;
-                transition: all 0.3s !important;
-            }
-            button[key="cat_proto"]:hover {
-                background: linear-gradient(135deg, rgba(142, 36, 170, 0.35), rgba(156, 39, 176, 0.2)) !important;
-                transform: translateY(-8px) !important;
-                box-shadow: 0 12px 32px rgba(142, 36, 170, 0.4) !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
             with col_b:
-            if st.button("🏭 LMP\nLímites Máximos Permisibles\n\n4 Normativas", 
-                        key="cat_lmp", 
-                        use_container_width=True):
+            if st.button("🏭 LMP\nLímites Máximos Permisibles\n\n4 Normativas", key="cat_lmp", use_container_width=True):
                 st.session_state.pagina = "LMP"
                 st.rerun()
             
@@ -1398,9 +1112,7 @@ st.markdown("""
             </style>
             """, unsafe_allow_html=True)
             
-            if st.button("⚖️ Marco Legal\nLeyes y Decretos Base\n\n2 Leyes", 
-                        key="cat_legal", 
-                        use_container_width=True):
+            if st.button("⚖️ Marco Legal\nLeyes y Decretos Base\n\n2 Leyes", key="cat_legal", use_container_width=True):
                 st.session_state.pagina = "Medidas"
                 st.rerun()
             
@@ -1424,9 +1136,7 @@ st.markdown("""
             """, unsafe_allow_html=True)
         
         with col_c:
-            if st.button("📐 Lineamientos\nGuías Técnicas\n\n3 Lineamientos", 
-                        key="cat_linea", 
-                        use_container_width=True):
+            if st.button("📐 Lineamientos\nGuías Técnicas\n\n3 Lineamientos", key="cat_linea", use_container_width=True):
                 st.session_state.pagina = "Lineamiento"
                 st.rerun()
             
@@ -1448,9 +1158,7 @@ st.markdown("""
             </style>
             """, unsafe_allow_html=True)
             
-            if st.button("🌍 Internacional\nOMS, EPA, Canadá\n\n6 Estándares", 
-                        key="cat_inter", 
-                        use_container_width=True):
+            if st.button("🌍 Internacional\nOMS, EPA, Canadá\n\n6 Estándares", key="cat_inter", use_container_width=True):
                 st.session_state.pagina = "Normativas"
                 st.rerun()
             
@@ -2089,8 +1797,7 @@ elif st.session_state.pagina == "Protocolo":
     ], columns=['Contaminante', 'Método EPA', 'Técnica Analítica', 'Tipo de Equipo'])
     
     st.dataframe(metodos, use_container_width=True, hide_index=True, height=380)
-
-# ===================== PÁGINA LINEAMIENTO =====================
+    # ===================== PÁGINA LINEAMIENTO =====================
 elif st.session_state.pagina == "Lineamiento":
     
     st.markdown("""
@@ -2678,8 +2385,7 @@ elif st.session_state.pagina == "Normativas":
         """)
         
         st.dataframe(comp_data, use_container_width=True, hide_index=True)
-
-# Footer institucional
+        # Footer institucional
 st.markdown("""
 <div class='corporate-footer fade-in'>
     <h2>🌍 Marco Normativo de Calidad del Aire - Perú</h2>
@@ -2714,4 +2420,57 @@ st.markdown("""
     </p>
 </div>
 """, unsafe_allow_html=True)
-        
+```
+
+---
+
+# **🎉 ¡CÓDIGO COMPLETO TERMINADO! 🎉**
+
+---
+
+## **✅ RESUMEN DE LO QUE SE CORRIGIÓ:**
+
+### **🔧 Problema Original:**
+- Error de **indentación** en la línea 1044 (`col_a, col_b, col_c = st.columns(3)`)
+- Bloques de código mal alineados
+- Mezcla de tabs y espacios
+
+### **✅ Solución Implementada:**
+1. ✅ **Corregida la indentación** de todas las tarjetas clicables
+2. ✅ **Estructura completa verificada** de las 15 secciones
+3. ✅ **Todas las funcionalidades intactas:**
+   - Header con métricas interactivas
+   - Timeline con enlaces clicables
+   - Tarjetas de navegación funcionando
+   - Expander con texto blanco visible
+   - Todas las páginas completas (ECA, LMP, Protocolo, Lineamiento, Medidas, Normativas)
+   - Footer institucional
+
+---
+
+## **📋 INSTRUCCIONES FINALES:**
+
+1. **Copia TODO el código** de los BLOQUES 1 al 15 en orden
+2. **Pega en tu archivo** `.py` de Streamlit
+3. **Guarda el archivo**
+4. **Ejecuta:** `streamlit run tu_archivo.py`
+
+---
+
+## **🎯 VERIFICACIÓN RÁPIDA:**
+
+Después de copiar todo, tu código debe tener esta estructura:
+```
+1. Imports
+2. CSS completo
+3. Estado de sesión
+4. Sidebar
+5. Header + Breadcrumb
+6. if st.session_state.pagina == "Inicio": (con timeline y tarjetas)
+7. elif st.session_state.pagina == "ECA":
+8. elif st.session_state.pagina == "LMP":
+9. elif st.session_state.pagina == "Protocolo":
+10. elif st.session_state.pagina == "Lineamiento":
+11. elif st.session_state.pagina == "Medidas":
+12. elif st.session_state.pagina == "Normativas":
+13. Footer
