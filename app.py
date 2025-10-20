@@ -496,25 +496,6 @@ st.markdown("""
         color: var(--text-primary);
     }
     
-    .info-box {
-        background: linear-gradient(135deg, rgba(0, 184, 217, 0.2) 0%, rgba(0, 101, 255, 0.15) 100%);
-        border-left: 4px solid var(--accent-teal);
-        padding: 1.25rem;
-        border-radius: 8px;
-        margin: 1rem 0;
-        backdrop-filter: blur(10px);
-    }
-    
-    .info-box p {
-        color: rgba(255, 255, 255, 0.95) !important;
-        margin: 0;
-        line-height: 1.6;
-    }
-    
-    .info-box strong {
-        color: white !important;
-    }
-    
     .warning-box {
         background: linear-gradient(135deg, rgba(255, 179, 0, 0.2) 0%, rgba(255, 152, 0, 0.15) 100%);
         border-left: 4px solid var(--warning);
@@ -537,34 +518,6 @@ st.markdown("""
     .warning-box h4 {
         color: white !important;
         margin-top: 0;
-    }
-    
-    .success-box {
-        background: linear-gradient(135deg, rgba(0, 200, 83, 0.2) 0%, rgba(0, 230, 118, 0.15) 100%);
-        border-left: 4px solid var(--success);
-        padding: 1.25rem;
-        border-radius: 8px;
-        margin: 1rem 0;
-        backdrop-filter: blur(10px);
-    }
-    
-    .success-box p {
-        color: rgba(255, 255, 255, 0.95) !important;
-        margin: 0;
-        line-height: 1.6;
-    }
-    
-    .success-box strong {
-        color: white !important;
-    }
-    
-    .success-box h4 {
-        color: white !important;
-        margin-top: 0;
-    }
-    
-    .success-box ol, .success-box ul {
-        color: rgba(255, 255, 255, 0.95) !important;
     }
     
     .corporate-footer {
@@ -732,11 +685,8 @@ with st.sidebar:
         ℹ️ INFORMACIÓN
     </h4>
     """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class='info-box'>
-        <p style='font-size: 0.85rem;'><strong>Última actualización:</strong><br>Octubre 2024</p>
-    </div>
-    """, unsafe_allow_html=True)
+    
+    st.info("**Última actualización:** Octubre 2024")
     
     with st.expander("📞 Contacto"):
         st.markdown("""
@@ -781,7 +731,6 @@ st.markdown(f"""
     <span>{breadcrumb_map.get(st.session_state.pagina, st.session_state.pagina)}</span>
 </div>
 """, unsafe_allow_html=True)
-
 # ===================== PÁGINA INICIO =====================
 if st.session_state.pagina == "Inicio":
     
@@ -999,31 +948,16 @@ if st.session_state.pagina == "Inicio":
                 </div>
             </div>
             """, unsafe_allow_html=True)
-            st.markdown("""
-        <div class='success-box' style='margin-top: 2rem;'>
-            <h4 style='margin-top: 0; color: white;'>✓ Beneficios del Sistema</h4>
-            <div style='display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;'>
-                <div>
-                    <strong style='color: white;'>📄 Acceso Directo</strong><br>
-                    <span style='color: rgba(255,255,255,0.9); font-size: 0.95rem;'>
-                        Enlaces actualizados a documentos oficiales
-                    </span>
-                </div>
-                <div>
-                    <strong style='color: white;'>📊 Visualizaciones</strong><br>
-                    <span style='color: rgba(255,255,255,0.9); font-size: 0.95rem;'>
-                        Gráficos interactivos para análisis comparativo
-                    </span>
-                </div>
-                <div>
-                    <strong style='color: white;'>✅ Información Validada</strong><br>
-                    <span style='color: rgba(255,255,255,0.9); font-size: 0.95rem;'>
-                        Datos técnicos verificados y referencias completas
-                    </span>
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+        
+        st.success("""
+        **✓ Beneficios del Sistema**
+        
+        **📄 Acceso Directo:** Enlaces actualizados a documentos oficiales
+        
+        **📊 Visualizaciones:** Gráficos interactivos para análisis comparativo
+        
+        **✅ Información Validada:** Datos técnicos verificados y referencias completas
+        """)
     
     with col2:
         st.markdown("""
@@ -1061,16 +995,8 @@ if st.session_state.pagina == "Inicio":
         
         st.markdown("<br>", unsafe_allow_html=True)
         
+        st.info("**💡 Sugerencia:** Utilice el buscador del menú lateral para encontrar normativas específicas rápidamente.")
         st.markdown("""
-        <div class='info-box'>
-            <p style='font-size: 0.9rem;'>
-                <strong>💡 Sugerencia:</strong> Utilice el buscador del menú lateral para encontrar 
-                normativas específicas rápidamente.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    st.markdown("""
     <div class='corporate-card fade-in'>
         <h2>📊 Análisis Comparativo: PM2.5 Anual</h2>
         <p style='color: var(--text-secondary); margin-bottom: 1.5rem;'>
@@ -1139,13 +1065,7 @@ if st.session_state.pagina == "Inicio":
     
     st.plotly_chart(fig, use_container_width=True)
     
-    st.markdown("""
-    <div class='warning-box'>
-        <p><strong>⚠️ Análisis:</strong> El estándar peruano de PM2.5 anual (25 μg/m³) es 5 veces más 
-        permisivo que la recomendación de la OMS (5 μg/m³) y 2.8 veces más alto que el estándar de EPA USA (9 μg/m³). 
-        Se recomienda evaluar una actualización gradual de los ECA nacionales para una mejor protección de la salud pública.</p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.warning("**⚠️ Análisis:** El estándar peruano de PM2.5 anual (25 μg/m³) es 5 veces más permisivo que la recomendación de la OMS (5 μg/m³) y 2.8 veces más alto que el estándar de EPA USA (9 μg/m³). Se recomienda evaluar una actualización gradual de los ECA nacionales para una mejor protección de la salud pública.")
 
 # ===================== PÁGINA ECA =====================
 elif st.session_state.pagina == "ECA":
@@ -1158,13 +1078,10 @@ elif st.session_state.pagina == "ECA":
             que no deben superarse para proteger la salud de la población. Se miden en estaciones de monitoreo 
             de calidad del aire y son de cumplimiento obligatorio en todo el territorio nacional.
         </p>
-        
-        <div class='info-box' style='margin-top: 1.5rem;'>
-            <p><strong>Diferencia clave:</strong> ECA se mide en aire ambiente (lo que respiramos), 
-            mientras que LMP se mide en la fuente de emisión (chimeneas, ductos).</p>
-        </div>
     </div>
     """, unsafe_allow_html=True)
+    
+    st.info("**💡 Diferencia clave:** ECA se mide en aire ambiente (lo que respiramos), mientras que LMP se mide en la fuente de emisión (chimeneas, ductos).")
     
     st.markdown("""
     <div class='normative-card vigente fade-in'>
@@ -1321,14 +1238,10 @@ elif st.session_state.pagina == "LMP":
             específicos por sector productivo y tipo de actividad, estableciendo obligaciones para 
             el cumplimiento ambiental de las empresas.
         </p>
-        
-        <div class='info-box' style='margin-top: 1.5rem;'>
-            <p><strong>Diferencia clave:</strong> Los LMP se aplican a la fuente emisora y son 
-            medidos en el punto de descarga, mientras que los ECA se miden en el aire ambiente 
-            que respira la población.</p>
-        </div>
     </div>
     """, unsafe_allow_html=True)
+    
+    st.info("**💡 Diferencia clave:** Los LMP se aplican a la fuente emisora y son medidos en el punto de descarga, mientras que los ECA se miden en el aire ambiente que respira la población.")
     
     st.markdown("""
     <div class='normative-card vigente fade-in'>
@@ -1499,14 +1412,7 @@ elif st.session_state.pagina == "LMP":
     
     st.plotly_chart(fig_lmp, use_container_width=True)
     
-    st.markdown("""
-    <div class='info-box'>
-        <p><strong>📌 Nota técnica:</strong> Los límites son más estrictos para combustibles más limpios. 
-        El gas natural tiene los LMP más bajos debido a su menor contenido de azufre y mejor eficiencia 
-        de combustión, mientras que el residual (combustóleo) tiene los límites más permisivos debido 
-        a su mayor contenido de impurezas.</p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.info("**📌 Nota técnica:** Los límites son más estrictos para combustibles más limpios. El gas natural tiene los LMP más bajos debido a su menor contenido de azufre y mejor eficiencia de combustión, mientras que el residual (combustóleo) tiene los límites más permisivos debido a su mayor contenido de impurezas.")
 
 # ===================== PÁGINA PROTOCOLO =====================
 elif st.session_state.pagina == "Protocolo":
@@ -1520,14 +1426,10 @@ elif st.session_state.pagina == "Protocolo":
             mediciones sean comparables, confiables y válidas a nivel nacional, cumpliendo con estándares 
             internacionales de calidad analítica.
         </p>
-        
-        <div class='info-box' style='margin-top: 1.5rem;'>
-            <p><strong>Importancia:</strong> Los protocolos aseguran la trazabilidad, precisión y 
-            validez legal de las mediciones ambientales realizadas por laboratorios acreditados y 
-            empresas consultoras.</p>
-        </div>
     </div>
     """, unsafe_allow_html=True)
+    
+    st.info("**💡 Importancia:** Los protocolos aseguran la trazabilidad, precisión y validez legal de las mediciones ambientales realizadas por laboratorios acreditados y empresas consultoras.")
     
     st.markdown("""
     <div class='normative-card vigente fade-in'>
@@ -1703,14 +1605,10 @@ elif st.session_state.pagina == "Lineamiento":
             proporcionan guías operativas para la implementación de normativas ambientales. Establecen 
             metodologías, procedimientos y criterios técnicos específicos para la gestión de calidad del aire.
         </p>
-        
-        <div class='info-box' style='margin-top: 1.5rem;'>
-            <p><strong>Función:</strong> Los lineamientos facilitan la aplicación práctica de la normativa 
-            legal, proporcionando herramientas técnicas para su cumplimiento efectivo por parte de autoridades, 
-            empresas y consultores.</p>
-        </div>
     </div>
     """, unsafe_allow_html=True)
+    
+    st.info("**💡 Función:** Los lineamientos facilitan la aplicación práctica de la normativa legal, proporcionando herramientas técnicas para su cumplimiento efectivo por parte de autoridades, empresas y consultores.")
     
     st.markdown("""
     <div class='normative-card vigente fade-in'>
@@ -1808,14 +1706,7 @@ elif st.session_state.pagina == "Lineamiento":
     
     st.dataframe(niveles, use_container_width=True, hide_index=True, height=500)
     
-    st.markdown("""
-    <div class='warning-box'>
-        <p><strong>⚠️ Protocolo de activación:</strong> Las autoridades ambientales y de salud deben 
-        activar los niveles de alerta cuando se registren o pronostiquen concentraciones en los rangos 
-        establecidos. Las medidas incluyen difusión masiva de información, restricción de actividades, 
-        y en casos de emergencia, la declaratoria de estado de emergencia ambiental.</p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.warning("**⚠️ Protocolo de activación:** Las autoridades ambientales y de salud deben activar los niveles de alerta cuando se registren o pronostiquen concentraciones en los rangos establecidos. Las medidas incluyen difusión masiva de información, restricción de actividades, y en casos de emergencia, la declaratoria de estado de emergencia ambiental.")
     # ===================== PÁGINA MEDIDAS =====================
 elif st.session_state.pagina == "Medidas":
     
@@ -1827,14 +1718,10 @@ elif st.session_state.pagina == "Medidas":
             de contaminantes atmosféricos desde fuentes puntuales. Su implementación es obligatoria para cumplir 
             con los LMP establecidos y representan la mejor tecnología disponible económicamente viable (BATEA).
         </p>
-        
-        <div class='info-box' style='margin-top: 1.5rem;'>
-            <p><strong>Marco legal:</strong> La Ley General del Ambiente (Ley 28611) establece la obligación 
-            de implementar medidas de prevención y control de la contaminación del aire, priorizando tecnologías 
-            limpias y sistemas de reducción de emisiones.</p>
-        </div>
     </div>
     """, unsafe_allow_html=True)
+    
+    st.info("**💡 Marco legal:** La Ley General del Ambiente (Ley 28611) establece la obligación de implementar medidas de prevención y control de la contaminación del aire, priorizando tecnologías limpias y sistemas de reducción de emisiones.")
     
     st.markdown("""
     <div class='normative-card vigente fade-in'>
@@ -2005,8 +1892,7 @@ elif st.session_state.pagina == "Medidas":
     )
     
     st.plotly_chart(fig2, use_container_width=True)
-
-# ===================== PÁGINA NORMATIVAS INTERNACIONALES =====================
+    # ===================== PÁGINA NORMATIVAS INTERNACIONALES =====================
 elif st.session_state.pagina == "Normativas":
     
     st.markdown("<h1 style='text-align: center; margin-bottom: 2rem;'>🌍 Normativas Internacionales de Calidad del Aire</h1>", unsafe_allow_html=True)
@@ -2021,13 +1907,10 @@ elif st.session_state.pagina == "Normativas":
                 La OMS establece las <strong>directrices globales más estrictas</strong> para proteger 
                 la salud pública de la contaminación del aire basándose en la mejor evidencia científica disponible.
             </p>
-            
-            <div class='success-box' style='margin-top: 1.5rem;'>
-                <p><strong>✓ Referencia mundial:</strong> Las guías OMS son reconocidas internacionalmente como 
-                la mejor evidencia científica disponible sobre efectos de la contaminación del aire en la salud.</p>
-            </div>
         </div>
         """, unsafe_allow_html=True)
+        
+        st.success("**✓ Referencia mundial:** Las guías OMS son reconocidas internacionalmente como la mejor evidencia científica disponible sobre efectos de la contaminación del aire en la salud.")
         
         st.markdown("""
         <div class='normative-card internacional fade-in'>
@@ -2069,13 +1952,7 @@ elif st.session_state.pagina == "Normativas":
         st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📋 Valores Guía OMS 2021</h3>", unsafe_allow_html=True)
         st.dataframe(oms_tabla, use_container_width=True, hide_index=True, height=280)
         
-        st.markdown("""
-        <div class='info-box' style='margin-top: 1.5rem;'>
-            <p><strong>💡 Metas Intermedias:</strong> La OMS también establece 4 niveles intermedios (IT-1 a IT-4) 
-            para países que no pueden alcanzar inmediatamente las guías finales, permitiendo una mejora progresiva 
-            de la calidad del aire.</p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.info("**💡 Metas Intermedias:** La OMS también establece 4 niveles intermedios (IT-1 a IT-4) para países que no pueden alcanzar inmediatamente las guías finales, permitiendo una mejora progresiva de la calidad del aire.")
     
     with tab2:
         st.markdown("""
@@ -2086,13 +1963,10 @@ elif st.session_state.pagina == "Normativas":
                 estándares vinculantes de cumplimiento obligatorio que se revisan cada 5 años basándose en la mejor 
                 ciencia disponible.
             </p>
-            
-            <div class='success-box' style='margin-top: 1.5rem;'>
-                <p><strong>✓ Sistema dual:</strong> La EPA establece estándares primarios (protección de salud) 
-                y secundarios (protección de bienestar público, incluyendo vegetación, visibilidad, edificios).</p>
-            </div>
         </div>
         """, unsafe_allow_html=True)
+        
+        st.success("**✓ Sistema dual:** La EPA establece estándares primarios (protección de salud) y secundarios (protección de bienestar público, incluyendo vegetación, visibilidad, edificios).")
         
         st.markdown("""
         <div class='normative-card internacional fade-in'>
@@ -2138,13 +2012,7 @@ elif st.session_state.pagina == "Normativas":
         st.markdown("<p style='text-align: center; color: var(--text-secondary); margin-bottom: 1rem;'>(P) = Primario (salud) | (S) = Secundario (bienestar)</p>", unsafe_allow_html=True)
         st.dataframe(epa_tabla, use_container_width=True, hide_index=True, height=400)
         
-        st.markdown("""
-        <div class='warning-box' style='margin-top: 1.5rem;'>
-            <p><strong>⚠️ Designaciones de no cumplimiento:</strong> Áreas que exceden NAAQS son designadas como 
-            "nonattainment" y deben desarrollar planes de mejora con cronograma específico. El incumplimiento 
-            persistente puede resultar en sanciones federales.</p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.warning("**⚠️ Designaciones de no cumplimiento:** Áreas que exceden NAAQS son designadas como 'nonattainment' y deben desarrollar planes de mejora con cronograma específico. El incumplimiento persistente puede resultar en sanciones federales.")
     
     with tab3:
         st.markdown("""
@@ -2155,13 +2023,10 @@ elif st.session_state.pagina == "Normativas":
                 progresivamente cada 5 años. La gestión se realiza por Air Zones con sistema de clasificación 
                 por colores que determina las acciones requeridas.
             </p>
-            
-            <div class='success-box' style='margin-top: 1.5rem;'>
-                <p><strong>✓ Enfoque innovador:</strong> Sistema de "Management Levels" (Verde, Amarillo, Naranja, Rojo) 
-                que vincula automáticamente el nivel de calidad del aire con acciones de gestión obligatorias.</p>
-            </div>
         </div>
         """, unsafe_allow_html=True)
+        
+        st.success("**✓ Enfoque innovador:** Sistema de 'Management Levels' (Verde, Amarillo, Naranja, Rojo) que vincula automáticamente el nivel de calidad del aire con acciones de gestión obligatorias.")
         
         canada_tabla = pd.DataFrame([
             ['PM2.5', 8.8, 8.0, 6.0, 'μg/m³', 'Anual (percentil 98 de promedios diarios)'],
@@ -2248,13 +2113,7 @@ elif st.session_state.pagina == "Normativas":
         
         st.plotly_chart(fig3, use_container_width=True)
         
-        st.markdown("""
-        <div class='warning-box'>
-            <p><strong>⚠️ Análisis:</strong> El estándar peruano de PM2.5 anual (25 μg/m³) es 5 veces más 
-            permisivo que la recomendación de la OMS (5 μg/m³) y 2.8 veces más alto que el estándar de EPA USA (9 μg/m³). 
-            Se recomienda evaluar una actualización gradual de los ECA nacionales para una mejor protección de la salud pública.</p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.warning("**⚠️ Análisis:** El estándar peruano de PM2.5 anual (25 μg/m³) es 5 veces más permisivo que la recomendación de la OMS (5 μg/m³) y 2.8 veces más alto que el estándar de EPA USA (9 μg/m³). Se recomienda evaluar una actualización gradual de los ECA nacionales para una mejor protección de la salud pública.")
         # ===================== FOOTER SIMPLE Y GARANTIZADO =====================
 st.markdown("---")
 st.markdown("<br>", unsafe_allow_html=True)
@@ -2315,3 +2174,4 @@ st.markdown("""
     </p>
 </div>
 """, unsafe_allow_html=True)
+    
