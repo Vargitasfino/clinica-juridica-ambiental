@@ -2255,65 +2255,63 @@ elif st.session_state.pagina == "Normativas":
             Se recomienda evaluar una actualización gradual de los ECA nacionales para una mejor protección de la salud pública.</p>
         </div>
         """, unsafe_allow_html=True)
-        # ===================== FOOTER MODERNO Y SIMPLE =====================
-st.markdown("""
-<div class='corporate-footer'>
-    <div style='text-align: center; padding: 2rem 1rem;'>
-        
-        <div style='font-size: 3rem; margin-bottom: 1rem;'>🎓</div>
-        
-        <h2 style='color: white; font-size: 2rem; font-weight: 800; margin: 0.5rem 0;'>
-            Universidad Nacional de Moquegua
-        </h2>
-        
-        <p style='font-size: 1.2rem; color: #60A5FA; font-weight: 600; margin: 0.5rem 0;'>
-            Facultad de Ingeniería y Arquitectura
-        </p>
-        
-        <div style='width: 100px; height: 3px; background: linear-gradient(90deg, #0052CC, #00B8D9); margin: 2rem auto; border-radius: 2px;'></div>
-        
-        <div style='display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin: 2rem 0; max-width: 900px; margin-left: auto; margin-right: auto;'>
-            
-            <div style='text-align: center;'>
-                <div style='font-size: 2rem; margin-bottom: 0.5rem;'>📚</div>
-                <p style='color: #00B8D9; font-weight: 700; margin: 0.5rem 0; font-size: 0.9rem;'>CURSO</p>
-                <p style='color: rgba(255,255,255,0.9); margin: 0;'>Contaminación y Control<br>Atmosférico</p>
-            </div>
-            
-            <div style='text-align: center;'>
-                <div style='font-size: 2rem; margin-bottom: 0.5rem;'>👨‍🏫</div>
-                <p style='color: #00B8D9; font-weight: 700; margin: 0.5rem 0; font-size: 0.9rem;'>DOCENTE</p>
-                <p style='color: rgba(255,255,255,0.9); margin: 0;'>Prof. Dr. José Antonio<br>Valeriano Zapana</p>
-            </div>
-            
-            <div style='text-align: center;'>
-                <div style='font-size: 2rem; margin-bottom: 0.5rem;'>📅</div>
-                <p style='color: #00B8D9; font-weight: 700; margin: 0.5rem 0; font-size: 0.9rem;'>ACTUALIZACIÓN</p>
-                <p style='color: rgba(255,255,255,0.9); margin: 0;'>Octubre 2024<br>Ciclo 2024-II</p>
-            </div>
-            
-            <div style='text-align: center;'>
-                <div style='font-size: 2rem; margin-bottom: 0.5rem;'>💻</div>
-                <p style='color: #00B8D9; font-weight: 700; margin: 0.5rem 0; font-size: 0.9rem;'>TECNOLOGÍA</p>
-                <p style='color: rgba(255,255,255,0.9); margin: 0;'>Streamlit<br>Plotly - Python</p>
-            </div>
-            
-        </div>
-        
-        <div style='width: 100px; height: 3px; background: linear-gradient(90deg, #00B8D9, #0052CC); margin: 2rem auto; border-radius: 2px;'></div>
-        
-        <p style='font-size: 1.1rem; color: rgba(255,255,255,0.95); font-weight: 600; margin: 1.5rem 0 0.5rem 0;'>
-            🌍 Sistema Integral de Consulta de Marco Normativo de Calidad del Aire
-        </p>
-        
-        <p style='font-size: 0.9rem; color: rgba(255,255,255,0.7); margin: 1rem 0 0 0;'>
-            📊 Datos oficiales: MINAM • OEFA • OMS • EPA • CCME
-        </p>
-        
-        <p style='font-size: 0.85rem; color: rgba(255,255,255,0.5); margin: 0.5rem 0 0 0;'>
-            © 2024 Universidad Nacional de Moquegua | Todos los derechos reservados
-        </p>
-        
+        # ===================== FOOTER SIMPLE Y GARANTIZADO =====================
+st.markdown("---")
+st.markdown("<br>", unsafe_allow_html=True)
+
+col_f1, col_f2, col_f3, col_f4 = st.columns(4)
+
+with col_f1:
+    st.markdown("""
+    <div style='text-align: center; padding: 1rem;'>
+        <div style='font-size: 2.5rem;'>🎓</div>
+        <p style='color: #00B8D9; font-weight: 700; font-size: 0.9rem; margin: 0.5rem 0;'>UNIVERSIDAD</p>
+        <p style='color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;'>Universidad Nacional<br>de Moquegua</p>
     </div>
+    """, unsafe_allow_html=True)
+
+with col_f2:
+    st.markdown("""
+    <div style='text-align: center; padding: 1rem;'>
+        <div style='font-size: 2.5rem;'>📚</div>
+        <p style='color: #00B8D9; font-weight: 700; font-size: 0.9rem; margin: 0.5rem 0;'>CURSO</p>
+        <p style='color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;'>Contaminación y<br>Control Atmosférico</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col_f3:
+    st.markdown("""
+    <div style='text-align: center; padding: 1rem;'>
+        <div style='font-size: 2.5rem;'>👨‍🏫</div>
+        <p style='color: #00B8D9; font-weight: 700; font-size: 0.9rem; margin: 0.5rem 0;'>DOCENTE</p>
+        <p style='color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;'>Prof. Dr. José Antonio<br>Valeriano Zapana</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col_f4:
+    st.markdown("""
+    <div style='text-align: center; padding: 1rem;'>
+        <div style='font-size: 2.5rem;'>📅</div>
+        <p style='color: #00B8D9; font-weight: 700; font-size: 0.9rem; margin: 0.5rem 0;'>ACTUALIZACIÓN</p>
+        <p style='color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;'>Octubre 2024<br>Ciclo 2024-II</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.markdown("""
+<div style='text-align: center; padding: 2rem 1rem; background: rgba(19, 47, 76, 0.5); border-radius: 10px; margin-top: 2rem;'>
+    <p style='color: rgba(255,255,255,0.95); font-size: 1rem; font-weight: 600; margin: 0.5rem 0;'>
+        🌍 Sistema Integral de Consulta de Marco Normativo de Calidad del Aire
+    </p>
+    <p style='color: rgba(255,255,255,0.7); font-size: 0.9rem; margin: 0.5rem 0;'>
+        💻 Streamlit • Plotly • Python
+    </p>
+    <p style='color: rgba(255,255,255,0.6); font-size: 0.85rem; margin: 0.5rem 0;'>
+        📊 MINAM • OEFA • OMS • EPA • CCME
+    </p>
+    <p style='color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-top: 1rem;'>
+        © 2024 UNAM - Facultad de Ingeniería y Arquitectura
+    </p>
 </div>
 """, unsafe_allow_html=True)
