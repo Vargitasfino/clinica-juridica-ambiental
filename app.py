@@ -2226,3 +2226,102 @@ st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
+import streamlit as st
+
+# CSS para la sección de integrantes
+st.markdown("""
+<style>
+    /* Sección de Integrantes */
+    .team-section {
+        background: linear-gradient(135deg, rgba(0, 184, 217, 0.15) 0%, rgba(0, 82, 204, 0.15) 100%);
+        backdrop-filter: blur(10px);
+        padding: 2rem 2.5rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(0, 184, 217, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 184, 217, 0.2);
+    }
+    
+    .team-section h2 {
+        color: #FFFFFF !important;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .team-member {
+        background: rgba(19, 47, 76, 0.6);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        border-left: 3px solid #00B8D9;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+    }
+    
+    .team-member:hover {
+        background: rgba(19, 47, 76, 0.8);
+        transform: translateX(5px);
+        border-left-color: #00C853;
+    }
+    
+    .team-member::before {
+        content: '👤';
+        font-size: 1.5rem;
+        margin-right: 1rem;
+    }
+    
+    .team-member-name {
+        color: #FFFFFF !important;
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .team-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# HTML de la sección de integrantes
+st.markdown("""
+<div class='team-section fade-in'>
+    <h2>👥 Integrantes del Equipo</h2>
+    <div class='team-grid'>
+        <div class='team-member'>
+            <div class='team-member-name'>MORA PERALTA, JESUS RAPHAEL</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>VARGAS FLORES, SEBASTIAN DANILO</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>TINAJEROS VALDIVIA, VALLERY CAROLINA</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>ORELLANA ROSADO, DANNA LYSSETH</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>CHURA ORCONI, JHON ANTONY</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>RONCEROS LOOKUY, SAILEEN DEL ROSARIO</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>FLORES SOSA, ANGELICA JUDITH</div>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
