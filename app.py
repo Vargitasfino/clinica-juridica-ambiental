@@ -12,7 +12,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS Ultra Profesional - VERSIÓN MEJORADA CON MEJOR VISIBILIDAD
+# CSS Ultra Profesional - VERSIÓN MEJORADA CON MEJOR VISIBILIDAD Y TARJETAS CLICABLES
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -35,6 +35,12 @@ st.markdown("""
         --danger: #D32F2F;
     }
     
+    /* MEJORA CRÍTICA: Todos los títulos más visibles */
+    h1, h2, h3, h4, h5, h6 {
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+        text-shadow: 0 3px 10px rgba(0,0,0,0.8) !important;
+    }
     /* MEJORA CRÍTICA: Componentes nativos de Streamlit más visibles */
     div[data-testid="stMarkdownContainer"] >
     div[data-testid="stAlert"] {
@@ -604,6 +610,234 @@ st.markdown("""
         }
     }
 </style>
+
+    
+    /* Sección de Integrantes - MEJORADO CON TEXTO BLANCO */
+    .team-section {
+        background: linear-gradient(135deg, rgba(0, 184, 217, 0.15) 0%, rgba(0, 82, 204, 0.15) 100%);
+        backdrop-filter: blur(10px);
+        padding: 2rem 2.5rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(0, 184, 217, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 184, 217, 0.2);
+    }
+    
+    .team-section h2 {
+        color: #FFFFFF !important;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .team-member {
+        background: rgba(19, 47, 76, 0.6);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        border-left: 3px solid #00B8D9;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+    }
+    
+    .team-member:hover {
+        background: rgba(19, 47, 76, 0.8);
+        transform: translateX(5px);
+        border-left-color: #00C853;
+    }
+    
+    .team-member::before {
+        content: '👤';
+        font-size: 1.5rem;
+        margin-right: 1rem;
+    }
+    
+    .team-member-name {
+        color: #FFFFFF !important;
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+    
+    /* Tarjetas de navegación clicables */
+    .nav-cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    .nav-card {
+        background: linear-gradient(135deg, rgba(19, 47, 76, 0.9) 0%, rgba(26, 58, 82, 0.8) 100%);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .nav-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+    }
+    
+    .nav-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    
+    .nav-card.eca {
+        border-left: 4px solid #00C853;
+    }
+    
+    .nav-card.eca::before {
+        background: linear-gradient(90deg, #00C853, transparent);
+    }
+    
+    .nav-card.eca:hover {
+        border-color: #00C853;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 200, 83, 0.4);
+    }
+    
+    .nav-card.lmp {
+        border-left: 4px solid #FF6D00;
+    }
+    
+    .nav-card.lmp::before {
+        background: linear-gradient(90deg, #FF6D00, transparent);
+    }
+    
+    .nav-card.lmp:hover {
+        border-color: #FF6D00;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 109, 0, 0.4);
+    }
+    
+    .nav-card.lineamientos {
+        border-left: 4px solid #2196F3;
+    }
+    
+    .nav-card.lineamientos::before {
+        background: linear-gradient(90deg, #2196F3, transparent);
+    }
+    
+    .nav-card.lineamientos:hover {
+        border-color: #2196F3;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(33, 150, 243, 0.4);
+    }
+    
+    .nav-card.protocolos {
+        border-left: 4px solid #9C27B0;
+    }
+    
+    .nav-card.protocolos::before {
+        background: linear-gradient(90deg, #9C27B0, transparent);
+    }
+    
+    .nav-card.protocolos:hover {
+        border-color: #9C27B0;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(156, 39, 176, 0.4);
+    }
+    
+    .nav-card.marco-legal {
+        border-left: 4px solid #F44336;
+    }
+    
+    .nav-card.marco-legal::before {
+        background: linear-gradient(90deg, #F44336, transparent);
+    }
+    
+    .nav-card.marco-legal:hover {
+        border-color: #F44336;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(244, 67, 54, 0.4);
+    }
+    
+    .nav-card.internacional {
+        border-left: 4px solid #00BCD4;
+    }
+    
+    .nav-card.internacional::before {
+        background: linear-gradient(90deg, #00BCD4, transparent);
+    }
+    
+    .nav-card.internacional:hover {
+        border-color: #00BCD4;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 188, 212, 0.4);
+    }
+    
+    .nav-card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    }
+    
+    .nav-card-title {
+        color: #FFFFFF !important;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .nav-card-subtitle {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+    
+    .nav-card-count {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 1rem 0;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+    
+    .nav-card.eca .nav-card-count {
+        color: #00C853 !important;
+    }
+    
+    .nav-card.lmp .nav-card-count {
+        color: #FF6D00 !important;
+    }
+    
+    .nav-card.lineamientos .nav-card-count {
+        color: #2196F3 !important;
+    }
+    
+    .nav-card.protocolos .nav-card-count {
+        color: #9C27B0 !important;
+    }
+    
+    .nav-card.marco-legal .nav-card-count {
+        color: #F44336 !important;
+    }
+    
+    .nav-card.internacional .nav-card-count {
+        color: #00BCD4 !important;
+    }
+    
+    .nav-card-label {
+        color: rgba(255, 255, 255, 0.7) !important;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+</style>
 """, unsafe_allow_html=True)
 
 # Estado de sesión
@@ -746,6 +980,90 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 # ===================== PÁGINA INICIO =====================
+
+# ==================== SECCIÓN DE INTEGRANTES ====================
+st.markdown("""
+<div class='team-section fade-in'>
+    <h2>👥 Integrantes del Equipo</h2>
+    <div class='team-grid'>
+        <div class='team-member'>
+            <div class='team-member-name'>MORA PERALTA, JESUS RAPHAEL</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>VARGAS FLORES, SEBASTIAN DANILO</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>TINAJEROS VALDIVIA, VALLERY CAROLINA</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>ORELLANA ROSADO, DANNA LYSSETH</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>CHURA ORCONI, JHON ANTONY</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>RONCEROS LOOKUY, SAILEEN DEL ROSARIO</div>
+        </div>
+        <div class='team-member'>
+            <div class='team-member-name'>FLORES SOSA, ANGELICA JUDITH</div>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# ==================== TARJETAS DE NAVEGACIÓN CLICABLES ====================
+st.markdown("""
+<div class='nav-cards-container'>
+    <div class='nav-card eca'>
+        <div class='nav-card-icon'>📋</div>
+        <div class='nav-card-title'>ECA</div>
+        <div class='nav-card-subtitle'>Estándares de Calidad Ambiental del Aire</div>
+        <div class='nav-card-count'>3</div>
+        <div class='nav-card-label'>Normativas</div>
+    </div>
+    
+    <div class='nav-card lmp'>
+        <div class='nav-card-icon'>🏭</div>
+        <div class='nav-card-title'>LMP</div>
+        <div class='nav-card-subtitle'>Límites Máximos Permisibles</div>
+        <div class='nav-card-count'>4</div>
+        <div class='nav-card-label'>Normativas</div>
+    </div>
+    
+    <div class='nav-card lineamientos'>
+        <div class='nav-card-icon'>📐</div>
+        <div class='nav-card-title'>Lineamientos</div>
+        <div class='nav-card-subtitle'>Guías Técnicas</div>
+        <div class='nav-card-count'>3</div>
+        <div class='nav-card-label'>Lineamientos</div>
+    </div>
+    
+    <div class='nav-card protocolos'>
+        <div class='nav-card-icon'>📖</div>
+        <div class='nav-card-title'>Protocolos</div>
+        <div class='nav-card-subtitle'>Procedimientos de Monitoreo</div>
+        <div class='nav-card-count'>4</div>
+        <div class='nav-card-label'>Protocolos</div>
+    </div>
+    
+    <div class='nav-card marco-legal'>
+        <div class='nav-card-icon'>⚖️</div>
+        <div class='nav-card-title'>Marco Legal</div>
+        <div class='nav-card-subtitle'>Leyes y Decretos Base</div>
+        <div class='nav-card-count'>2</div>
+        <div class='nav-card-label'>Leyes</div>
+    </div>
+    
+    <div class='nav-card internacional'>
+        <div class='nav-card-icon'>🌍</div>
+        <div class='nav-card-title'>Internacional</div>
+        <div class='nav-card-subtitle'>OMS, EPA, Canadá</div>
+        <div class='nav-card-count'>6</div>
+        <div class='nav-card-label'>Estándares</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
 if st.session_state.pagina == "Inicio":
     
     col1, col2, col3, col4 = st.columns(4)
@@ -2126,293 +2444,3 @@ elif st.session_state.pagina == "Normativas":
         st.plotly_chart(fig3, use_container_width=True)
         
         st.warning("**⚠️ Análisis:** El estándar peruano de PM2.5 anual (25 μg/m³) es 5 veces más permisivo que la OMS (5 μg/m³) y 2.8 veces más alto que EPA USA (9 μg/m	³). Se recomienda actualización gradual de los ECA nacionales.")
-
-import streamlit as st
-
-# CSS para la sección de integrantes
-st.markdown("""
-<style>
-    /* Sección de Integrantes */
-    .team-section {
-        background: linear-gradient(135deg, rgba(0, 184, 217, 0.15) 0%, rgba(0, 82, 204, 0.15) 100%);
-        backdrop-filter: blur(10px);
-        padding: 2rem 2.5rem;
-        border-radius: 12px;
-        margin-bottom: 2rem;
-        border: 1px solid rgba(0, 184, 217, 0.3);
-        box-shadow: 0 8px 32px rgba(0, 184, 217, 0.2);
-    }
-    
-    .team-section h2 {
-        color: #00B8D9 !important;
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-        text-align: center;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-    
-    .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1rem;
-        margin-top: 1.5rem;
-    }
-    
-    .team-member {
-        background: rgba(19, 47, 76, 0.6);
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        border-left: 3px solid #00B8D9;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-    }
-    
-    .team-member:hover {
-        background: rgba(19, 47, 76, 0.8);
-        transform: translateX(5px);
-        border-left-color: #00C853;
-    }
-    
-    .team-member::before {
-        content: '👤';
-        font-size: 1.5rem;
-        margin-right: 1rem;
-    }
-    
-    .team-member-name {
-        color: #E3E8EF !important;
-        font-size: 0.95rem;
-        font-weight: 500;
-        line-height: 1.4;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-        .team-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
-""", unsafe_allow_html=True)
-
-# HTML de la sección de integrantes
-st.markdown("""
-<div class='team-section fade-in'>
-    <h2>👥 Integrantes del Equipo</h2>
-    <div class='team-grid'>
-        <div class='team-member'>
-            <div class='team-member-name'>MORA PERALTA, JESUS RAPHAEL</div>
-        </div>
-        <div class='team-member'>
-            <div class='team-member-name'>VARGAS FLORES, SEBASTIAN DANILO</div>
-        </div>
-        <div class='team-member'>
-            <div class='team-member-name'>TINAJEROS VALDIVIA, VALLERY CAROLINA</div>
-        </div>
-        <div class='team-member'>
-            <div class='team-member-name'>ORELLANA ROSADO, DANNA LYSSETH</div>
-        </div>
-        <div class='team-member'>
-            <div class='team-member-name'>CHURA ORCONI, JHON ANTONY</div>
-        </div>
-        <div class='team-member'>
-            <div class='team-member-name'>RONCEROS LOOKUY, SAILEEN DEL ROSARIO</div>
-        </div>
-        <div class='team-member'>
-            <div class='team-member-name'>FLORES SOSA, ANGELICA JUDITH</div>
-        </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-import streamlit as st
-
-import streamlit as st
-
-# ==================== CSS MEJORADO PARA VISIBILIDAD ====================
-st.markdown("""
-<style>
-    /* Mejorar visibilidad de títulos principales */
-    h1, h2, h3 {
-        color: #FFFFFF !important;
-        font-weight: 700 !important;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.6) !important;
-    }
-    
-    /* Tarjetas clicables de navegación */
-    .nav-cards-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        margin: 2rem 0;
-    }
-    
-    .nav-card {
-        background: linear-gradient(135deg, rgba(19, 47, 76, 0.9) 0%, rgba(26, 58, 82, 0.8) 100%);
-        border-radius: 16px;
-        padding: 2rem;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2px solid transparent;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .nav-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--card-color), transparent);
-    }
-    
-    .nav-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        border-color: var(--card-color);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--card-color-alpha);
-    }
-    
-    .nav-card.eca {
-        --card-color: #00C853;
-        --card-color-alpha: rgba(0, 200, 83, 0.4);
-        border-left: 4px solid #00C853;
-    }
-    
-    .nav-card.lmp {
-        --card-color: #FF6D00;
-        --card-color-alpha: rgba(255, 109, 0, 0.4);
-        border-left: 4px solid #FF6D00;
-    }
-    
-    .nav-card.lineamientos {
-        --card-color: #2196F3;
-        --card-color-alpha: rgba(33, 150, 243, 0.4);
-        border-left: 4px solid #2196F3;
-    }
-    
-    .nav-card.protocolos {
-        --card-color: #9C27B0;
-        --card-color-alpha: rgba(156, 39, 176, 0.4);
-        border-left: 4px solid #9C27B0;
-    }
-    
-    .nav-card.marco-legal {
-        --card-color: #F44336;
-        --card-color-alpha: rgba(244, 67, 54, 0.4);
-        border-left: 4px solid #F44336;
-    }
-    
-    .nav-card.internacional {
-        --card-color: #00BCD4;
-        --card-color-alpha: rgba(0, 188, 212, 0.4);
-        border-left: 4px solid #00BCD4;
-    }
-    
-    .nav-card-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-    }
-    
-    .nav-card-title {
-        color: #FFFFFF !important;
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    .nav-card-subtitle {
-        color: rgba(255, 255, 255, 0.85) !important;
-        font-size: 0.95rem;
-        margin-bottom: 1rem;
-    }
-    
-    .nav-card-count {
-        color: var(--card-color) !important;
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin: 1rem 0;
-        text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
-    
-    .nav-card-label {
-        color: rgba(255, 255, 255, 0.7) !important;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-</style>
-""", unsafe_allow_html=True)
-
-# ==================== TARJETAS DE NAVEGACIÓN CLICABLES ====================
-st.markdown("""
-<div class='nav-cards-container'>
-    <div class='nav-card eca' onclick='window.location.hash="eca-section"'>
-        <div class='nav-card-icon'>📋</div>
-        <div class='nav-card-title'>ECA</div>
-        <div class='nav-card-subtitle'>Estándares de Calidad Ambiental del Aire</div>
-        <div class='nav-card-count'>3</div>
-        <div class='nav-card-label'>Normativas</div>
-    </div>
-    
-    <div class='nav-card lmp' onclick='window.location.hash="lmp-section"'>
-        <div class='nav-card-icon'>🏭</div>
-        <div class='nav-card-title'>LMP</div>
-        <div class='nav-card-subtitle'>Límites Máximos Permisibles</div>
-        <div class='nav-card-count'>4</div>
-        <div class='nav-card-label'>Normativas</div>
-    </div>
-    
-    <div class='nav-card lineamientos' onclick='window.location.hash="lineamientos-section"'>
-        <div class='nav-card-icon'>📐</div>
-        <div class='nav-card-title'>Lineamientos</div>
-        <div class='nav-card-subtitle'>Guías Técnicas</div>
-        <div class='nav-card-count'>3</div>
-        <div class='nav-card-label'>Lineamientos</div>
-    </div>
-    
-    <div class='nav-card protocolos' onclick='window.location.hash="protocolos-section"'>
-        <div class='nav-card-icon'>📖</div>
-        <div class='nav-card-title'>Protocolos</div>
-        <div class='nav-card-subtitle'>Procedimientos de Monitoreo</div>
-        <div class='nav-card-count'>4</div>
-        <div class='nav-card-label'>Protocolos</div>
-    </div>
-    
-    <div class='nav-card marco-legal' onclick='window.location.hash="marco-legal-section"'>
-        <div class='nav-card-icon'>⚖️</div>
-        <div class='nav-card-title'>Marco Legal</div>
-        <div class='nav-card-subtitle'>Leyes y Decretos Base</div>
-        <div class='nav-card-count'>2</div>
-        <div class='nav-card-label'>Leyes</div>
-    </div>
-    
-    <div class='nav-card internacional' onclick='window.location.hash="internacional-section"'>
-        <div class='nav-card-icon'>🌍</div>
-        <div class='nav-card-title'>Internacional</div>
-        <div class='nav-card-subtitle'>OMS, EPA, Canadá</div>
-        <div class='nav-card-count'>6</div>
-        <div class='nav-card-label'>Estándares</div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-# ==================== TÍTULOS CON MEJOR VISIBILIDAD ====================
-st.markdown("""
-<h1 style='text-align: center; color: #FFFFFF !important; font-size: 2.5rem; font-weight: 800; 
-           text-shadow: 0 4px 12px rgba(0,0,0,0.8); margin: 2rem 0;'>
-    🌍 Estándares Internacionales de Calidad del Aire
-</h1>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<h2 style='text-align: center; color: #FFFFFF !important; font-size: 2rem; font-weight: 700; 
-           text-shadow: 0 4px 12px rgba(0,0,0,0.8); margin: 2rem 0;'>
-    📊 Análisis Comparativo Internacional
-</h2>
-""", unsafe_allow_html=True)
