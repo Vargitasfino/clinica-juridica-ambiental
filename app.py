@@ -1067,7 +1067,7 @@ if st.session_state.pagina == "Inicio":
             </div>
             """, unsafe_allow_html=True)
             if st.button("📄 Ver Protocolos", key="goto_proto", use_container_width=True):
-                st.session_state.pagina = "Protocolos"
+                st.session_state.pagina = "Protocolo"
                 st.rerun()
         
         with col_b:
@@ -1106,7 +1106,7 @@ if st.session_state.pagina == "Inicio":
             </div>
             """, unsafe_allow_html=True)
             if st.button("📄 Ver Marco Legal", key="goto_legal", use_container_width=True):
-                st.session_state.pagina = "Marco Legal"
+                st.session_state.pagina = "Medidas"
                 st.rerun()
         
         with col_c:
@@ -1126,7 +1126,7 @@ if st.session_state.pagina == "Inicio":
             </div>
             """, unsafe_allow_html=True)
             if st.button("📄 Ver Lineamientos", key="goto_linea", use_container_width=True):
-                st.session_state.pagina = "Lineamientos"
+                st.session_state.pagina = "Lineamiento"
                 st.rerun()
             
             # Card Internacional - Clickeable
