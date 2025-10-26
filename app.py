@@ -4,8 +4,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
 
-# VERSIÓN 2.2 - CSS agresivo para eliminar cuadros verdes
-# Fecha de actualización: 2025-01-25 14:45
+# VERSIÓN 2.4 - Texto blanco brillante en todos los botones
+# Fecha de actualización: 2025-01-25 15:10
 
 # Configuración de página
 st.set_page_config(
@@ -31,7 +31,7 @@ st.markdown("""
         --accent-teal: #00B8D9;
         --dark-bg: #0A1929;
         --card-bg: #132F4C;
-        --text-primary: #E3E8EF;
+        --text-primary: #FFFFFF;
         --text-secondary: #B2BAC2;
         --success: #00C853;
         --warning: #FFB300;
@@ -573,7 +573,7 @@ st.markdown("""
         width: 100%;
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.15) 0%, rgba(0, 101, 255, 0.15) 100%);
         backdrop-filter: blur(10px);
-        color: var(--text-primary);
+        color: #FFFFFF !important;
         border: 1px solid rgba(0, 101, 255, 0.3);
         border-radius: 8px;
         padding: 0.75rem 1.25rem;
@@ -586,6 +586,7 @@ st.markdown("""
     .stButton > button:hover {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.3) 0%, rgba(0, 101, 255, 0.3) 100%);
         border-color: var(--secondary-blue);
+        color: #FFFFFF !important;
         transform: translateY(-2px);
         box-shadow: 0 6px 16px rgba(0, 82, 204, 0.3);
     }
@@ -650,8 +651,21 @@ st.markdown("""
     [style*="background-color: rgb(0, 128, 0)"],
     [style*="background-color: green"],
     [style*="background: green"],
-    [style*="background: rgb(0, 128, 0)"] {
-        color: white !important;
+    [style*="background: rgb(0, 128, 0)"],
+    [style*="background-color:#008000"],
+    [style*="background:#008000"],
+    [style*="rgb(0,128,0)"],
+    [style*="rgba(0,128,0"] {
+        display: none !important;
+    }
+    
+    /* ULTRA AGRESIVO: Ocultar elementos verdes en tabs */
+    .stTabs div[style*="green"],
+    .stTabs div[style*="rgb(0, 128, 0)"],
+    .stTabs div[style*="rgb(0,128,0)"],
+    .stTabs span[style*="green"],
+    .stTabs span[style*="rgb(0, 128, 0)"] {
+        display: none !important;
     }
     
     /* Eliminar badges/chips de Streamlit que aparecen automáticamente */
@@ -2545,6 +2559,32 @@ elif st.session_state.pagina == "Medidas":
 elif st.session_state.pagina == "Normativas":
     
     st.markdown("<h1 style='text-align: center; margin-bottom: 2rem; color: #FFFFFF;'>🌍 Estándares Internacionales de Calidad del Aire</h1>", unsafe_allow_html=True)
+    
+    # JavaScript para ocultar elementos problemáticos con fondo verde
+    st.markdown("""
+    <script>
+    // Ejecutar cuando el DOM esté listo
+    setTimeout(function() {
+        // Buscar y ocultar elementos con fondo verde en los tabs
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(function(el) {
+            const style = window.getComputedStyle(el);
+            const bg = style.backgroundColor;
+            
+            // Si tiene fondo verde, ocultarlo
+            if (bg && (bg.includes('0, 128, 0') || bg.includes('green'))) {
+                el.style.display = 'none';
+            }
+            
+            // O hacerlo visible con texto blanco
+            if (bg && (bg.includes('0, 128, 0') || bg.includes('green'))) {
+                el.style.color = 'white';
+                el.style.backgroundColor = 'transparent';
+            }
+        });
+    }, 500);
+    </script>
+    """, unsafe_allow_html=True)
     
     tab1, tab2, tab3, tab4 = st.tabs(["🏥 OMS", "🇺🇸 EPA USA", "🇨🇦 Canadá", "📊 Análisis Comparativo"])
     
