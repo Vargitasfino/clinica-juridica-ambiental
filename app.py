@@ -1405,13 +1405,13 @@ elif st.session_state.pagina == "ECA":
         
         with col1:
             st.markdown("""
-            <div class='pollutant-card' style='background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.05)); 
+            <div class='pollutant-card' style='background: linear-gradient(135deg, rgba(0, 184, 217, 0.15), rgba(139, 92, 246, 0.05)); 
                          border-left: 4px solid #8B5CF6;'>
                 <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
                     <div style='font-size: 3rem;'>💨</div>
                     <div>
                         <h3 style='color: #8B5CF6; margin: 0;'>Material Particulado</h3>
-                        <p style='color: #A78BFA; margin: 0; font-size: 0.9rem;'>PM2.5 y PM10</p>
+                        <p style='color: #00B8D9; margin: 0; font-size: 0.9rem;'>PM2.5 y PM10</p>
                     </div>
                 </div>
                 <div style='line-height: 1.6;'>
@@ -2727,10 +2727,10 @@ elif st.session_state.pagina == "Normativas":
             ['SO2', '70', '65', '50', 'ppb', '1h (percentil 99 anual)']
         ]
         
-        tabla_canada_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+        tabla_canada_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
 <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
 <thead>
-<tr style='background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);'>
+<tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
 <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
 <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Estándar 2020</th>
 <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Meta 2025</th>
@@ -2743,8 +2743,8 @@ elif st.session_state.pagina == "Normativas":
         
         for i, fila in enumerate(canada_data):
             border = '' if i == len(canada_data) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
-            tabla_canada_html += f"""<tr style='{border} transition: background 0.2s;' onmouseover='this.style.background="rgba(139, 92, 246, 0.15)"' onmouseout='this.style.background="transparent"'>
-<td style='color: #A78BFA; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
+            tabla_canada_html += f"""<tr style='{border} transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
 <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
 <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
 <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
