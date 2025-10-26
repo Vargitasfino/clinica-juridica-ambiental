@@ -2360,7 +2360,86 @@ elif st.session_state.pagina == "Normativas":
         ], columns=['Contaminante', 'Anual', '24 horas', 'Unidad', 'Período'])
         
         st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📋 Valores Guía OMS 2021</h3>", unsafe_allow_html=True)
-        st.dataframe(oms_tabla, use_container_width=True, hide_index=True, height=280)
+        
+        # Tabla HTML personalizada
+        tabla_html = """
+        <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+            <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+                <thead>
+                    <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+                        <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
+                                   text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+                        <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                                   text-transform: uppercase; font-size: 0.85rem; border: none;'>Anual</th>
+                        <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                                   text-transform: uppercase; font-size: 0.85rem; border: none;'>24 horas</th>
+                        <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                                   text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
+                        <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                                   text-transform: uppercase; font-size: 0.85rem; border: none;'>Período</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
+                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                        onmouseout='this.style.background="transparent"'>
+                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>PM2.5</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>5</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>15</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Media anual / 24h</td>
+                    </tr>
+                    <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
+                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                        onmouseout='this.style.background="transparent"'>
+                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>PM10</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>15</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>45</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Media anual / 24h</td>
+                    </tr>
+                    <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
+                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                        onmouseout='this.style.background="transparent"'>
+                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>NO2</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>10</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>25</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Media anual / 24h</td>
+                    </tr>
+                    <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
+                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                        onmouseout='this.style.background="transparent"'>
+                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>SO2</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>-</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>40</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>24 horas</td>
+                    </tr>
+                    <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
+                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                        onmouseout='this.style.background="transparent"'>
+                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>O3</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>-</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>100</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Pico estacional (8h)</td>
+                    </tr>
+                    <tr style='transition: background 0.2s;'
+                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                        onmouseout='this.style.background="transparent"'>
+                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>CO</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>-</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>4</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/m³</td>
+                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>24 horas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        """
+        st.markdown(tabla_html, unsafe_allow_html=True)
         
         st.info("**Metas Intermedias:** La OMS establece 4 niveles intermedios (IT-1 a IT-4) para países que no pueden alcanzar inmediatamente las guías finales, permitiendo mejora progresiva.")
     
