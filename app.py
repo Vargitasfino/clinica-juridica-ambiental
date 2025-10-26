@@ -819,9 +819,9 @@ if st.session_state.pagina == "Inicio":
                     symbol='diamond',
                     line=dict(color='white', width=2)
                 ),
-                text=df_cat['año'],
+                text=df_cat['categoria'],
                 textposition='top center',
-                textfont=dict(size=10, color='white'),
+                textfont=dict(size=11, color='white', family='Inter', weight=600),
                 hovertemplate='<b>%{customdata[0]}</b><br>' +
                               '%{customdata[1]}<br>' +
                               '<i>Año: %{x}</i><extra></extra>',
