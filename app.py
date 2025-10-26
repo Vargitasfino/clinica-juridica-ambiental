@@ -1025,97 +1025,37 @@ if st.session_state.pagina == "Inicio":
         col_a, col_b, col_c = st.columns(3)
         
         with col_a:
-            st.markdown("""
-            <div style='background: linear-gradient(135deg, rgba(0, 200, 83, 0.2), rgba(0, 230, 118, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #00C853; text-align: center;'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>📋</div>
-                <h4 style='color: #00C853; margin: 0.5rem 0;'>ECA</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    Estándares de Calidad Ambiental del Aire
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #00C853;'>3</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Normativas</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            # Card ECA - Clicable
+            if st.button("📋 ECA - Estándares de Calidad Ambiental del Aire\n\n3 Normativas", key="btn_eca_card", use_container_width=True):
+                st.session_state.pagina = "ECA"
+                st.rerun()
             
-            st.markdown("""
-            <div style='background: linear-gradient(135deg, rgba(142, 36, 170, 0.2), rgba(156, 39, 176, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #8E24AA; text-align: center; margin-top: 1rem;'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>📖</div>
-                <h4 style='color: #8E24AA; margin: 0.5rem 0;'>Protocolos</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    Procedimientos de Monitoreo
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #8E24AA;'>4</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Protocolos</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            # Card Protocolos - Clicable
+            if st.button("📖 Protocolos - Procedimientos de Monitoreo\n\n4 Protocolos", key="btn_proto_card", use_container_width=True):
+                st.session_state.pagina = "Protocolos"
+                st.rerun()
         
         with col_b:
-            st.markdown("""
-            <div style='background: linear-gradient(135deg, rgba(255, 111, 0, 0.2), rgba(255, 152, 0, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #FF6F00; text-align: center;'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>🏭</div>
-                <h4 style='color: #FF6F00; margin: 0.5rem 0;'>LMP</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    Límites Máximos Permisibles
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #FF6F00;'>4</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Normativas</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            # Card LMP - Clicable
+            if st.button("🏭 LMP - Límites Máximos Permisibles\n\n4 Normativas", key="btn_lmp_card", use_container_width=True):
+                st.session_state.pagina = "LMP"
+                st.rerun()
             
-            st.markdown("""
-            <div style='background: linear-gradient(135deg, rgba(211, 47, 47, 0.2), rgba(229, 57, 53, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #D32F2F; text-align: center; margin-top: 1rem;'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>⚖️</div>
-                <h4 style='color: #D32F2F; margin: 0.5rem 0;'>Marco Legal</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    Leyes y Decretos Base
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #D32F2F;'>2</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Leyes</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            # Card Marco Legal - Clicable
+            if st.button("⚖️ Marco Legal - Leyes y Decretos Base\n\n2 Leyes", key="btn_legal_card", use_container_width=True):
+                st.session_state.pagina = "Marco Legal"
+                st.rerun()
         
         with col_c:
-            st.markdown("""
-            <div style='background: linear-gradient(135deg, rgba(0, 145, 234, 0.2), rgba(3, 169, 244, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #0091EA; text-align: center;'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>📐</div>
-                <h4 style='color: #0091EA; margin: 0.5rem 0;'>Lineamientos</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    Guías Técnicas
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #0091EA;'>3</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Lineamientos</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            # Card Lineamientos - Clicable
+            if st.button("📐 Lineamientos - Guías Técnicas\n\n3 Lineamientos", key="btn_linea_card", use_container_width=True):
+                st.session_state.pagina = "Lineamientos"
+                st.rerun()
             
-            st.markdown("""
-            <div style='background: linear-gradient(135deg, rgba(0, 184, 217, 0.2), rgba(0, 188, 212, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #00B8D9; text-align: center; margin-top: 1rem;'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>🌍</div>
-                <h4 style='color: #00B8D9; margin: 0.5rem 0;'>Internacional</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    OMS, EPA, Canadá
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #00B8D9;'>6</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Estándares</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            # Card Internacional - Clicable
+            if st.button("🌍 Internacional - OMS, EPA, Canadá\n\n6 Estándares", key="btn_inter_card", use_container_width=True):
+                st.session_state.pagina = "Normativas"
+                st.rerun()
         
         st.success("""
         **✓ Beneficios del Sistema**
@@ -2807,32 +2747,6 @@ elif st.session_state.pagina == "Normativas":
         </div>
         """, unsafe_allow_html=True)
         
-        # Card 5: Sistema AQMS
-        st.markdown("""
-        <div class='normative-card fade-in'>
-            <span class='status-badge vigente'>● SISTEMA</span>
-            <h3>Air Quality Management System (AQMS)</h3>
-            <p><strong>Marco de Gestión Colaborativa Federal-Provincial</strong></p>
-            <p style='color: var(--text-secondary); line-height: 1.8;'>
-                Sistema innovador que divide el país en Air Zones y asigna niveles de gestión por colores 
-                (Verde, Amarillo, Naranja, Rojo) según nivel de cumplimiento. Cada color determina 
-                automáticamente las acciones obligatorias que deben implementar las jurisdicciones.
-            </p>
-            <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                <strong>Implementación:</strong> 2012 | 
-                <strong>Air Zones:</strong> 70+ zonas | 
-                <strong>Revisión:</strong> Anual
-            </p>
-            <a href='https://www.ccme.ca/en/resources/air/aqms.html' 
-               target='_blank' class='corporate-button'>
-                📖 Ver Marco AQMS
-            </a>
-            <a href='https://www.canada.ca/en/services/environment/weather/airquality.html' 
-               target='_blank' class='corporate-button'>
-                🗺️ Mapa en Tiempo Real
-            </a>
-        </div>
-        """, unsafe_allow_html=True)
         
         
         st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📊 Evolución de Estándares CAAQS</h3>", unsafe_allow_html=True)
