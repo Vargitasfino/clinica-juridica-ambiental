@@ -1022,137 +1022,131 @@ if st.session_state.pagina == "Inicio":
         </div>
         """, unsafe_allow_html=True)
         
+        st.markdown("""
+        <div style='text-align: center; margin-bottom: 2rem;'>
+            <h3 style='color: #00B8D9;'>📂 Explora por Categoría</h3>
+            <p style='color: var(--text-secondary);'>Haz click en cualquier categoría para ver su contenido completo</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
         col_a, col_b, col_c = st.columns(3)
         
         with col_a:
-            # Card ECA - Expandible
-            with st.expander("📋 **ECA** - Estándares de Calidad Ambiental del Aire", expanded=False):
-                st.markdown("""
-                <div style='background: linear-gradient(135deg, rgba(0, 200, 83, 0.15), rgba(0, 230, 118, 0.05)); 
-                            padding: 1rem; border-radius: 8px; border-left: 3px solid #00C853;'>
-                    <h4 style='color: #00C853; margin-top: 0;'>📊 Normativas Vigentes: 3</h4>
-                    <ul style='color: var(--text-secondary); line-height: 1.8;'>
-                        <li><strong>D.S. N° 074-2001-PCM</strong> - ECA para Aire (2001)</li>
-                        <li><strong>D.S. N° 003-2017-MINAM</strong> - Actualización ECA (2017)</li>
-                        <li><strong>D.S. N° 010-2019-MINAM</strong> - Modificatoria ECA (2019)</li>
-                    </ul>
-                    <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                        <strong>Contaminantes regulados:</strong> PM2.5, PM10, SO2, NO2, O3, CO, Pb, H2S
-                    </p>
+            # Card ECA - Clickeable
+            st.markdown("""
+            <div style='background: linear-gradient(135deg, rgba(0, 200, 83, 0.2), rgba(0, 230, 118, 0.1)); 
+                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #00C853; text-align: center; margin-bottom: 1rem;'>
+                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>📋</div>
+                <h4 style='color: #00C853; margin: 0.5rem 0;'>ECA</h4>
+                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
+                    Estándares de Calidad Ambiental del Aire
+                </p>
+                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                    <span style='font-size: 1.5rem; font-weight: 700; color: #00C853;'>3</span>
+                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Normativas</p>
                 </div>
-                """, unsafe_allow_html=True)
-                
-                if st.button("📄 Ver página completa ECA", key="goto_eca", use_container_width=True):
-                    st.session_state.pagina = "ECA"
-                    st.rerun()
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("📄 Ver ECA", key="goto_eca", use_container_width=True):
+                st.session_state.pagina = "ECA"
+                st.rerun()
             
-            # Card Protocolos - Expandible
-            with st.expander("📖 **Protocolos** - Procedimientos de Monitoreo", expanded=False):
-                st.markdown("""
-                <div style='background: linear-gradient(135deg, rgba(142, 36, 170, 0.15), rgba(156, 39, 176, 0.05)); 
-                            padding: 1rem; border-radius: 8px; border-left: 3px solid #8E24AA;'>
-                    <h4 style='color: #8E24AA; margin-top: 0;'>📊 Protocolos Activos: 4</h4>
-                    <ul style='color: var(--text-secondary); line-height: 1.8;'>
-                        <li><strong>R.M. N° 026-2000</strong> - Monitoreo Industrial</li>
-                        <li><strong>R.D. N° 1404-2005</strong> - Monitoreo Calidad del Aire</li>
-                        <li><strong>R.M. N° 155-2010</strong> - Emisiones Atmosféricas</li>
-                        <li><strong>D.S. N° 247-2009</strong> - Minería y Hornos Industriales</li>
-                    </ul>
-                    <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                        <strong>Aplicación:</strong> Métodos estandarizados de muestreo y análisis
-                    </p>
+            # Card Protocolos - Clickeable
+            st.markdown("""
+            <div style='background: linear-gradient(135deg, rgba(142, 36, 170, 0.2), rgba(156, 39, 176, 0.1)); 
+                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #8E24AA; text-align: center; margin-bottom: 1rem; margin-top: 1rem;'>
+                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>📖</div>
+                <h4 style='color: #8E24AA; margin: 0.5rem 0;'>Protocolos</h4>
+                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
+                    Procedimientos de Monitoreo
+                </p>
+                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                    <span style='font-size: 1.5rem; font-weight: 700; color: #8E24AA;'>4</span>
+                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Protocolos</p>
                 </div>
-                """, unsafe_allow_html=True)
-                
-                if st.button("📄 Ver página completa Protocolos", key="goto_proto", use_container_width=True):
-                    st.session_state.pagina = "Protocolos"
-                    st.rerun()
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("📄 Ver Protocolos", key="goto_proto", use_container_width=True):
+                st.session_state.pagina = "Protocolos"
+                st.rerun()
         
         with col_b:
-            # Card LMP - Expandible
-            with st.expander("🏭 **LMP** - Límites Máximos Permisibles", expanded=False):
-                st.markdown("""
-                <div style='background: linear-gradient(135deg, rgba(255, 111, 0, 0.15), rgba(255, 152, 0, 0.05)); 
-                            padding: 1rem; border-radius: 8px; border-left: 3px solid #FF6F00;'>
-                    <h4 style='color: #FF6F00; margin-top: 0;'>📊 Normativas Vigentes: 4</h4>
-                    <ul style='color: var(--text-secondary); line-height: 1.8;'>
-                        <li><strong>R.M. N° 315-96</strong> - Minería metalúrgica</li>
-                        <li><strong>D.S. N° 011-2009</strong> - Vehículos automotores</li>
-                        <li><strong>D.S. N° 003-2010</strong> - Centrales termoeléctricas</li>
-                        <li><strong>D.S. N° 010-2010</strong> - Industrias manufactureras</li>
-                    </ul>
-                    <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                        <strong>Sectores regulados:</strong> Minería, Transporte, Energía, Industria
-                    </p>
+            # Card LMP - Clickeable
+            st.markdown("""
+            <div style='background: linear-gradient(135deg, rgba(255, 111, 0, 0.2), rgba(255, 152, 0, 0.1)); 
+                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #FF6F00; text-align: center; margin-bottom: 1rem;'>
+                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>🏭</div>
+                <h4 style='color: #FF6F00; margin: 0.5rem 0;'>LMP</h4>
+                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
+                    Límites Máximos Permisibles
+                </p>
+                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                    <span style='font-size: 1.5rem; font-weight: 700; color: #FF6F00;'>4</span>
+                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Normativas</p>
                 </div>
-                """, unsafe_allow_html=True)
-                
-                if st.button("📄 Ver página completa LMP", key="goto_lmp", use_container_width=True):
-                    st.session_state.pagina = "LMP"
-                    st.rerun()
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("📄 Ver LMP", key="goto_lmp", use_container_width=True):
+                st.session_state.pagina = "LMP"
+                st.rerun()
             
-            # Card Marco Legal - Expandible
-            with st.expander("⚖️ **Marco Legal** - Leyes y Decretos Base", expanded=False):
-                st.markdown("""
-                <div style='background: linear-gradient(135deg, rgba(211, 47, 47, 0.15), rgba(229, 57, 53, 0.05)); 
-                            padding: 1rem; border-radius: 8px; border-left: 3px solid #D32F2F;'>
-                    <h4 style='color: #D32F2F; margin-top: 0;'>📊 Leyes Fundamentales: 2</h4>
-                    <ul style='color: var(--text-secondary); line-height: 1.8;'>
-                        <li><strong>Ley N° 28611</strong> - Ley General del Ambiente (2005)</li>
-                        <li><strong>Ley N° 30754</strong> - Ley Marco sobre Cambio Climático (2018)</li>
-                    </ul>
-                    <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                        <strong>Base legal:</strong> Marco normativo ambiental nacional
-                    </p>
+            # Card Marco Legal - Clickeable
+            st.markdown("""
+            <div style='background: linear-gradient(135deg, rgba(211, 47, 47, 0.2), rgba(229, 57, 53, 0.1)); 
+                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #D32F2F; text-align: center; margin-bottom: 1rem; margin-top: 1rem;'>
+                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>⚖️</div>
+                <h4 style='color: #D32F2F; margin: 0.5rem 0;'>Marco Legal</h4>
+                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
+                    Leyes y Decretos Base
+                </p>
+                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                    <span style='font-size: 1.5rem; font-weight: 700; color: #D32F2F;'>2</span>
+                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Leyes</p>
                 </div>
-                """, unsafe_allow_html=True)
-                
-                if st.button("📄 Ver página completa Marco Legal", key="goto_legal", use_container_width=True):
-                    st.session_state.pagina = "Marco Legal"
-                    st.rerun()
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("📄 Ver Marco Legal", key="goto_legal", use_container_width=True):
+                st.session_state.pagina = "Marco Legal"
+                st.rerun()
         
         with col_c:
-            # Card Lineamientos - Expandible
-            with st.expander("📐 **Lineamientos** - Guías Técnicas", expanded=False):
-                st.markdown("""
-                <div style='background: linear-gradient(135deg, rgba(0, 145, 234, 0.15), rgba(3, 169, 244, 0.05)); 
-                            padding: 1rem; border-radius: 8px; border-left: 3px solid #0091EA;'>
-                    <h4 style='color: #0091EA; margin-top: 0;'>📊 Lineamientos Activos: 3</h4>
-                    <ul style='color: var(--text-secondary); line-height: 1.8;'>
-                        <li><strong>D.S. N° 009-2003</strong> - Niveles de Estados de Alerta</li>
-                        <li><strong>R.M. N° 181-2016</strong> - Inventario de Emisiones</li>
-                        <li><strong>Guías técnicas</strong> - MINAM y DIGESA</li>
-                    </ul>
-                    <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                        <strong>Propósito:</strong> Orientación técnica y gestión de calidad del aire
-                    </p>
+            # Card Lineamientos - Clickeable
+            st.markdown("""
+            <div style='background: linear-gradient(135deg, rgba(0, 145, 234, 0.2), rgba(3, 169, 244, 0.1)); 
+                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #0091EA; text-align: center; margin-bottom: 1rem;'>
+                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>📐</div>
+                <h4 style='color: #0091EA; margin: 0.5rem 0;'>Lineamientos</h4>
+                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
+                    Guías Técnicas
+                </p>
+                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                    <span style='font-size: 1.5rem; font-weight: 700; color: #0091EA;'>3</span>
+                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Lineamientos</p>
                 </div>
-                """, unsafe_allow_html=True)
-                
-                if st.button("📄 Ver página completa Lineamientos", key="goto_linea", use_container_width=True):
-                    st.session_state.pagina = "Lineamientos"
-                    st.rerun()
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("📄 Ver Lineamientos", key="goto_linea", use_container_width=True):
+                st.session_state.pagina = "Lineamientos"
+                st.rerun()
             
-            # Card Internacional - Expandible
-            with st.expander("🌍 **Internacional** - OMS, EPA, Canadá", expanded=False):
-                st.markdown("""
-                <div style='background: linear-gradient(135deg, rgba(0, 184, 217, 0.15), rgba(0, 188, 212, 0.05)); 
-                            padding: 1rem; border-radius: 8px; border-left: 3px solid #00B8D9;'>
-                    <h4 style='color: #00B8D9; margin-top: 0;'>📊 Estándares Internacionales: 6</h4>
-                    <ul style='color: var(--text-secondary); line-height: 1.8;'>
-                        <li><strong>OMS 2021</strong> - Guías Globales de Calidad del Aire</li>
-                        <li><strong>EPA NAAQS</strong> - Estándares USA (Primarios y Secundarios)</li>
-                        <li><strong>CAAQS Canadá</strong> - Estándares Canadienses (2020-2030)</li>
-                    </ul>
-                    <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                        <strong>Referencia:</strong> Mejores prácticas y estándares comparativos
-                    </p>
+            # Card Internacional - Clickeable
+            st.markdown("""
+            <div style='background: linear-gradient(135deg, rgba(0, 184, 217, 0.2), rgba(0, 188, 212, 0.1)); 
+                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #00B8D9; text-align: center; margin-bottom: 1rem; margin-top: 1rem;'>
+                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>🌍</div>
+                <h4 style='color: #00B8D9; margin: 0.5rem 0;'>Internacional</h4>
+                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
+                    OMS, EPA, Canadá
+                </p>
+                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                    <span style='font-size: 1.5rem; font-weight: 700; color: #00B8D9;'>6</span>
+                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Estándares</p>
                 </div>
-                """, unsafe_allow_html=True)
-                
-                if st.button("📄 Ver página completa Internacional", key="goto_inter", use_container_width=True):
-                    st.session_state.pagina = "Normativas"
-                    st.rerun()
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("📄 Ver Internacional", key="goto_inter", use_container_width=True):
+                st.session_state.pagina = "Normativas"
+                st.rerun()
         
         
         st.success("""
