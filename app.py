@@ -944,7 +944,7 @@ if st.session_state.pagina == "Inicio":
         
         df_timeline = pd.DataFrame(timeline_data)
         
-        # Crear gráfico mejorado con diseño vertical por categorías
+        # Crear gráfico simple pero efectivo
         fig_timeline = go.Figure()
         
         colores_cat = {
@@ -955,122 +955,74 @@ if st.session_state.pagina == "Inicio":
             'Marco Legal': '#D32F2F'
         }
         
-        iconos_cat = {
-            'ECA': '📋',
-            'LMP': '🏭',
-            'Protocolo': '📖',
-            'Lineamiento': '📐',
-            'Marco Legal': '⚖️'
-        }
-        
         # Línea base horizontal
         fig_timeline.add_trace(go.Scatter(
             x=[1995, 2020],
             y=[0, 0],
             mode='lines',
-            line=dict(color='rgba(255,255,255,0.3)', width=3),
+            line={'color': 'rgba(255,255,255,0.3)', 'width': 3},
             showlegend=False,
             hoverinfo='skip'
         ))
         
-        # Agregar cada normativa con posición vertical alternada
+        # Agregar cada normativa
         categorias_mostradas = set()
         
         for idx, row in df_timeline.iterrows():
-            # Alternar posiciones arriba y abajo de la línea
             y_pos = 1.5 if idx % 2 == 0 else -1.5
-            
             color = colores_cat[row['categoria']]
-            icono = iconos_cat[row['categoria']]
-            
-            # Determinar si mostrar en leyenda (solo la primera vez de cada categoría)
             mostrar_leyenda = row['categoria'] not in categorias_mostradas
+            
             if mostrar_leyenda:
                 categorias_mostradas.add(row['categoria'])
             
-            # Línea vertical conectora
+            # Línea conectora
             fig_timeline.add_trace(go.Scatter(
                 x=[row['año'], row['año']],
                 y=[0, y_pos * 0.7],
                 mode='lines',
-                line=dict(color=color, width=2),
+                line={'color': color, 'width': 2},
                 showlegend=False,
                 hoverinfo='skip'
             ))
             
-            # Punto en la línea base
+            # Punto en la base
             fig_timeline.add_trace(go.Scatter(
                 x=[row['año']],
                 y=[0],
                 mode='markers',
-                marker=dict(
-                    size=15,
-                    color=color,
-                    line=dict(color='white', width=2),
-                    symbol='circle'
-                ),
+                marker={'size': 15, 'color': color, 'line': {'color': 'white', 'width': 2}},
                 showlegend=False,
                 hoverinfo='skip'
             ))
             
-            # Card con información
+            # Marcador superior
             fig_timeline.add_trace(go.Scatter(
                 x=[row['año']],
                 y=[y_pos],
                 mode='markers+text',
-                marker=dict(
-                    size=25,
-                    color=color,
-                    symbol='square',
-                    line=dict(color='white', width=2)
-                ),
-                text=f"{icono}<br>{row['año']}",
+                marker={'size': 25, 'color': color, 'symbol': 'square', 'line': {'color': 'white', 'width': 2}},
+                text=str(row['año']),
                 textposition='middle center',
-                textfont=dict(size=11, color='white', family='Arial Black'),
                 name=row['categoria'],
                 legendgroup=row['categoria'],
                 showlegend=mostrar_leyenda,
-                hovertemplate=f"<b>{row['titulo']}</b><br>" +
-                              f"{row['descripcion']}<br>" +
-                              f"<b>Año:</b> {row['año']}<br>" +
-                              f"<b>Tipo:</b> {row['categoria']}<extra></extra>"
+                hovertemplate='<b>%s</b><br>%s<br><b>Año:</b> %d<br><b>Tipo:</b> %s<extra></extra>' % (
+                    row['titulo'], row['descripcion'], row['año'], row['categoria']
+                )
             ))
         
+        # Layout simplificado
         fig_timeline.update_layout(
             height=550,
             showlegend=True,
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#FFFFFF', size=12),
-            xaxis=dict(
-                showgrid=True,
-                gridcolor='rgba(255,255,255,0.08)',
-                title='Año',
-                dtick=2,
-                range=[1994, 2021],
-                tickfont=dict(size=11),
-                titlefont=dict(size=14)
-            ),
-            yaxis=dict(
-                showgrid=False,
-                showticklabels=False,
-                title='',
-                range=[-2.5, 2.5],
-                zeroline=False
-            ),
-            legend=dict(
-                orientation="h",
-                yanchor="bottom",
-                y=-0.25,
-                xanchor="center",
-                x=0.5,
-                bgcolor='rgba(19, 47, 76, 0.9)',
-                bordercolor='rgba(255,255,255,0.2)',
-                borderwidth=2,
-                font=dict(color='#FFFFFF', size=12)
-            ),
+            xaxis={'showgrid': True, 'gridcolor': 'rgba(255,255,255,0.08)', 'title': 'Año', 'dtick': 2, 'range': [1994, 2021]},
+            yaxis={'showgrid': False, 'showticklabels': False, 'range': [-2.5, 2.5], 'zeroline': False},
+            legend={'orientation': 'h', 'yanchor': 'bottom', 'y': -0.25, 'xanchor': 'center', 'x': 0.5},
             hovermode='closest',
-            margin=dict(l=50, r=50, t=30, b=100)
+            margin={'l': 50, 'r': 50, 't': 30, 'b': 100}
         )
         
         st.plotly_chart(fig_timeline, use_container_width=True)
