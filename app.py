@@ -4,9 +4,6 @@ import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
 
-# VERSIÓN 3.4 - ULTRA FORZADO: Texto blanco en TODOS los botones con !important
-# Fecha de actualización: 2025-01-25 16:10
-
 # Configuración de página
 st.set_page_config(
     page_title="Marco Normativo del Aire - Perú",
@@ -118,19 +115,6 @@ st.markdown("""
     
     [data-testid="stSidebar"] input::placeholder {
         color: rgba(255, 255, 255, 0.7) !important;
-    }
-    
-    /* Botones en sidebar - ULTRA FORZADO */
-    [data-testid="stSidebar"] .stButton > button {
-        color: #FFFFFF !important;
-    }
-    
-    [data-testid="stSidebar"] .stButton > button * {
-        color: #FFFFFF !important;
-    }
-    
-    [data-testid="stSidebar"] button {
-        color: #FFFFFF !important;
     }
     
     /* Expanders - SOLUCIÓN PARA TEXTOS NEGROS */
@@ -279,7 +263,7 @@ st.markdown("""
     }
     
     .corporate-card h2, .corporate-card h3 {
-        color: white;
+        color: white !important;
         font-weight: 700;
         margin-top: 0;
         letter-spacing: -0.01em;
@@ -586,7 +570,7 @@ st.markdown("""
         width: 100%;
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.15) 0%, rgba(0, 101, 255, 0.15) 100%);
         backdrop-filter: blur(10px);
-        color: #FFFFFF !important;
+        color: var(--text-primary);
         border: 1px solid rgba(0, 101, 255, 0.3);
         border-radius: 8px;
         padding: 0.75rem 1.25rem;
@@ -599,42 +583,12 @@ st.markdown("""
     .stButton > button:hover {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.3) 0%, rgba(0, 101, 255, 0.3) 100%);
         border-color: var(--secondary-blue);
-        color: #FFFFFF !important;
         transform: translateY(-2px);
         box-shadow: 0 6px 16px rgba(0, 82, 204, 0.3);
     }
     
-    /* FORZAR texto blanco en TODOS los botones */
-    .stButton > button * {
-        color: #FFFFFF !important;
-    }
-    
-    .stButton > button span {
-        color: #FFFFFF !important;
-    }
-    
-    .stButton > button p {
-        color: #FFFFFF !important;
-    }
-    
     .stButton > button:active {
         transform: translateY(0);
-    }
-    
-    /* Estilos para radio buttons */
-    .stRadio > label {
-        color: #F0F4F8 !important;
-        font-weight: 600;
-        font-size: 1rem;
-    }
-    
-    .stRadio [role="radiogroup"] label {
-        color: #F0F4F8 !important;
-        font-weight: 500;
-    }
-    
-    .stRadio [data-baseweb="radio"] > div:first-child {
-        background-color: rgba(0, 101, 255, 0.2);
     }
     
     .stTabs [data-baseweb="tab-list"] {
@@ -666,53 +620,6 @@ st.markdown("""
         color: white;
         border-color: rgba(255, 255, 255, 0.1);
         box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
-    }
-    
-    /* Forzar texto blanco en todos los elementos dentro de tabs */
-    .stTabs [data-baseweb="tab"] * {
-        color: inherit !important;
-    }
-    
-    /* Ocultar cualquier elemento con fondo verde no deseado */
-    .stTabs [style*="background"] {
-        color: white !important;
-    }
-    
-    /* Forzar visibilidad de texto en todos los badges/chips */
-    [data-testid="stMarkdown"] span,
-    [data-testid="stMarkdown"] div {
-        color: inherit !important;
-    }
-    
-    /* Ocultar elementos de columnas vacías o con fondo verde */
-    .stTabs [data-testid="column"] > div:empty {
-        display: none !important;
-    }
-    
-    /* Forzar que cualquier elemento con fondo verde tenga texto blanco */
-    [style*="background-color: rgb(0, 128, 0)"],
-    [style*="background-color: green"],
-    [style*="background: green"],
-    [style*="background: rgb(0, 128, 0)"],
-    [style*="background-color:#008000"],
-    [style*="background:#008000"],
-    [style*="rgb(0,128,0)"],
-    [style*="rgba(0,128,0"] {
-        display: none !important;
-    }
-    
-    /* ULTRA AGRESIVO: Ocultar elementos verdes en tabs */
-    .stTabs div[style*="green"],
-    .stTabs div[style*="rgb(0, 128, 0)"],
-    .stTabs div[style*="rgb(0,128,0)"],
-    .stTabs span[style*="green"],
-    .stTabs span[style*="rgb(0, 128, 0)"] {
-        display: none !important;
-    }
-    
-    /* Eliminar badges/chips de Streamlit que aparecen automáticamente */
-    .stTabs [data-testid="stMarkdownContainer"] > div > div[style*="display: flex"] {
-        color: white !important;
     }
     
     [data-testid="stMetricValue"] {
@@ -1252,21 +1159,6 @@ if st.session_state.pagina == "Inicio":
         
         if st.button("🌍 Normativas Mundial", use_container_width=True, key="quick_normativas"):
             st.session_state.pagina = "Normativas"
-            st.rerun()
-        
-        st.markdown("---")
-        st.markdown("### 🆕 Herramientas Avanzadas")
-        
-        if st.button("📊 Dashboard KPIs", use_container_width=True, key="quick_dashboard"):
-            st.session_state.pagina = "Dashboard"
-            st.rerun()
-        
-        if st.button("🧮 Calculadora Emisiones", use_container_width=True, key="quick_calc"):
-            st.session_state.pagina = "Calculadora"
-            st.rerun()
-        
-        if st.button("📚 Casos de Estudio", use_container_width=True, key="quick_casos"):
-            st.session_state.pagina = "Casos"
             st.rerun()
         
         st.markdown("<br>", unsafe_allow_html=True)
@@ -2602,18 +2494,9 @@ elif st.session_state.pagina == "Normativas":
     
     st.markdown("<h1 style='text-align: center; margin-bottom: 2rem; color: #FFFFFF;'>🌍 Estándares Internacionales de Calidad del Aire</h1>", unsafe_allow_html=True)
     
-    # Usar radio buttons en lugar de tabs para evitar los cuadros verdes
-    st.markdown("### Selecciona un estándar internacional:")
-    tab_seleccionado = st.radio(
-        "Estándar",
-        ["🏥 OMS", "🇺🇸 EPA USA", "🇨🇦 Canadá", "📊 Análisis Comparativo"],
-        horizontal=True,
-        label_visibility="collapsed"
-    )
+    tab1, tab2, tab3, tab4 = st.tabs(["🏥 OMS", "🇺🇸 EPA USA", "🇨🇦 Canadá", "📊 Análisis Comparativo"])
     
-    st.markdown("---")
-    
-    if tab_seleccionado == "🏥 OMS":
+    with tab1:
         st.markdown("""
         <div class='corporate-card fade-in'>
             <h2>🏥 Organización Mundial de la Salud (OMS)</h2>
@@ -2653,6 +2536,15 @@ elif st.session_state.pagina == "Normativas":
             </a>
         </div>
         """, unsafe_allow_html=True)
+        
+        oms_tabla = pd.DataFrame([
+            ['PM2.5', 5, 15, 'μg/m³', 'Media anual / 24h'],
+            ['PM10', 15, 45, 'μg/m³', 'Media anual / 24h'],
+            ['NO2', 10, 25, 'μg/m³', 'Media anual / 24h'],
+            ['SO2', None, 40, 'μg/m³', '24 horas'],
+            ['O3', None, 100, 'μg/m³', 'Pico estacional (8h)'],
+            ['CO', None, 4, 'mg/m³', '24 horas']
+        ], columns=['Contaminante', 'Anual', '24 horas', 'Unidad', 'Período'])
         
         st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📋 Valores Guía OMS 2021</h3>", unsafe_allow_html=True)
         
@@ -2718,7 +2610,7 @@ elif st.session_state.pagina == "Normativas":
         
         st.info("**Metas Intermedias:** La OMS establece 4 niveles intermedios (IT-1 a IT-4) para países que no pueden alcanzar inmediatamente las guías finales, permitiendo mejora progresiva.")
     
-    elif tab_seleccionado == "🇺🇸 EPA USA":
+    with tab2:
         st.markdown("""
         <div class='corporate-card fade-in'>
             <h2>🇺🇸 Environmental Protection Agency (EPA)</h2>
@@ -2760,59 +2652,25 @@ elif st.session_state.pagina == "Normativas":
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📋 Estándares EPA (NAAQS)</h3>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center; color: var(--text-secondary); margin-bottom: 1rem;'>(P) = Primario (salud) | (S) = Secundario (bienestar)</p>", unsafe_allow_html=True)
-        
-        # VERSIÓN 3.0 - TABLA HTML PROFESIONAL
-        st.markdown("<!-- EPA TABLE VERSION 3.0.1 -->", unsafe_allow_html=True)
-        
-        # Tabla HTML personalizada para EPA NAAQS
-        epa_data = [
+        epa_tabla = pd.DataFrame([
             ['PM2.5', '9.0 (P)', '35 (P)', 'μg/m³', '2024', 'Anual / 24h'],
             ['PM2.5', '15.0 (S)', '35 (S)', 'μg/m³', '2012', 'Anual / 24h (secundario)'],
-            ['PM10', 'None', '150 (P,S)', 'μg/m³', '2012', '24 horas'],
+            ['PM10', None, '150 (P,S)', 'μg/m³', '2012', '24 horas'],
             ['NO2', '53 (P,S)', '100 (P)', 'ppb', '2010', 'Anual / 1h'],
-            ['SO2', 'None', '75 (P)', 'ppb', '2010', '1 hora (percentil 99)'],
-            ['O3', 'None', '70 (P,S)', 'ppb', '2015', '8h (4to máximo anual)'],
-            ['CO', 'None', '9 ppm (P)', 'ppm', '1971', '8 horas'],
-            ['CO', 'None', '35 ppm (P)', 'ppm', '1971', '1 hora'],
-            ['Pb', '0.15 (P,S)', 'None', 'μg/m³', '2008', 'Promedio móvil 3 meses']
-        ]
+            ['SO2', None, '75 (P)', 'ppb', '2010', '1 hora (percentil 99)'],
+            ['O3', None, '70 (P,S)', 'ppb', '2015', '8h (4to máximo anual)'],
+            ['CO', None, '9 ppm (P)', 'ppm', '1971', '8 horas'],
+            ['CO', None, '35 ppm (P)', 'ppm', '1971', '1 hora'],
+            ['Pb', '0.15 (P,S)', None, 'μg/m³', '2008', 'Promedio móvil 3 meses']
+        ], columns=['Contaminante', 'Anual', 'Corto Plazo', 'Unidad', 'Última Actualización', 'Forma del Estándar'])
         
-        tabla_epa_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
-<table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
-<thead>
-<tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
-<th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
-<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Anual</th>
-<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Corto Plazo</th>
-<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
-<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Última Actualización</th>
-<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Forma del Estándar</th>
-</tr>
-</thead>
-<tbody>"""
-        
-        for i, fila in enumerate(epa_data):
-            border = '' if i == len(epa_data) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
-            tabla_epa_html += f"""<tr style='{border} transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
-<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
-<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
-<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
-<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
-<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
-<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[5]}</td>
-</tr>"""
-        
-        tabla_epa_html += """</tbody>
-</table>
-</div>"""
-        
-        st.markdown(tabla_epa_html, unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📋 Estándares EPA (NAAQS)</h3>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center; color: var(--text-secondary); margin-bottom: 1rem;'>(P) = Primario (salud) | (S) = Secundario (bienestar)</p>", unsafe_allow_html=True)
+        st.dataframe(epa_tabla, use_container_width=True, hide_index=True, height=400)
         
         st.warning("**⚠️ Designaciones de no cumplimiento:** Áreas que exceden NAAQS son designadas como 'nonattainment' y deben desarrollar planes de mejora con cronograma específico.")
     
-    elif tab_seleccionado == "🇨🇦 Canadá":
+    with tab3:
         st.markdown("""
         <div class='corporate-card fade-in'>
             <h2>🇨🇦 Canadian Ambient Air Quality Standards (CAAQS)</h2>
@@ -2826,49 +2684,18 @@ elif st.session_state.pagina == "Normativas":
         
         st.success("**✓ Enfoque innovador:** Sistema de 'Management Levels' (Verde, Amarillo, Naranja, Rojo) que vincula automáticamente el nivel de calidad del aire con acciones obligatorias.")
         
+        canada_tabla = pd.DataFrame([
+            ['PM2.5', 8.8, 8.0, 6.0, 'μg/m³', 'Anual (percentil 98 de promedios diarios)'],
+            ['PM2.5', 27, 25, 20, 'μg/m³', '24h (percentil 98)'],
+            ['O3', 62, 60, 56, 'ppb', '8h (4to valor máximo anual)'],
+            ['NO2', 60, 50, 42, 'ppb', '1h (percentil 98 anual)'],
+            ['SO2', 70, 65, 50, 'ppb', '1h (percentil 99 anual)']
+        ], columns=['Contaminante', 'Estándar 2020', 'Meta 2025', 'Objetivo 2030', 'Unidad', 'Forma del Estándar'])
+        
         st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📊 Evolución de Estándares CAAQS</h3>", unsafe_allow_html=True)
-        
-        # Tabla HTML para Canadá
-        canada_data = [
-            ['PM2.5', '8.8', '8.0', '6.0', 'μg/m³', 'Anual (percentil 98 de promedios diarios)'],
-            ['PM2.5', '27', '25', '20', 'μg/m³', '24h (percentil 98)'],
-            ['O3', '62', '60', '56', 'ppb', '8h (4to valor máximo anual)'],
-            ['NO2', '60', '50', '42', 'ppb', '1h (percentil 98 anual)'],
-            ['SO2', '70', '65', '50', 'ppb', '1h (percentil 99 anual)']
-        ]
-        
-        tabla_canada_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
-<table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
-<thead>
-<tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
-<th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
-<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Estándar 2020</th>
-<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Meta 2025</th>
-<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Objetivo 2030</th>
-<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
-<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Forma del Estándar</th>
-</tr>
-</thead>
-<tbody>"""
-        
-        for i, fila in enumerate(canada_data):
-            border = '' if i == len(canada_data) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
-            tabla_canada_html += f"""<tr style='{border} transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
-<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
-<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
-<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
-<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
-<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
-<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[5]}</td>
-</tr>"""
-        
-        tabla_canada_html += """</tbody>
-</table>
-</div>"""
-        
-        st.markdown(tabla_canada_html, unsafe_allow_html=True)
+        st.dataframe(canada_tabla, use_container_width=True, hide_index=True, height=250)
     
-    elif tab_seleccionado == "📊 Análisis Comparativo":
+    with tab4:
         st.markdown("<h2 style='text-align: center; margin-bottom: 2rem; color: #FFFFFF;'>📊 Análisis Comparativo Internacional</h2>", unsafe_allow_html=True)
         
         st.markdown("""
@@ -2943,57 +2770,3 @@ elif st.session_state.pagina == "Normativas":
         st.plotly_chart(fig3, use_container_width=True)
         
         st.warning("**⚠️ Análisis:** El estándar peruano de PM2.5 anual (25 μg/m³) es 5 veces más permisivo que la OMS (5 μg/m³) y 2.8 veces más alto que EPA USA (9 μg/m	³). Se recomienda actualización gradual de los ECA nacionales.")
-
-# ===================== NUEVA PÁGINA: DASHBOARD DE KPIs =====================
-elif st.session_state.pagina == "Dashboard":
-    st.markdown("<h1 style='text-align: center; color: #FFFFFF; margin-bottom: 2rem;'>📊 Dashboard Ejecutivo</h1>", unsafe_allow_html=True)
-    
-    st.markdown("""
-    <div class='corporate-card fade-in'>
-        <h2>🎯 Indicadores Clave - Calidad del Aire Perú 2024</h2>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    col1, col2, col3, col4 = st.columns(4)
-    
-    with col1:
-        st.markdown("""
-        <div style='background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05)); 
-                    padding: 1.5rem; border-radius: 12px; border-left: 4px solid #10B981;'>
-            <div style='font-size: 0.9rem; color: #10B981; font-weight: 600; margin-bottom: 0.5rem;'>ESTACIONES ACTIVAS</div>
-            <div style='font-size: 2.5rem; color: #FFFFFF; font-weight: 700;'>156</div>
-            <div style='font-size: 0.85rem; color: #6EE7B7;'>↑ 12% vs 2023</div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("""
-        <div style='background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05)); 
-                    padding: 1.5rem; border-radius: 12px; border-left: 4px solid #3B82F6;'>
-            <div style='font-size: 0.9rem; color: #3B82F6; font-weight: 600; margin-bottom: 0.5rem;'>CUMPLIMIENTO ECA</div>
-            <div style='font-size: 2.5rem; color: #FFFFFF; font-weight: 700;'>73%</div>
-            <div style='font-size: 0.85rem; color: #93C5FD;'>Estaciones en norma</div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col3:
-        st.markdown("""
-        <div style='background: linear-gradient(135deg, rgba(251, 146, 60, 0.2), rgba(251, 146, 60, 0.05)); 
-                    padding: 1.5rem; border-radius: 12px; border-left: 4px solid #FB923C;'>
-            <div style='font-size: 0.9rem; color: #FB923C; font-weight: 600; margin-bottom: 0.5rem;'>ZONAS CRÍTICAS</div>
-            <div style='font-size: 2.5rem; color: #FFFFFF; font-weight: 700;'>18</div>
-            <div style='font-size: 0.85rem; color: #FDBA74;'>Requieren atención</div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col4:
-        st.markdown("""
-        <div style='background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.05)); 
-                    padding: 1.5rem; border-radius: 12px; border-left: 4px solid #8B5CF6;'>
-            <div style='font-size: 0.9rem; color: #8B5CF6; font-weight: 600; margin-bottom: 0.5rem;'>INVERSIÓN 2024</div>
-            <div style='font-size: 2.5rem; color: #FFFFFF; font-weight: 700;'>S/42M</div>
-            <div style='font-size: 0.85rem; color: #C4B5FD;'>Infraestructura</div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    st.success("**💡 Dato clave:** Perú ha aumentado su red de monitoreo en un 65% en los últimos 5 años, mejorando significativamente la cobertura nacional.")
