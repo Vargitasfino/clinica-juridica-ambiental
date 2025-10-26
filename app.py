@@ -2715,16 +2715,48 @@ elif st.session_state.pagina == "Normativas":
         
         st.success("**✓ Enfoque innovador:** Sistema de 'Management Levels' (Verde, Amarillo, Naranja, Rojo) que vincula automáticamente el nivel de calidad del aire con acciones obligatorias.")
         
-        canada_tabla = pd.DataFrame([
-            ['PM2.5', 8.8, 8.0, 6.0, 'μg/m³', 'Anual (percentil 98 de promedios diarios)'],
-            ['PM2.5', 27, 25, 20, 'μg/m³', '24h (percentil 98)'],
-            ['O3', 62, 60, 56, 'ppb', '8h (4to valor máximo anual)'],
-            ['NO2', 60, 50, 42, 'ppb', '1h (percentil 98 anual)'],
-            ['SO2', 70, 65, 50, 'ppb', '1h (percentil 99 anual)']
-        ], columns=['Contaminante', 'Estándar 2020', 'Meta 2025', 'Objetivo 2030', 'Unidad', 'Forma del Estándar'])
         
         st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📊 Evolución de Estándares CAAQS</h3>", unsafe_allow_html=True)
-        st.dataframe(canada_tabla, use_container_width=True, hide_index=True, height=250)
+        
+        # Tabla HTML profesional Canadá
+        canada_data = [
+            ['PM2.5', '8.8', '8', '6', 'μg/m³', 'Anual (percentil 98 de promedios diarios)'],
+            ['PM2.5', '27', '25', '20', 'μg/m³', '24h (percentil 98)'],
+            ['O3', '62', '60', '56', 'ppb', '8h (4to valor máximo anual)'],
+            ['NO2', '60', '50', '42', 'ppb', '1h (percentil 98 anual)'],
+            ['SO2', '70', '65', '50', 'ppb', '1h (percentil 99 anual)']
+        ]
+        
+        tabla_canada_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+<table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+<thead>
+<tr style='background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);'>
+<th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Estándar 2020</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Meta 2025</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Objetivo 2030</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Forma del Estándar</th>
+</tr>
+</thead>
+<tbody>"""
+        
+        for i, fila in enumerate(canada_data):
+            border = '' if i == len(canada_data) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
+            tabla_canada_html += f"""<tr style='{border} transition: background 0.2s;' onmouseover='this.style.background="rgba(139, 92, 246, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #A78BFA; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[5]}</td>
+</tr>"""
+        
+        tabla_canada_html += """</tbody>
+</table>
+</div>"""
+        
+        st.markdown(tabla_canada_html, unsafe_allow_html=True)
     
     with tab4:
         st.markdown("<h2 style='text-align: center; margin-bottom: 2rem; color: #FFFFFF;'>📊 Análisis Comparativo Internacional</h2>", unsafe_allow_html=True)
