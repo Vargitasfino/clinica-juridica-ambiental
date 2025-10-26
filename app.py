@@ -480,6 +480,55 @@ st.markdown("""
         color: #FFFFFF !important;
     }
     
+    /* Tablas - Selectores ultra específicos para Streamlit */
+    div[data-testid="stDataFrame"] {
+        background: transparent !important;
+    }
+    
+    div[data-testid="stDataFrame"] > div {
+        background: rgba(19, 47, 76, 0.8) !important;
+        backdrop-filter: blur(15px);
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        border: 1px solid rgba(0, 184, 217, 0.3) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    div[data-testid="stDataFrame"] table {
+        background: transparent !important;
+    }
+    
+    div[data-testid="stDataFrame"] thead th {
+        background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%) !important;
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        font-size: 0.85rem !important;
+        letter-spacing: 0.05em !important;
+        padding: 1rem !important;
+        border: none !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    div[data-testid="stDataFrame"] tbody tr {
+        background: transparent !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    div[data-testid="stDataFrame"] tbody tr:hover {
+        background: rgba(0, 184, 217, 0.15) !important;
+    }
+    
+    div[data-testid="stDataFrame"] tbody td {
+        color: #FFFFFF !important;
+        padding: 0.875rem 1rem !important;
+        border: none !important;
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Selectores adicionales por si acaso */
     .dataframe {
         background: rgba(19, 47, 76, 0.8) !important;
         backdrop-filter: blur(15px);
