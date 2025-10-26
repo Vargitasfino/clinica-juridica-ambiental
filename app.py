@@ -2715,124 +2715,124 @@ elif st.session_state.pagina == "Normativas":
         
         st.success("**✓ Enfoque innovador:** Sistema de 'Management Levels' (Verde, Amarillo, Naranja, Rojo) que vincula automáticamente el nivel de calidad del aire con acciones obligatorias.")
         
-        # Columnas con información clave
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            st.markdown("""
-            <div class='normative-card vigente fade-in' style='height: 100%;'>
-                <span class='status-badge vigente'>● VIGENTE</span>
-                <h3>Estándares Actuales</h3>
-                <p><strong>CAAQS 2020</strong></p>
-                <ul style='color: var(--text-secondary); line-height: 1.8;'>
-                    <li>PM2.5 anual: 8.8 μg/m³</li>
-                    <li>PM2.5 24h: 27 μg/m³</li>
-                    <li>O3 8h: 62 ppb</li>
-                    <li>NO2 1h: 60 ppb</li>
-                    <li>SO2 1h: 70 ppb</li>
-                </ul>
-                <p style='margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);'>
-                    Base percentiles (98-99) de mediciones anuales
-                </p>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        with col2:
-            st.markdown("""
-            <div class='normative-card modificado fade-in' style='height: 100%;'>
-                <span class='status-badge modificado'>● META 2025</span>
-                <h3>Objetivos Intermedios</h3>
-                <p><strong>Metas a Corto Plazo</strong></p>
-                <ul style='color: var(--text-secondary); line-height: 1.8;'>
-                    <li>PM2.5 anual: 8.0 μg/m³</li>
-                    <li>PM2.5 24h: 25 μg/m³</li>
-                    <li>O3 8h: 60 ppb</li>
-                    <li>NO2 1h: 50 ppb</li>
-                    <li>SO2 1h: 65 ppb</li>
-                </ul>
-                <p style='margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);'>
-                    Revisión progresiva cada 5 años
-                </p>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        with col3:
-            st.markdown("""
-            <div class='normative-card internacional fade-in' style='height: 100%;'>
-                <span class='status-badge internacional'>● OBJETIVO 2030</span>
-                <h3>Visión a Largo Plazo</h3>
-                <p><strong>Estándares Objetivo</strong></p>
-                <ul style='color: var(--text-secondary); line-height: 1.8;'>
-                    <li>PM2.5 anual: 6.0 μg/m³</li>
-                    <li>PM2.5 24h: 20 μg/m³</li>
-                    <li>O3 8h: 56 ppb</li>
-                    <li>NO2 1h: 42 ppb</li>
-                    <li>SO2 1h: 50 ppb</li>
-                </ul>
-                <p style='margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);'>
-                    Alineación progresiva con OMS
-                </p>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        # Información legal y enlaces
+        # Card 1: Marco Legal
         st.markdown("""
-        <div class='normative-card fade-in' style='margin-top: 2rem;'>
-            <h3>📋 Marco Legal y Recursos Oficiales</h3>
-            <p style='font-size: 1.05rem; margin: 1rem 0;'>
-                <strong>Canadian Council of Ministers of the Environment (CCME)</strong>
-            </p>
-            <p>
-                Los CAAQS son establecidos por el CCME bajo el <strong>Canadian Environmental Protection Act (CEPA 1999)</strong>. 
-                El sistema incluye Air Quality Management System (AQMS) que coordina acciones federales y provinciales.
+        <div class='normative-card vigente fade-in'>
+            <span class='status-badge vigente'>● VIGENTE</span>
+            <h3>Canadian Environmental Protection Act (CEPA 1999)</h3>
+            <p><strong>Base Legal del Sistema CAAQS</strong></p>
+            <p style='color: var(--text-secondary); line-height: 1.8;'>
+                Ley federal que establece el marco para la protección ambiental en Canadá. Los CAAQS son 
+                desarrollados bajo esta autoridad por el Canadian Council of Ministers of the Environment (CCME), 
+                un organismo intergubernamental que coordina acciones federales y provinciales.
             </p>
             <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                <strong>Base legal:</strong> CEPA 1999 | 
+                <strong>Promulgación:</strong> 1999 | 
                 <strong>Organismo:</strong> CCME | 
-                <strong>Sistema:</strong> AQMS | 
-                <strong>Revisión:</strong> Cada 5 años
+                <strong>Alcance:</strong> Federal y Provincial
             </p>
+            <a href='https://laws-lois.justice.gc.ca/eng/acts/c-15.31/' 
+               target='_blank' class='corporate-button'>
+                📄 Ver Texto Legal CEPA
+            </a>
         </div>
         """, unsafe_allow_html=True)
         
-        # Botones de enlaces en columnas
-        col_link1, col_link2, col_link3 = st.columns(3)
-        
-        with col_link1:
-            st.markdown("""
+        # Card 2: Estándares Vigentes 2020
+        st.markdown("""
+        <div class='normative-card vigente fade-in'>
+            <span class='status-badge vigente'>● VIGENTE 2020</span>
+            <h3>CAAQS - Estándares Actuales en Vigor</h3>
+            <p><strong>Canadian Ambient Air Quality Standards 2020</strong></p>
+            <p style='color: var(--text-secondary); line-height: 1.8;'>
+                Estándares basados en percentiles altos (98-99) de mediciones anuales para proteger salud 
+                pública y medio ambiente. Se aplica sistema de Air Quality Management System (AQMS) con 
+                clasificación por colores que determina acciones obligatorias según nivel de cumplimiento.
+            </p>
+            <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                <strong>Vigencia:</strong> 2020-2025 | 
+                <strong>Contaminantes:</strong> PM2.5, O3, NO2, SO2 | 
+                <strong>Metodología:</strong> Percentiles 98-99
+            </p>
             <a href='https://ccme.ca/en/air-quality-report' 
-               target='_blank' class='corporate-button' style='display: block; margin: 0.5rem 0;'>
-                📄 CCME Air Quality Report
+               target='_blank' class='corporate-button'>
+                📊 Ver Reporte CCME
             </a>
-            <a href='https://www.canada.ca/en/environment-climate-change/services/air-quality-health-index.html' 
-               target='_blank' class='corporate-button' style='display: block; margin: 0.5rem 0;'>
-                🌡️ Air Quality Health Index
-            </a>
-            """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
         
-        with col_link2:
-            st.markdown("""
+        # Card 3: Metas 2025
+        st.markdown("""
+        <div class='normative-card modificado fade-in'>
+            <span class='status-badge modificado'>● META 2025</span>
+            <h3>Objetivos Intermedios - Fase de Transición</h3>
+            <p><strong>Metas de Mejora Progresiva a Corto Plazo</strong></p>
+            <p style='color: var(--text-secondary); line-height: 1.8;'>
+                Objetivos intermedios establecidos para lograr reducción gradual de contaminantes. 
+                Sistema de revisión quinquenal asegura actualización basada en evidencia científica 
+                más reciente. Provincias deben desarrollar planes de mejora si exceden estos niveles.
+            </p>
+            <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                <strong>Plazo:</strong> 2025 | 
+                <strong>Revisión:</strong> Cada 5 años | 
+                <strong>Reducciones esperadas:</strong> 5-10% vs 2020
+            </p>
             <a href='https://www.canada.ca/en/environment-climate-change/services/air-pollution/monitoring-networks-data.html' 
-               target='_blank' class='corporate-button' style='display: block; margin: 0.5rem 0;'>
-                📊 Air Monitoring Data
+               target='_blank' class='corporate-button'>
+                📈 Ver Monitoreo de Progreso
             </a>
-            <a href='https://laws-lois.justice.gc.ca/eng/acts/c-15.31/' 
-               target='_blank' class='corporate-button' style='display: block; margin: 0.5rem 0;'>
-                ⚖️ CEPA Legal Text
-            </a>
-            """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
         
-        with col_link3:
-            st.markdown("""
-            <a href='https://www.canada.ca/en/services/environment/weather/airquality.html' 
-               target='_blank' class='corporate-button' style='display: block; margin: 0.5rem 0;'>
-                🗺️ Real-time Air Quality Map
+        # Card 4: Objetivos 2030
+        st.markdown("""
+        <div class='normative-card internacional fade-in'>
+            <span class='status-badge internacional'>● OBJETIVO 2030</span>
+            <h3>Visión a Largo Plazo - Alineación con Estándares Internacionales</h3>
+            <p><strong>Objetivos de Mejora Continua hacia Niveles OMS</strong></p>
+            <p style='color: var(--text-secondary); line-height: 1.8;'>
+                Compromiso de alineación progresiva con Guías de Calidad del Aire de la OMS. 
+                Representa reducción significativa de contaminación atmosférica para 2030. 
+                Enfoque en protección de poblaciones vulnerables y ecosistemas sensibles.
+            </p>
+            <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                <strong>Plazo:</strong> 2030 | 
+                <strong>Ambición:</strong> Alineación con OMS | 
+                <strong>Reducciones esperadas:</strong> 25-35% vs 2020
+            </p>
+            <a href='https://www.canada.ca/en/environment-climate-change/services/air-quality-health-index.html' 
+               target='_blank' class='corporate-button'>
+                🌡️ Ver Índice de Calidad del Aire
             </a>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Card 5: Sistema AQMS
+        st.markdown("""
+        <div class='normative-card fade-in'>
+            <span class='status-badge vigente'>● SISTEMA</span>
+            <h3>Air Quality Management System (AQMS)</h3>
+            <p><strong>Marco de Gestión Colaborativa Federal-Provincial</strong></p>
+            <p style='color: var(--text-secondary); line-height: 1.8;'>
+                Sistema innovador que divide el país en Air Zones y asigna niveles de gestión por colores 
+                (Verde, Amarillo, Naranja, Rojo) según nivel de cumplimiento. Cada color determina 
+                automáticamente las acciones obligatorias que deben implementar las jurisdicciones.
+            </p>
+            <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                <strong>Implementación:</strong> 2012 | 
+                <strong>Air Zones:</strong> 70+ zonas | 
+                <strong>Revisión:</strong> Anual
+            </p>
             <a href='https://www.ccme.ca/en/resources/air/aqms.html' 
-               target='_blank' class='corporate-button' style='display: block; margin: 0.5rem 0;'>
-                📖 AQMS Framework
+               target='_blank' class='corporate-button'>
+                📖 Ver Marco AQMS
             </a>
-            """, unsafe_allow_html=True)
+            <a href='https://www.canada.ca/en/services/environment/weather/airquality.html' 
+               target='_blank' class='corporate-button'>
+                🗺️ Mapa en Tiempo Real
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
         
         
         st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📊 Evolución de Estándares CAAQS</h3>", unsafe_allow_html=True)
