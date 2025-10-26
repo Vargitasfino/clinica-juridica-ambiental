@@ -974,12 +974,19 @@ if st.session_state.pagina == "Inicio":
         ))
         
         # Agregar cada normativa con posición vertical alternada
+        categorias_mostradas = set()
+        
         for idx, row in df_timeline.iterrows():
             # Alternar posiciones arriba y abajo de la línea
             y_pos = 1.5 if idx % 2 == 0 else -1.5
             
             color = colores_cat[row['categoria']]
             icono = iconos_cat[row['categoria']]
+            
+            # Determinar si mostrar en leyenda (solo la primera vez de cada categoría)
+            mostrar_leyenda = row['categoria'] not in categorias_mostradas
+            if mostrar_leyenda:
+                categorias_mostradas.add(row['categoria'])
             
             # Línea vertical conectora
             fig_timeline.add_trace(go.Scatter(
@@ -1022,7 +1029,7 @@ if st.session_state.pagina == "Inicio":
                 textfont=dict(size=11, color='white', family='Arial Black'),
                 name=row['categoria'],
                 legendgroup=row['categoria'],
-                showlegend=idx == df_timeline[df_timeline['categoria'] == row['categoria']].index[0],
+                showlegend=mostrar_leyenda,
                 hovertemplate=f"<b>{row['titulo']}</b><br>" +
                               f"{row['descripcion']}<br>" +
                               f"<b>Año:</b> {row['año']}<br>" +
