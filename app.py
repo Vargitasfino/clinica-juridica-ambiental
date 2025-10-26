@@ -117,6 +117,39 @@ st.markdown("""
         color: rgba(255, 255, 255, 0.7) !important;
     }
     
+    /* Expanders - SOLUCIÓN PARA TEXTOS NEGROS */
+    [data-testid="stExpander"] {
+        background: rgba(19, 47, 76, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 8px !important;
+    }
+    
+    [data-testid="stExpander"] summary {
+        color: #FFFFFF !important;
+        font-weight: 600 !important;
+        font-size: 1.05rem !important;
+    }
+    
+    [data-testid="stExpander"] p,
+    [data-testid="stExpander"] span,
+    [data-testid="stExpander"] div {
+        color: #FFFFFF !important;
+    }
+    
+    /* Asegurar que el icono del expander sea visible */
+    [data-testid="stExpander"] svg {
+        color: #FFFFFF !important;
+        fill: #FFFFFF !important;
+    }
+    
+    details summary {
+        color: #FFFFFF !important;
+    }
+    
+    details[open] {
+        border-color: rgba(0, 184, 217, 0.3) !important;
+    }
+    
     /* Header institucional */
     .institutional-header {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.95) 0%, rgba(0, 101, 255, 0.9) 100%);
