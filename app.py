@@ -483,10 +483,10 @@ st.markdown("""
     .dataframe {
         background: rgba(19, 47, 76, 0.8) !important;
         backdrop-filter: blur(15px);
-        border-radius: 16px !important;
+        border-radius: 12px !important;
         overflow: hidden !important;
-        border: 2px solid rgba(0, 184, 217, 0.3) !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+        border: 1px solid rgba(0, 184, 217, 0.3) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
     }
     
     .dataframe thead tr th {
@@ -494,50 +494,27 @@ st.markdown("""
         color: #FFFFFF !important;
         font-weight: 700 !important;
         text-transform: uppercase !important;
-        font-size: 0.9rem !important;
-        letter-spacing: 0.08em !important;
-        padding: 1.25rem 1rem !important;
+        font-size: 0.85rem !important;
+        letter-spacing: 0.05em !important;
+        padding: 1rem !important;
         border: none !important;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
-        position: sticky !important;
-        top: 0 !important;
-        z-index: 10 !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
     }
     
     .dataframe tbody tr {
-        border-bottom: 1px solid rgba(0, 184, 217, 0.15) !important;
-        transition: all 0.3s ease !important;
-        background: rgba(26, 58, 82, 0.3) !important;
-    }
-    
-    .dataframe tbody tr:nth-child(even) {
-        background: rgba(19, 47, 76, 0.5) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        transition: all 0.2s ease !important;
     }
     
     .dataframe tbody tr:hover {
-        background: linear-gradient(90deg, rgba(0, 184, 217, 0.2), rgba(0, 101, 255, 0.2)) !important;
-        transform: scale(1.01) !important;
-        box-shadow: 0 4px 12px rgba(0, 184, 217, 0.3) !important;
+        background: rgba(0, 184, 217, 0.15) !important;
     }
     
     .dataframe tbody tr td {
         color: #FFFFFF !important;
-        padding: 1rem 1rem !important;
+        padding: 0.875rem 1rem !important;
         border: none !important;
-        font-size: 0.95rem !important;
-        font-weight: 500 !important;
-    }
-    
-    /* Estilo especial para la primera columna */
-    .dataframe tbody tr td:first-child {
-        color: #00B8D9 !important;
-        font-weight: 700 !important;
-        font-size: 1rem !important;
-    }
-    
-    /* Estilo para números */
-    .dataframe tbody tr td:not(:first-child) {
-        text-align: center !important;
+        font-size: 0.9rem !important;
     }
     
     .stButton > button {
