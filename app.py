@@ -304,6 +304,35 @@ st.markdown("""
         font-weight: 600;
     }
     
+    /* Tarjetas de proceso de monitoreo - NUEVO DISEÑO */
+    .process-card {
+        background: linear-gradient(135deg, rgba(19, 47, 76, 0.9) 0%, rgba(26, 58, 82, 0.8) 100%);
+        backdrop-filter: blur(15px);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1rem 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .process-card:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    
+    .process-card h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+    
+    .process-card p {
+        margin: 0.3rem 0;
+        color: #FFFFFF !important;
+        font-size: 0.95rem;
+    }
+    
     .corporate-card h2 {
         font-size: 1.75rem;
         margin-bottom: 1rem;
@@ -1759,52 +1788,168 @@ elif st.session_state.pagina == "Protocolo":
     
     st.dataframe(metodos, use_container_width=True, hide_index=True, height=380)
     
-    with st.expander("📋 Ver flujo de proceso de monitoreo de calidad del aire"):
+    with st.expander("Ver flujo de proceso de monitoreo de calidad del aire", expanded=False):
         st.markdown("""
-        #### Proceso Completo de Monitoreo
+        <div style='margin-bottom: 2rem;'>
+            <h2 style='text-align: center; color: #00B8D9; margin-bottom: 1rem;'>🔄 Proceso Completo de Monitoreo de Calidad del Aire</h2>
+            <p style='text-align: center; color: #FFFFFF; font-size: 1.05rem;'>Flujo sistemático desde la planificación hasta el reporte</p>
+        </div>
+        """, unsafe_allow_html=True)
         
-        **1. Planificación**
-        - Definición de objetivos del monitoreo
-        - Selección de ubicación de estaciones (criterios de macro y microescala)
-        - Determinación de parámetros y frecuencias de muestreo
-        - Elaboración de Plan de Monitoreo
+        col1, col2 = st.columns(2)
         
-        **2. Implementación**
-        - Instalación y configuración de equipos
-        - Calibración inicial con gases y patrones certificados
-        - Verificación de condiciones ambientales del sitio
-        - Inicio de operación según protocolo
+        with col1:
+            st.markdown("""
+            <div class='process-card' style='background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05)); 
+                         border-left: 4px solid #3B82F6;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='background: rgba(59, 130, 246, 0.3); border-radius: 50%; width: 60px; height: 60px; 
+                                display: flex; align-items: center; justify-content: center; font-size: 2rem;'>📋</div>
+                    <div>
+                        <h3 style='color: #60A5FA; margin: 0; font-size: 1.4rem;'>1. Planificación</h3>
+                        <p style='color: #93C5FD; margin: 0; font-size: 0.85rem;'>Fase inicial de diseño</p>
+                    </div>
+                </div>
+                <div style='color: #FFFFFF; line-height: 1.8; padding-left: 1rem;'>
+                    <p style='margin: 0.3rem 0;'>✓ Definición de objetivos del monitoreo</p>
+                    <p style='margin: 0.3rem 0;'>✓ Selección de ubicación de estaciones (macro y microescala)</p>
+                    <p style='margin: 0.3rem 0;'>✓ Determinación de parámetros y frecuencias</p>
+                    <p style='margin: 0.3rem 0;'>✓ Elaboración de Plan de Monitoreo</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='process-card' style='background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05)); 
+                         border-left: 4px solid #10B981;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='background: rgba(16, 185, 129, 0.3); border-radius: 50%; width: 60px; height: 60px; 
+                                display: flex; align-items: center; justify-content: center; font-size: 2rem;'>⚙️</div>
+                    <div>
+                        <h3 style='color: #34D399; margin: 0; font-size: 1.4rem;'>2. Implementación</h3>
+                        <p style='color: #6EE7B7; margin: 0; font-size: 0.85rem;'>Instalación y puesta en marcha</p>
+                    </div>
+                </div>
+                <div style='color: #FFFFFF; line-height: 1.8; padding-left: 1rem;'>
+                    <p style='margin: 0.3rem 0;'>✓ Instalación y configuración de equipos</p>
+                    <p style='margin: 0.3rem 0;'>✓ Calibración inicial con gases certificados</p>
+                    <p style='margin: 0.3rem 0;'>✓ Verificación de condiciones ambientales</p>
+                    <p style='margin: 0.3rem 0;'>✓ Inicio de operación según protocolo</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='process-card' style='background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.05)); 
+                         border-left: 4px solid #F59E0B;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='background: rgba(245, 158, 11, 0.3); border-radius: 50%; width: 60px; height: 60px; 
+                                display: flex; align-items: center; justify-content: center; font-size: 2rem;'>🔧</div>
+                    <div>
+                        <h3 style='color: #FBBF24; margin: 0; font-size: 1.4rem;'>3. Operación y Mantenimiento</h3>
+                        <p style='color: #FCD34D; margin: 0; font-size: 0.85rem;'>Funcionamiento continuo</p>
+                    </div>
+                </div>
+                <div style='color: #FFFFFF; line-height: 1.8; padding-left: 1rem;'>
+                    <p style='margin: 0.3rem 0;'>✓ Calibraciones periódicas (diarias, semanales, mensuales)</p>
+                    <p style='margin: 0.3rem 0;'>✓ Mantenimiento preventivo de equipos</p>
+                    <p style='margin: 0.3rem 0;'>✓ Verificación de flujos y condiciones operativas</p>
+                    <p style='margin: 0.3rem 0;'>✓ Registro de eventos y anomalías</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='process-card' style='background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(168, 85, 247, 0.05)); 
+                         border-left: 4px solid #A855F7;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='background: rgba(168, 85, 247, 0.3); border-radius: 50%; width: 60px; height: 60px; 
+                                display: flex; align-items: center; justify-content: center; font-size: 2rem;'>✅</div>
+                    <div>
+                        <h3 style='color: #C084FC; margin: 0; font-size: 1.4rem;'>4. Aseguramiento de Calidad</h3>
+                        <p style='color: #D8B4FE; margin: 0; font-size: 0.85rem;'>Control de calidad de datos</p>
+                    </div>
+                </div>
+                <div style='color: #FFFFFF; line-height: 1.8; padding-left: 1rem;'>
+                    <p style='margin: 0.3rem 0;'>✓ Auditorías internas y externas</p>
+                    <p style='margin: 0.3rem 0;'>✓ Análisis de blancos y duplicados</p>
+                    <p style='margin: 0.3rem 0;'>✓ Control de precisión y exactitud</p>
+                    <p style='margin: 0.3rem 0;'>✓ Validación de datos</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
         
-        **3. Operación y Mantenimiento**
-        - Calibraciones periódicas (diarias, semanales, mensuales)
-        - Mantenimiento preventivo de equipos
-        - Verificación de flujos y condiciones operativas
-        - Registro de eventos y anomalías
-        
-        **4. Aseguramiento de Calidad**
-        - Auditorías internas y externas
-        - Análisis de blancos y duplicados
-        - Control de precisión y exactitud
-        - Validación de datos
-        
-        **5. Análisis de Laboratorio**
-        - Análisis gravimétrico (PM)
-        - Análisis químico (metales, iones)
-        - Control de calidad analítico
-        - Certificados de análisis
-        
-        **6. Gestión de Datos**
-        - Transferencia y almacenamiento de datos
-        - Validación estadística
-        - Cálculo de promedios según ECA
-        - Identificación de excedencias
-        
-        **7. Reporte**
-        - Informes técnicos periódicos
-        - Reportes a autoridades competentes
-        - Publicación de resultados (cuando aplique)
-        - Acciones correctivas si hay excedencias
-        """)
+        with col2:
+            st.markdown("""
+            <div class='process-card' style='background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(236, 72, 153, 0.05)); 
+                         border-left: 4px solid #EC4899;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='background: rgba(236, 72, 153, 0.3); border-radius: 50%; width: 60px; height: 60px; 
+                                display: flex; align-items: center; justify-content: center; font-size: 2rem;'>🔬</div>
+                    <div>
+                        <h3 style='color: #F472B6; margin: 0; font-size: 1.4rem;'>5. Análisis de Laboratorio</h3>
+                        <p style='color: #F9A8D4; margin: 0; font-size: 0.85rem;'>Análisis químico y físico</p>
+                    </div>
+                </div>
+                <div style='color: #FFFFFF; line-height: 1.8; padding-left: 1rem;'>
+                    <p style='margin: 0.3rem 0;'>✓ Análisis gravimétrico (PM)</p>
+                    <p style='margin: 0.3rem 0;'>✓ Análisis químico (metales, iones)</p>
+                    <p style='margin: 0.3rem 0;'>✓ Control de calidad analítico</p>
+                    <p style='margin: 0.3rem 0;'>✓ Certificados de análisis</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='process-card' style='background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(20, 184, 166, 0.05)); 
+                         border-left: 4px solid #14B8A6;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='background: rgba(20, 184, 166, 0.3); border-radius: 50%; width: 60px; height: 60px; 
+                                display: flex; align-items: center; justify-content: center; font-size: 2rem;'>💾</div>
+                    <div>
+                        <h3 style='color: #2DD4BF; margin: 0; font-size: 1.4rem;'>6. Gestión de Datos</h3>
+                        <p style='color: #5EEAD4; margin: 0; font-size: 0.85rem;'>Procesamiento y validación</p>
+                    </div>
+                </div>
+                <div style='color: #FFFFFF; line-height: 1.8; padding-left: 1rem;'>
+                    <p style='margin: 0.3rem 0;'>✓ Transferencia y almacenamiento de datos</p>
+                    <p style='margin: 0.3rem 0;'>✓ Validación estadística</p>
+                    <p style='margin: 0.3rem 0;'>✓ Cálculo de promedios según ECA</p>
+                    <p style='margin: 0.3rem 0;'>✓ Identificación de excedencias</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='process-card' style='background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.05)); 
+                         border-left: 4px solid #EF4444;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='background: rgba(239, 68, 68, 0.3); border-radius: 50%; width: 60px; height: 60px; 
+                                display: flex; align-items: center; justify-content: center; font-size: 2rem;'>📊</div>
+                    <div>
+                        <h3 style='color: #F87171; margin: 0; font-size: 1.4rem;'>7. Reporte</h3>
+                        <p style='color: #FCA5A5; margin: 0; font-size: 0.85rem;'>Comunicación de resultados</p>
+                    </div>
+                </div>
+                <div style='color: #FFFFFF; line-height: 1.8; padding-left: 1rem;'>
+                    <p style='margin: 0.3rem 0;'>✓ Informes técnicos periódicos</p>
+                    <p style='margin: 0.3rem 0;'>✓ Reportes a autoridades competentes</p>
+                    <p style='margin: 0.3rem 0;'>✓ Publicación de resultados (cuando aplique)</p>
+                    <p style='margin: 0.3rem 0;'>✓ Acciones correctivas si hay excedencias</p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div style='background: linear-gradient(135deg, rgba(0, 184, 217, 0.2), rgba(0, 184, 217, 0.05)); 
+                         border: 2px dashed #00B8D9; border-radius: 12px; padding: 1.5rem; margin-top: 1rem; text-align: center;'>
+                <h4 style='color: #00B8D9; margin: 0 0 0.5rem 0;'>♻️ Proceso Cíclico Continuo</h4>
+                <p style='color: #FFFFFF; margin: 0; font-size: 0.9rem;'>
+                    El monitoreo de calidad del aire es un proceso continuo que se repite periódicamente,
+                    con mejoras constantes basadas en los resultados obtenidos y lecciones aprendidas.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
         # ===================== PÁGINA LINEAMIENTO =====================
 elif st.session_state.pagina == "Lineamiento":
     
