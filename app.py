@@ -1347,26 +1347,18 @@ elif st.session_state.pagina == "ECA":
     ], columns=['Contaminante', 'Período', 'Valor', 'Unidad', 'Forma del Estándar'])
     
     # Tabla HTML personalizada para ECA
-    tabla_eca_html = """
-    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
-        <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
-            <thead>
-                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Período</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Valor</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Forma del Estándar</th>
-                </tr>
-            </thead>
-            <tbody>
-    """
+    tabla_eca_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+<table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+<thead>
+<tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+<th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Período</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Valor</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Forma del Estándar</th>
+</tr>
+</thead>
+<tbody>"""
     
     # Generar filas dinámicamente
     filas = [
@@ -1388,23 +1380,17 @@ elif st.session_state.pagina == "ECA":
     
     for i, fila in enumerate(filas):
         border = '' if i == len(filas) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
-        tabla_eca_html += f"""
-                <tr style='{border} transition: background 0.2s;'
-                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                    onmouseout='this.style.background="transparent"'>
-                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
-                </tr>
-        """
+        tabla_eca_html += f"""<tr style='{border} transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
+</tr>"""
     
-    tabla_eca_html += """
-            </tbody>
-        </table>
-    </div>
-    """
+    tabla_eca_html += """</tbody>
+</table>
+</div>"""
     
     st.markdown(tabla_eca_html, unsafe_allow_html=True)
     
@@ -1706,56 +1692,42 @@ elif st.session_state.pagina == "LMP":
     ], columns=['Contaminante', 'Gas Natural', 'Diesel', 'Residual', 'Unidad'])
     
     # Tabla HTML personalizada para LMP Termoeléctricas
-    tabla_lmp_html = """
-    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
-        <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
-            <thead>
-                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none; min-width: 250px;'>Contaminante</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Gas Natural</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Diesel</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Residual</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
-                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                    onmouseout='this.style.background="transparent"'>
-                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>Óxidos de Nitrógeno (NOx)</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>320</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>850</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>2000</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/Nm³</td>
-                </tr>
-                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
-                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                    onmouseout='this.style.background="transparent"'>
-                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>Dióxido de Azufre (SO2)</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>0</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>1700</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>3500</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/Nm³</td>
-                </tr>
-                <tr style='transition: background 0.2s;'
-                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                    onmouseout='this.style.background="transparent"'>
-                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>Material Particulado (MP)</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>50</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>150</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>350</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/Nm³</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    """
+    tabla_lmp_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+<table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+<thead>
+<tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+<th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none; min-width: 250px;'>Contaminante</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Gas Natural</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Diesel</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Residual</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
+</tr>
+</thead>
+<tbody>
+<tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>Óxidos de Nitrógeno (NOx)</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>320</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>850</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>2000</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/Nm³</td>
+</tr>
+<tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>Dióxido de Azufre (SO2)</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>0</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>1700</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>3500</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/Nm³</td>
+</tr>
+<tr style='transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>Material Particulado (MP)</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>50</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>150</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>350</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/Nm³</td>
+</tr>
+</tbody>
+</table>
+</div>"""
     
     st.markdown(tabla_lmp_html, unsafe_allow_html=True)
     
@@ -1964,43 +1936,30 @@ elif st.session_state.pagina == "Protocolo":
         ['H2S', 'EPA Method 11', 'Tren de muestreo con solución absorbente', 'Método manual']
     ]
     
-    tabla_metodos_html = """
-    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
-        <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
-            <thead>
-                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Método EPA</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Técnica Analítica</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Tipo de Equipo</th>
-                </tr>
-            </thead>
-            <tbody>
-    """
+    tabla_metodos_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+<table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+<thead>
+<tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+<th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Método EPA</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Técnica Analítica</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Tipo de Equipo</th>
+</tr>
+</thead>
+<tbody>"""
     
     for i, fila in enumerate(filas_metodos):
         border = '' if i == len(filas_metodos) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
-        tabla_metodos_html += f"""
-                <tr style='{border} transition: background 0.2s;'
-                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                    onmouseout='this.style.background="transparent"'>
-                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
-                </tr>
-        """
+        tabla_metodos_html += f"""<tr style='{border} transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
+</tr>"""
     
-    tabla_metodos_html += """
-            </tbody>
-        </table>
-    </div>
-    """
+    tabla_metodos_html += """</tbody>
+</table>
+</div>"""
     
     st.markdown(tabla_metodos_html, unsafe_allow_html=True)
     
@@ -2276,49 +2235,34 @@ elif st.session_state.pagina == "Lineamiento":
         ['CO', '🔴 Emergencia', '> 40000', '---', 'μg/m³', 'Estado de emergencia sanitaria']
     ]
     
-    tabla_niveles_html = """
-    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
-        <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
-            <thead>
-                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Nivel de Alerta</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Límite Inferior</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Límite Superior</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Acción Requerida</th>
-                </tr>
-            </thead>
-            <tbody>
-    """
+    tabla_niveles_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+<table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+<thead>
+<tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+<th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Nivel de Alerta</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Límite Inferior</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Límite Superior</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Acción Requerida</th>
+</tr>
+</thead>
+<tbody>"""
     
     for i, fila in enumerate(niveles_data):
         border = '' if i == len(niveles_data) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
-        tabla_niveles_html += f"""
-                <tr style='{border} transition: background 0.2s;'
-                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                    onmouseout='this.style.background="transparent"'>
-                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none; font-size: 1rem;'>{fila[1]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[5]}</td>
-                </tr>
-        """
+        tabla_niveles_html += f"""<tr style='{border} transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none; font-size: 1rem;'>{fila[1]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[5]}</td>
+</tr>"""
     
-    tabla_niveles_html += """
-            </tbody>
-        </table>
-    </div>
-    """
+    tabla_niveles_html += """</tbody>
+</table>
+</div>"""
     
     st.markdown(tabla_niveles_html, unsafe_allow_html=True)
     
@@ -2438,46 +2382,36 @@ elif st.session_state.pagina == "Medidas":
         ['CO', 'Oxidación catalítica', '>98%', 'Conversión CO a CO2', 'Media-Alta', 'Medio', 'Escape vehicular, hornos']
     ]
     
-    tabla_tecnologias_html = """
-    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
-        <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
-            <thead>
-                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Tecnología</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Eficiencia</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Principio de Operación</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Complejidad</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Costo</th>
-                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Aplicación Principal</th>
-                </tr>
-            </thead>
-            <tbody>
-    """
+    tabla_tecnologias_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+<table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+<thead>
+<tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+<th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Tecnología</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Eficiencia</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Principio de Operación</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Complejidad</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Costo</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Aplicación Principal</th>
+</tr>
+</thead>
+<tbody>"""
     
     for i, fila in enumerate(tecnologias_data):
         border = '' if i == len(tecnologias_data) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
-        tabla_tecnologias_html += f"""
-                <tr style='{border} transition: background 0.2s;'
-                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                    onmouseout='this.style.background="transparent"'>
-                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[5]}</td>
-                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[6]}</td>
-                </tr>
-        """
+        tabla_tecnologias_html += f"""<tr style='{border} transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[5]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[6]}</td>
+</tr>"""
+    
+    tabla_tecnologias_html += """</tbody>
+</table>
+</div>"""
     
     tabla_tecnologias_html += """
             </tbody>
@@ -2615,83 +2549,63 @@ elif st.session_state.pagina == "Normativas":
         st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📋 Valores Guía OMS 2021</h3>", unsafe_allow_html=True)
         
         # Tabla HTML personalizada
-        tabla_html = """
-        <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
-                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
-            <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
-                <thead>
-                    <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
-                        <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
-                                   text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
-                        <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                                   text-transform: uppercase; font-size: 0.85rem; border: none;'>Anual</th>
-                        <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                                   text-transform: uppercase; font-size: 0.85rem; border: none;'>24 horas</th>
-                        <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                                   text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
-                        <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
-                                   text-transform: uppercase; font-size: 0.85rem; border: none;'>Período</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
-                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                        onmouseout='this.style.background="transparent"'>
-                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>PM2.5</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>5</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>15</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Media anual / 24h</td>
-                    </tr>
-                    <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
-                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                        onmouseout='this.style.background="transparent"'>
-                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>PM10</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>15</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>45</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Media anual / 24h</td>
-                    </tr>
-                    <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
-                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                        onmouseout='this.style.background="transparent"'>
-                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>NO2</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>10</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>25</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Media anual / 24h</td>
-                    </tr>
-                    <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
-                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                        onmouseout='this.style.background="transparent"'>
-                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>SO2</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>-</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>40</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>24 horas</td>
-                    </tr>
-                    <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
-                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                        onmouseout='this.style.background="transparent"'>
-                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>O3</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>-</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>100</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Pico estacional (8h)</td>
-                    </tr>
-                    <tr style='transition: background 0.2s;'
-                        onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
-                        onmouseout='this.style.background="transparent"'>
-                        <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>CO</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>-</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>4</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/m³</td>
-                        <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>24 horas</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        """
+        tabla_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+<table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+<thead>
+<tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+<th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Anual</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>24 horas</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Período</th>
+</tr>
+</thead>
+<tbody>
+<tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>PM2.5</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>5</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>15</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Media anual / 24h</td>
+</tr>
+<tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>PM10</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>15</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>45</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Media anual / 24h</td>
+</tr>
+<tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>NO2</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>10</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>25</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Media anual / 24h</td>
+</tr>
+<tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>SO2</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>-</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>40</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>24 horas</td>
+</tr>
+<tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>O3</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>-</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>100</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>μg/m³</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>Pico estacional (8h)</td>
+</tr>
+<tr style='transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>CO</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>-</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>4</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/m³</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>24 horas</td>
+</tr>
+</tbody>
+</table>
+</div>"""
         st.markdown(tabla_html, unsafe_allow_html=True)
         
         st.info("**Metas Intermedias:** La OMS establece 4 niveles intermedios (IT-1 a IT-4) para países que no pueden alcanzar inmediatamente las guías finales, permitiendo mejora progresiva.")
