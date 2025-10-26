@@ -4,8 +4,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
 
-# VERSIÓN 2.0 - Todas las tablas con estilo HTML profesional
-# Fecha de actualización: 2025-01-25
+# VERSIÓN 2.1 - Corregidos cuadros verdes (DataFrame OMS eliminado)
+# Fecha de actualización: 2025-01-25 14:30
 
 # Configuración de página
 st.set_page_config(
@@ -2554,15 +2554,6 @@ elif st.session_state.pagina == "Normativas":
             </a>
         </div>
         """, unsafe_allow_html=True)
-        
-        oms_tabla = pd.DataFrame([
-            ['PM2.5', 5, 15, 'μg/m³', 'Media anual / 24h'],
-            ['PM10', 15, 45, 'μg/m³', 'Media anual / 24h'],
-            ['NO2', 10, 25, 'μg/m³', 'Media anual / 24h'],
-            ['SO2', None, 40, 'μg/m³', '24 horas'],
-            ['O3', None, 100, 'μg/m³', 'Pico estacional (8h)'],
-            ['CO', None, 4, 'mg/m³', '24 horas']
-        ], columns=['Contaminante', 'Anual', '24 horas', 'Unidad', 'Período'])
         
         st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📋 Valores Guía OMS 2021</h3>", unsafe_allow_html=True)
         
