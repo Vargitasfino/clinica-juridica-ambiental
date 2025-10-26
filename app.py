@@ -1161,6 +1161,21 @@ if st.session_state.pagina == "Inicio":
             st.session_state.pagina = "Normativas"
             st.rerun()
         
+        st.markdown("---")
+        st.markdown("### 🆕 Herramientas Avanzadas")
+        
+        if st.button("📊 Dashboard KPIs", use_container_width=True, key="quick_dashboard"):
+            st.session_state.pagina = "Dashboard"
+            st.rerun()
+        
+        if st.button("🧮 Calculadora Emisiones", use_container_width=True, key="quick_calc"):
+            st.session_state.pagina = "Calculadora"
+            st.rerun()
+        
+        if st.button("📚 Casos de Estudio", use_container_width=True, key="quick_casos"):
+            st.session_state.pagina = "Casos"
+            st.rerun()
+        
         st.markdown("<br>", unsafe_allow_html=True)
         
         st.info("**Sugerencia:** Utilice el buscador del menú lateral para encontrar normativas específicas.")
@@ -2770,3 +2785,57 @@ elif st.session_state.pagina == "Normativas":
         st.plotly_chart(fig3, use_container_width=True)
         
         st.warning("**⚠️ Análisis:** El estándar peruano de PM2.5 anual (25 μg/m³) es 5 veces más permisivo que la OMS (5 μg/m³) y 2.8 veces más alto que EPA USA (9 μg/m	³). Se recomienda actualización gradual de los ECA nacionales.")
+
+# ===================== NUEVA PÁGINA: DASHBOARD DE KPIs =====================
+elif st.session_state.pagina == "Dashboard":
+    st.markdown("<h1 style='text-align: center; color: #FFFFFF; margin-bottom: 2rem;'>📊 Dashboard Ejecutivo</h1>", unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='corporate-card fade-in'>
+        <h2>🎯 Indicadores Clave - Calidad del Aire Perú 2024</h2>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.markdown("""
+        <div style='background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05)); 
+                    padding: 1.5rem; border-radius: 12px; border-left: 4px solid #10B981;'>
+            <div style='font-size: 0.9rem; color: #10B981; font-weight: 600; margin-bottom: 0.5rem;'>ESTACIONES ACTIVAS</div>
+            <div style='font-size: 2.5rem; color: #FFFFFF; font-weight: 700;'>156</div>
+            <div style='font-size: 0.85rem; color: #6EE7B7;'>↑ 12% vs 2023</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div style='background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05)); 
+                    padding: 1.5rem; border-radius: 12px; border-left: 4px solid #3B82F6;'>
+            <div style='font-size: 0.9rem; color: #3B82F6; font-weight: 600; margin-bottom: 0.5rem;'>CUMPLIMIENTO ECA</div>
+            <div style='font-size: 2.5rem; color: #FFFFFF; font-weight: 700;'>73%</div>
+            <div style='font-size: 0.85rem; color: #93C5FD;'>Estaciones en norma</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("""
+        <div style='background: linear-gradient(135deg, rgba(251, 146, 60, 0.2), rgba(251, 146, 60, 0.05)); 
+                    padding: 1.5rem; border-radius: 12px; border-left: 4px solid #FB923C;'>
+            <div style='font-size: 0.9rem; color: #FB923C; font-weight: 600; margin-bottom: 0.5rem;'>ZONAS CRÍTICAS</div>
+            <div style='font-size: 2.5rem; color: #FFFFFF; font-weight: 700;'>18</div>
+            <div style='font-size: 0.85rem; color: #FDBA74;'>Requieren atención</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col4:
+        st.markdown("""
+        <div style='background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.05)); 
+                    padding: 1.5rem; border-radius: 12px; border-left: 4px solid #8B5CF6;'>
+            <div style='font-size: 0.9rem; color: #8B5CF6; font-weight: 600; margin-bottom: 0.5rem;'>INVERSIÓN 2024</div>
+            <div style='font-size: 2.5rem; color: #FFFFFF; font-weight: 700;'>S/42M</div>
+            <div style='font-size: 0.85rem; color: #C4B5FD;'>Infraestructura</div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.success("**💡 Dato clave:** Perú ha aumentado su red de monitoreo en un 65% en los últimos 5 años, mejorando significativamente la cobertura nacional.")
