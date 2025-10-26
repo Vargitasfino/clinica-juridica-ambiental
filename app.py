@@ -1041,15 +1041,15 @@ if st.session_state.pagina == "Inicio":
             showlegend=True,
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#FFFFFF', size=12, family='Inter'),
+            font=dict(color='#FFFFFF', size=12),
             xaxis=dict(
                 showgrid=True,
                 gridcolor='rgba(255,255,255,0.08)',
-                title='<b>Año</b>',
-                titlefont=dict(size=14, color='#00B8D9'),
+                title='Año',
                 dtick=2,
                 range=[1994, 2021],
-                tickfont=dict(size=11)
+                tickfont=dict(size=11),
+                titlefont=dict(size=14)
             ),
             yaxis=dict(
                 showgrid=False,
