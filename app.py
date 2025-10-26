@@ -4,8 +4,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
 
-# VERSIÓN 3.1 - Colores originales restaurados + Tabla EPA profesional
-# Fecha de actualización: 2025-01-25 15:45
+# VERSIÓN 3.2 - Colores de títulos corregidos (removido !important)
+# Fecha de actualización: 2025-01-25 15:50
 
 # Configuración de página
 st.set_page_config(
@@ -266,7 +266,7 @@ st.markdown("""
     }
     
     .corporate-card h2, .corporate-card h3 {
-        color: white !important;
+        color: white;
         font-weight: 700;
         margin-top: 0;
         letter-spacing: -0.01em;
