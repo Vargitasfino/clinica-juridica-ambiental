@@ -821,7 +821,7 @@ if st.session_state.pagina == "Inicio":
                 ),
                 text=df_cat['categoria'],
                 textposition='top center',
-                textfont=dict(size=11, color='white', family='Inter', weight=600),
+                textfont=dict(size=13, color='#FFFFFF'),
                 hovertemplate='<b>%{customdata[0]}</b><br>' +
                               '%{customdata[1]}<br>' +
                               '<i>Año: %{x}</i><extra></extra>',
@@ -833,7 +833,7 @@ if st.session_state.pagina == "Inicio":
             showlegend=True,
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#E3E8EF', size=12, family='Inter'),
+            font=dict(color='#FFFFFF', size=12, family='Inter'),
             xaxis=dict(
                 showgrid=True,
                 gridcolor='rgba(255,255,255,0.1)',
@@ -854,11 +854,15 @@ if st.session_state.pagina == "Inicio":
                 x=0.5,
                 bgcolor='rgba(19, 47, 76, 0.8)',
                 bordercolor='rgba(255,255,255,0.1)',
-                borderwidth=1
+                borderwidth=1,
+                font=dict(color='#FFFFFF', size=11)
             ),
             hovermode='closest',
             margin=dict(l=50, r=50, t=30, b=80)
         )
+        
+        # Forzar color blanco en todos los textos
+        fig_timeline.update_traces(textfont=dict(color='#FFFFFF', size=13))
         
         st.plotly_chart(fig_timeline, use_container_width=True)
         
