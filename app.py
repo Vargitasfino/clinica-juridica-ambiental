@@ -1346,7 +1346,67 @@ elif st.session_state.pagina == "ECA":
         ['BaP', 'Anual', 0.0012, 'μg/m³', 'Media aritmética anual']
     ], columns=['Contaminante', 'Período', 'Valor', 'Unidad', 'Forma del Estándar'])
     
-    st.dataframe(eca_valores, use_container_width=True, hide_index=True, height=550)
+    # Tabla HTML personalizada para ECA
+    tabla_eca_html = """
+    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+        <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+            <thead>
+                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Período</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Valor</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Forma del Estándar</th>
+                </tr>
+            </thead>
+            <tbody>
+    """
+    
+    # Generar filas dinámicamente
+    filas = [
+        ['PM2.5', '24 horas', '50', 'μg/m³', 'No exceder más de 7 veces al año'],
+        ['PM2.5', 'Anual', '25', 'μg/m³', 'Media aritmética anual'],
+        ['PM10', '24 horas', '100', 'μg/m³', 'No exceder más de 7 veces al año'],
+        ['PM10', 'Anual', '50', 'μg/m³', 'Media aritmética anual'],
+        ['NO2', '1 hora', '200', 'μg/m³', 'No exceder más de 24 veces al año'],
+        ['NO2', 'Anual', '100', 'μg/m³', 'Media aritmética anual'],
+        ['SO2', '24 horas', '250', 'μg/m³', 'No exceder más de 7 veces al año'],
+        ['O3', '8 horas', '100', 'μg/m³', 'Máximas diarias de promedios móviles'],
+        ['CO', '8 horas', '10000', 'μg/m³', 'Promedio móvil'],
+        ['CO', '1 hora', '30000', 'μg/m³', 'No exceder más de 1 vez al año'],
+        ['Pb', 'Mensual', '1.5', 'μg/m³', 'Media aritmética mensual'],
+        ['Pb', 'Anual', '0.5', 'μg/m³', 'Media aritmética anual'],
+        ['H2S', '24 horas', '150', 'μg/m³', 'Media aritmética'],
+        ['BaP', 'Anual', '0.0012', 'μg/m³', 'Media aritmética anual']
+    ]
+    
+    for i, fila in enumerate(filas):
+        border = '' if i == len(filas) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
+        tabla_eca_html += f"""
+                <tr style='{border} transition: background 0.2s;'
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                    onmouseout='this.style.background="transparent"'>
+                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
+                </tr>
+        """
+    
+    tabla_eca_html += """
+            </tbody>
+        </table>
+    </div>
+    """
+    
+    st.markdown(tabla_eca_html, unsafe_allow_html=True)
     
     with st.expander("Ver información adicional sobre contaminantes criterio", expanded=False):
         st.markdown("""
@@ -1645,7 +1705,59 @@ elif st.session_state.pagina == "LMP":
         ['Material Particulado (MP)', 50, 150, 350, 'mg/Nm³']
     ], columns=['Contaminante', 'Gas Natural', 'Diesel', 'Residual', 'Unidad'])
     
-    st.dataframe(lmp_termo, use_container_width=True, hide_index=True, height=200)
+    # Tabla HTML personalizada para LMP Termoeléctricas
+    tabla_lmp_html = """
+    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+        <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+            <thead>
+                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none; min-width: 250px;'>Contaminante</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Gas Natural</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Diesel</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Residual</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                    onmouseout='this.style.background="transparent"'>
+                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>Óxidos de Nitrógeno (NOx)</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>320</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>850</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>2000</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/Nm³</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: background 0.2s;'
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                    onmouseout='this.style.background="transparent"'>
+                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>Dióxido de Azufre (SO2)</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>0</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>1700</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>3500</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/Nm³</td>
+                </tr>
+                <tr style='transition: background 0.2s;'
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                    onmouseout='this.style.background="transparent"'>
+                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>Material Particulado (MP)</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>50</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>150</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>350</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>mg/Nm³</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    """
+    
+    st.markdown(tabla_lmp_html, unsafe_allow_html=True)
     
     fig_lmp = go.Figure()
     
@@ -1840,7 +1952,57 @@ elif st.session_state.pagina == "Protocolo":
         ['H2S', 'EPA Method 11', 'Tren de muestreo con solución absorbente', 'Método manual']
     ], columns=['Contaminante', 'Método EPA', 'Técnica Analítica', 'Tipo de Equipo'])
     
-    st.dataframe(metodos, use_container_width=True, hide_index=True, height=380)
+    # Generar tabla HTML para Métodos EPA
+    filas_metodos = [
+        ['PM10', 'EPA Method 40 CFR Part 50, Appendix J', 'Muestreo gravimétrico con separador inercial', 'Alto volumen (Hi-Vol)'],
+        ['PM2.5', 'EPA Method 40 CFR Part 50, Appendix L', 'Muestreo gravimétrico con separador inercial', 'Bajo volumen (Low-Vol)'],
+        ['SO2', 'EPA Method 40 CFR Part 50, Appendix A-1', 'Fluorescencia UV pulsada', 'Analizador continuo'],
+        ['NO2', 'EPA Method 40 CFR Part 50, Appendix F', 'Quimioluminiscencia', 'Analizador continuo'],
+        ['CO', 'EPA Method 40 CFR Part 50, Appendix C', 'Espectrometría infrarroja no dispersiva (NDIR)', 'Analizador continuo'],
+        ['O3', 'EPA Method 40 CFR Part 50, Appendix D', 'Fotometría de absorción UV', 'Analizador continuo'],
+        ['Pb', 'EPA Method 40 CFR Part 50, Appendix G', 'Espectrometría de absorción atómica', 'Filtros PM10'],
+        ['H2S', 'EPA Method 11', 'Tren de muestreo con solución absorbente', 'Método manual']
+    ]
+    
+    tabla_metodos_html = """
+    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+        <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+            <thead>
+                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Método EPA</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Técnica Analítica</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Tipo de Equipo</th>
+                </tr>
+            </thead>
+            <tbody>
+    """
+    
+    for i, fila in enumerate(filas_metodos):
+        border = '' if i == len(filas_metodos) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
+        tabla_metodos_html += f"""
+                <tr style='{border} transition: background 0.2s;'
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                    onmouseout='this.style.background="transparent"'>
+                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
+                </tr>
+        """
+    
+    tabla_metodos_html += """
+            </tbody>
+        </table>
+    </div>
+    """
+    
+    st.markdown(tabla_metodos_html, unsafe_allow_html=True)
     
     with st.expander("Ver flujo de proceso de monitoreo de calidad del aire", expanded=False):
         st.markdown("""
@@ -2099,22 +2261,66 @@ elif st.session_state.pagina == "Lineamiento":
     </div>
     """, unsafe_allow_html=True)
     
-    niveles = pd.DataFrame([
-        ['PM10', '🟡 Cuidado', 250, 350, 'μg/m³', 'Información a grupos sensibles'],
-        ['PM10', '🟠 Peligro', 350, 420, 'μg/m³', 'Alerta general a población'],
+    niveles_data = [
+        ['PM10', '🟡 Cuidado', '250', '350', 'μg/m³', 'Información a grupos sensibles'],
+        ['PM10', '🟠 Peligro', '350', '420', 'μg/m³', 'Alerta general a población'],
         ['PM10', '🔴 Emergencia', '> 420', '---', 'μg/m³', 'Emergencia sanitaria regional'],
-        ['SO2', '🟡 Cuidado', 500, 1000, 'μg/m³', 'Advertencia a grupos sensibles'],
-        ['SO2', '🟠 Peligro', 1000, 1600, 'μg/m³', 'Restricción actividades al aire libre'],
+        ['SO2', '🟡 Cuidado', '500', '1000', 'μg/m³', 'Advertencia a grupos sensibles'],
+        ['SO2', '🟠 Peligro', '1000', '1600', 'μg/m³', 'Restricción actividades al aire libre'],
         ['SO2', '🔴 Emergencia', '> 1600', '---', 'μg/m³', 'Suspensión actividades productivas'],
-        ['NO2', '🟡 Cuidado', 600, 1200, 'μg/m³', 'Alerta a grupos de riesgo'],
-        ['NO2', '🟠 Peligro', 1200, 1600, 'μg/m³', 'Reducción tráfico vehicular'],
+        ['NO2', '🟡 Cuidado', '600', '1200', 'μg/m³', 'Alerta a grupos de riesgo'],
+        ['NO2', '🟠 Peligro', '1200', '1600', 'μg/m³', 'Reducción tráfico vehicular'],
         ['NO2', '🔴 Emergencia', '> 1600', '---', 'μg/m³', 'Cierre de vías principales'],
-        ['CO', '🟡 Cuidado', 15000, 30000, 'μg/m³', 'Información preventiva'],
-        ['CO', '🟠 Peligro', 30000, 40000, 'μg/m³', 'Restricción circulación vehicular'],
+        ['CO', '🟡 Cuidado', '15000', '30000', 'μg/m³', 'Información preventiva'],
+        ['CO', '🟠 Peligro', '30000', '40000', 'μg/m³', 'Restricción circulación vehicular'],
         ['CO', '🔴 Emergencia', '> 40000', '---', 'μg/m³', 'Estado de emergencia sanitaria']
-    ], columns=['Contaminante', 'Nivel de Alerta', 'Límite Inferior', 'Límite Superior', 'Unidad', 'Acción Requerida'])
+    ]
     
-    st.dataframe(niveles, use_container_width=True, hide_index=True, height=500)
+    tabla_niveles_html = """
+    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+        <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+            <thead>
+                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Nivel de Alerta</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Límite Inferior</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Límite Superior</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Acción Requerida</th>
+                </tr>
+            </thead>
+            <tbody>
+    """
+    
+    for i, fila in enumerate(niveles_data):
+        border = '' if i == len(niveles_data) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
+        tabla_niveles_html += f"""
+                <tr style='{border} transition: background 0.2s;'
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                    onmouseout='this.style.background="transparent"'>
+                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none; font-size: 1rem;'>{fila[1]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[5]}</td>
+                </tr>
+        """
+    
+    tabla_niveles_html += """
+            </tbody>
+        </table>
+    </div>
+    """
+    
+    st.markdown(tabla_niveles_html, unsafe_allow_html=True)
     
     st.warning("**⚠️ Protocolo de activación:** Las autoridades ambientales y de salud deben activar los niveles de alerta cuando se registren o pronostiquen concentraciones en los rangos establecidos. Las medidas incluyen difusión masiva de información, restricción de actividades, y en casos de emergencia, la declaratoria de estado de emergencia ambiental.")
     # ===================== PÁGINA MEDIDAS =====================
@@ -2213,7 +2419,7 @@ elif st.session_state.pagina == "Medidas":
     </div>
     """, unsafe_allow_html=True)
     
-    tecnologias = pd.DataFrame([
+    tecnologias_data = [
         ['Material Particulado', 'Filtros de mangas (Baghouse)', '>99%', 'Captación por filtración textil', 'Media-Alta', 'Alto', 'Industria general'],
         ['Material Particulado', 'Precipitadores electrostáticos (ESP)', '95-99%', 'Carga eléctrica y colección', 'Alta', 'Medio', 'Termoeléctricas, cemento'],
         ['Material Particulado', 'Ciclones', '70-90%', 'Separación por fuerza centrífuga', 'Baja', 'Bajo', 'Pre-tratamiento'],
@@ -2230,9 +2436,56 @@ elif st.session_state.pagina == "Medidas":
         ['COVs', 'Adsorción carbón activado', '85-95%', 'Captura en microporos', 'Media', 'Medio', 'Baja concentración'],
         ['COVs', 'Condensación criogénica', '80-90%', 'Enfriamiento bajo punto rocío', 'Alta', 'Alto', 'Recuperación solventes'],
         ['CO', 'Oxidación catalítica', '>98%', 'Conversión CO a CO2', 'Media-Alta', 'Medio', 'Escape vehicular, hornos']
-    ], columns=['Contaminante', 'Tecnología', 'Eficiencia', 'Principio de Operación', 'Complejidad', 'Costo', 'Aplicación Principal'])
+    ]
     
-    st.dataframe(tecnologias, use_container_width=True, hide_index=True, height=650)
+    tabla_tecnologias_html = """
+    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+        <table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+            <thead>
+                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Tecnología</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Eficiencia</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Principio de Operación</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Complejidad</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Costo</th>
+                    <th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; 
+                               text-transform: uppercase; font-size: 0.85rem; border: none;'>Aplicación Principal</th>
+                </tr>
+            </thead>
+            <tbody>
+    """
+    
+    for i, fila in enumerate(tecnologias_data):
+        border = '' if i == len(tecnologias_data) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
+        tabla_tecnologias_html += f"""
+                <tr style='{border} transition: background 0.2s;'
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"'
+                    onmouseout='this.style.background="transparent"'>
+                    <td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[5]}</td>
+                    <td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[6]}</td>
+                </tr>
+        """
+    
+    tabla_tecnologias_html += """
+            </tbody>
+        </table>
+    </div>
+    """
+    
+    st.markdown(tabla_tecnologias_html, unsafe_allow_html=True)
     
     st.markdown("""
     <div class='corporate-card fade-in'>
