@@ -4,8 +4,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
 
-# VERSIÓN 2.1 - Corregidos cuadros verdes (DataFrame OMS eliminado)
-# Fecha de actualización: 2025-01-25 14:30
+# VERSIÓN 2.2 - CSS agresivo para eliminar cuadros verdes
+# Fecha de actualización: 2025-01-25 14:45
 
 # Configuración de página
 st.set_page_config(
@@ -623,6 +623,40 @@ st.markdown("""
         color: white;
         border-color: rgba(255, 255, 255, 0.1);
         box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+    }
+    
+    /* Forzar texto blanco en todos los elementos dentro de tabs */
+    .stTabs [data-baseweb="tab"] * {
+        color: inherit !important;
+    }
+    
+    /* Ocultar cualquier elemento con fondo verde no deseado */
+    .stTabs [style*="background"] {
+        color: white !important;
+    }
+    
+    /* Forzar visibilidad de texto en todos los badges/chips */
+    [data-testid="stMarkdown"] span,
+    [data-testid="stMarkdown"] div {
+        color: inherit !important;
+    }
+    
+    /* Ocultar elementos de columnas vacías o con fondo verde */
+    .stTabs [data-testid="column"] > div:empty {
+        display: none !important;
+    }
+    
+    /* Forzar que cualquier elemento con fondo verde tenga texto blanco */
+    [style*="background-color: rgb(0, 128, 0)"],
+    [style*="background-color: green"],
+    [style*="background: green"],
+    [style*="background: rgb(0, 128, 0)"] {
+        color: white !important;
+    }
+    
+    /* Eliminar badges/chips de Streamlit que aparecen automáticamente */
+    .stTabs [data-testid="stMarkdownContainer"] > div > div[style*="display: flex"] {
+        color: white !important;
     }
     
     [data-testid="stMetricValue"] {
