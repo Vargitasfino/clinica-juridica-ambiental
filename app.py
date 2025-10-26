@@ -4,8 +4,9 @@ import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
 
-# VERSIÓN 2.4 - Texto blanco brillante en todos los botones
-# Fecha de actualización: 2025-01-25 15:10
+# VERSIÓN 3.0 - ELIMINADOS st.tabs - Usando st.radio para evitar cuadros verdes
+# Fecha de actualización: 2025-01-25 15:20
+# CAMBIO MAYOR: Tabs reemplazados por radio buttons horizontales
 
 # Configuración de página
 st.set_page_config(
@@ -2560,35 +2561,18 @@ elif st.session_state.pagina == "Normativas":
     
     st.markdown("<h1 style='text-align: center; margin-bottom: 2rem; color: #FFFFFF;'>🌍 Estándares Internacionales de Calidad del Aire</h1>", unsafe_allow_html=True)
     
-    # JavaScript para ocultar elementos problemáticos con fondo verde
-    st.markdown("""
-    <script>
-    // Ejecutar cuando el DOM esté listo
-    setTimeout(function() {
-        // Buscar y ocultar elementos con fondo verde en los tabs
-        const allElements = document.querySelectorAll('*');
-        allElements.forEach(function(el) {
-            const style = window.getComputedStyle(el);
-            const bg = style.backgroundColor;
-            
-            // Si tiene fondo verde, ocultarlo
-            if (bg && (bg.includes('0, 128, 0') || bg.includes('green'))) {
-                el.style.display = 'none';
-            }
-            
-            // O hacerlo visible con texto blanco
-            if (bg && (bg.includes('0, 128, 0') || bg.includes('green'))) {
-                el.style.color = 'white';
-                el.style.backgroundColor = 'transparent';
-            }
-        });
-    }, 500);
-    </script>
-    """, unsafe_allow_html=True)
+    # Usar radio buttons en lugar de tabs para evitar los cuadros verdes
+    st.markdown("### Selecciona un estándar internacional:")
+    tab_seleccionado = st.radio(
+        "Estándar",
+        ["🏥 OMS", "🇺🇸 EPA USA", "🇨🇦 Canadá", "📊 Análisis Comparativo"],
+        horizontal=True,
+        label_visibility="collapsed"
+    )
     
-    tab1, tab2, tab3, tab4 = st.tabs(["🏥 OMS", "🇺🇸 EPA USA", "🇨🇦 Canadá", "📊 Análisis Comparativo"])
+    st.markdown("---")
     
-    with tab1:
+    if tab_seleccionado == "🏥 OMS":
         st.markdown("""
         <div class='corporate-card fade-in'>
             <h2>🏥 Organización Mundial de la Salud (OMS)</h2>
@@ -2693,7 +2677,7 @@ elif st.session_state.pagina == "Normativas":
         
         st.info("**Metas Intermedias:** La OMS establece 4 niveles intermedios (IT-1 a IT-4) para países que no pueden alcanzar inmediatamente las guías finales, permitiendo mejora progresiva.")
     
-    with tab2:
+    elif tab_seleccionado == "🇺🇸 EPA USA":
         st.markdown("""
         <div class='corporate-card fade-in'>
             <h2>🇺🇸 Environmental Protection Agency (EPA)</h2>
@@ -2784,7 +2768,7 @@ elif st.session_state.pagina == "Normativas":
         
         st.warning("**⚠️ Designaciones de no cumplimiento:** Áreas que exceden NAAQS son designadas como 'nonattainment' y deben desarrollar planes de mejora con cronograma específico.")
     
-    with tab3:
+    elif tab_seleccionado == "🇨🇦 Canadá":
         st.markdown("""
         <div class='corporate-card fade-in'>
             <h2>🇨🇦 Canadian Ambient Air Quality Standards (CAAQS)</h2>
@@ -2840,7 +2824,7 @@ elif st.session_state.pagina == "Normativas":
         
         st.markdown(tabla_canada_html, unsafe_allow_html=True)
     
-    with tab4:
+    elif tab_seleccionado == "📊 Análisis Comparativo":
         st.markdown("<h2 style='text-align: center; margin-bottom: 2rem; color: #FFFFFF;'>📊 Análisis Comparativo Internacional</h2>", unsafe_allow_html=True)
         
         st.markdown("""
