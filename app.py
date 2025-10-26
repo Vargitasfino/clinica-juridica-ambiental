@@ -461,7 +461,7 @@ st.markdown("""
         gap: 0.5rem;
         padding: 0.875rem 1.75rem;
         background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-        color: white;
+        color: #FFFFFF !important;
         text-decoration: none;
         border-radius: 8px;
         font-weight: 600;
@@ -470,12 +470,14 @@ st.markdown("""
         border: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
         margin: 0.5rem 0.5rem 0.5rem 0;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
     
     .corporate-button:hover {
         transform: translateY(-2px);
         box-shadow: 0 8px 24px rgba(0, 82, 204, 0.4);
         background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--accent-teal) 100%);
+        color: #FFFFFF !important;
     }
     
     .dataframe {
