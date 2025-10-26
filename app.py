@@ -2652,22 +2652,53 @@ elif st.session_state.pagina == "Normativas":
         </div>
         """, unsafe_allow_html=True)
         
-        epa_tabla = pd.DataFrame([
-            ['PM2.5', '9.0 (P)', '35 (P)', 'μg/m³', '2024', 'Anual / 24h'],
-            ['PM2.5', '15.0 (S)', '35 (S)', 'μg/m³', '2012', 'Anual / 24h (secundario)'],
-            ['PM10', None, '150 (P,S)', 'μg/m³', '2012', '24 horas'],
-            ['NO2', '53 (P,S)', '100 (P)', 'ppb', '2010', 'Anual / 1h'],
-            ['SO2', None, '75 (P)', 'ppb', '2010', '1 hora (percentil 99)'],
-            ['O3', None, '70 (P,S)', 'ppb', '2015', '8h (4to máximo anual)'],
-            ['CO', None, '9 ppm (P)', 'ppm', '1971', '8 horas'],
-            ['CO', None, '35 ppm (P)', 'ppm', '1971', '1 hora'],
-            ['Pb', '0.15 (P,S)', None, 'μg/m³', '2008', 'Promedio móvil 3 meses']
-        ], columns=['Contaminante', 'Anual', 'Corto Plazo', 'Unidad', 'Última Actualización', 'Forma del Estándar'])
         
         st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📋 Estándares EPA (NAAQS)</h3>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center; color: var(--text-secondary); margin-bottom: 1rem;'>(P) = Primario (salud) | (S) = Secundario (bienestar)</p>", unsafe_allow_html=True)
-        st.dataframe(epa_tabla, use_container_width=True, hide_index=True, height=400)
         
+        # Tabla HTML profesional EPA
+        epa_data = [
+            ['PM2.5', '9.0 (P)', '35 (P)', 'μg/m³', '2024', 'Anual / 24h'],
+            ['PM2.5', '15.0 (S)', '35 (S)', 'μg/m³', '2012', 'Anual / 24h (secundario)'],
+            ['PM10', 'None', '150 (P,S)', 'μg/m³', '2012', '24 horas'],
+            ['NO2', '53 (P,S)', '100 (P)', 'ppb', '2010', 'Anual / 1h'],
+            ['SO2', 'None', '75 (P)', 'ppb', '2010', '1 hora (percentil 99)'],
+            ['O3', 'None', '70 (P,S)', 'ppb', '2015', '8h (4to máximo anual)'],
+            ['CO', 'None', '9 ppm (P)', 'ppm', '1971', '8 horas'],
+            ['CO', 'None', '35 ppm (P)', 'ppm', '1971', '1 hora'],
+            ['Pb', '0.15 (P,S)', 'None', 'μg/m³', '2008', 'Promedio móvil 3 meses']
+        ]
+        
+        tabla_epa_html = """<div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); margin: 1rem 0;'>
+<table style='width: 100%; border-collapse: collapse; background: rgba(19, 47, 76, 0.8);'>
+<thead>
+<tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+<th style='color: #FFFFFF; padding: 1rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Contaminante</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Anual</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Corto Plazo</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Unidad</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Última Actualización</th>
+<th style='color: #FFFFFF; padding: 1rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none;'>Forma del Estándar</th>
+</tr>
+</thead>
+<tbody>"""
+        
+        for i, fila in enumerate(epa_data):
+            border = '' if i == len(epa_data) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
+            tabla_epa_html += f"""<tr style='{border} transition: background 0.2s;' onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' onmouseout='this.style.background="transparent"'>
+<td style='color: #00B8D9; padding: 0.875rem 1rem; font-weight: 700; border: none;'>{fila[0]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[1]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[2]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[3]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[4]}</td>
+<td style='color: #FFFFFF; padding: 0.875rem 1rem; text-align: center; border: none;'>{fila[5]}</td>
+</tr>"""
+        
+        tabla_epa_html += """</tbody>
+</table>
+</div>"""
+        
+        st.markdown(tabla_epa_html, unsafe_allow_html=True)
         st.warning("**⚠️ Designaciones de no cumplimiento:** Áreas que exceden NAAQS son designadas como 'nonattainment' y deben desarrollar planes de mejora con cronograma específico.")
     
     with tab3:
