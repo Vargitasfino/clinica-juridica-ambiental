@@ -4,9 +4,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
 
-# VERSIÓN 3.0 - ELIMINADOS st.tabs - Usando st.radio para evitar cuadros verdes
-# Fecha de actualización: 2025-01-25 15:20
-# CAMBIO MAYOR: Tabs reemplazados por radio buttons horizontales
+# VERSIÓN 3.1 - Colores originales restaurados + Tabla EPA profesional
+# Fecha de actualización: 2025-01-25 15:45
 
 # Configuración de página
 st.set_page_config(
@@ -32,7 +31,7 @@ st.markdown("""
         --accent-teal: #00B8D9;
         --dark-bg: #0A1929;
         --card-bg: #132F4C;
-        --text-primary: #FFFFFF;
+        --text-primary: #E3E8EF;
         --text-secondary: #B2BAC2;
         --success: #00C853;
         --warning: #FFB300;
@@ -574,7 +573,7 @@ st.markdown("""
         width: 100%;
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.15) 0%, rgba(0, 101, 255, 0.15) 100%);
         backdrop-filter: blur(10px);
-        color: #FFFFFF !important;
+        color: var(--text-primary);
         border: 1px solid rgba(0, 101, 255, 0.3);
         border-radius: 8px;
         padding: 0.75rem 1.25rem;
@@ -587,7 +586,6 @@ st.markdown("""
     .stButton > button:hover {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.3) 0%, rgba(0, 101, 255, 0.3) 100%);
         border-color: var(--secondary-blue);
-        color: #FFFFFF !important;
         transform: translateY(-2px);
         box-shadow: 0 6px 16px rgba(0, 82, 204, 0.3);
     }
