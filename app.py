@@ -2251,7 +2251,7 @@ elif st.session_state.pagina == "Medidas":
     # ===================== PÁGINA NORMATIVAS INTERNACIONALES =====================
 elif st.session_state.pagina == "Normativas":
     
-    st.markdown("<h1 style='text-align: center; margin-bottom: 2rem;'>🌍 Estándares Internacionales de Calidad del Aire</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; margin-bottom: 2rem; color: #FFFFFF;'>🌍 Estándares Internacionales de Calidad del Aire</h1>", unsafe_allow_html=True)
     
     tab1, tab2, tab3, tab4 = st.tabs(["🏥 OMS", "🇺🇸 EPA USA", "🇨🇦 Canadá", "📊 Análisis Comparativo"])
     
@@ -2396,7 +2396,7 @@ elif st.session_state.pagina == "Normativas":
         st.dataframe(canada_tabla, use_container_width=True, hide_index=True, height=250)
     
     with tab4:
-        st.markdown("<h2 style='text-align: center; margin-bottom: 2rem;'>📊 Análisis Comparativo Internacional</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; margin-bottom: 2rem; color: #FFFFFF;'>📊 Análisis Comparativo Internacional</h2>", unsafe_allow_html=True)
         
         st.markdown("""
         <div class='corporate-card fade-in'>
