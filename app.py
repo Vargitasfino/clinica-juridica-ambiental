@@ -1025,140 +1025,107 @@ if st.session_state.pagina == "Inicio":
         col_a, col_b, col_c = st.columns(3)
         
         with col_a:
-            # Card ECA - Clicable con diseño original
-            st.markdown("""
-            <div onclick="window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'ECA'}, '*')" 
-                 style='background: linear-gradient(135deg, rgba(0, 200, 83, 0.2), rgba(0, 230, 118, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #00C853; text-align: center;
-                        cursor: pointer; transition: all 0.3s ease;'
-                 onmouseover='this.style.transform="translateY(-5px)"; this.style.boxShadow="0 8px 20px rgba(0, 200, 83, 0.3)";'
-                 onmouseout='this.style.transform="translateY(0)"; this.style.boxShadow="none";'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>📋</div>
-                <h4 style='color: #00C853; margin: 0.5rem 0;'>ECA</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    Estándares de Calidad Ambiental del Aire
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #00C853;'>3</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Normativas</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("", key="btn_eca_hidden", use_container_width=True):
+            # Card ECA - Completamente clicable
+            if st.button("📋\n\nECA\n\nEstándares de Calidad Ambiental del Aire\n\n3\n\nNormativas", key="btn_eca_full", use_container_width=True, type="secondary"):
                 st.session_state.pagina = "ECA"
                 st.rerun()
             
-            # Card Protocolos - Clicable con diseño original
-            st.markdown("""
-            <div style='background: linear-gradient(135deg, rgba(142, 36, 170, 0.2), rgba(156, 39, 176, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #8E24AA; text-align: center; margin-top: 1rem;
-                        cursor: pointer; transition: all 0.3s ease;'
-                 onmouseover='this.style.transform="translateY(-5px)"; this.style.boxShadow="0 8px 20px rgba(142, 36, 170, 0.3)";'
-                 onmouseout='this.style.transform="translateY(0)"; this.style.boxShadow="none";'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>📖</div>
-                <h4 style='color: #8E24AA; margin: 0.5rem 0;'>Protocolos</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    Procedimientos de Monitoreo
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #8E24AA;'>4</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Protocolos</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("", key="btn_proto_hidden", use_container_width=True):
+            st.markdown("<br>", unsafe_allow_html=True)
+            
+            # Card Protocolos - Completamente clicable
+            if st.button("📖\n\nProtocolos\n\nProcedimientos de Monitoreo\n\n4\n\nProtocolos", key="btn_proto_full", use_container_width=True, type="secondary"):
                 st.session_state.pagina = "Protocolos"
                 st.rerun()
         
         with col_b:
-            # Card LMP - Clicable con diseño original
-            st.markdown("""
-            <div style='background: linear-gradient(135deg, rgba(255, 111, 0, 0.2), rgba(255, 152, 0, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #FF6F00; text-align: center;
-                        cursor: pointer; transition: all 0.3s ease;'
-                 onmouseover='this.style.transform="translateY(-5px)"; this.style.boxShadow="0 8px 20px rgba(255, 111, 0, 0.3)";'
-                 onmouseout='this.style.transform="translateY(0)"; this.style.boxShadow="none";'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>🏭</div>
-                <h4 style='color: #FF6F00; margin: 0.5rem 0;'>LMP</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    Límites Máximos Permisibles
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #FF6F00;'>4</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Normativas</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("", key="btn_lmp_hidden", use_container_width=True):
+            # Card LMP - Completamente clicable
+            if st.button("🏭\n\nLMP\n\nLímites Máximos Permisibles\n\n4\n\nNormativas", key="btn_lmp_full", use_container_width=True, type="secondary"):
                 st.session_state.pagina = "LMP"
                 st.rerun()
             
-            # Card Marco Legal - Clicable con diseño original
-            st.markdown("""
-            <div style='background: linear-gradient(135deg, rgba(211, 47, 47, 0.2), rgba(229, 57, 53, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #D32F2F; text-align: center; margin-top: 1rem;
-                        cursor: pointer; transition: all 0.3s ease;'
-                 onmouseover='this.style.transform="translateY(-5px)"; this.style.boxShadow="0 8px 20px rgba(211, 47, 47, 0.3)";'
-                 onmouseout='this.style.transform="translateY(0)"; this.style.boxShadow="none";'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>⚖️</div>
-                <h4 style='color: #D32F2F; margin: 0.5rem 0;'>Marco Legal</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    Leyes y Decretos Base
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #D32F2F;'>2</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Leyes</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("", key="btn_legal_hidden", use_container_width=True):
+            st.markdown("<br>", unsafe_allow_html=True)
+            
+            # Card Marco Legal - Completamente clicable
+            if st.button("⚖️\n\nMarco Legal\n\nLeyes y Decretos Base\n\n2\n\nLeyes", key="btn_legal_full", use_container_width=True, type="secondary"):
                 st.session_state.pagina = "Marco Legal"
                 st.rerun()
         
         with col_c:
-            # Card Lineamientos - Clicable con diseño original
-            st.markdown("""
-            <div style='background: linear-gradient(135deg, rgba(0, 145, 234, 0.2), rgba(3, 169, 244, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #0091EA; text-align: center;
-                        cursor: pointer; transition: all 0.3s ease;'
-                 onmouseover='this.style.transform="translateY(-5px)"; this.style.boxShadow="0 8px 20px rgba(0, 145, 234, 0.3)";'
-                 onmouseout='this.style.transform="translateY(0)"; this.style.boxShadow="none";'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>📐</div>
-                <h4 style='color: #0091EA; margin: 0.5rem 0;'>Lineamientos</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    Guías Técnicas
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #0091EA;'>3</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Lineamientos</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("", key="btn_linea_hidden", use_container_width=True):
+            # Card Lineamientos - Completamente clicable
+            if st.button("📐\n\nLineamientos\n\nGuías Técnicas\n\n3\n\nLineamientos", key="btn_linea_full", use_container_width=True, type="secondary"):
                 st.session_state.pagina = "Lineamientos"
                 st.rerun()
             
-            # Card Internacional - Clicable con diseño original
-            st.markdown("""
-            <div style='background: linear-gradient(135deg, rgba(0, 184, 217, 0.2), rgba(0, 188, 212, 0.1)); 
-                        padding: 1.5rem; border-radius: 12px; border-left: 4px solid #00B8D9; text-align: center; margin-top: 1rem;
-                        cursor: pointer; transition: all 0.3s ease;'
-                 onmouseover='this.style.transform="translateY(-5px)"; this.style.boxShadow="0 8px 20px rgba(0, 184, 217, 0.3)";'
-                 onmouseout='this.style.transform="translateY(0)"; this.style.boxShadow="none";'>
-                <div style='font-size: 3rem; margin-bottom: 0.5rem;'>🌍</div>
-                <h4 style='color: #00B8D9; margin: 0.5rem 0;'>Internacional</h4>
-                <p style='color: var(--text-secondary); font-size: 0.9rem; margin: 0;'>
-                    OMS, EPA, Canadá
-                </p>
-                <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #00B8D9;'>6</span>
-                    <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Estándares</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("", key="btn_inter_hidden", use_container_width=True):
+            st.markdown("<br>", unsafe_allow_html=True)
+            
+            # Card Internacional - Completamente clicable
+            if st.button("🌍\n\nInternacional\n\nOMS, EPA, Canadá\n\n6\n\nEstándares", key="btn_inter_full", use_container_width=True, type="secondary"):
                 st.session_state.pagina = "Normativas"
                 st.rerun()
+        
+        # CSS para estilizar los botones como las tarjetas originales
+        st.markdown("""
+        <style>
+        /* Estilos para los botones de tarjetas */
+        div[data-testid="column"] > div > div > button {
+            height: 180px !important;
+            white-space: pre-line !important;
+            font-size: 1rem !important;
+            padding: 1.5rem !important;
+            text-align: center !important;
+            border-radius: 12px !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        /* ECA - Verde */
+        button[kind="secondary"]:has(span:first-child:contains("📋")) {
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.2), rgba(0, 230, 118, 0.1)) !important;
+            border-left: 4px solid #00C853 !important;
+            color: #00C853 !important;
+        }
+        
+        /* LMP - Naranja */
+        button[kind="secondary"]:has(span:first-child:contains("🏭")) {
+            background: linear-gradient(135deg, rgba(255, 111, 0, 0.2), rgba(255, 152, 0, 0.1)) !important;
+            border-left: 4px solid #FF6F00 !important;
+            color: #FF6F00 !important;
+        }
+        
+        /* Lineamientos - Azul */
+        button[kind="secondary"]:has(span:first-child:contains("📐")) {
+            background: linear-gradient(135deg, rgba(0, 145, 234, 0.2), rgba(3, 169, 244, 0.1)) !important;
+            border-left: 4px solid #0091EA !important;
+            color: #0091EA !important;
+        }
+        
+        /* Protocolos - Morado */
+        button[kind="secondary"]:has(span:first-child:contains("📖")) {
+            background: linear-gradient(135deg, rgba(142, 36, 170, 0.2), rgba(156, 39, 176, 0.1)) !important;
+            border-left: 4px solid #8E24AA !important;
+            color: #8E24AA !important;
+        }
+        
+        /* Marco Legal - Rojo */
+        button[kind="secondary"]:has(span:first-child:contains("⚖️")) {
+            background: linear-gradient(135deg, rgba(211, 47, 47, 0.2), rgba(229, 57, 53, 0.1)) !important;
+            border-left: 4px solid #D32F2F !important;
+            color: #D32F2F !important;
+        }
+        
+        /* Internacional - Cyan */
+        button[kind="secondary"]:has(span:first-child:contains("🌍")) {
+            background: linear-gradient(135deg, rgba(0, 184, 217, 0.2), rgba(0, 188, 212, 0.1)) !important;
+            border-left: 4px solid #00B8D9 !important;
+            color: #00B8D9 !important;
+        }
+        
+        /* Hover effects */
+        div[data-testid="column"] > div > div > button:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
         
         st.success("""
         **✓ Beneficios del Sistema**
