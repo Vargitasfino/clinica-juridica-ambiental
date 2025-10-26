@@ -1265,7 +1265,7 @@ elif st.session_state.pagina == "ECA":
     
     st.dataframe(eca_valores, use_container_width=True, hide_index=True, height=550)
     
-    with st.expander("ℹ️ Ver información adicional sobre contaminantes criterio", expanded=False):
+    with st.expander("Ver información adicional sobre contaminantes criterio", expanded=False):
         st.markdown("""
         <div style='margin-bottom: 2rem;'>
             <h2 style='text-align: center; color: #00B8D9; margin-bottom: 2rem;'>🔬 Contaminantes Criterio Regulados</h2>
@@ -1285,14 +1285,14 @@ elif st.session_state.pagina == "ECA":
                         <p style='color: #A78BFA; margin: 0; font-size: 0.9rem;'>PM2.5 y PM10</p>
                     </div>
                 </div>
-                <div style='color: var(--text-primary); line-height: 1.6;'>
-                    <p><strong>Descripción:</strong> Partículas sólidas o líquidas suspendidas en el aire</p>
-                    <p><strong>Características:</strong><br>
+                <div style='line-height: 1.6;'>
+                    <p style='color: #FFFFFF; margin: 0.5rem 0;'><strong style='color: #FFFFFF;'>Descripción:</strong> Partículas sólidas o líquidas suspendidas en el aire</p>
+                    <p style='color: #FFFFFF; margin: 0.5rem 0;'><strong style='color: #FFFFFF;'>Características:</strong><br>
                     • PM2.5: diámetro ≤ 2.5 μm (penetran profundamente en pulmones)<br>
                     • PM10: diámetro ≤ 10 μm (afectan vías respiratorias superiores)</p>
-                    <p><strong>Fuentes:</strong> Combustión, polvo, actividades industriales, quema de biomasa</p>
-                    <p style='background: rgba(139, 92, 246, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
-                        <strong>⚠️ Impacto en salud:</strong> Enfermedades respiratorias, cardiovasculares, mortalidad prematura
+                    <p style='color: #FFFFFF; margin: 0.5rem 0;'><strong style='color: #FFFFFF;'>Fuentes:</strong> Combustión, polvo, actividades industriales, quema de biomasa</p>
+                    <p style='color: #FFFFFF; background: rgba(139, 92, 246, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem; color: #FFFFFF;'>
+                        <strong style='color: #FFFFFF;'>⚠️ Impacto en salud:</strong> Enfermedades respiratorias, cardiovasculares, mortalidad prematura
                     </p>
                 </div>
             </div>
@@ -1308,11 +1308,11 @@ elif st.session_state.pagina == "ECA":
                         <p style='color: #F87171; margin: 0; font-size: 0.9rem;'>NO₂</p>
                     </div>
                 </div>
-                <div style='color: var(--text-primary); line-height: 1.6;'>
-                    <p><strong>Descripción:</strong> Gas irritante de color marrón rojizo</p>
-                    <p><strong>Fuentes:</strong> Combustión vehicular e industrial, centrales eléctricas</p>
-                    <p style='background: rgba(239, 68, 68, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
-                        <strong>⚠️ Impacto en salud:</strong> Irritación respiratoria, reducción función pulmonar, agrava asma
+                <div style='line-height: 1.6; color: #FFFFFF;'>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Descripción:</strong> Gas irritante de color marrón rojizo</p>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Fuentes:</strong> Combustión vehicular e industrial, centrales eléctricas</p>
+                    <p style='color: #FFFFFF; background: rgba(239, 68, 68, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong style="color: #FFFFFF;">⚠️ Impacto en salud:</strong> Irritación respiratoria, reducción función pulmonar, agrava asma
                     </p>
                 </div>
             </div>
@@ -1328,11 +1328,11 @@ elif st.session_state.pagina == "ECA":
                         <p style='color: #FBBF24; margin: 0; font-size: 0.9rem;'>SO₂</p>
                     </div>
                 </div>
-                <div style='color: var(--text-primary); line-height: 1.6;'>
-                    <p><strong>Descripción:</strong> Gas incoloro con olor penetrante</p>
-                    <p><strong>Fuentes:</strong> Combustión de combustibles fósiles con azufre, fundiciones</p>
-                    <p style='background: rgba(234, 179, 8, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
-                        <strong>⚠️ Impacto en salud:</strong> Irritación respiratoria, enfermedades cardiovasculares, lluvia ácida
+                <div style='line-height: 1.6; color: #FFFFFF;'>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Descripción:</strong> Gas incoloro con olor penetrante</p>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Fuentes:</strong> Combustión de combustibles fósiles con azufre, fundiciones</p>
+                    <p style='color: #FFFFFF; background: rgba(234, 179, 8, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong style="color: #FFFFFF;">⚠️ Impacto en salud:</strong> Irritación respiratoria, enfermedades cardiovasculares, lluvia ácida
                     </p>
                 </div>
             </div>
@@ -1348,11 +1348,11 @@ elif st.session_state.pagina == "ECA":
                         <p style='color: #22D3EE; margin: 0; font-size: 0.9rem;'>O₃</p>
                     </div>
                 </div>
-                <div style='color: var(--text-primary); line-height: 1.6;'>
-                    <p><strong>Descripción:</strong> Contaminante secundario (no se emite directamente)</p>
-                    <p><strong>Formación:</strong> Reacción fotoquímica de NOx y COVs bajo luz solar</p>
-                    <p style='background: rgba(6, 182, 212, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
-                        <strong>⚠️ Impacto en salud:</strong> Daño pulmonar, reducción función respiratoria, agrava enfermedades
+                <div style='line-height: 1.6; color: #FFFFFF;'>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Descripción:</strong> Contaminante secundario (no se emite directamente)</p>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Formación:</strong> Reacción fotoquímica de NOx y COVs bajo luz solar</p>
+                    <p style='color: #FFFFFF; background: rgba(6, 182, 212, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong style="color: #FFFFFF;">⚠️ Impacto en salud:</strong> Daño pulmonar, reducción función respiratoria, agrava enfermedades
                     </p>
                 </div>
             </div>
@@ -1369,11 +1369,11 @@ elif st.session_state.pagina == "ECA":
                         <p style='color: #C084FC; margin: 0; font-size: 0.9rem;'>CO</p>
                     </div>
                 </div>
-                <div style='color: var(--text-primary); line-height: 1.6;'>
-                    <p><strong>Descripción:</strong> Gas incoloro e inodoro (altamente peligroso)</p>
-                    <p><strong>Fuentes:</strong> Combustión incompleta de vehículos, calefacción, industrias</p>
-                    <p style='background: rgba(168, 85, 247, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
-                        <strong>⚠️ Impacto en salud:</strong> Reduce capacidad de transporte de oxígeno en sangre, fatal en altas concentraciones
+                <div style='line-height: 1.6; color: #FFFFFF;'>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Descripción:</strong> Gas incoloro e inodoro (altamente peligroso)</p>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Fuentes:</strong> Combustión incompleta de vehículos, calefacción, industrias</p>
+                    <p style='color: #FFFFFF; background: rgba(168, 85, 247, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong style="color: #FFFFFF;">⚠️ Impacto en salud:</strong> Reduce capacidad de transporte de oxígeno en sangre, fatal en altas concentraciones
                     </p>
                 </div>
             </div>
@@ -1389,11 +1389,11 @@ elif st.session_state.pagina == "ECA":
                         <p style='color: #FB7185; margin: 0; font-size: 0.9rem;'>Pb</p>
                     </div>
                 </div>
-                <div style='color: var(--text-primary); line-height: 1.6;'>
-                    <p><strong>Descripción:</strong> Metal pesado tóxico persistente</p>
-                    <p><strong>Fuentes:</strong> Históricamente gasolina con plomo, baterías, industrias mineras y metalúrgicas</p>
-                    <p style='background: rgba(244, 63, 94, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
-                        <strong>⚠️ Impacto en salud:</strong> Neurotoxicidad, afecta desarrollo infantil, daño renal y cardiovascular
+                <div style='line-height: 1.6; color: #FFFFFF;'>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Descripción:</strong> Metal pesado tóxico persistente</p>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Fuentes:</strong> Históricamente gasolina con plomo, baterías, industrias mineras y metalúrgicas</p>
+                    <p style='color: #FFFFFF; background: rgba(244, 63, 94, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong style="color: #FFFFFF;">⚠️ Impacto en salud:</strong> Neurotoxicidad, afecta desarrollo infantil, daño renal y cardiovascular
                     </p>
                 </div>
             </div>
@@ -1409,11 +1409,11 @@ elif st.session_state.pagina == "ECA":
                         <p style='color: #4ADE80; margin: 0; font-size: 0.9rem;'>H₂S</p>
                     </div>
                 </div>
-                <div style='color: var(--text-primary); line-height: 1.6;'>
-                    <p><strong>Descripción:</strong> Gas con olor característico a huevo podrido</p>
-                    <p><strong>Fuentes:</strong> Actividades petroleras, refinerías, descomposición de materia orgánica</p>
-                    <p style='background: rgba(34, 197, 94, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
-                        <strong>⚠️ Impacto en salud:</strong> Irritación ocular y respiratoria, tóxico en altas concentraciones
+                <div style='line-height: 1.6; color: #FFFFFF;'>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Descripción:</strong> Gas con olor característico a huevo podrido</p>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Fuentes:</strong> Actividades petroleras, refinerías, descomposición de materia orgánica</p>
+                    <p style='color: #FFFFFF; background: rgba(34, 197, 94, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong style="color: #FFFFFF;">⚠️ Impacto en salud:</strong> Irritación ocular y respiratoria, tóxico en altas concentraciones
                     </p>
                 </div>
             </div>
@@ -1429,11 +1429,11 @@ elif st.session_state.pagina == "ECA":
                         <p style='color: #FB923C; margin: 0; font-size: 0.9rem;'>BaP</p>
                     </div>
                 </div>
-                <div style='color: var(--text-primary); line-height: 1.6;'>
-                    <p><strong>Descripción:</strong> Hidrocarburo aromático policíclico (HAP)</p>
-                    <p><strong>Fuentes:</strong> Combustión incompleta de materia orgánica, humo de tabaco, asado de carnes</p>
-                    <p style='background: rgba(249, 115, 22, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
-                        <strong>⚠️ Impacto en salud:</strong> <span style='color: #FFA500;'>Cancerígeno confirmado</span>, mutagénico, teratogénico
+                <div style='line-height: 1.6; color: #FFFFFF;'>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Descripción:</strong> Hidrocarburo aromático policíclico (HAP)</p>
+                    <p style="color: #FFFFFF; margin: 0.5rem 0;"><strong style="color: #FFFFFF;">Fuentes:</strong> Combustión incompleta de materia orgánica, humo de tabaco, asado de carnes</p>
+                    <p style='color: #FFFFFF; background: rgba(249, 115, 22, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong style="color: #FFFFFF;">⚠️ Impacto en salud:</strong> <span style='color: #FFA500;'>Cancerígeno confirmado</span>, mutagénico, teratogénico
                     </p>
                 </div>
             </div>
