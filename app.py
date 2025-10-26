@@ -2715,6 +2715,45 @@ elif st.session_state.pagina == "Normativas":
         
         st.success("**✓ Enfoque innovador:** Sistema de 'Management Levels' (Verde, Amarillo, Naranja, Rojo) que vincula automáticamente el nivel de calidad del aire con acciones obligatorias.")
         
+        st.markdown("""
+        <div class='normative-card internacional fade-in'>
+            <span class='status-badge internacional'>● CAAQS</span>
+            <h3>Marco Normativo Canadiense</h3>
+            <p style='font-size: 1.05rem; margin: 1rem 0;'>
+                <strong>Canadian Council of Ministers of the Environment (CCME)</strong>
+            </p>
+            <p>
+                Los CAAQS son establecidos por el CCME bajo el Canadian Environmental Protection Act (CEPA). 
+                El sistema incluye Air Quality Management System (AQMS) que coordina federal y provincial. 
+                Última actualización 2020, con objetivos progresivos hasta 2030.
+            </p>
+            <p style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
+                <strong>Base legal:</strong> CEPA 1999 | 
+                <strong>Revisión:</strong> Cada 5 años
+            </p>
+            <a href='https://ccme.ca/en/air-quality-report' 
+               target='_blank' class='corporate-button'>
+                📄 CCME Air Quality Report
+            </a>
+            <a href='https://www.canada.ca/en/environment-climate-change/services/air-quality-health-index.html' 
+               target='_blank' class='corporate-button'>
+                🌡️ Air Quality Health Index
+            </a>
+            <a href='https://www.canada.ca/en/environment-climate-change/services/air-pollution/monitoring-networks-data.html' 
+               target='_blank' class='corporate-button'>
+                📊 Canadian Air Monitoring Data
+            </a>
+            <a href='https://laws-lois.justice.gc.ca/eng/acts/c-15.31/' 
+               target='_blank' class='corporate-button'>
+                ⚖️ Canadian Environmental Protection Act
+            </a>
+            <a href='https://www.canada.ca/en/services/environment/weather/airquality.html' 
+               target='_blank' class='corporate-button'>
+                🗺️ Real-time Air Quality Map
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+        
         
         st.markdown("<h3 style='text-align: center; color: #00B8D9; margin-top: 2rem;'>📊 Evolución de Estándares CAAQS</h3>", unsafe_allow_html=True)
         
