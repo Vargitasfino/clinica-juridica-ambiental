@@ -237,6 +237,40 @@ st.markdown("""
         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
     
+    /* Tarjetas de contaminantes - NUEVO DISEÑO */
+    .pollutant-card {
+        background: linear-gradient(135deg, rgba(19, 47, 76, 0.9) 0%, rgba(26, 58, 82, 0.8) 100%);
+        backdrop-filter: blur(15px);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1rem 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .pollutant-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    
+    .pollutant-card h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+    
+    .pollutant-card p {
+        margin: 0.5rem 0;
+        color: rgba(255, 255, 255, 0.95) !important;
+        font-size: 0.95rem;
+    }
+    
+    .pollutant-card strong {
+        color: #FFFFFF !important;
+        font-weight: 600;
+    }
+    
     .corporate-card h2 {
         font-size: 1.75rem;
         margin-bottom: 1rem;
@@ -1198,51 +1232,179 @@ elif st.session_state.pagina == "ECA":
     
     st.dataframe(eca_valores, use_container_width=True, hide_index=True, height=550)
     
-    with st.expander("ℹ️ Ver información adicional sobre contaminantes criterio"):
+    with st.expander("ℹ️ Ver información adicional sobre contaminantes criterio", expanded=False):
         st.markdown("""
-        #### Contaminantes Criterio Regulados
+        <div style='margin-bottom: 2rem;'>
+            <h2 style='text-align: center; color: #00B8D9; margin-bottom: 2rem;'>🔬 Contaminantes Criterio Regulados</h2>
+        </div>
+        """, unsafe_allow_html=True)
         
-        **Material Particulado (PM2.5 y PM10)**
-        - Partículas sólidas o líquidas suspendidas en el aire
-        - PM2.5: diámetro ≤ 2.5 μm (penetran profundamente en pulmones)
-        - PM10: diámetro ≤ 10 μm (afectan vías respiratorias superiores)
-        - Fuentes: combustión, polvo, actividades industriales
+        col1, col2 = st.columns(2)
         
-        **Dióxido de Nitrógeno (NO2)**
-        - Gas irritante de color marrón rojizo
-        - Fuentes: combustión vehicular e industrial
-        - Efectos: irritación respiratoria, reducción función pulmonar
+        with col1:
+            st.markdown("""
+            <div class='pollutant-card' style='background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.05)); 
+                         border-left: 4px solid #8B5CF6;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='font-size: 3rem;'>💨</div>
+                    <div>
+                        <h3 style='color: #8B5CF6; margin: 0;'>Material Particulado</h3>
+                        <p style='color: #A78BFA; margin: 0; font-size: 0.9rem;'>PM2.5 y PM10</p>
+                    </div>
+                </div>
+                <div style='color: var(--text-primary); line-height: 1.6;'>
+                    <p><strong>Descripción:</strong> Partículas sólidas o líquidas suspendidas en el aire</p>
+                    <p><strong>Características:</strong><br>
+                    • PM2.5: diámetro ≤ 2.5 μm (penetran profundamente en pulmones)<br>
+                    • PM10: diámetro ≤ 10 μm (afectan vías respiratorias superiores)</p>
+                    <p><strong>Fuentes:</strong> Combustión, polvo, actividades industriales, quema de biomasa</p>
+                    <p style='background: rgba(139, 92, 246, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong>⚠️ Impacto en salud:</strong> Enfermedades respiratorias, cardiovasculares, mortalidad prematura
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='pollutant-card' style='background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05)); 
+                         border-left: 4px solid #EF4444;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='font-size: 3rem;'>🚗</div>
+                    <div>
+                        <h3 style='color: #EF4444; margin: 0;'>Dióxido de Nitrógeno</h3>
+                        <p style='color: #F87171; margin: 0; font-size: 0.9rem;'>NO₂</p>
+                    </div>
+                </div>
+                <div style='color: var(--text-primary); line-height: 1.6;'>
+                    <p><strong>Descripción:</strong> Gas irritante de color marrón rojizo</p>
+                    <p><strong>Fuentes:</strong> Combustión vehicular e industrial, centrales eléctricas</p>
+                    <p style='background: rgba(239, 68, 68, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong>⚠️ Impacto en salud:</strong> Irritación respiratoria, reducción función pulmonar, agrava asma
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='pollutant-card' style='background: linear-gradient(135deg, rgba(234, 179, 8, 0.15), rgba(234, 179, 8, 0.05)); 
+                         border-left: 4px solid #EAB308;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='font-size: 3rem;'>🏭</div>
+                    <div>
+                        <h3 style='color: #EAB308; margin: 0;'>Dióxido de Azufre</h3>
+                        <p style='color: #FBBF24; margin: 0; font-size: 0.9rem;'>SO₂</p>
+                    </div>
+                </div>
+                <div style='color: var(--text-primary); line-height: 1.6;'>
+                    <p><strong>Descripción:</strong> Gas incoloro con olor penetrante</p>
+                    <p><strong>Fuentes:</strong> Combustión de combustibles fósiles con azufre, fundiciones</p>
+                    <p style='background: rgba(234, 179, 8, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong>⚠️ Impacto en salud:</strong> Irritación respiratoria, enfermedades cardiovasculares, lluvia ácida
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='pollutant-card' style='background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(6, 182, 212, 0.05)); 
+                         border-left: 4px solid #06B6D4;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='font-size: 3rem;'>☀️</div>
+                    <div>
+                        <h3 style='color: #06B6D4; margin: 0;'>Ozono Troposférico</h3>
+                        <p style='color: #22D3EE; margin: 0; font-size: 0.9rem;'>O₃</p>
+                    </div>
+                </div>
+                <div style='color: var(--text-primary); line-height: 1.6;'>
+                    <p><strong>Descripción:</strong> Contaminante secundario (no se emite directamente)</p>
+                    <p><strong>Formación:</strong> Reacción fotoquímica de NOx y COVs bajo luz solar</p>
+                    <p style='background: rgba(6, 182, 212, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong>⚠️ Impacto en salud:</strong> Daño pulmonar, reducción función respiratoria, agrava enfermedades
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
         
-        **Dióxido de Azufre (SO2)**
-        - Gas incoloro con olor penetrante
-        - Fuentes: combustión de combustibles fósiles con azufre
-        - Efectos: irritación respiratoria, enfermedades cardiovasculares
-        
-        **Ozono Troposférico (O3)**
-        - Contaminante secundario (no se emite directamente)
-        - Se forma por reacción fotoquímica de NOx y COVs
-        - Efectos: daño pulmonar, reducción función respiratoria
-        
-        **Monóxido de Carbono (CO)**
-        - Gas incoloro e inodoro
-        - Fuentes: combustión incompleta
-        - Efectos: reduce capacidad de transporte de oxígeno en sangre
-        
-        **Plomo (Pb)**
-        - Metal pesado tóxico
-        - Fuentes: históricamente gasolina con plomo, industrias
-        - Efectos: neurotoxicidad, afecta desarrollo infantil
-        
-        **Sulfuro de Hidrógeno (H2S)**
-        - Gas con olor a huevo podrido
-        - Fuentes: actividades petroleras, descomposición materia orgánica
-        - Efectos: irritación ocular y respiratoria
-        
-        **Benzo(a)pireno (BaP)**
-        - Hidrocarburo aromático policíclico (HAP)
-        - Fuentes: combustión incompleta de materia orgánica
-        - Efectos: cancerígeno, mutagénico
-        """)
+        with col2:
+            st.markdown("""
+            <div class='pollutant-card' style='background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(168, 85, 247, 0.05)); 
+                         border-left: 4px solid #A855F7;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='font-size: 3rem;'>🔥</div>
+                    <div>
+                        <h3 style='color: #A855F7; margin: 0;'>Monóxido de Carbono</h3>
+                        <p style='color: #C084FC; margin: 0; font-size: 0.9rem;'>CO</p>
+                    </div>
+                </div>
+                <div style='color: var(--text-primary); line-height: 1.6;'>
+                    <p><strong>Descripción:</strong> Gas incoloro e inodoro (altamente peligroso)</p>
+                    <p><strong>Fuentes:</strong> Combustión incompleta de vehículos, calefacción, industrias</p>
+                    <p style='background: rgba(168, 85, 247, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong>⚠️ Impacto en salud:</strong> Reduce capacidad de transporte de oxígeno en sangre, fatal en altas concentraciones
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='pollutant-card' style='background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(244, 63, 94, 0.05)); 
+                         border-left: 4px solid #F43F5E;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='font-size: 3rem;'>⚠️</div>
+                    <div>
+                        <h3 style='color: #F43F5E; margin: 0;'>Plomo</h3>
+                        <p style='color: #FB7185; margin: 0; font-size: 0.9rem;'>Pb</p>
+                    </div>
+                </div>
+                <div style='color: var(--text-primary); line-height: 1.6;'>
+                    <p><strong>Descripción:</strong> Metal pesado tóxico persistente</p>
+                    <p><strong>Fuentes:</strong> Históricamente gasolina con plomo, baterías, industrias mineras y metalúrgicas</p>
+                    <p style='background: rgba(244, 63, 94, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong>⚠️ Impacto en salud:</strong> Neurotoxicidad, afecta desarrollo infantil, daño renal y cardiovascular
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='pollutant-card' style='background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05)); 
+                         border-left: 4px solid #22C55E;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='font-size: 3rem;'>🧪</div>
+                    <div>
+                        <h3 style='color: #22C55E; margin: 0;'>Sulfuro de Hidrógeno</h3>
+                        <p style='color: #4ADE80; margin: 0; font-size: 0.9rem;'>H₂S</p>
+                    </div>
+                </div>
+                <div style='color: var(--text-primary); line-height: 1.6;'>
+                    <p><strong>Descripción:</strong> Gas con olor característico a huevo podrido</p>
+                    <p><strong>Fuentes:</strong> Actividades petroleras, refinerías, descomposición de materia orgánica</p>
+                    <p style='background: rgba(34, 197, 94, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong>⚠️ Impacto en salud:</strong> Irritación ocular y respiratoria, tóxico en altas concentraciones
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='pollutant-card' style='background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(249, 115, 22, 0.05)); 
+                         border-left: 4px solid #F97316;'>
+                <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                    <div style='font-size: 3rem;'>☢️</div>
+                    <div>
+                        <h3 style='color: #F97316; margin: 0;'>Benzo(a)pireno</h3>
+                        <p style='color: #FB923C; margin: 0; font-size: 0.9rem;'>BaP</p>
+                    </div>
+                </div>
+                <div style='color: var(--text-primary); line-height: 1.6;'>
+                    <p><strong>Descripción:</strong> Hidrocarburo aromático policíclico (HAP)</p>
+                    <p><strong>Fuentes:</strong> Combustión incompleta de materia orgánica, humo de tabaco, asado de carnes</p>
+                    <p style='background: rgba(249, 115, 22, 0.2); padding: 0.75rem; border-radius: 8px; margin-top: 0.5rem;'>
+                        <strong>⚠️ Impacto en salud:</strong> <span style='color: #FFA500;'>Cancerígeno confirmado</span>, mutagénico, teratogénico
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
         # ===================== PÁGINA LMP =====================
 elif st.session_state.pagina == "LMP":
     
