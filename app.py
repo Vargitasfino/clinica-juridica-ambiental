@@ -4,8 +4,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
 
-# VERSIÓN 3.3 - Botones y radio buttons más visibles (color #F0F4F8)
-# Fecha de actualización: 2025-01-25 16:00
+# VERSIÓN 3.4 - ULTRA FORZADO: Texto blanco en TODOS los botones con !important
+# Fecha de actualización: 2025-01-25 16:10
 
 # Configuración de página
 st.set_page_config(
@@ -118,6 +118,19 @@ st.markdown("""
     
     [data-testid="stSidebar"] input::placeholder {
         color: rgba(255, 255, 255, 0.7) !important;
+    }
+    
+    /* Botones en sidebar - ULTRA FORZADO */
+    [data-testid="stSidebar"] .stButton > button {
+        color: #FFFFFF !important;
+    }
+    
+    [data-testid="stSidebar"] .stButton > button * {
+        color: #FFFFFF !important;
+    }
+    
+    [data-testid="stSidebar"] button {
+        color: #FFFFFF !important;
     }
     
     /* Expanders - SOLUCIÓN PARA TEXTOS NEGROS */
@@ -573,7 +586,7 @@ st.markdown("""
         width: 100%;
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.15) 0%, rgba(0, 101, 255, 0.15) 100%);
         backdrop-filter: blur(10px);
-        color: #F0F4F8;
+        color: #FFFFFF !important;
         border: 1px solid rgba(0, 101, 255, 0.3);
         border-radius: 8px;
         padding: 0.75rem 1.25rem;
@@ -586,9 +599,22 @@ st.markdown("""
     .stButton > button:hover {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.3) 0%, rgba(0, 101, 255, 0.3) 100%);
         border-color: var(--secondary-blue);
-        color: #FFFFFF;
+        color: #FFFFFF !important;
         transform: translateY(-2px);
         box-shadow: 0 6px 16px rgba(0, 82, 204, 0.3);
+    }
+    
+    /* FORZAR texto blanco en TODOS los botones */
+    .stButton > button * {
+        color: #FFFFFF !important;
+    }
+    
+    .stButton > button span {
+        color: #FFFFFF !important;
+    }
+    
+    .stButton > button p {
+        color: #FFFFFF !important;
     }
     
     .stButton > button:active {
