@@ -1100,7 +1100,7 @@ if st.session_state.pagina == "Inicio":
                     Leyes y Decretos Base
                 </p>
                 <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #D32F2F;'>2</span>
+                    <span style='font-size: 1.5rem; font-weight: 700; color: #D32F2F;'>3</span>
                     <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Leyes</p>
                 </div>
             </div>
@@ -1139,7 +1139,7 @@ if st.session_state.pagina == "Inicio":
                     OMS, EPA, Canadá
                 </p>
                 <div style='margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);'>
-                    <span style='font-size: 1.5rem; font-weight: 700; color: #00B8D9;'>6</span>
+                    <span style='font-size: 1.5rem; font-weight: 700; color: #00B8D9;'>3</span>
                     <p style='font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;'>Estándares</p>
                 </div>
             </div>
