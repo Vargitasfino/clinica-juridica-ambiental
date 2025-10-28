@@ -1270,12 +1270,30 @@ if st.session_state.pagina == "Inicio":
             hoverinfo='skip'
         ))
         
-        # Agregar cada normativa con mejor diseño
+        # Agregar cada normativa con mejor diseño y anti-colisión
         categorias_mostradas = set()
+        años_usados = {}  # Diccionario para rastrear qué posición usó cada año
         
         for idx, row in df_timeline.iterrows():
-            # Alternar posiciones para evitar superposición
-            y_pos = 2.0 if idx % 2 == 0 else -2.0
+            año = row['año']
+            
+            # Sistema inteligente de posicionamiento para evitar colisiones
+            # SEPARACIÓN AUMENTADA: 3.0 en vez de 2.0 para mejor visualización
+            # Si el año anterior está a menos de 2 años de distancia, usar posición contraria
+            if idx > 0:
+                año_anterior = df_timeline.iloc[idx-1]['año']
+                if abs(año - año_anterior) <= 1:  # Si están muy cerca (mismo año o consecutivos)
+                    # Usar posición contraria al anterior
+                    y_pos = -años_usados.get(año_anterior, 3.0)
+                else:
+                    # Alternar normalmente con mayor separación
+                    y_pos = 3.0 if idx % 2 == 0 else -3.0
+            else:
+                y_pos = 3.0
+            
+            # Guardar la posición usada para este año
+            años_usados[año] = y_pos
+            
             color = colores_cat[row['categoria']]
             mostrar_leyenda = row['categoria'] not in categorias_mostradas
             
@@ -1364,7 +1382,7 @@ if st.session_state.pagina == "Inicio":
             yaxis=dict(
                 showgrid=False, 
                 showticklabels=False, 
-                range=[-3, 3], 
+                range=[-4, 4],  # Aumentado de [-3,3] para mejor separación visual
                 zeroline=False
             ),
             legend=dict(
