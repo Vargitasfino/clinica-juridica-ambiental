@@ -949,145 +949,373 @@ if st.session_state.pagina == "Inicio":
         
         df_timeline = pd.DataFrame(timeline_data)
         
-        # Crear gráfico moderno y mejorado con mejor diseño
-        fig_timeline = go.Figure()
-        
-        colores_cat = {
-            'ECA': '#00C853',
-            'LMP': '#FF6F00',
-            'Protocolo': '#8E24AA',
-            'Lineamiento': '#0091EA',
-            'Marco Legal': '#D32F2F'
+        # TIMELINE MODERNA Y ÚNICA - DISEÑO REVOLUCIONARIO
+        st.markdown("""
+        <style>
+        .modern-timeline {
+            position: relative;
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 2rem 0;
         }
         
-        # Línea base horizontal con gradiente mejorado
-        fig_timeline.add_trace(go.Scatter(
-            x=[1995, 2020],
-            y=[0, 0],
-            mode='lines',
-            line=dict(color='rgba(0, 184, 217, 0.6)', width=4),
-            showlegend=False,
-            hoverinfo='skip'
-        ))
+        /* Línea central con gradiente animado */
+        .timeline-spine {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, 
+                transparent 0%,
+                rgba(0, 184, 217, 0.3) 5%,
+                rgba(0, 184, 217, 1) 50%,
+                rgba(0, 184, 217, 0.3) 95%,
+                transparent 100%
+            );
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(0, 184, 217, 0.5);
+            border-radius: 10px;
+            animation: pulse-spine 3s ease-in-out infinite;
+        }
         
-        # Agregar cada normativa con mejor diseño
-        categorias_mostradas = set()
+        @keyframes pulse-spine {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 184, 217, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(0, 184, 217, 0.8); }
+        }
         
-        for idx, row in df_timeline.iterrows():
-            # Alternar posiciones para evitar superposición
-            y_pos = 2.0 if idx % 2 == 0 else -2.0
-            color = colores_cat[row['categoria']]
-            mostrar_leyenda = row['categoria'] not in categorias_mostradas
-            
-            if mostrar_leyenda:
-                categorias_mostradas.add(row['categoria'])
-            
-            # Línea conectora más elegante
-            fig_timeline.add_trace(go.Scatter(
-                x=[row['año'], row['año']],
-                y=[0, y_pos * 0.85],
-                mode='lines',
-                line=dict(color=color, width=3, dash='dot'),
-                showlegend=False,
-                hoverinfo='skip',
-                opacity=0.7
-            ))
-            
-            # Punto en la base más grande y con sombra
-            fig_timeline.add_trace(go.Scatter(
-                x=[row['año']],
-                y=[0],
-                mode='markers',
-                marker=dict(
-                    size=18, 
-                    color=color, 
-                    line=dict(color='white', width=3),
-                    opacity=1
-                ),
-                showlegend=False,
-                hoverinfo='skip'
-            ))
-            
-            # Marcador superior mejorado con más información
-            simbolos = {
-                'ECA': 'star',
-                'LMP': 'diamond',
-                'Protocolo': 'circle',
-                'Lineamiento': 'square',
-                'Marco Legal': 'hexagon'
+        /* Años en la línea */
+        .year-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #0A1929, #132F4C);
+            color: rgba(255, 255, 255, 0.5);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+        
+        /* Contenedor de evento */
+        .timeline-event {
+            position: relative;
+            margin: 3rem 0;
+            opacity: 0;
+            animation: fadeInTimeline 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInTimeline {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Card del evento */
+        .event-card {
+            position: relative;
+            width: 45%;
+            background: linear-gradient(135deg, 
+                rgba(19, 47, 76, 0.95) 0%, 
+                rgba(10, 25, 41, 0.98) 100%
+            );
+            backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 60px rgba(0, 82, 204, 0.4),
+                0 0 0 1px rgba(0, 184, 217, 0.3) inset;
+            border-color: rgba(0, 184, 217, 0.5);
+        }
+        
+        /* Posicionamiento alternado */
+        .timeline-event:nth-child(odd) .event-card {
+            margin-left: 0;
+        }
+        
+        .timeline-event:nth-child(even) .event-card {
+            margin-left: 55%;
+        }
+        
+        /* Badge de categoría con animación */
+        .category-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+            50% { box-shadow: 0 4px 25px currentColor; }
+        }
+        
+        .badge-eca { 
+            background: linear-gradient(135deg, #00C853, #00E676); 
+            color: white;
+        }
+        .badge-lmp { 
+            background: linear-gradient(135deg, #FF6F00, #FFA726); 
+            color: white;
+        }
+        .badge-protocolo { 
+            background: linear-gradient(135deg, #8E24AA, #BA68C8); 
+            color: white;
+        }
+        .badge-lineamiento { 
+            background: linear-gradient(135deg, #0091EA, #42A5F5); 
+            color: white;
+        }
+        .badge-legal { 
+            background: linear-gradient(135deg, #D32F2F, #F44336); 
+            color: white;
+        }
+        
+        /* Icono del evento */
+        .event-icon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 
+                0 0 0 6px rgba(10, 25, 41, 1),
+                0 0 20px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            transition: all 0.4s ease;
+            animation: rotate-icon 20s linear infinite;
+        }
+        
+        @keyframes rotate-icon {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .event-card:hover ~ .event-icon {
+            transform: translate(-50%, -50%) scale(1.3) rotate(180deg);
+            animation: none;
+        }
+        
+        .icon-eca { 
+            background: linear-gradient(135deg, #00C853, #00E676);
+            box-shadow: 0 0 0 6px rgba(10, 25, 41, 1), 0 0 30px rgba(0, 200, 83, 0.6);
+        }
+        .icon-lmp { 
+            background: linear-gradient(135deg, #FF6F00, #FFA726);
+            box-shadow: 0 0 0 6px rgba(10, 25, 41, 1), 0 0 30px rgba(255, 111, 0, 0.6);
+        }
+        .icon-protocolo { 
+            background: linear-gradient(135deg, #8E24AA, #BA68C8);
+            box-shadow: 0 0 0 6px rgba(10, 25, 41, 1), 0 0 30px rgba(142, 36, 170, 0.6);
+        }
+        .icon-lineamiento { 
+            background: linear-gradient(135deg, #0091EA, #42A5F5);
+            box-shadow: 0 0 0 6px rgba(10, 25, 41, 1), 0 0 30px rgba(0, 145, 234, 0.6);
+        }
+        .icon-legal { 
+            background: linear-gradient(135deg, #D32F2F, #F44336);
+            box-shadow: 0 0 0 6px rgba(10, 25, 41, 1), 0 0 30px rgba(211, 47, 47, 0.6);
+        }
+        
+        /* Conector al centro */
+        .event-connector {
+            position: absolute;
+            top: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, currentColor, transparent);
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-event:nth-child(odd) .event-connector {
+            left: calc(45% + 2rem);
+            width: calc(5% - 2rem);
+        }
+        
+        .timeline-event:nth-child(even) .event-connector {
+            right: calc(45% + 2rem);
+            width: calc(5% - 2rem);
+        }
+        
+        .event-card:hover ~ .event-connector {
+            height: 5px;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+        
+        /* Título del evento */
+        .event-title {
+            color: #00B8D9;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0, 184, 217, 0.3);
+        }
+        
+        /* Subtítulo */
+        .event-subtitle {
+            color: #FFFFFF;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 1rem 0;
+            opacity: 0.9;
+        }
+        
+        /* Descripción */
+        .event-description {
+            color: #B2BAC2;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 1rem 0;
+        }
+        
+        /* Año grande */
+        .event-year {
+            position: absolute;
+            top: -15px;
+            right: 2rem;
+            background: linear-gradient(135deg, #0052CC, #00B8D9);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0, 82, 204, 0.4);
+            letter-spacing: 0.05em;
+        }
+        
+        /* Animación de entrada escalonada */
+        .timeline-event:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-event:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-event:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-event:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-event:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-event:nth-child(6) { animation-delay: 0.6s; }
+        .timeline-event:nth-child(7) { animation-delay: 0.7s; }
+        .timeline-event:nth-child(8) { animation-delay: 0.8s; }
+        .timeline-event:nth-child(9) { animation-delay: 0.9s; }
+        .timeline-event:nth-child(10) { animation-delay: 1.0s; }
+        .timeline-event:nth-child(11) { animation-delay: 1.1s; }
+        .timeline-event:nth-child(12) { animation-delay: 1.2s; }
+        .timeline-event:nth-child(13) { animation-delay: 1.3s; }
+        
+        /* Hover en todo el evento */
+        .timeline-event:hover .event-icon {
+            transform: translate(-50%, -50%) scale(1.3);
+            animation: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline-spine {
+                left: 30px;
             }
             
-            fig_timeline.add_trace(go.Scatter(
-                x=[row['año']],
-                y=[y_pos],
-                mode='markers+text',
-                marker=dict(
-                    size=30, 
-                    color=color, 
-                    symbol=simbolos.get(row['categoria'], 'square'),
-                    line=dict(color='white', width=3),
-                    opacity=0.95
-                ),
-                text=str(row['año']),
-                textposition='middle center',
-                textfont=dict(color='white', size=11, family='Inter'),
-                name=row['categoria'],
-                legendgroup=row['categoria'],
-                showlegend=mostrar_leyenda,
-                hovertemplate=(
-                    '<b style="font-size:14px">%s</b><br><br>'
-                    '<b>📋 Descripción:</b> %s<br>'
-                    '<b>📅 Año:</b> %d<br>'
-                    '<b>🏷️ Categoría:</b> %s<br>'
-                    '<extra></extra>'
-                ) % (row['titulo'], row['descripcion'], row['año'], row['categoria'])
-            ))
+            .event-card {
+                width: calc(100% - 80px) !important;
+                margin-left: 80px !important;
+            }
+            
+            .event-icon {
+                left: 30px;
+            }
+            
+            .event-connector {
+                display: none;
+            }
+        }
+        </style>
         
-        # Layout mejorado con mejor espaciado y diseño
-        fig_timeline.update_layout(
-            height=600,
-            showlegend=True,
-            plot_bgcolor='rgba(10, 25, 41, 0.3)',
-            paper_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#E3E8EF', family='Inter', size=12),
-            xaxis=dict(
-                showgrid=True, 
-                gridcolor='rgba(255,255,255,0.08)', 
-                title=dict(
-                    text='<b>Año</b>',
-                    font=dict(size=14, color='#00B8D9')
-                ),
-                dtick=2, 
-                range=[1994, 2021],
-                tickfont=dict(size=11, color='#E3E8EF')
-            ),
-            yaxis=dict(
-                showgrid=False, 
-                showticklabels=False, 
-                range=[-3, 3], 
-                zeroline=False
-            ),
-            legend=dict(
-                orientation='h', 
-                yanchor='bottom', 
-                y=-0.25, 
-                xanchor='center', 
-                x=0.5,
-                bgcolor='rgba(19, 47, 76, 0.8)',
-                bordercolor='rgba(255, 255, 255, 0.2)',
-                borderwidth=1,
-                font=dict(size=11, color='#E3E8EF')
-            ),
-            hovermode='closest',
-            margin=dict(l=50, r=50, t=50, b=120),
-            hoverlabel=dict(
-                bgcolor='rgba(19, 47, 76, 0.95)',
-                font=dict(size=12, family='Inter'),
-                bordercolor='rgba(0, 184, 217, 0.5)'
-            )
-        )
+        <div class='modern-timeline'>
+            <div class='timeline-spine'></div>
+        """, unsafe_allow_html=True)
         
-        st.plotly_chart(fig_timeline, use_container_width=True)
+        # Mapeo de categorías
+        category_config = {
+            'ECA': {
+                'badge_class': 'badge-eca',
+                'icon_class': 'icon-eca',
+                'icon': '⭐',
+                'color': '#00C853'
+            },
+            'LMP': {
+                'badge_class': 'badge-lmp',
+                'icon_class': 'icon-lmp',
+                'icon': '🏭',
+                'color': '#FF6F00'
+            },
+            'Protocolo': {
+                'badge_class': 'badge-protocolo',
+                'icon_class': 'icon-protocolo',
+                'icon': '📋',
+                'color': '#8E24AA'
+            },
+            'Lineamiento': {
+                'badge_class': 'badge-lineamiento',
+                'icon_class': 'icon-lineamiento',
+                'icon': '📐',
+                'color': '#0091EA'
+            },
+            'Marco Legal': {
+                'badge_class': 'badge-legal',
+                'icon_class': 'icon-legal',
+                'icon': '⚖️',
+                'color': '#D32F2F'
+            }
+        }
+        
+        # Generar eventos
+        for idx, row in df_timeline.iterrows():
+            config = category_config[row['categoria']]
+            
+            st.markdown(f"""
+            <div class='timeline-event'>
+                <div class='event-card'>
+                    <div class='event-year'>{row['año']}</div>
+                    <span class='category-badge {config["badge_class"]}'>{row['categoria']}</span>
+                    <h3 class='event-title'>{row['titulo']}</h3>
+                    <p class='event-subtitle'>{row['descripcion']}</p>
+                    <div class='event-description'>
+                        <strong>📅 Año:</strong> {row['año']}<br>
+                        <strong>🏷️ Tipo:</strong> {row['categoria']}<br>
+                        <strong>📊 Impacto:</strong> {'Alto' if row['categoria'] in ['ECA', 'Marco Legal'] else 'Medio'}
+                    </div>
+                </div>
+                <div class='event-connector' style='color: {config["color"]};'></div>
+                <div class='event-icon {config["icon_class"]}'>{config["icon"]}</div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("</div>", unsafe_allow_html=True)
         
         st.markdown("""
         <div class='corporate-card' style='margin-top: 2rem;'>
