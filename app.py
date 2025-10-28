@@ -1317,12 +1317,15 @@ if st.session_state.pagina == "Inicio":
                 'Marco Legal': 'hexagon'
             }
             
+            # Tamaño más grande para diamantes (LMP) para que se vea el año
+            size_marker = 45 if row['categoria'] == 'LMP' else 35
+            
             fig_timeline.add_trace(go.Scatter(
                 x=[row['año']],
                 y=[y_pos],
                 mode='markers+text',
                 marker=dict(
-                    size=30, 
+                    size=size_marker, 
                     color=color, 
                     symbol=simbolos.get(row['categoria'], 'square'),
                     line=dict(color='white', width=3),
@@ -1330,7 +1333,7 @@ if st.session_state.pagina == "Inicio":
                 ),
                 text=str(row['año']),
                 textposition='middle center',
-                textfont=dict(color='white', size=11, family='Inter'),
+                textfont=dict(color='white', size=12, family='Inter', weight='bold'),
                 name=row['categoria'],
                 legendgroup=row['categoria'],
                 showlegend=mostrar_leyenda,
