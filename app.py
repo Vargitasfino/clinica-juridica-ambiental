@@ -949,65 +949,94 @@ if st.session_state.pagina == "Inicio":
         
         df_timeline = pd.DataFrame(timeline_data)
         
-        # TIMELINE MODERNA Y ÚNICA - DISEÑO REVOLUCIONARIO
+        # TIMELINE HORIZONTAL ULTRA MODERNA
         st.markdown("""
         <style>
-        .modern-timeline {
+        /* Contenedor principal */
+        .horizontal-timeline-wrapper {
             position: relative;
-            max-width: 1400px;
-            margin: 3rem auto;
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: visible;
+            padding: 4rem 2rem 2rem 2rem;
+            margin: 2rem 0;
+            background: linear-gradient(180deg, 
+                rgba(10, 25, 41, 0.3) 0%,
+                rgba(19, 47, 76, 0.2) 50%,
+                rgba(10, 25, 41, 0.3) 100%
+            );
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Scrollbar personalizado */
+        .horizontal-timeline-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .horizontal-timeline-wrapper::-webkit-scrollbar-track {
+            background: rgba(19, 47, 76, 0.5);
+            border-radius: 10px;
+        }
+        
+        .horizontal-timeline-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #0052CC, #00B8D9);
+            border-radius: 10px;
+        }
+        
+        /* Contenedor interno */
+        .horizontal-timeline {
+            position: relative;
+            display: flex;
+            gap: 0;
+            min-width: max-content;
             padding: 2rem 0;
         }
         
-        /* Línea central con gradiente animado */
-        .timeline-spine {
+        /* Línea horizontal */
+        .timeline-track {
             position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 6px;
-            background: linear-gradient(180deg, 
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg,
                 transparent 0%,
                 rgba(0, 184, 217, 0.3) 5%,
                 rgba(0, 184, 217, 1) 50%,
                 rgba(0, 184, 217, 0.3) 95%,
                 transparent 100%
             );
-            transform: translateX(-50%);
-            box-shadow: 0 0 20px rgba(0, 184, 217, 0.5);
-            border-radius: 10px;
-            animation: pulse-spine 3s ease-in-out infinite;
+            transform: translateY(-50%);
+            box-shadow: 0 0 20px rgba(0, 184, 217, 0.4);
         }
         
-        @keyframes pulse-spine {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 184, 217, 0.5); }
-            50% { box-shadow: 0 0 30px rgba(0, 184, 217, 0.8); }
-        }
-        
-        /* Años en la línea */
-        .year-marker {
+        /* Punto en la línea */
+        .timeline-point {
             position: absolute;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #0A1929, #132F4C);
-            color: rgba(255, 255, 255, 0.5);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 4px solid rgba(10, 25, 41, 1);
+            z-index: 5;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        /* Contenedor de evento */
-        .timeline-event {
+        /* Item del timeline */
+        .timeline-item {
             position: relative;
-            margin: 3rem 0;
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             opacity: 0;
-            animation: fadeInTimeline 0.8s ease-out forwards;
+            animation: slideInTimeline 0.8s ease-out forwards;
         }
         
-        @keyframes fadeInTimeline {
+        @keyframes slideInTimeline {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -1018,304 +1047,250 @@ if st.session_state.pagina == "Inicio":
             }
         }
         
-        /* Card del evento */
-        .event-card {
+        /* Animación escalonada */
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(7) { animation-delay: 0.7s; }
+        .timeline-item:nth-child(8) { animation-delay: 0.8s; }
+        .timeline-item:nth-child(9) { animation-delay: 0.9s; }
+        .timeline-item:nth-child(10) { animation-delay: 1.0s; }
+        .timeline-item:nth-child(11) { animation-delay: 1.1s; }
+        .timeline-item:nth-child(12) { animation-delay: 1.2s; }
+        .timeline-item:nth-child(13) { animation-delay: 1.3s; }
+        
+        /* Card del evento - Diseño minimalista */
+        .timeline-card {
             position: relative;
-            width: 45%;
-            background: linear-gradient(135deg, 
-                rgba(19, 47, 76, 0.95) 0%, 
-                rgba(10, 25, 41, 0.98) 100%
-            );
-            backdrop-filter: blur(20px) saturate(180%);
-            border-radius: 20px;
-            padding: 2rem;
+            width: 280px;
+            background: rgba(19, 47, 76, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 
-                0 10px 40px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
         }
         
-        .event-card:hover {
-            transform: translateY(-8px) scale(1.02);
+        .timeline-card:hover {
+            transform: translateY(-12px);
+            background: rgba(19, 47, 76, 0.85);
+            border-color: rgba(0, 184, 217, 0.4);
             box-shadow: 
                 0 20px 60px rgba(0, 82, 204, 0.4),
-                0 0 0 1px rgba(0, 184, 217, 0.3) inset;
-            border-color: rgba(0, 184, 217, 0.5);
+                inset 0 1px 0 rgba(0, 184, 217, 0.2);
         }
         
-        /* Posicionamiento alternado */
-        .timeline-event:nth-child(odd) .event-card {
-            margin-left: 0;
+        .timeline-card:hover .timeline-point {
+            width: 28px;
+            height: 28px;
+            box-shadow: 0 0 30px currentColor;
         }
         
-        .timeline-event:nth-child(even) .event-card {
-            margin-left: 55%;
-        }
-        
-        /* Badge de categoría con animación */
-        .category-badge {
-            display: inline-block;
-            padding: 0.5rem 1.2rem;
-            border-radius: 25px;
-            font-size: 0.75rem;
+        /* Año - Número grande */
+        .timeline-year {
+            font-size: 2.5rem;
             font-weight: 800;
+            background: linear-gradient(135deg, #00B8D9, #0065FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0 0 0.5rem 0;
+            line-height: 1;
+            text-shadow: 0 4px 20px rgba(0, 184, 217, 0.3);
+        }
+        
+        /* Badge de categoría - Minimalista */
+        .timeline-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             margin-bottom: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            animation: glow 2s ease-in-out infinite;
+            border: 1px solid currentColor;
         }
         
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
-            50% { box-shadow: 0 4px 25px currentColor; }
-        }
+        .badge-eca { color: #00C853; background: rgba(0, 200, 83, 0.1); }
+        .badge-lmp { color: #FF6F00; background: rgba(255, 111, 0, 0.1); }
+        .badge-protocolo { color: #8E24AA; background: rgba(142, 36, 170, 0.1); }
+        .badge-lineamiento { color: #0091EA; background: rgba(0, 145, 234, 0.1); }
+        .badge-legal { color: #D32F2F; background: rgba(211, 47, 47, 0.1); }
         
-        .badge-eca { 
-            background: linear-gradient(135deg, #00C853, #00E676); 
-            color: white;
-        }
-        .badge-lmp { 
-            background: linear-gradient(135deg, #FF6F00, #FFA726); 
-            color: white;
-        }
-        .badge-protocolo { 
-            background: linear-gradient(135deg, #8E24AA, #BA68C8); 
-            color: white;
-        }
-        .badge-lineamiento { 
-            background: linear-gradient(135deg, #0091EA, #42A5F5); 
-            color: white;
-        }
-        .badge-legal { 
-            background: linear-gradient(135deg, #D32F2F, #F44336); 
-            color: white;
-        }
+        /* Punto de color */
+        .point-eca { background: #00C853; box-shadow: 0 0 20px rgba(0, 200, 83, 0.6); }
+        .point-lmp { background: #FF6F00; box-shadow: 0 0 20px rgba(255, 111, 0, 0.6); }
+        .point-protocolo { background: #8E24AA; box-shadow: 0 0 20px rgba(142, 36, 170, 0.6); }
+        .point-lineamiento { background: #0091EA; box-shadow: 0 0 20px rgba(0, 145, 234, 0.6); }
+        .point-legal { background: #D32F2F; box-shadow: 0 0 20px rgba(211, 47, 47, 0.6); }
         
-        /* Icono del evento */
-        .event-icon {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 
-                0 0 0 6px rgba(10, 25, 41, 1),
-                0 0 20px rgba(0, 0, 0, 0.5);
-            z-index: 10;
-            transition: all 0.4s ease;
-            animation: rotate-icon 20s linear infinite;
-        }
-        
-        @keyframes rotate-icon {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-        
-        .event-card:hover ~ .event-icon {
-            transform: translate(-50%, -50%) scale(1.3) rotate(180deg);
-            animation: none;
-        }
-        
-        .icon-eca { 
-            background: linear-gradient(135deg, #00C853, #00E676);
-            box-shadow: 0 0 0 6px rgba(10, 25, 41, 1), 0 0 30px rgba(0, 200, 83, 0.6);
-        }
-        .icon-lmp { 
-            background: linear-gradient(135deg, #FF6F00, #FFA726);
-            box-shadow: 0 0 0 6px rgba(10, 25, 41, 1), 0 0 30px rgba(255, 111, 0, 0.6);
-        }
-        .icon-protocolo { 
-            background: linear-gradient(135deg, #8E24AA, #BA68C8);
-            box-shadow: 0 0 0 6px rgba(10, 25, 41, 1), 0 0 30px rgba(142, 36, 170, 0.6);
-        }
-        .icon-lineamiento { 
-            background: linear-gradient(135deg, #0091EA, #42A5F5);
-            box-shadow: 0 0 0 6px rgba(10, 25, 41, 1), 0 0 30px rgba(0, 145, 234, 0.6);
-        }
-        .icon-legal { 
-            background: linear-gradient(135deg, #D32F2F, #F44336);
-            box-shadow: 0 0 0 6px rgba(10, 25, 41, 1), 0 0 30px rgba(211, 47, 47, 0.6);
-        }
-        
-        /* Conector al centro */
-        .event-connector {
-            position: absolute;
-            top: 50%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, currentColor, transparent);
-            z-index: 1;
-            transition: all 0.4s ease;
-        }
-        
-        .timeline-event:nth-child(odd) .event-connector {
-            left: calc(45% + 2rem);
-            width: calc(5% - 2rem);
-        }
-        
-        .timeline-event:nth-child(even) .event-connector {
-            right: calc(45% + 2rem);
-            width: calc(5% - 2rem);
-        }
-        
-        .event-card:hover ~ .event-connector {
-            height: 5px;
-            filter: drop-shadow(0 0 10px currentColor);
-        }
-        
-        /* Título del evento */
-        .event-title {
-            color: #00B8D9;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin: 0 0 0.5rem 0;
-            line-height: 1.3;
-            text-shadow: 0 2px 10px rgba(0, 184, 217, 0.3);
-        }
-        
-        /* Subtítulo */
-        .event-subtitle {
+        /* Título - Limpio */
+        .timeline-title {
             color: #FFFFFF;
             font-size: 1rem;
             font-weight: 600;
-            margin: 0 0 1rem 0;
-            opacity: 0.9;
+            margin: 0 0 0.8rem 0;
+            line-height: 1.4;
         }
         
-        /* Descripción */
-        .event-description {
+        /* Descripción - Sutil */
+        .timeline-desc {
             color: #B2BAC2;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin: 1rem 0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         
-        /* Año grande */
-        .event-year {
+        /* Línea conectora vertical */
+        .timeline-connector {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 3rem;
+            background: linear-gradient(180deg, transparent, currentColor);
+            opacity: 0.3;
+        }
+        
+        /* Icono minimalista */
+        .timeline-icon {
             position: absolute;
             top: -15px;
-            right: 2rem;
-            background: linear-gradient(135deg, #0052CC, #00B8D9);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.1rem;
-            font-weight: 800;
-            box-shadow: 0 4px 15px rgba(0, 82, 204, 0.4);
-            letter-spacing: 0.05em;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
         
-        /* Animación de entrada escalonada */
-        .timeline-event:nth-child(1) { animation-delay: 0.1s; }
-        .timeline-event:nth-child(2) { animation-delay: 0.2s; }
-        .timeline-event:nth-child(3) { animation-delay: 0.3s; }
-        .timeline-event:nth-child(4) { animation-delay: 0.4s; }
-        .timeline-event:nth-child(5) { animation-delay: 0.5s; }
-        .timeline-event:nth-child(6) { animation-delay: 0.6s; }
-        .timeline-event:nth-child(7) { animation-delay: 0.7s; }
-        .timeline-event:nth-child(8) { animation-delay: 0.8s; }
-        .timeline-event:nth-child(9) { animation-delay: 0.9s; }
-        .timeline-event:nth-child(10) { animation-delay: 1.0s; }
-        .timeline-event:nth-child(11) { animation-delay: 1.1s; }
-        .timeline-event:nth-child(12) { animation-delay: 1.2s; }
-        .timeline-event:nth-child(13) { animation-delay: 1.3s; }
+        .timeline-card:hover .timeline-icon {
+            transform: scale(1.1) rotate(5deg);
+            border-color: currentColor;
+        }
         
-        /* Hover en todo el evento */
-        .timeline-event:hover .event-icon {
-            transform: translate(-50%, -50%) scale(1.3);
-            animation: none;
+        .icon-eca { background: rgba(0, 200, 83, 0.15); color: #00C853; }
+        .icon-lmp { background: rgba(255, 111, 0, 0.15); color: #FF6F00; }
+        .icon-protocolo { background: rgba(142, 36, 170, 0.15); color: #8E24AA; }
+        .icon-lineamiento { background: rgba(0, 145, 234, 0.15); color: #0091EA; }
+        .icon-legal { background: rgba(211, 47, 47, 0.15); color: #D32F2F; }
+        
+        /* Indicador de más info */
+        .timeline-more {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-card:hover .timeline-more {
+            opacity: 1;
+            color: #00B8D9;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .timeline-spine {
-                left: 30px;
+            .timeline-item {
+                width: 280px;
             }
             
-            .event-card {
-                width: calc(100% - 80px) !important;
-                margin-left: 80px !important;
-            }
-            
-            .event-icon {
-                left: 30px;
-            }
-            
-            .event-connector {
-                display: none;
+            .timeline-card {
+                width: 260px;
             }
         }
         </style>
         
-        <div class='modern-timeline'>
-            <div class='timeline-spine'></div>
+        <div class='horizontal-timeline-wrapper'>
+            <div class='timeline-track'></div>
+            <div class='horizontal-timeline'>
         """, unsafe_allow_html=True)
         
-        # Mapeo de categorías
+        # Configuración de categorías
         category_config = {
             'ECA': {
                 'badge_class': 'badge-eca',
+                'point_class': 'point-eca',
                 'icon_class': 'icon-eca',
                 'icon': '⭐',
                 'color': '#00C853'
             },
             'LMP': {
                 'badge_class': 'badge-lmp',
+                'point_class': 'point-lmp',
                 'icon_class': 'icon-lmp',
                 'icon': '🏭',
                 'color': '#FF6F00'
             },
             'Protocolo': {
                 'badge_class': 'badge-protocolo',
+                'point_class': 'point-protocolo',
                 'icon_class': 'icon-protocolo',
                 'icon': '📋',
                 'color': '#8E24AA'
             },
             'Lineamiento': {
                 'badge_class': 'badge-lineamiento',
+                'point_class': 'point-lineamiento',
                 'icon_class': 'icon-lineamiento',
                 'icon': '📐',
                 'color': '#0091EA'
             },
             'Marco Legal': {
                 'badge_class': 'badge-legal',
+                'point_class': 'point-legal',
                 'icon_class': 'icon-legal',
                 'icon': '⚖️',
                 'color': '#D32F2F'
             }
         }
         
-        # Generar eventos
+        # Generar items
         for idx, row in df_timeline.iterrows():
             config = category_config[row['categoria']]
             
             st.markdown(f"""
-            <div class='timeline-event'>
-                <div class='event-card'>
-                    <div class='event-year'>{row['año']}</div>
-                    <span class='category-badge {config["badge_class"]}'>{row['categoria']}</span>
-                    <h3 class='event-title'>{row['titulo']}</h3>
-                    <p class='event-subtitle'>{row['descripcion']}</p>
-                    <div class='event-description'>
-                        <strong>📅 Año:</strong> {row['año']}<br>
-                        <strong>🏷️ Tipo:</strong> {row['categoria']}<br>
-                        <strong>📊 Impacto:</strong> {'Alto' if row['categoria'] in ['ECA', 'Marco Legal'] else 'Medio'}
-                    </div>
+            <div class='timeline-item'>
+                <div class='timeline-card'>
+                    <div class='timeline-icon {config["icon_class"]}'>{config["icon"]}</div>
+                    <div class='timeline-year'>{row['año']}</div>
+                    <span class='timeline-badge {config["badge_class"]}'>{row['categoria']}</span>
+                    <h4 class='timeline-title'>{row['titulo']}</h4>
+                    <p class='timeline-desc'>{row['descripcion']}</p>
+                    <span class='timeline-more'>Ver más →</span>
                 </div>
-                <div class='event-connector' style='color: {config["color"]};'></div>
-                <div class='event-icon {config["icon_class"]}'>{config["icon"]}</div>
+                <div class='timeline-connector' style='color: {config["color"]};'></div>
+                <div class='timeline-point {config["point_class"]}'></div>
             </div>
             """, unsafe_allow_html=True)
         
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown("""
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
         
         st.markdown("""
         <div class='corporate-card' style='margin-top: 2rem;'>
