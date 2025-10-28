@@ -965,7 +965,7 @@ if st.session_state.pagina == "Inicio":
             x=[1995, 2020],
             y=[0, 0],
             mode='lines',
-            line={'color': 'rgba(0, 184, 217, 0.6)', 'width': 4},
+            line=dict(color='rgba(0, 184, 217, 0.6)', width=4),
             showlegend=False,
             hoverinfo='skip'
         ))
@@ -987,7 +987,7 @@ if st.session_state.pagina == "Inicio":
                 x=[row['año'], row['año']],
                 y=[0, y_pos * 0.85],
                 mode='lines',
-                line={'color': color, 'width': 3, 'dash': 'dot'},
+                line=dict(color=color, width=3, dash='dot'),
                 showlegend=False,
                 hoverinfo='skip',
                 opacity=0.7
@@ -998,12 +998,12 @@ if st.session_state.pagina == "Inicio":
                 x=[row['año']],
                 y=[0],
                 mode='markers',
-                marker={
-                    'size': 18, 
-                    'color': color, 
-                    'line': {'color': 'white', 'width': 3},
-                    'opacity': 1
-                },
+                marker=dict(
+                    size=18, 
+                    color=color, 
+                    line=dict(color='white', width=3),
+                    opacity=1
+                ),
                 showlegend=False,
                 hoverinfo='skip'
             ))
@@ -1021,16 +1021,16 @@ if st.session_state.pagina == "Inicio":
                 x=[row['año']],
                 y=[y_pos],
                 mode='markers+text',
-                marker={
-                    'size': 30, 
-                    'color': color, 
-                    'symbol': simbolos.get(row['categoria'], 'square'),
-                    'line': {'color': 'white', 'width': 3},
-                    'opacity': 0.95
-                },
+                marker=dict(
+                    size=30, 
+                    color=color, 
+                    symbol=simbolos.get(row['categoria'], 'square'),
+                    line=dict(color='white', width=3),
+                    opacity=0.95
+                ),
                 text=str(row['año']),
                 textposition='middle center',
-                textfont={'color': 'white', 'size': 11, 'family': 'Inter', 'weight': 700},
+                textfont=dict(color='white', size=11, family='Inter'),
                 name=row['categoria'],
                 legendgroup=row['categoria'],
                 showlegend=mostrar_leyenda,
@@ -1049,41 +1049,41 @@ if st.session_state.pagina == "Inicio":
             showlegend=True,
             plot_bgcolor='rgba(10, 25, 41, 0.3)',
             paper_bgcolor='rgba(0,0,0,0)',
-            font={'color': '#E3E8EF', 'family': 'Inter', 'size': 12},
-            xaxis={
-                'showgrid': True, 
-                'gridcolor': 'rgba(255,255,255,0.08)', 
-                'title': '<b>Año</b>', 
-                'titlefont': {'size': 14, 'color': '#00B8D9'},
-                'dtick': 2, 
-                'range': [1994, 2021],
-                'tickfont': {'size': 11, 'color': '#E3E8EF'}
-            },
-            yaxis={
-                'showgrid': False, 
-                'showticklabels': False, 
-                'range': [-3, 3], 
-                'zeroline': False
-            },
-            legend={
-                'orientation': 'h', 
-                'yanchor': 'bottom', 
-                'y': -0.25, 
-                'xanchor': 'center', 
-                'x': 0.5,
-                'bgcolor': 'rgba(19, 47, 76, 0.8)',
-                'bordercolor': 'rgba(255, 255, 255, 0.2)',
-                'borderwidth': 1,
-                'font': {'size': 11, 'color': '#E3E8EF'}
-            },
+            font=dict(color='#E3E8EF', family='Inter', size=12),
+            xaxis=dict(
+                showgrid=True, 
+                gridcolor='rgba(255,255,255,0.08)', 
+                title='<b>Año</b>', 
+                titlefont=dict(size=14, color='#00B8D9'),
+                dtick=2, 
+                range=[1994, 2021],
+                tickfont=dict(size=11, color='#E3E8EF')
+            ),
+            yaxis=dict(
+                showgrid=False, 
+                showticklabels=False, 
+                range=[-3, 3], 
+                zeroline=False
+            ),
+            legend=dict(
+                orientation='h', 
+                yanchor='bottom', 
+                y=-0.25, 
+                xanchor='center', 
+                x=0.5,
+                bgcolor='rgba(19, 47, 76, 0.8)',
+                bordercolor='rgba(255, 255, 255, 0.2)',
+                borderwidth=1,
+                font=dict(size=11, color='#E3E8EF')
+            ),
             hovermode='closest',
-            margin={'l': 50, 'r': 50, 't': 50, 'b': 120},
-            hoverlabel={
-                'bgcolor': 'rgba(19, 47, 76, 0.95)',
-                'font_size': 12,
-                'font_family': 'Inter',
-                'bordercolor': 'rgba(0, 184, 217, 0.5)'
-            }
+            margin=dict(l=50, r=50, t=50, b=120),
+            hoverlabel=dict(
+                bgcolor='rgba(19, 47, 76, 0.95)',
+                font_size=12,
+                font_family='Inter',
+                bordercolor='rgba(0, 184, 217, 0.5)'
+            )
         )
         
         st.plotly_chart(fig_timeline, use_container_width=True)
