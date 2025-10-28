@@ -1340,32 +1340,37 @@ if st.session_state.pagina == "Inicio":
         'Marco Legal': '#D32F2F'
     }
     
-    # Línea base horizontal con gradiente mejorado
+    # Línea base horizontal con gradiente mejorado y más visible
     fig_timeline.add_trace(go.Scatter(
         x=[1995, 2020],
         y=[0, 0],
         mode='lines',
-        line=dict(color='rgba(0, 184, 217, 0.6)', width=4),
+        line=dict(color='rgba(0, 184, 217, 0.7)', width=5),
         showlegend=False,
         hoverinfo='skip'
     ))
     
-    # Agregar cada normativa con mejor diseño y anti-colisión
+    # Agregar cada normativa con mejor diseño y anti-colisión mejorado
     categorias_mostradas = set()
     años_usados = {}
     
     for idx, row in df_timeline.iterrows():
         año = row['año']
         
-        # Sistema inteligente de posicionamiento para evitar colisiones
+        # Sistema inteligente de posicionamiento mejorado para evitar colisiones
         if idx > 0:
             año_anterior = df_timeline.iloc[idx-1]['año']
-            if abs(año - año_anterior) <= 1:
-                y_pos = -años_usados.get(año_anterior, 3.0)
+            # Si los años están muy cerca (diferencia de 1-2 años)
+            if abs(año - año_anterior) <= 2:
+                # Alternar más agresivamente y con mayor separación
+                y_pos = -años_usados.get(año_anterior, 4.0)
+                # Si hay múltiples años consecutivos, incrementar la posición
+                if abs(año - año_anterior) == 1:
+                    y_pos = y_pos * 1.1  # Aumentar 10% más la separación
             else:
-                y_pos = 3.0 if idx % 2 == 0 else -3.0
+                y_pos = 4.0 if idx % 2 == 0 else -4.0
         else:
-            y_pos = 3.0
+            y_pos = 4.0
         
         años_usados[año] = y_pos
         
@@ -1375,15 +1380,15 @@ if st.session_state.pagina == "Inicio":
         if mostrar_leyenda:
             categorias_mostradas.add(row['categoria'])
         
-        # Línea conectora más elegante
+        # Línea conectora más elegante con mejor grosor
         fig_timeline.add_trace(go.Scatter(
             x=[row['año'], row['año']],
-            y=[0, y_pos * 0.85],
+            y=[0, y_pos * 0.80],
             mode='lines',
-            line=dict(color=color, width=3, dash='dot'),
+            line=dict(color=color, width=3.5, dash='dot'),
             showlegend=False,
             hoverinfo='skip',
-            opacity=0.7
+            opacity=0.75
         ))
         
         # Punto en la base más grande y con sombra
@@ -1392,9 +1397,9 @@ if st.session_state.pagina == "Inicio":
             y=[0],
             mode='markers',
             marker=dict(
-                size=18, 
+                size=20, 
                 color=color, 
-                line=dict(color='white', width=3),
+                line=dict(color='white', width=3.5),
                 opacity=1
             ),
             showlegend=False,
@@ -1410,7 +1415,7 @@ if st.session_state.pagina == "Inicio":
             'Marco Legal': 'hexagon'
         }
         
-        size_marker = 45 if row['categoria'] == 'LMP' else 35
+        size_marker = 50 if row['categoria'] == 'LMP' else 40
         
         fig_timeline.add_trace(go.Scatter(
             x=[row['año']],
@@ -1420,12 +1425,12 @@ if st.session_state.pagina == "Inicio":
                 size=size_marker, 
                 color=color, 
                 symbol=simbolos.get(row['categoria'], 'square'),
-                line=dict(color='white', width=3),
+                line=dict(color='white', width=3.5),
                 opacity=0.95
             ),
             text=str(row['año']),
             textposition='middle center',
-            textfont=dict(color='white', size=12, family='Inter', weight='bold'),
+            textfont=dict(color='white', size=13, family='Inter', weight='bold'),
             name=row['categoria'],
             legendgroup=row['categoria'],
             showlegend=mostrar_leyenda,
@@ -1440,7 +1445,7 @@ if st.session_state.pagina == "Inicio":
     
     # Layout mejorado con mejor espaciado y diseño
     fig_timeline.update_layout(
-        height=700,
+        height=800,
         showlegend=True,
         plot_bgcolor='rgba(10, 25, 41, 0.3)',
         paper_bgcolor='rgba(0,0,0,0)',
@@ -1449,20 +1454,20 @@ if st.session_state.pagina == "Inicio":
             showgrid=True, 
             gridcolor='rgba(255,255,255,0.08)', 
             title=dict(text='<b>Año</b>', font=dict(size=14, color='#00B8D9')),
-            dtick=2, 
+            dtick=1, 
             range=[1994, 2021],
             tickfont=dict(size=11, color='#E3E8EF')
         ),
         yaxis=dict(
             showgrid=False, 
             showticklabels=False, 
-            range=[-4, 4],
+            range=[-5, 5],
             zeroline=False
         ),
         legend=dict(
             orientation='h', 
             yanchor='bottom', 
-            y=-0.25, 
+            y=-0.22, 
             xanchor='center', 
             x=0.5,
             bgcolor='rgba(19, 47, 76, 0.8)',
