@@ -949,18 +949,21 @@ if st.session_state.pagina == "Inicio":
         
         df_timeline = pd.DataFrame(timeline_data)
         
-        # ========== TIMELINE ESTILO PLOTLY (COMO LE GUSTÓ AL PROFESOR) ==========
+        # ========== TÍTULO PRINCIPAL ==========
         st.markdown("""
-        <div style='background:linear-gradient(135deg,rgba(0,184,217,0.15),rgba(0,82,204,0.10));padding:1.5rem;border-radius:12px;border:2px solid rgba(0,184,217,0.3);margin:2rem 0 1rem 0;text-align:center'>
-            <h3 style='color:#00B8D9;margin:0 0 0.3rem 0;font-size:1.3rem'>📅 Evolución del Marco Normativo Peruano</h3>
-            <p style='color:#B2BAC2;margin:0;font-size:0.95rem'>Recorrido histórico de las principales normativas de calidad del aire</p>
+        <div style='text-align:center;margin:3rem 0 2rem 0'>
+            <h1 style='font-size:2.8rem;font-weight:800;background:linear-gradient(135deg,#00B8D9,#0065FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 0.5rem 0;letter-spacing:-0.02em'>
+                📜 Línea de Tiempo de Normativas Ambientales
+            </h1>
+            <p style='color:#B2BAC2;font-size:1.15rem;margin:0;font-weight:400'>
+                Evolución histórica del marco regulatorio de calidad del aire en el Perú
+            </p>
         </div>
         """, unsafe_allow_html=True)
         
-        # Crear el gráfico de timeline con Plotly
+        # Crear gráfico moderno y mejorado con mejor diseño
         fig_timeline = go.Figure()
         
-        categorias = df_timeline['categoria'].unique()
         colores_cat = {
             'ECA': '#00C853',
             'LMP': '#FF6F00',
@@ -969,63 +972,133 @@ if st.session_state.pagina == "Inicio":
             'Marco Legal': '#D32F2F'
         }
         
-        for i, cat in enumerate(categorias):
-            df_cat = df_timeline[df_timeline['categoria'] == cat]
+        # Línea base horizontal con gradiente mejorado
+        fig_timeline.add_trace(go.Scatter(
+            x=[1995, 2020],
+            y=[0, 0],
+            mode='lines',
+            line=dict(color='rgba(0, 184, 217, 0.6)', width=4),
+            showlegend=False,
+            hoverinfo='skip'
+        ))
+        
+        # Agregar cada normativa con mejor diseño
+        categorias_mostradas = set()
+        
+        for idx, row in df_timeline.iterrows():
+            # Alternar posiciones para evitar superposición
+            y_pos = 2.0 if idx % 2 == 0 else -2.0
+            color = colores_cat[row['categoria']]
+            mostrar_leyenda = row['categoria'] not in categorias_mostradas
+            
+            if mostrar_leyenda:
+                categorias_mostradas.add(row['categoria'])
+            
+            # Línea conectora más elegante
+            fig_timeline.add_trace(go.Scatter(
+                x=[row['año'], row['año']],
+                y=[0, y_pos * 0.85],
+                mode='lines',
+                line=dict(color=color, width=3, dash='dot'),
+                showlegend=False,
+                hoverinfo='skip',
+                opacity=0.7
+            ))
+            
+            # Punto en la base más grande y con sombra
+            fig_timeline.add_trace(go.Scatter(
+                x=[row['año']],
+                y=[0],
+                mode='markers',
+                marker=dict(
+                    size=18, 
+                    color=color, 
+                    line=dict(color='white', width=3),
+                    opacity=1
+                ),
+                showlegend=False,
+                hoverinfo='skip'
+            ))
+            
+            # Marcador superior mejorado con más información
+            simbolos = {
+                'ECA': 'star',
+                'LMP': 'diamond',
+                'Protocolo': 'circle',
+                'Lineamiento': 'square',
+                'Marco Legal': 'hexagon'
+            }
             
             fig_timeline.add_trace(go.Scatter(
-                x=df_cat['año'],
-                y=[i] * len(df_cat),
+                x=[row['año']],
+                y=[y_pos],
                 mode='markers+text',
-                name=cat,
                 marker=dict(
-                    size=20,
-                    color=colores_cat[cat],
-                    symbol='diamond',
-                    line=dict(color='white', width=2)
+                    size=30, 
+                    color=color, 
+                    symbol=simbolos.get(row['categoria'], 'square'),
+                    line=dict(color='white', width=3),
+                    opacity=0.95
                 ),
-                text=df_cat['año'],
-                textposition='top center',
-                textfont=dict(size=10, color='white'),
-                hovertemplate='<b>%{customdata[0]}</b><br>' +
-                              '%{customdata[1]}<br>' +
-                              '<i>Año: %{x}</i><extra></extra>',
-                customdata=df_cat[['titulo', 'descripcion']].values
+                text=str(row['año']),
+                textposition='middle center',
+                textfont=dict(color='white', size=11, family='Inter'),
+                name=row['categoria'],
+                legendgroup=row['categoria'],
+                showlegend=mostrar_leyenda,
+                hovertemplate=(
+                    '<b style="font-size:14px">%s</b><br><br>'
+                    '<b>📋 Descripción:</b> %s<br>'
+                    '<b>📅 Año:</b> %d<br>'
+                    '<b>🏷️ Categoría:</b> %s<br>'
+                    '<extra></extra>'
+                ) % (row['titulo'], row['descripcion'], row['año'], row['categoria'])
             ))
         
+        # Layout mejorado con mejor espaciado y diseño
         fig_timeline.update_layout(
-            height=450,
+            height=600,
             showlegend=True,
-            plot_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(10, 25, 41, 0.3)',
             paper_bgcolor='rgba(0,0,0,0)',
-            font=dict(color='#E3E8EF', size=12, family='Inter'),
+            font=dict(color='#E3E8EF', family='Inter', size=12),
             xaxis=dict(
-                showgrid=True,
-                gridcolor='rgba(255,255,255,0.1)',
-                title='Año',
-                dtick=2,
-                range=[1995, 2020]
+                showgrid=True, 
+                gridcolor='rgba(255,255,255,0.08)', 
+                title='<b>Año</b>', 
+                titlefont=dict(size=14, color='#00B8D9'),
+                dtick=2, 
+                range=[1994, 2021],
+                tickfont=dict(size=11, color='#E3E8EF')
             ),
             yaxis=dict(
-                showgrid=False,
-                showticklabels=False,
-                title=''
+                showgrid=False, 
+                showticklabels=False, 
+                range=[-3, 3], 
+                zeroline=False
             ),
             legend=dict(
-                orientation="h",
-                yanchor="bottom",
-                y=-0.2,
-                xanchor="center",
+                orientation='h', 
+                yanchor='bottom', 
+                y=-0.25, 
+                xanchor='center', 
                 x=0.5,
                 bgcolor='rgba(19, 47, 76, 0.8)',
-                bordercolor='rgba(255,255,255,0.1)',
-                borderwidth=1
+                bordercolor='rgba(255, 255, 255, 0.2)',
+                borderwidth=1,
+                font=dict(size=11, color='#E3E8EF')
             ),
             hovermode='closest',
-            margin=dict(l=50, r=50, t=30, b=80)
+            margin=dict(l=50, r=50, t=50, b=120),
+            hoverlabel=dict(
+                bgcolor='rgba(19, 47, 76, 0.95)',
+                font_size=12,
+                font_family='Inter',
+                bordercolor='rgba(0, 184, 217, 0.5)'
+            )
         )
         
         st.plotly_chart(fig_timeline, use_container_width=True)
-        # ========== FIN TIMELINE ==========
         
         st.markdown("""
         <div class='corporate-card' style='margin-top: 2rem;'>
