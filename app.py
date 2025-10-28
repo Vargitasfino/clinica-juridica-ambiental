@@ -1359,6 +1359,14 @@ if st.session_state.pagina == "Inicio":
         # Alternar simplemente entre arriba y abajo con altura uniforme
         y_pos = 3.5 if idx % 2 == 0 else -3.5
         
+        # Detectar años consecutivos y agregar un pequeño offset horizontal
+        x_offset = 0
+        if idx > 0:
+            año_anterior = df_timeline.iloc[idx-1]['año']
+            if abs(año - año_anterior) == 1:
+                # Si son años consecutivos, desplazar ligeramente
+                x_offset = 0.15 if idx % 2 == 0 else -0.15
+        
         color = colores_cat[row['categoria']]
         mostrar_leyenda = row['categoria'] not in categorias_mostradas
         
@@ -1367,7 +1375,7 @@ if st.session_state.pagina == "Inicio":
         
         # Línea conectora más elegante con mejor grosor
         fig_timeline.add_trace(go.Scatter(
-            x=[row['año'], row['año']],
+            x=[row['año'] + x_offset, row['año'] + x_offset],
             y=[0, y_pos * 0.80],
             mode='lines',
             line=dict(color=color, width=3, dash='dot'),
@@ -1403,7 +1411,7 @@ if st.session_state.pagina == "Inicio":
         size_marker = 45 if row['categoria'] == 'LMP' else 38
         
         fig_timeline.add_trace(go.Scatter(
-            x=[row['año']],
+            x=[row['año'] + x_offset],
             y=[y_pos],
             mode='markers+text',
             marker=dict(
