@@ -949,37 +949,82 @@ if st.session_state.pagina == "Inicio":
         
         df_timeline = pd.DataFrame(timeline_data)
         
-        # ========== TIMELINE SIMPLE Y CLARO ==========
+        # ========== TIMELINE ESTILO PLOTLY (COMO LE GUSTÓ AL PROFESOR) ==========
         st.markdown("""
-        <div style='background:linear-gradient(135deg,rgba(0,184,217,0.15),rgba(0,82,204,0.10));padding:1.5rem;border-radius:12px;border:2px solid rgba(0,184,217,0.3);margin:2rem 0;text-align:center'>
-            <h3 style='color:#00B8D9;margin:0 0 0.5rem 0;font-size:1.3rem'>📅 Evolución del Marco Normativo Peruano</h3>
-            <p style='color:#B2BAC2;margin:0;font-size:1rem'>👉 Arrastra horizontalmente para ver todos los eventos →</p>
+        <div style='background:linear-gradient(135deg,rgba(0,184,217,0.15),rgba(0,82,204,0.10));padding:1.5rem;border-radius:12px;border:2px solid rgba(0,184,217,0.3);margin:2rem 0 1rem 0;text-align:center'>
+            <h3 style='color:#00B8D9;margin:0 0 0.3rem 0;font-size:1.3rem'>📅 Evolución del Marco Normativo Peruano</h3>
+            <p style='color:#B2BAC2;margin:0;font-size:0.95rem'>Recorrido histórico de las principales normativas de calidad del aire</p>
         </div>
         """, unsafe_allow_html=True)
         
-        # HTML simple inline
-        timeline_html = "<div style='width:100%;overflow-x:auto;padding:2.5rem 1rem;background:linear-gradient(135deg,rgba(10,25,41,0.3),rgba(19,47,76,0.2));border-radius:15px;margin:1rem 0'><div style='display:flex;gap:2rem;min-width:max-content;padding:0 1rem'>"
+        # Crear el gráfico de timeline con Plotly
+        fig_timeline = go.Figure()
         
-        cats = {'ECA':{'c':'#00C853','i':'⭐'},'LMP':{'c':'#FF6F00','i':'🏭'},'Protocolo':{'c':'#8E24AA','i':'📋'},'Lineamiento':{'c':'#0091EA','i':'📐'},'Marco Legal':{'c':'#D32F2F','i':'⚖️'}}
+        categorias = df_timeline['categoria'].unique()
+        colores_cat = {
+            'ECA': '#00C853',
+            'LMP': '#FF6F00',
+            'Protocolo': '#8E24AA',
+            'Lineamiento': '#0091EA',
+            'Marco Legal': '#D32F2F'
+        }
         
-        for _, row in df_timeline.iterrows():
-            ct = cats[row['categoria']]
-            timeline_html += f"""<div style='min-width:300px;background:rgba(19,47,76,0.85);border-radius:14px;padding:1.8rem;border:2px solid {ct['c']}50;position:relative;transition:transform 0.3s'>
-<div style='position:absolute;top:-15px;right:15px;background:{ct['c']};width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 10px {ct['c']}80'>{ct['i']}</div>
-<div style='font-size:2.8rem;font-weight:900;color:{ct['c']};margin-bottom:0.7rem;text-shadow:0 2px 10px {ct['c']}50'>{row['año']}</div>
-<div style='display:inline-block;padding:0.4rem 1rem;background:{ct['c']}25;color:{ct['c']};border-radius:15px;font-size:0.75rem;font-weight:700;margin-bottom:1.2rem;border:1px solid {ct['c']}'>{row['categoria']}</div>
-<div style='color:#FFF;font-weight:600;font-size:1rem;margin-bottom:0.9rem;line-height:1.4'>{row['titulo']}</div>
-<div style='color:#B2BAC2;font-size:0.9rem;line-height:1.6'>{row['descripcion']}</div>
-</div>"""
+        for i, cat in enumerate(categorias):
+            df_cat = df_timeline[df_timeline['categoria'] == cat]
+            
+            fig_timeline.add_trace(go.Scatter(
+                x=df_cat['año'],
+                y=[i] * len(df_cat),
+                mode='markers+text',
+                name=cat,
+                marker=dict(
+                    size=20,
+                    color=colores_cat[cat],
+                    symbol='diamond',
+                    line=dict(color='white', width=2)
+                ),
+                text=df_cat['año'],
+                textposition='top center',
+                textfont=dict(size=10, color='white'),
+                hovertemplate='<b>%{customdata[0]}</b><br>' +
+                              '%{customdata[1]}<br>' +
+                              '<i>Año: %{x}</i><extra></extra>',
+                customdata=df_cat[['titulo', 'descripcion']].values
+            ))
         
-        timeline_html += "</div></div>"
-        st.markdown(timeline_html, unsafe_allow_html=True)
+        fig_timeline.update_layout(
+            height=450,
+            showlegend=True,
+            plot_bgcolor='rgba(0,0,0,0)',
+            paper_bgcolor='rgba(0,0,0,0)',
+            font=dict(color='#E3E8EF', size=12, family='Inter'),
+            xaxis=dict(
+                showgrid=True,
+                gridcolor='rgba(255,255,255,0.1)',
+                title='Año',
+                dtick=2,
+                range=[1995, 2020]
+            ),
+            yaxis=dict(
+                showgrid=False,
+                showticklabels=False,
+                title=''
+            ),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=-0.2,
+                xanchor="center",
+                x=0.5,
+                bgcolor='rgba(19, 47, 76, 0.8)',
+                bordercolor='rgba(255,255,255,0.1)',
+                borderwidth=1
+            ),
+            hovermode='closest',
+            margin=dict(l=50, r=50, t=30, b=80)
+        )
         
-        st.markdown("""
-        <div style='text-align:center;margin-top:1rem;padding:0.8rem;background:rgba(0,184,217,0.05);border-radius:10px'>
-            <p style='color:#00B8D9;font-size:0.9rem;margin:0'>💻 Click y arrastra  |  📱 Desliza con el dedo</p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.plotly_chart(fig_timeline, use_container_width=True)
         # ========== FIN TIMELINE ==========
         
         st.markdown("""
