@@ -1053,8 +1053,10 @@ if st.session_state.pagina == "Inicio":
             xaxis=dict(
                 showgrid=True, 
                 gridcolor='rgba(255,255,255,0.08)', 
-                title='<b>Año</b>', 
-                titlefont=dict(size=14, color='#00B8D9'),
+                title=dict(
+                    text='<b>Año</b>',
+                    font=dict(size=14, color='#00B8D9')
+                ),
                 dtick=2, 
                 range=[1994, 2021],
                 tickfont=dict(size=11, color='#E3E8EF')
@@ -1080,8 +1082,7 @@ if st.session_state.pagina == "Inicio":
             margin=dict(l=50, r=50, t=50, b=120),
             hoverlabel=dict(
                 bgcolor='rgba(19, 47, 76, 0.95)',
-                font_size=12,
-                font_family='Inter',
+                font=dict(size=12, family='Inter'),
                 bordercolor='rgba(0, 184, 217, 0.5)'
             )
         )
