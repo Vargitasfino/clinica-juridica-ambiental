@@ -1651,7 +1651,8 @@ if st.session_state.pagina == "Inicio":
             x=1,
             bgcolor='rgba(19, 47, 76, 0.8)',
             bordercolor='rgba(255,255,255,0.1)',
-            borderwidth=1
+            borderwidth=1,
+            font=dict(size=12, color='#FFFFFF', family='Inter')  # Texto blanco en la leyenda
         ),
         margin=dict(t=40, b=60, l=60, r=40)
     )
@@ -2211,7 +2212,8 @@ elif st.session_state.pagina == "LMP":
             x=1,
             bgcolor='rgba(19, 47, 76, 0.8)',
             bordercolor='rgba(255,255,255,0.1)',
-            borderwidth=1
+            borderwidth=1,
+            font=dict(size=12, color='#FFFFFF', family='Inter')
         )
     )
     
@@ -2909,7 +2911,8 @@ elif st.session_state.pagina == "Medidas":
             x=1,
             bgcolor='rgba(19, 47, 76, 0.8)',
             bordercolor='rgba(255,255,255,0.1)',
-            borderwidth=1
+            borderwidth=1,
+            font=dict(size=12, color='#FFFFFF', family='Inter')
         )
     )
     
@@ -3344,7 +3347,8 @@ elif st.session_state.pagina == "Normativas":
                 x=1,
                 bgcolor='rgba(19, 47, 76, 0.8)',
                 bordercolor='rgba(255,255,255,0.1)',
-                borderwidth=1
+                borderwidth=1,
+                font=dict(size=12, color='#FFFFFF', family='Inter')
             )
         )
         
