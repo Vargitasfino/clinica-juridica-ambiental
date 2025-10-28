@@ -916,19 +916,7 @@ if st.session_state.pagina == "Inicio":
     </div>
     """, unsafe_allow_html=True)
     
-    # ========== 2. MÉTRICAS PRINCIPALES ==========
-    col1, col2, col3, col4 = st.columns(4)
-    
-    with col1:
-        st.metric("📋 Normativas", "18+", help="Total de normativas nacionales")
-    with col2:
-        st.metric("🌍 Países", "4", help="Comparativas internacionales")
-    with col3:
-        st.metric("🔬 Contaminantes", "8", help="Parámetros regulados")
-    with col4:
-        st.metric("📈 Última Act.", "2024", help="Actualización más reciente")
-    
-    st.markdown("<br>", unsafe_allow_html=True)
+
     
     # ========== 3. ACCESO RÁPIDO - CATEGORÍAS DEL SISTEMA ==========
     st.markdown("""
