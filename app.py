@@ -949,86 +949,38 @@ if st.session_state.pagina == "Inicio":
         
         df_timeline = pd.DataFrame(timeline_data)
         
-        
-        # ========== TIMELINE HORIZONTAL SIMPLE (SIN JAVASCRIPT) ==========
-        
+        # ========== TIMELINE SIMPLE Y CLARO ==========
         st.markdown("""
-        <div style='text-align:center;margin:1rem 0;padding:1rem;background:rgba(0,184,217,0.1);border-radius:10px;border:2px solid rgba(0,184,217,0.3)'>
-            <p style='color:#00B8D9;font-size:1.1rem;margin:0;font-weight:600'>
-                ⬅️ ARRASTRA AQUÍ ABAJO PARA VER MÁS EVENTOS ➡️
-            </p>
+        <div style='background:linear-gradient(135deg,rgba(0,184,217,0.15),rgba(0,82,204,0.10));padding:1.5rem;border-radius:12px;border:2px solid rgba(0,184,217,0.3);margin:2rem 0;text-align:center'>
+            <h3 style='color:#00B8D9;margin:0 0 0.5rem 0;font-size:1.3rem'>📅 Evolución del Marco Normativo Peruano</h3>
+            <p style='color:#B2BAC2;margin:0;font-size:1rem'>👉 Arrastra horizontalmente para ver todos los eventos →</p>
         </div>
         """, unsafe_allow_html=True)
         
-        timeline_html = """<style>
-.tl-wrapper{width:100%;padding:1rem 0;margin:2rem 0}
-.tl-scroll{width:100%;overflow-x:scroll !important;overflow-y:hidden;padding:4rem 2rem 4rem 2rem;background:linear-gradient(135deg,rgba(10,25,41,0.4),rgba(19,47,76,0.3));border-radius:20px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;position:relative}
-.tl-scroll::-webkit-scrollbar{height:30px !important;background:#000000 !important;border-radius:15px !important}
-.tl-scroll::-webkit-scrollbar-track{background:#1a1a1a !important;border-radius:15px !important;border:2px solid #000000 !important}
-.tl-scroll::-webkit-scrollbar-thumb{background:#FFFFFF !important;border-radius:12px !important;border:4px solid #FFFFFF !important;box-shadow:0 0 30px #FFFFFF !important,0 0 50px #FFFFFF !important,0 0 70px rgba(255,255,255,0.8) !important;min-width:100px !important}
-.tl-scroll::-webkit-scrollbar-thumb:hover{background:#FFFFFF !important;box-shadow:0 0 50px #FFFFFF !important,0 0 80px #FFFFFF !important;cursor:grab !important}
-.tl-scroll::-webkit-scrollbar-thumb:active{cursor:grabbing !important}
-.scroll-indicator{position:absolute;bottom:35px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.95);color:#0052CC;padding:0.5rem 2rem;border-radius:25px;font-weight:700;font-size:0.9rem;box-shadow:0 4px 15px rgba(255,255,255,0.5);animation:bounce-hint 2s infinite;z-index:100;pointer-events:none}
-@keyframes bounce-hint{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
-.tl-container{display:inline-flex;flex-direction:row;gap:0;position:relative;min-width:max-content}
-.tl-track{position:absolute;top:50%;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent 2%,#00B8D9 50%,transparent 98%);transform:translateY(-50%);z-index:1;box-shadow:0 0 10px rgba(0,184,217,0.4)}
-.tl-item{display:inline-flex;flex-direction:column;align-items:center;padding:0 1.5rem;z-index:2;min-width:260px}
-.tl-card{width:230px;background:rgba(19,47,76,0.9);backdrop-filter:blur(15px);border-radius:16px;padding:1.5rem;margin-bottom:2.5rem;border:1px solid rgba(255,255,255,0.1);box-shadow:0 10px 30px rgba(0,0,0,0.4);transition:all 0.4s cubic-bezier(0.4,0,0.2,1);cursor:pointer;position:relative}
-.tl-card:hover{transform:translateY(-12px);box-shadow:0 20px 50px rgba(0,82,204,0.6);border-color:rgba(0,184,217,0.5)}
-.tl-icon{position:absolute;top:-14px;right:14px;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;border:1px solid rgba(255,255,255,0.15);transition:all 0.3s}
-.tl-card:hover .tl-icon{transform:scale(1.15) rotate(5deg)}
-.tl-year{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,#00B8D9,#0065FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 0.6rem 0;line-height:1}
-.tl-badge{display:inline-block;padding:0.4rem 1rem;border-radius:18px;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.9rem;border:1px solid}
-.tl-title{color:#FFF;font-size:0.92rem;font-weight:600;margin:0 0 0.7rem 0;line-height:1.4}
-.tl-desc{color:#B2BAC2;font-size:0.82rem;line-height:1.6;margin:0}
-.tl-connector{width:2px;height:2.5rem;opacity:0.4;margin-bottom:0.5rem}
-.tl-dot{width:22px;height:22px;border-radius:50%;border:4px solid rgba(10,25,41,1);transition:all 0.3s;box-shadow:0 0 0 0 transparent}
-.tl-item:hover .tl-dot{transform:scale(1.4);box-shadow:0 0 20px currentColor}
-</style>
-<div class='tl-wrapper'>
-<div class='tl-scroll'>
-<div class='scroll-indicator'>⬅️ Arrastra aquí ➡️</div>
-<div class='tl-track'></div>
-<div class='tl-container'>"""
+        # HTML simple inline
+        timeline_html = "<div style='width:100%;overflow-x:auto;padding:2.5rem 1rem;background:linear-gradient(135deg,rgba(10,25,41,0.3),rgba(19,47,76,0.2));border-radius:15px;margin:1rem 0'><div style='display:flex;gap:2rem;min-width:max-content;padding:0 1rem'>"
         
-        cats = {
-            'ECA': {'icon': '⭐', 'color': '#00C853'},
-            'LMP': {'icon': '🏭', 'color': '#FF6F00'},
-            'Protocolo': {'icon': '📋', 'color': '#8E24AA'},
-            'Lineamiento': {'icon': '📐', 'color': '#0091EA'},
-            'Marco Legal': {'icon': '⚖️', 'color': '#D32F2F'}
-        }
+        cats = {'ECA':{'c':'#00C853','i':'⭐'},'LMP':{'c':'#FF6F00','i':'🏭'},'Protocolo':{'c':'#8E24AA','i':'📋'},'Lineamiento':{'c':'#0091EA','i':'📐'},'Marco Legal':{'c':'#D32F2F','i':'⚖️'}}
         
-        for idx, row in df_timeline.iterrows():
-            c = cats[row['categoria']]
-            timeline_html += f"""
-<div class='tl-item'>
-<div class='tl-card'>
-<div class='tl-icon' style='background:{c["color"]}15;color:{c["color"]}'>{c["icon"]}</div>
-<div class='tl-year'>{row['año']}</div>
-<span class='tl-badge' style='color:{c["color"]};border-color:{c["color"]};background:{c["color"]}12'>{row['categoria']}</span>
-<h4 class='tl-title'>{row['titulo']}</h4>
-<p class='tl-desc'>{row['descripcion']}</p>
-</div>
-<div class='tl-connector' style='background:linear-gradient(180deg,{c["color"]},transparent)'></div>
-<div class='tl-dot' style='background:{c["color"]};box-shadow:0 0 15px {c["color"]}90'></div>
+        for _, row in df_timeline.iterrows():
+            ct = cats[row['categoria']]
+            timeline_html += f"""<div style='min-width:300px;background:rgba(19,47,76,0.85);border-radius:14px;padding:1.8rem;border:2px solid {ct['c']}50;position:relative;transition:transform 0.3s'>
+<div style='position:absolute;top:-15px;right:15px;background:{ct['c']};width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 10px {ct['c']}80'>{ct['i']}</div>
+<div style='font-size:2.8rem;font-weight:900;color:{ct['c']};margin-bottom:0.7rem;text-shadow:0 2px 10px {ct['c']}50'>{row['año']}</div>
+<div style='display:inline-block;padding:0.4rem 1rem;background:{ct['c']}25;color:{ct['c']};border-radius:15px;font-size:0.75rem;font-weight:700;margin-bottom:1.2rem;border:1px solid {ct['c']}'>{row['categoria']}</div>
+<div style='color:#FFF;font-weight:600;font-size:1rem;margin-bottom:0.9rem;line-height:1.4'>{row['titulo']}</div>
+<div style='color:#B2BAC2;font-size:0.9rem;line-height:1.6'>{row['descripcion']}</div>
 </div>"""
         
-        timeline_html += """
-</div></div></div>"""
-        
+        timeline_html += "</div></div>"
         st.markdown(timeline_html, unsafe_allow_html=True)
         
         st.markdown("""
-        <div style='text-align:center;margin-top:1.5rem'>
-            <p style='color:#B2BAC2;font-size:0.9rem'>
-                💻 En computadora: Click y arrastra | 📱 En móvil: Desliza con el dedo
-            </p>
+        <div style='text-align:center;margin-top:1rem;padding:0.8rem;background:rgba(0,184,217,0.05);border-radius:10px'>
+            <p style='color:#00B8D9;font-size:0.9rem;margin:0'>💻 Click y arrastra  |  📱 Desliza con el dedo</p>
         </div>
         """, unsafe_allow_html=True)
-        
         # ========== FIN TIMELINE ==========
-        
         
         st.markdown("""
         <div class='corporate-card' style='margin-top: 2rem;'>
