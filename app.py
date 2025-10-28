@@ -1363,14 +1363,14 @@ if st.session_state.pagina == "Inicio":
             # Si los años están muy cerca (diferencia de 1-2 años)
             if abs(año - año_anterior) <= 2:
                 # Alternar más agresivamente y con mayor separación
-                y_pos = -años_usados.get(año_anterior, 4.0)
+                y_pos = -años_usados.get(año_anterior, 3.5)
                 # Si hay múltiples años consecutivos, incrementar la posición
                 if abs(año - año_anterior) == 1:
                     y_pos = y_pos * 1.1  # Aumentar 10% más la separación
             else:
-                y_pos = 4.0 if idx % 2 == 0 else -4.0
+                y_pos = 3.5 if idx % 2 == 0 else -3.5
         else:
-            y_pos = 4.0
+            y_pos = 3.5
         
         años_usados[año] = y_pos
         
@@ -1445,7 +1445,7 @@ if st.session_state.pagina == "Inicio":
     
     # Layout mejorado con mejor espaciado y diseño
     fig_timeline.update_layout(
-        height=750,
+        height=650,
         showlegend=True,
         plot_bgcolor='rgba(10, 25, 41, 0.3)',
         paper_bgcolor='rgba(0,0,0,0)',
@@ -1461,13 +1461,13 @@ if st.session_state.pagina == "Inicio":
         yaxis=dict(
             showgrid=False, 
             showticklabels=False, 
-            range=[-5, 5],
+            range=[-4.5, 4.5],
             zeroline=False
         ),
         legend=dict(
             orientation='h', 
             yanchor='bottom', 
-            y=-0.22, 
+            y=-0.20, 
             xanchor='center', 
             x=0.5,
             bgcolor='rgba(19, 47, 76, 0.8)',
@@ -1476,7 +1476,7 @@ if st.session_state.pagina == "Inicio":
             font=dict(size=11, color='#E3E8EF')
         ),
         hovermode='closest',
-        margin=dict(l=50, r=50, t=50, b=120),
+        margin=dict(l=50, r=50, t=40, b=110),
         hoverlabel=dict(
             bgcolor='rgba(19, 47, 76, 0.95)',
             font_size=12,
