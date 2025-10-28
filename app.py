@@ -1350,29 +1350,14 @@ if st.session_state.pagina == "Inicio":
         hoverinfo='skip'
     ))
     
-    # Agregar cada normativa con mejor diseño y anti-colisión mejorado
+    # Agregar cada normativa con posicionamiento simple y uniforme
     categorias_mostradas = set()
-    años_usados = {}
     
     for idx, row in df_timeline.iterrows():
         año = row['año']
         
-        # Sistema inteligente de posicionamiento mejorado para evitar colisiones
-        if idx > 0:
-            año_anterior = df_timeline.iloc[idx-1]['año']
-            # Si los años están muy cerca (diferencia de 1-2 años)
-            if abs(año - año_anterior) <= 2:
-                # Alternar más agresivamente y con mayor separación
-                y_pos = -años_usados.get(año_anterior, 3.5)
-                # Si hay múltiples años consecutivos, incrementar la posición
-                if abs(año - año_anterior) == 1:
-                    y_pos = y_pos * 1.1  # Aumentar 10% más la separación
-            else:
-                y_pos = 3.5 if idx % 2 == 0 else -3.5
-        else:
-            y_pos = 3.5
-        
-        años_usados[año] = y_pos
+        # Alternar simplemente entre arriba y abajo con altura uniforme
+        y_pos = 3.5 if idx % 2 == 0 else -3.5
         
         color = colores_cat[row['categoria']]
         mostrar_leyenda = row['categoria'] not in categorias_mostradas
