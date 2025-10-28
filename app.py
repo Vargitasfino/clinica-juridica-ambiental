@@ -2492,53 +2492,68 @@ elif st.session_state.pagina == "Normativas":
     st.plotly_chart(fig_comp, use_container_width=True)
 
 # Footer
-st.markdown("""
-<div class='corporate-footer'>
-    <div style='display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; text-align: left; margin-bottom: 2rem;'>
-        <div>
-            <h3 style='color: #00B8D9; margin-bottom: 1rem; font-size: 1.3rem;'>🌍 Marco Normativo</h3>
-            <p style='font-size: 0.95rem; line-height: 1.7;'>
-                Sistema integral de consulta de normativas ambientales para la gestión 
-                y control de la calidad del aire en el Perú.
-            </p>
-        </div>
-        
-        <div>
-            <h3 style='color: #00B8D9; margin-bottom: 1rem; font-size: 1.3rem;'>🎓 Institución</h3>
-            <p style='font-size: 0.95rem; line-height: 1.7; margin: 0.3rem 0;'>
-                <strong>Universidad Nacional de Moquegua</strong>
-            </p>
-            <p style='font-size: 0.9rem; line-height: 1.7; margin: 0.3rem 0;'>
-                Facultad de Ingeniería y Arquitectura
-            </p>
-            <p style='font-size: 0.9rem; line-height: 1.7; margin: 0.3rem 0;'>
-                Escuela Profesional de Ingeniería Ambiental
-            </p>
-        </div>
-        
-        <div>
-            <h3 style='color: #00B8D9; margin-bottom: 1rem; font-size: 1.3rem;'>👨‍🏫 Docente</h3>
-            <p style='font-size: 0.95rem; line-height: 1.7; margin: 0.3rem 0;'>
-                <strong>Prof. Dr. José Antonio Valeriano Zapana</strong>
-            </p>
-            <p style='font-size: 0.9rem; line-height: 1.7; margin: 0.3rem 0;'>
-                📧 contacto@unam.edu.pe
-            </p>
-            <p style='font-size: 0.9rem; line-height: 1.7; margin: 0.3rem 0;'>
-                📱 +51 961 854 041
-            </p>
-        </div>
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("---")
+
+col_f1, col_f2, col_f3 = st.columns(3)
+
+with col_f1:
+    st.markdown("""
+    <div style='text-align: left;'>
+        <h3 style='color: #00B8D9; font-size: 1.2rem; margin-bottom: 1rem;'>🌍 Marco Normativo</h3>
+        <p style='font-size: 0.9rem; color: rgba(255,255,255,0.9);'>
+            Sistema integral de consulta de normativas ambientales para 
+            la gestión y control de la calidad del aire en el Perú.
+        </p>
     </div>
-    
-    <div style='border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 1.5rem; margin-top: 1.5rem;'>
-        <div style='display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;'>
-            <p style='margin: 0; font-size: 0.9rem; color: rgba(255, 255, 255, 0.8);'>
-                © 2024 UNAM - Todos los derechos reservados
-            </p>
-            <p style='margin: 0; font-size: 0.9rem; color: rgba(255, 255, 255, 0.8);'>
-                📅 Última actualización: Octubre 2024
-            </p>
-        </div>
+    """, unsafe_allow_html=True)
+
+with col_f2:
+    st.markdown("""
+    <div style='text-align: left;'>
+        <h3 style='color: #00B8D9; font-size: 1.2rem; margin-bottom: 1rem;'>🎓 Institución</h3>
+        <p style='font-size: 0.9rem; color: rgba(255,255,255,0.9); margin: 0.2rem 0;'>
+            <strong>Universidad Nacional de Moquegua</strong>
+        </p>
+        <p style='font-size: 0.85rem; color: rgba(255,255,255,0.8); margin: 0.2rem 0;'>
+            Facultad de Ingeniería y Arquitectura
+        </p>
+        <p style='font-size: 0.85rem; color: rgba(255,255,255,0.8); margin: 0.2rem 0;'>
+            Escuela Profesional de Ingeniería Ambiental
+        </p>
     </div>
-</div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+
+with col_f3:
+    st.markdown("""
+    <div style='text-align: left;'>
+        <h3 style='color: #00B8D9; font-size: 1.2rem; margin-bottom: 1rem;'>👨‍🏫 Docente</h3>
+        <p style='font-size: 0.9rem; color: rgba(255,255,255,0.9); margin: 0.2rem 0;'>
+            <strong>Prof. Dr. José Antonio Valeriano Zapana</strong>
+        </p>
+        <p style='font-size: 0.85rem; color: rgba(255,255,255,0.8); margin: 0.2rem 0;'>
+            📧 contacto@unam.edu.pe
+        </p>
+        <p style='font-size: 0.85rem; color: rgba(255,255,255,0.8); margin: 0.2rem 0;'>
+            📱 +51 961 854 041
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("---")
+
+col_copy1, col_copy2 = st.columns(2)
+with col_copy1:
+    st.markdown("""
+    <p style='text-align: left; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin: 0;'>
+        © 2024 UNAM - Todos los derechos reservados
+    </p>
+    """, unsafe_allow_html=True)
+
+with col_copy2:
+    st.markdown("""
+    <p style='text-align: right; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin: 0;'>
+        📅 Última actualización: Octubre 2024
+    </p>
+    """, unsafe_allow_html=True)
