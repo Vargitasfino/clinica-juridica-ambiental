@@ -949,350 +949,42 @@ if st.session_state.pagina == "Inicio":
         
         df_timeline = pd.DataFrame(timeline_data)
         
-        # TIMELINE HORIZONTAL ULTRA MODERNA
-        st.markdown("""
-        <style>
-        /* Contenedor principal */
-        .horizontal-timeline-wrapper {
-            position: relative;
-            width: 100%;
-            overflow-x: auto;
-            overflow-y: visible;
-            padding: 4rem 2rem 2rem 2rem;
-            margin: 2rem 0;
-            background: linear-gradient(180deg, 
-                rgba(10, 25, 41, 0.3) 0%,
-                rgba(19, 47, 76, 0.2) 50%,
-                rgba(10, 25, 41, 0.3) 100%
-            );
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        
+        # ========== TIMELINE HORIZONTAL ==========
+        timeline_full_html = """<style>
+.tl-wrap{width:100%;overflow-x:auto;padding:4rem 2rem;background:linear-gradient(135deg,rgba(10,25,41,0.4),rgba(19,47,76,0.3));border-radius:20px;margin:2rem 0}
+.tl-wrap::-webkit-scrollbar{height:10px}
+.tl-wrap::-webkit-scrollbar-thumb{background:linear-gradient(90deg,#0052CC,#00B8D9);border-radius:10px}
+.tl-cont{display:inline-flex;flex-direction:row;gap:0;position:relative}
+.tl-line{position:absolute;top:50%;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,#00B8D9,transparent);transform:translateY(-50%);z-index:1}
+.tl-box{display:inline-flex;flex-direction:column;align-items:center;padding:0 1.5rem;z-index:2}
+.tl-card{width:220px;background:rgba(19,47,76,0.9);border-radius:16px;padding:1.5rem;margin-bottom:2rem;border:1px solid rgba(255,255,255,0.1);box-shadow:0 10px 30px rgba(0,0,0,0.4);transition:all 0.3s;cursor:pointer;position:relative}
+.tl-card:hover{transform:translateY(-10px);box-shadow:0 15px 45px rgba(0,82,204,0.5)}
+.tl-ico{position:absolute;top:-12px;right:12px;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.tl-yr{font-size:2rem;font-weight:800;background:linear-gradient(135deg,#00B8D9,#0065FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 0.5rem 0}
+.tl-bdg{display:inline-block;padding:0.35rem 0.9rem;border-radius:15px;font-size:0.65rem;font-weight:700;text-transform:uppercase;margin-bottom:0.8rem;border:1px solid}
+.tl-ttl{color:#FFF;font-size:0.9rem;font-weight:600;margin:0 0 0.6rem 0}
+.tl-dsc{color:#B2BAC2;font-size:0.8rem;margin:0}
+.tl-ln{width:2px;height:2rem;opacity:0.3}
+.tl-dot{width:20px;height:20px;border-radius:50%;border:4px solid rgba(10,25,41,1)}
+</style><div class='tl-wrap'><div class='tl-line'></div><div class='tl-cont'>"""
+        
+        cats = {
+            'ECA': {'icon': '⭐', 'color': '#00C853'},
+            'LMP': {'icon': '🏭', 'color': '#FF6F00'},
+            'Protocolo': {'icon': '📋', 'color': '#8E24AA'},
+            'Lineamiento': {'icon': '📐', 'color': '#0091EA'},
+            'Marco Legal': {'icon': '⚖️', 'color': '#D32F2F'}
         }
         
-        /* Scrollbar personalizado */
-        .horizontal-timeline-wrapper::-webkit-scrollbar {
-            height: 8px;
-        }
-        
-        .horizontal-timeline-wrapper::-webkit-scrollbar-track {
-            background: rgba(19, 47, 76, 0.5);
-            border-radius: 10px;
-        }
-        
-        .horizontal-timeline-wrapper::-webkit-scrollbar-thumb {
-            background: linear-gradient(90deg, #0052CC, #00B8D9);
-            border-radius: 10px;
-        }
-        
-        /* Contenedor interno */
-        .horizontal-timeline {
-            position: relative;
-            display: flex;
-            flex-direction: row;
-            gap: 0;
-            min-width: max-content;
-            padding: 2rem 0;
-        }
-        
-        /* Línea horizontal */
-        .timeline-track {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg,
-                transparent 0%,
-                rgba(0, 184, 217, 0.3) 5%,
-                rgba(0, 184, 217, 1) 50%,
-                rgba(0, 184, 217, 0.3) 95%,
-                transparent 100%
-            );
-            transform: translateY(-50%);
-            box-shadow: 0 0 20px rgba(0, 184, 217, 0.4);
-        }
-        
-        /* Punto en la línea */
-        .timeline-point {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 4px solid rgba(10, 25, 41, 1);
-            z-index: 5;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* Item del timeline */
-        .timeline-item {
-            position: relative;
-            width: 320px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            opacity: 0;
-            animation: slideInTimeline 0.8s ease-out forwards;
-        }
-        
-        @keyframes slideInTimeline {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Animación escalonada */
-        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
-        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
-        .timeline-item:nth-child(7) { animation-delay: 0.7s; }
-        .timeline-item:nth-child(8) { animation-delay: 0.8s; }
-        .timeline-item:nth-child(9) { animation-delay: 0.9s; }
-        .timeline-item:nth-child(10) { animation-delay: 1.0s; }
-        .timeline-item:nth-child(11) { animation-delay: 1.1s; }
-        .timeline-item:nth-child(12) { animation-delay: 1.2s; }
-        .timeline-item:nth-child(13) { animation-delay: 1.3s; }
-        
-        /* Card del evento - Diseño minimalista */
-        .timeline-card {
-            position: relative;
-            width: 280px;
-            background: rgba(19, 47, 76, 0.6);
-            backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-        
-        .timeline-card:hover {
-            transform: translateY(-12px);
-            background: rgba(19, 47, 76, 0.85);
-            border-color: rgba(0, 184, 217, 0.4);
-            box-shadow: 
-                0 20px 60px rgba(0, 82, 204, 0.4),
-                inset 0 1px 0 rgba(0, 184, 217, 0.2);
-        }
-        
-        .timeline-card:hover .timeline-point {
-            width: 28px;
-            height: 28px;
-            box-shadow: 0 0 30px currentColor;
-        }
-        
-        /* Año - Número grande */
-        .timeline-year {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #00B8D9, #0065FF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 0 0 0.5rem 0;
-            line-height: 1;
-            text-shadow: 0 4px 20px rgba(0, 184, 217, 0.3);
-        }
-        
-        /* Badge de categoría - Minimalista */
-        .timeline-badge {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            border: 1px solid currentColor;
-        }
-        
-        .badge-eca { color: #00C853; background: rgba(0, 200, 83, 0.1); }
-        .badge-lmp { color: #FF6F00; background: rgba(255, 111, 0, 0.1); }
-        .badge-protocolo { color: #8E24AA; background: rgba(142, 36, 170, 0.1); }
-        .badge-lineamiento { color: #0091EA; background: rgba(0, 145, 234, 0.1); }
-        .badge-legal { color: #D32F2F; background: rgba(211, 47, 47, 0.1); }
-        
-        /* Punto de color */
-        .point-eca { background: #00C853; box-shadow: 0 0 20px rgba(0, 200, 83, 0.6); }
-        .point-lmp { background: #FF6F00; box-shadow: 0 0 20px rgba(255, 111, 0, 0.6); }
-        .point-protocolo { background: #8E24AA; box-shadow: 0 0 20px rgba(142, 36, 170, 0.6); }
-        .point-lineamiento { background: #0091EA; box-shadow: 0 0 20px rgba(0, 145, 234, 0.6); }
-        .point-legal { background: #D32F2F; box-shadow: 0 0 20px rgba(211, 47, 47, 0.6); }
-        
-        /* Título - Limpio */
-        .timeline-title {
-            color: #FFFFFF;
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 0 0 0.8rem 0;
-            line-height: 1.4;
-        }
-        
-        /* Descripción - Sutil */
-        .timeline-desc {
-            color: #B2BAC2;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            margin: 0;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        /* Línea conectora vertical */
-        .timeline-connector {
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 3rem;
-            background: linear-gradient(180deg, transparent, currentColor);
-            opacity: 0.3;
-        }
-        
-        /* Icono minimalista */
-        .timeline-icon {
-            position: absolute;
-            top: -15px;
-            right: 15px;
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-card:hover .timeline-icon {
-            transform: scale(1.1) rotate(5deg);
-            border-color: currentColor;
-        }
-        
-        .icon-eca { background: rgba(0, 200, 83, 0.15); color: #00C853; }
-        .icon-lmp { background: rgba(255, 111, 0, 0.15); color: #FF6F00; }
-        .icon-protocolo { background: rgba(142, 36, 170, 0.15); color: #8E24AA; }
-        .icon-lineamiento { background: rgba(0, 145, 234, 0.15); color: #0091EA; }
-        .icon-legal { background: rgba(211, 47, 47, 0.15); color: #D32F2F; }
-        
-        /* Indicador de más info */
-        .timeline-more {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-card:hover .timeline-more {
-            opacity: 1;
-            color: #00B8D9;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .timeline-item {
-                width: 280px;
-            }
-            
-            .timeline-card {
-                width: 260px;
-            }
-        }
-        </style>
-        
-        <div class='horizontal-timeline-wrapper'>
-            <div class='timeline-track'></div>
-            <div class='horizontal-timeline'>
-        """, unsafe_allow_html=True)
-        
-        # Configuración de categorías
-        category_config = {
-            'ECA': {
-                'badge_class': 'badge-eca',
-                'point_class': 'point-eca',
-                'icon_class': 'icon-eca',
-                'icon': '⭐',
-                'color': '#00C853'
-            },
-            'LMP': {
-                'badge_class': 'badge-lmp',
-                'point_class': 'point-lmp',
-                'icon_class': 'icon-lmp',
-                'icon': '🏭',
-                'color': '#FF6F00'
-            },
-            'Protocolo': {
-                'badge_class': 'badge-protocolo',
-                'point_class': 'point-protocolo',
-                'icon_class': 'icon-protocolo',
-                'icon': '📋',
-                'color': '#8E24AA'
-            },
-            'Lineamiento': {
-                'badge_class': 'badge-lineamiento',
-                'point_class': 'point-lineamiento',
-                'icon_class': 'icon-lineamiento',
-                'icon': '📐',
-                'color': '#0091EA'
-            },
-            'Marco Legal': {
-                'badge_class': 'badge-legal',
-                'point_class': 'point-legal',
-                'icon_class': 'icon-legal',
-                'icon': '⚖️',
-                'color': '#D32F2F'
-            }
-        }
-        
-        # Generar TODO el HTML de los items en una sola cadena
-        items_html = ""
         for idx, row in df_timeline.iterrows():
-            config = category_config[row['categoria']]
-            items_html += f"""
-            <div class='timeline-item'>
-                <div class='timeline-card'>
-                    <div class='timeline-icon {config["icon_class"]}'>{config["icon"]}</div>
-                    <div class='timeline-year'>{row['año']}</div>
-                    <span class='timeline-badge {config["badge_class"]}'>{row['categoria']}</span>
-                    <h4 class='timeline-title'>{row['titulo']}</h4>
-                    <p class='timeline-desc'>{row['descripcion']}</p>
-                    <span class='timeline-more'>Ver más →</span>
-                </div>
-                <div class='timeline-connector' style='color: {config["color"]};'></div>
-                <div class='timeline-point {config["point_class"]}'></div>
-            </div>
-            """
+            c = cats[row['categoria']]
+            timeline_full_html += f"""<div class='tl-box'><div class='tl-card'><div class='tl-ico' style='background:{c["color"]}15;color:{c["color"]}'>{c["icon"]}</div><div class='tl-yr'>{row['año']}</div><span class='tl-bdg' style='color:{c["color"]};border-color:{c["color"]};background:{c["color"]}10'>{row['categoria']}</span><h4 class='tl-ttl'>{row['titulo']}</h4><p class='tl-dsc'>{row['descripcion']}</p></div><div class='tl-ln' style='background:linear-gradient(180deg,{c["color"]},transparent)'></div><div class='tl-dot' style='background:{c["color"]};box-shadow:0 0 15px {c["color"]}80'></div></div>"""
         
-        # Renderizar TODO de una vez
-        st.markdown(items_html + """
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+        timeline_full_html += """</div></div>"""
+        st.markdown(timeline_full_html, unsafe_allow_html=True)
+        # ========== FIN TIMELINE ==========
+        
         
         st.markdown("""
         <div class='corporate-card' style='margin-top: 2rem;'>
