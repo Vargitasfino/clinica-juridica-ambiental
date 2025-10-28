@@ -903,67 +903,9 @@ st.markdown(f"""
 # ===================== PÁGINA INICIO =====================
 if st.session_state.pagina == "Inicio":
     
-    # ========== KPIs MEJORADOS CON DISEÑO PREMIUM ==========
-    st.markdown("""
-    <div style='text-align:center;margin:2rem 0 1rem 0'>
-        <h2 style='font-size:1.8rem;font-weight:700;color:#00B8D9;margin:0'>
-            📊 Panel de Control Normativo
-        </h2>
-        <p style='color:#B2BAC2;margin:0.5rem 0 0 0'>Vista general del sistema regulatorio peruano</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    col1, col2, col3, col4 = st.columns(4)
-    
-    with col1:
-        st.markdown("""
-        <div style='background:linear-gradient(135deg,rgba(0,200,83,0.2),rgba(0,200,83,0.05));
-                    padding:1.5rem;border-radius:12px;border:2px solid rgba(0,200,83,0.3);
-                    text-align:center;transition:transform 0.3s'>
-            <div style='font-size:3rem;font-weight:900;color:#00C853;margin-bottom:0.5rem'>13</div>
-            <div style='color:#E3E8EF;font-weight:600;font-size:0.95rem;margin-bottom:0.3rem'>Normativas Vigentes</div>
-            <div style='color:#00C853;font-size:0.75rem;font-weight:600'>✓ Sistema completo</div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("""
-        <div style='background:linear-gradient(135deg,rgba(0,101,255,0.2),rgba(0,101,255,0.05));
-                    padding:1.5rem;border-radius:12px;border:2px solid rgba(0,101,255,0.3);
-                    text-align:center;transition:transform 0.3s'>
-            <div style='font-size:3rem;font-weight:900;color:#0065FF;margin-bottom:0.5rem'>2019</div>
-            <div style='color:#E3E8EF;font-weight:600;font-size:0.95rem;margin-bottom:0.3rem'>Última Actualización</div>
-            <div style='color:#FFB300;font-size:0.75rem;font-weight:600'>⚠ Requiere revisión</div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col3:
-        st.markdown("""
-        <div style='background:linear-gradient(135deg,rgba(142,36,170,0.2),rgba(142,36,170,0.05));
-                    padding:1.5rem;border-radius:12px;border:2px solid rgba(142,36,170,0.3);
-                    text-align:center;transition:transform 0.3s'>
-            <div style='font-size:3rem;font-weight:900;color:#8E24AA;margin-bottom:0.5rem'>6</div>
-            <div style='color:#E3E8EF;font-weight:600;font-size:0.95rem;margin-bottom:0.3rem'>Contaminantes</div>
-            <div style='color:#8E24AA;font-size:0.75rem;font-weight:600'>PM2.5, PM10, SO2...</div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col4:
-        st.markdown("""
-        <div style='background:linear-gradient(135deg,rgba(0,184,217,0.2),rgba(0,184,217,0.05));
-                    padding:1.5rem;border-radius:12px;border:2px solid rgba(0,184,217,0.3);
-                    text-align:center;transition:transform 0.3s'>
-            <div style='font-size:3rem;font-weight:900;color:#00B8D9;margin-bottom:0.5rem'>100%</div>
-            <div style='color:#E3E8EF;font-weight:600;font-size:0.95rem;margin-bottom:0.3rem'>Cobertura Nacional</div>
-            <div style='color:#00B8D9;font-size:0.75rem;font-weight:600'>Todo el territorio</div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    st.markdown("<br>", unsafe_allow_html=True)
-    
     # ========== COMPARATIVA PERÚ VS OMS ==========
     st.markdown("""
-    <div style='text-align:center;margin:3rem 0 1.5rem 0'>
+    <div style='text-align:center;margin:2rem 0 1.5rem 0'>
         <h2 style='font-size:2rem;font-weight:700;background:linear-gradient(135deg,#00B8D9,#0065FF);
                    -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0'>
             🔬 Comparativa: Estándares Peruanos vs OMS
