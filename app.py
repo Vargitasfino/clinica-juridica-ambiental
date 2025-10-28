@@ -1065,8 +1065,7 @@ if st.session_state.pagina == "Inicio":
             xaxis=dict(
                 showgrid=True, 
                 gridcolor='rgba(255,255,255,0.08)', 
-                title='<b>Año</b>', 
-                titlefont=dict(size=14, color='#00B8D9'),
+                title=dict(text='<b>Año</b>', font=dict(size=14, color='#00B8D9')),
                 dtick=2, 
                 range=[1994, 2021],
                 tickfont=dict(size=11, color='#E3E8EF')
