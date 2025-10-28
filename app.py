@@ -1269,11 +1269,11 @@ if st.session_state.pagina == "Inicio":
             }
         }
         
-        # Generar items
+        # Generar TODO el HTML de los items en una sola cadena
+        items_html = ""
         for idx, row in df_timeline.iterrows():
             config = category_config[row['categoria']]
-            
-            st.markdown(f"""
+            items_html += f"""
             <div class='timeline-item'>
                 <div class='timeline-card'>
                     <div class='timeline-icon {config["icon_class"]}'>{config["icon"]}</div>
@@ -1286,9 +1286,10 @@ if st.session_state.pagina == "Inicio":
                 <div class='timeline-connector' style='color: {config["color"]};'></div>
                 <div class='timeline-point {config["point_class"]}'></div>
             </div>
-            """, unsafe_allow_html=True)
+            """
         
-        st.markdown("""
+        # Renderizar TODO de una vez
+        st.markdown(items_html + """
             </div>
         </div>
         """, unsafe_allow_html=True)
