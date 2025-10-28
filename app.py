@@ -2491,203 +2491,139 @@ elif st.session_state.pagina == "Normativas":
     
     st.plotly_chart(fig_comp, use_container_width=True)
 
-# Footer espectacular
+# Footer espectacular con componentes nativos
 st.markdown("<br><br>", unsafe_allow_html=True)
 
+# Estilos CSS para el footer
 st.markdown("""
 <style>
-.footer-container {
-    background: linear-gradient(135deg, rgba(0, 184, 217, 0.1) 0%, rgba(19, 47, 76, 0.95) 100%);
+.footer-box {
+    background: linear-gradient(135deg, rgba(0, 184, 217, 0.15) 0%, rgba(19, 47, 76, 0.9) 100%);
     border-radius: 20px;
-    padding: 3rem 2rem;
-    margin-top: 3rem;
-    border: 1px solid rgba(0, 184, 217, 0.3);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    position: relative;
-    overflow: hidden;
+    padding: 2.5rem;
+    margin-top: 2rem;
+    border: 2px solid rgba(0, 184, 217, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
-
-.footer-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #00B8D9, #0065FF, #00B8D9);
-    background-size: 200% 100%;
-    animation: gradientMove 3s ease infinite;
-}
-
-@keyframes gradientMove {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-    margin-bottom: 2rem;
-}
-
-.footer-section {
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 15px;
-    border-left: 3px solid #00B8D9;
-    transition: all 0.3s ease;
-}
-
-.footer-section:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 184, 217, 0.2);
-}
-
 .footer-title {
-    font-size: 1.4rem;
-    font-weight: 700;
     color: #00B8D9;
+    font-size: 1.3rem;
+    font-weight: bold;
     margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }
-
-.footer-title .emoji {
-    font-size: 1.8rem;
-    filter: drop-shadow(0 0 10px rgba(0, 184, 217, 0.5));
-}
-
-.footer-text {
+.footer-item {
+    color: rgba(255, 255, 255, 0.9);
     font-size: 0.95rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0.5rem 0;
+    margin: 0.3rem 0;
 }
-
-.footer-text strong {
-    color: #fff;
-    font-weight: 600;
+.footer-highlight {
+    background: rgba(0, 184, 217, 0.15);
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    border-left: 3px solid #00B8D9;
+    margin-top: 0.8rem;
 }
-
-.footer-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    margin: 0.4rem 0;
-}
-
-.footer-link:hover {
-    color: #00B8D9;
-    transform: translateX(5px);
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 1.5rem;
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.footer-copyright {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.footer-badge {
-    background: linear-gradient(135deg, #00B8D9, #0065FF);
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: white;
-    box-shadow: 0 4px 15px rgba(0, 184, 217, 0.3);
+.footer-separator {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin: 2rem 0 1.5rem 0;
 }
 </style>
-
-<div class='footer-container'>
-    <div class='footer-grid'>
-        <div class='footer-section'>
-            <div class='footer-title'>
-                <span class='emoji'>🌍</span>
-                <span>Marco Normativo</span>
-            </div>
-            <p class='footer-text'>
-                Sistema integral de consulta de normativas ambientales para la gestión 
-                y control de la calidad del aire en el Perú.
-            </p>
-            <p class='footer-text' style='margin-top: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.7);'>
-                Herramienta educativa para estudiantes, profesionales y autoridades ambientales.
-            </p>
-        </div>
-        
-        <div class='footer-section'>
-            <div class='footer-title'>
-                <span class='emoji'>🎓</span>
-                <span>Institución</span>
-            </div>
-            <p class='footer-text'>
-                <strong>Universidad Nacional de Moquegua</strong>
-            </p>
-            <p class='footer-text' style='font-size: 0.9rem; color: rgba(255,255,255,0.85);'>
-                Facultad de Ingeniería y Arquitectura
-            </p>
-            <p class='footer-text' style='font-size: 0.9rem; color: rgba(255,255,255,0.85);'>
-                Escuela Profesional de Ingeniería Ambiental
-            </p>
-            <div style='margin-top: 1rem; padding: 0.8rem; background: rgba(0, 184, 217, 0.1); border-radius: 10px;'>
-                <p style='font-size: 0.85rem; color: #00B8D9; margin: 0; font-weight: 600;'>
-                    🏛️ Moquegua, Perú
-                </p>
-            </div>
-        </div>
-        
-        <div class='footer-section'>
-            <div class='footer-title'>
-                <span class='emoji'>👨‍🏫</span>
-                <span>Docente Responsable</span>
-            </div>
-            <p class='footer-text'>
-                <strong>Prof. Dr. José Antonio Valeriano Zapana</strong>
-            </p>
-            <div style='margin-top: 1rem;'>
-                <a href='mailto:contacto@unam.edu.pe' class='footer-link'>
-                    <span>📧</span>
-                    <span>contacto@unam.edu.pe</span>
-                </a>
-                <a href='tel:+51961854041' class='footer-link'>
-                    <span>📱</span>
-                    <span>+51 961 854 041</span>
-                </a>
-            </div>
-            <div style='margin-top: 1rem; padding: 0.8rem; background: rgba(0, 184, 217, 0.1); border-radius: 10px;'>
-                <p style='font-size: 0.85rem; color: #00B8D9; margin: 0; font-weight: 600;'>
-                    💼 Especialista en Calidad del Aire
-                </p>
-            </div>
-        </div>
-    </div>
-    
-    <div class='footer-bottom'>
-        <div class='footer-copyright'>
-            <span>©</span>
-            <span>2024 UNAM - Todos los derechos reservados</span>
-        </div>
-        <div class='footer-badge'>
-            📅 Última actualización: Octubre 2024
-        </div>
-    </div>
-</div>
 """, unsafe_allow_html=True)
+
+# Contenedor principal del footer
+st.markdown("<div class='footer-box'>", unsafe_allow_html=True)
+
+# Grid de 3 columnas
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.markdown("""
+    <div>
+        <div class='footer-title'>🌍 Marco Normativo</div>
+        <p class='footer-item'>
+            Sistema integral de consulta de normativas ambientales para la gestión 
+            y control de la calidad del aire en el Perú.
+        </p>
+        <div class='footer-highlight'>
+            <p class='footer-item' style='margin: 0; font-size: 0.85rem; color: #00B8D9; font-weight: 600;'>
+                📚 Herramienta Educativa & Profesional
+            </p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("""
+    <div>
+        <div class='footer-title'>🎓 Institución</div>
+        <p class='footer-item' style='font-weight: 600; color: white;'>
+            Universidad Nacional de Moquegua
+        </p>
+        <p class='footer-item' style='font-size: 0.9rem;'>
+            Facultad de Ingeniería y Arquitectura
+        </p>
+        <p class='footer-item' style='font-size: 0.9rem;'>
+            Escuela Profesional de Ingeniería Ambiental
+        </p>
+        <div class='footer-highlight'>
+            <p class='footer-item' style='margin: 0; font-size: 0.85rem; color: #00B8D9; font-weight: 600;'>
+                🏛️ Moquegua, Perú
+            </p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col3:
+    st.markdown("""
+    <div>
+        <div class='footer-title'>👨‍🏫 Docente Responsable</div>
+        <p class='footer-item' style='font-weight: 600; color: white;'>
+            Prof. Dr. José Antonio Valeriano Zapana
+        </p>
+        <p class='footer-item'>
+            📧 contacto@unam.edu.pe
+        </p>
+        <p class='footer-item'>
+            📱 +51 961 854 041
+        </p>
+        <div class='footer-highlight'>
+            <p class='footer-item' style='margin: 0; font-size: 0.85rem; color: #00B8D9; font-weight: 600;'>
+                💼 Especialista en Calidad del Aire
+            </p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Separador
+st.markdown("<hr class='footer-separator'>", unsafe_allow_html=True)
+
+# Copyright
+col_left, col_right = st.columns(2)
+
+with col_left:
+    st.markdown("""
+    <p class='footer-item' style='font-size: 0.9rem; color: rgba(255,255,255,0.7);'>
+        © 2024 UNAM - Todos los derechos reservados
+    </p>
+    """, unsafe_allow_html=True)
+
+with col_right:
+    st.markdown("""
+    <div style='text-align: right;'>
+        <span style='background: linear-gradient(135deg, #00B8D9, #0065FF); 
+                     padding: 0.5rem 1.2rem; 
+                     border-radius: 20px; 
+                     font-size: 0.85rem; 
+                     font-weight: 600; 
+                     color: white;
+                     box-shadow: 0 4px 15px rgba(0, 184, 217, 0.3);
+                     display: inline-block;'>
+            📅 Última actualización: Octubre 2024
+        </span>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Cerrar contenedor
+st.markdown("</div>", unsafe_allow_html=True)
