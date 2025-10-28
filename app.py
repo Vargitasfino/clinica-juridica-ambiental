@@ -1345,7 +1345,7 @@ if st.session_state.pagina == "Inicio":
         x=[1995, 2022],
         y=[0, 0],
         mode='lines',
-        line=dict(color='rgba(0, 184, 217, 0.7)', width=4),
+        line=dict(color='rgba(0, 184, 217, 0.7)', width=3.5),
         showlegend=False,
         hoverinfo='skip'
     ))
@@ -1359,13 +1359,8 @@ if st.session_state.pagina == "Inicio":
         # Alternar simplemente entre arriba y abajo con altura uniforme
         y_pos = 3.5 if idx % 2 == 0 else -3.5
         
-        # Detectar años consecutivos y agregar un offset horizontal muy grande
+        # Sin offset horizontal ya que los iconos son más pequeños
         x_offset = 0
-        if idx > 0:
-            año_anterior = df_timeline.iloc[idx-1]['año']
-            if abs(año - año_anterior) == 1:
-                # Si son años consecutivos, desplazar drásticamente para separarlos bien
-                x_offset = 1.2 if idx % 2 == 0 else -1.2
         
         color = colores_cat[row['categoria']]
         mostrar_leyenda = row['categoria'] not in categorias_mostradas
@@ -1378,7 +1373,7 @@ if st.session_state.pagina == "Inicio":
             x=[row['año'] + x_offset, row['año'] + x_offset],
             y=[0, y_pos * 0.80],
             mode='lines',
-            line=dict(color=color, width=3, dash='dot'),
+            line=dict(color=color, width=2.5, dash='dot'),
             showlegend=False,
             hoverinfo='skip',
             opacity=0.75
@@ -1390,9 +1385,9 @@ if st.session_state.pagina == "Inicio":
             y=[0],
             mode='markers',
             marker=dict(
-                size=18, 
+                size=15, 
                 color=color, 
-                line=dict(color='white', width=3),
+                line=dict(color='white', width=2.5),
                 opacity=1
             ),
             showlegend=False,
@@ -1408,7 +1403,7 @@ if st.session_state.pagina == "Inicio":
             'Marco Legal': 'hexagon'
         }
         
-        size_marker = 45 if row['categoria'] == 'LMP' else 38
+        size_marker = 35 if row['categoria'] == 'LMP' else 30
         
         fig_timeline.add_trace(go.Scatter(
             x=[row['año'] + x_offset],
@@ -1418,12 +1413,12 @@ if st.session_state.pagina == "Inicio":
                 size=size_marker, 
                 color=color, 
                 symbol=simbolos.get(row['categoria'], 'square'),
-                line=dict(color='white', width=3),
+                line=dict(color='white', width=2.5),
                 opacity=0.95
             ),
             text=str(row['año']),
             textposition='middle center',
-            textfont=dict(color='white', size=12, family='Inter', weight='bold'),
+            textfont=dict(color='white', size=10, family='Inter', weight='bold'),
             name=row['categoria'],
             legendgroup=row['categoria'],
             showlegend=mostrar_leyenda,
