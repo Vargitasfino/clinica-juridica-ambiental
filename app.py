@@ -1342,10 +1342,10 @@ if st.session_state.pagina == "Inicio":
     
     # Línea base horizontal con gradiente mejorado y más visible
     fig_timeline.add_trace(go.Scatter(
-        x=[1995, 2020],
+        x=[1995, 2022],
         y=[0, 0],
         mode='lines',
-        line=dict(color='rgba(0, 184, 217, 0.7)', width=5),
+        line=dict(color='rgba(0, 184, 217, 0.7)', width=4),
         showlegend=False,
         hoverinfo='skip'
     ))
@@ -1385,7 +1385,7 @@ if st.session_state.pagina == "Inicio":
             x=[row['año'], row['año']],
             y=[0, y_pos * 0.80],
             mode='lines',
-            line=dict(color=color, width=3.5, dash='dot'),
+            line=dict(color=color, width=3, dash='dot'),
             showlegend=False,
             hoverinfo='skip',
             opacity=0.75
@@ -1397,9 +1397,9 @@ if st.session_state.pagina == "Inicio":
             y=[0],
             mode='markers',
             marker=dict(
-                size=20, 
+                size=18, 
                 color=color, 
-                line=dict(color='white', width=3.5),
+                line=dict(color='white', width=3),
                 opacity=1
             ),
             showlegend=False,
@@ -1415,7 +1415,7 @@ if st.session_state.pagina == "Inicio":
             'Marco Legal': 'hexagon'
         }
         
-        size_marker = 50 if row['categoria'] == 'LMP' else 40
+        size_marker = 45 if row['categoria'] == 'LMP' else 38
         
         fig_timeline.add_trace(go.Scatter(
             x=[row['año']],
@@ -1425,12 +1425,12 @@ if st.session_state.pagina == "Inicio":
                 size=size_marker, 
                 color=color, 
                 symbol=simbolos.get(row['categoria'], 'square'),
-                line=dict(color='white', width=3.5),
+                line=dict(color='white', width=3),
                 opacity=0.95
             ),
             text=str(row['año']),
             textposition='middle center',
-            textfont=dict(color='white', size=13, family='Inter', weight='bold'),
+            textfont=dict(color='white', size=12, family='Inter', weight='bold'),
             name=row['categoria'],
             legendgroup=row['categoria'],
             showlegend=mostrar_leyenda,
@@ -1445,7 +1445,7 @@ if st.session_state.pagina == "Inicio":
     
     # Layout mejorado con mejor espaciado y diseño
     fig_timeline.update_layout(
-        height=800,
+        height=750,
         showlegend=True,
         plot_bgcolor='rgba(10, 25, 41, 0.3)',
         paper_bgcolor='rgba(0,0,0,0)',
@@ -1455,7 +1455,7 @@ if st.session_state.pagina == "Inicio":
             gridcolor='rgba(255,255,255,0.08)', 
             title=dict(text='<b>Año</b>', font=dict(size=14, color='#00B8D9')),
             dtick=1, 
-            range=[1994, 2021],
+            range=[1994, 2022],
             tickfont=dict(size=11, color='#E3E8EF')
         ),
         yaxis=dict(
