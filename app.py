@@ -12,13 +12,18 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS Ultra Profesional - VERSIÓN MEJORADA CON MEJOR VISIBILIDAD
+# CSS Ultra Profesional - VERSIÓN MEJORADA CON MEJOR VISIBILIDAD Y TRANSICIONES
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     
     * {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    /* Smooth scroll global */
+    html {
+        scroll-behavior: smooth;
     }
     
     /* Variables de color corporativas */
@@ -944,7 +949,7 @@ if st.session_state.pagina == "Inicio":
         
         df_timeline = pd.DataFrame(timeline_data)
         
-        # Crear gráfico simple pero efectivo
+        # Crear gráfico moderno y mejorado con mejor diseño
         fig_timeline = go.Figure()
         
         colores_cat = {
@@ -955,74 +960,130 @@ if st.session_state.pagina == "Inicio":
             'Marco Legal': '#D32F2F'
         }
         
-        # Línea base horizontal
+        # Línea base horizontal con gradiente mejorado
         fig_timeline.add_trace(go.Scatter(
             x=[1995, 2020],
             y=[0, 0],
             mode='lines',
-            line={'color': 'rgba(255,255,255,0.3)', 'width': 3},
+            line={'color': 'rgba(0, 184, 217, 0.6)', 'width': 4},
             showlegend=False,
             hoverinfo='skip'
         ))
         
-        # Agregar cada normativa
+        # Agregar cada normativa con mejor diseño
         categorias_mostradas = set()
         
         for idx, row in df_timeline.iterrows():
-            y_pos = 1.5 if idx % 2 == 0 else -1.5
+            # Alternar posiciones para evitar superposición
+            y_pos = 2.0 if idx % 2 == 0 else -2.0
             color = colores_cat[row['categoria']]
             mostrar_leyenda = row['categoria'] not in categorias_mostradas
             
             if mostrar_leyenda:
                 categorias_mostradas.add(row['categoria'])
             
-            # Línea conectora
+            # Línea conectora más elegante
             fig_timeline.add_trace(go.Scatter(
                 x=[row['año'], row['año']],
-                y=[0, y_pos * 0.7],
+                y=[0, y_pos * 0.85],
                 mode='lines',
-                line={'color': color, 'width': 2},
+                line={'color': color, 'width': 3, 'dash': 'dot'},
                 showlegend=False,
-                hoverinfo='skip'
+                hoverinfo='skip',
+                opacity=0.7
             ))
             
-            # Punto en la base
+            # Punto en la base más grande y con sombra
             fig_timeline.add_trace(go.Scatter(
                 x=[row['año']],
                 y=[0],
                 mode='markers',
-                marker={'size': 15, 'color': color, 'line': {'color': 'white', 'width': 2}},
+                marker={
+                    'size': 18, 
+                    'color': color, 
+                    'line': {'color': 'white', 'width': 3},
+                    'opacity': 1
+                },
                 showlegend=False,
                 hoverinfo='skip'
             ))
             
-            # Marcador superior
+            # Marcador superior mejorado con más información
+            simbolos = {
+                'ECA': 'star',
+                'LMP': 'diamond',
+                'Protocolo': 'circle',
+                'Lineamiento': 'square',
+                'Marco Legal': 'hexagon'
+            }
+            
             fig_timeline.add_trace(go.Scatter(
                 x=[row['año']],
                 y=[y_pos],
                 mode='markers+text',
-                marker={'size': 25, 'color': color, 'symbol': 'square', 'line': {'color': 'white', 'width': 2}},
+                marker={
+                    'size': 30, 
+                    'color': color, 
+                    'symbol': simbolos.get(row['categoria'], 'square'),
+                    'line': {'color': 'white', 'width': 3},
+                    'opacity': 0.95
+                },
                 text=str(row['año']),
                 textposition='middle center',
+                textfont={'color': 'white', 'size': 11, 'family': 'Inter', 'weight': 700},
                 name=row['categoria'],
                 legendgroup=row['categoria'],
                 showlegend=mostrar_leyenda,
-                hovertemplate='<b>%s</b><br>%s<br><b>Año:</b> %d<br><b>Tipo:</b> %s<extra></extra>' % (
-                    row['titulo'], row['descripcion'], row['año'], row['categoria']
-                )
+                hovertemplate=(
+                    '<b style="font-size:14px">%s</b><br><br>'
+                    '<b>📋 Descripción:</b> %s<br>'
+                    '<b>📅 Año:</b> %d<br>'
+                    '<b>🏷️ Categoría:</b> %s<br>'
+                    '<extra></extra>'
+                ) % (row['titulo'], row['descripcion'], row['año'], row['categoria'])
             ))
         
-        # Layout simplificado
+        # Layout mejorado con mejor espaciado y diseño
         fig_timeline.update_layout(
-            height=550,
+            height=600,
             showlegend=True,
-            plot_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(10, 25, 41, 0.3)',
             paper_bgcolor='rgba(0,0,0,0)',
-            xaxis={'showgrid': True, 'gridcolor': 'rgba(255,255,255,0.08)', 'title': 'Año', 'dtick': 2, 'range': [1994, 2021]},
-            yaxis={'showgrid': False, 'showticklabels': False, 'range': [-2.5, 2.5], 'zeroline': False},
-            legend={'orientation': 'h', 'yanchor': 'bottom', 'y': -0.25, 'xanchor': 'center', 'x': 0.5},
+            font={'color': '#E3E8EF', 'family': 'Inter', 'size': 12},
+            xaxis={
+                'showgrid': True, 
+                'gridcolor': 'rgba(255,255,255,0.08)', 
+                'title': '<b>Año</b>', 
+                'titlefont': {'size': 14, 'color': '#00B8D9'},
+                'dtick': 2, 
+                'range': [1994, 2021],
+                'tickfont': {'size': 11, 'color': '#E3E8EF'}
+            },
+            yaxis={
+                'showgrid': False, 
+                'showticklabels': False, 
+                'range': [-3, 3], 
+                'zeroline': False
+            },
+            legend={
+                'orientation': 'h', 
+                'yanchor': 'bottom', 
+                'y': -0.25, 
+                'xanchor': 'center', 
+                'x': 0.5,
+                'bgcolor': 'rgba(19, 47, 76, 0.8)',
+                'bordercolor': 'rgba(255, 255, 255, 0.2)',
+                'borderwidth': 1,
+                'font': {'size': 11, 'color': '#E3E8EF'}
+            },
             hovermode='closest',
-            margin={'l': 50, 'r': 50, 't': 30, 'b': 100}
+            margin={'l': 50, 'r': 50, 't': 50, 'b': 120},
+            hoverlabel={
+                'bgcolor': 'rgba(19, 47, 76, 0.95)',
+                'font_size': 12,
+                'font_family': 'Inter',
+                'bordercolor': 'rgba(0, 184, 217, 0.5)'
+            }
         )
         
         st.plotly_chart(fig_timeline, use_container_width=True)
