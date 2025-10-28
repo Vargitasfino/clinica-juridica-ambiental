@@ -1359,13 +1359,13 @@ if st.session_state.pagina == "Inicio":
         # Alternar simplemente entre arriba y abajo con altura uniforme
         y_pos = 3.5 if idx % 2 == 0 else -3.5
         
-        # Detectar años consecutivos y agregar un offset horizontal mucho mayor
+        # Detectar años consecutivos y agregar un offset horizontal muy grande
         x_offset = 0
         if idx > 0:
             año_anterior = df_timeline.iloc[idx-1]['año']
             if abs(año - año_anterior) == 1:
-                # Si son años consecutivos, desplazar mucho más para que se vean claramente
-                x_offset = 0.7 if idx % 2 == 0 else -0.7
+                # Si son años consecutivos, desplazar drásticamente para separarlos bien
+                x_offset = 1.2 if idx % 2 == 0 else -1.2
         
         color = colores_cat[row['categoria']]
         mostrar_leyenda = row['categoria'] not in categorias_mostradas
