@@ -1350,16 +1350,26 @@ if st.session_state.pagina == "Inicio":
         hoverinfo='skip'
     ))
     
-    # Agregar cada normativa con posicionamiento simple y uniforme
+    # Agregar cada normativa con posicionamiento inteligente para años consecutivos
     categorias_mostradas = set()
     
     for idx, row in df_timeline.iterrows():
         año = row['año']
         
-        # Alternar simplemente entre arriba y abajo con altura uniforme
-        y_pos = 3.5 if idx % 2 == 0 else -3.5
+        # Detectar años consecutivos y forzar alternancia
+        if idx > 0:
+            año_anterior = df_timeline.iloc[idx-1]['año']
+            if abs(año - año_anterior) == 1:
+                # Si son años consecutivos, forzar lado opuesto al anterior
+                y_pos_anterior = 3.5 if (idx-1) % 2 == 0 else -3.5
+                y_pos = -y_pos_anterior  # Lado opuesto
+            else:
+                # Si no son consecutivos, alternar normalmente
+                y_pos = 3.5 if idx % 2 == 0 else -3.5
+        else:
+            y_pos = 3.5
         
-        # Sin offset horizontal ya que los iconos son más pequeños
+        # Sin offset horizontal
         x_offset = 0
         
         color = colores_cat[row['categoria']]
