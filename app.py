@@ -1345,7 +1345,7 @@ if st.session_state.pagina == "Inicio":
         x=[1995, 2022],
         y=[0, 0],
         mode='lines',
-        line=dict(color='rgba(0, 184, 217, 0.7)', width=3.5),
+        line=dict(color='rgba(0, 184, 217, 0.7)', width=3),
         showlegend=False,
         hoverinfo='skip'
     ))
@@ -1383,7 +1383,7 @@ if st.session_state.pagina == "Inicio":
             x=[row['año'] + x_offset, row['año'] + x_offset],
             y=[0, y_pos * 0.80],
             mode='lines',
-            line=dict(color=color, width=2.5, dash='dot'),
+            line=dict(color=color, width=2, dash='dot'),
             showlegend=False,
             hoverinfo='skip',
             opacity=0.75
@@ -1395,9 +1395,9 @@ if st.session_state.pagina == "Inicio":
             y=[0],
             mode='markers',
             marker=dict(
-                size=15, 
+                size=12, 
                 color=color, 
-                line=dict(color='white', width=2.5),
+                line=dict(color='white', width=2),
                 opacity=1
             ),
             showlegend=False,
@@ -1413,7 +1413,7 @@ if st.session_state.pagina == "Inicio":
             'Marco Legal': 'hexagon'
         }
         
-        size_marker = 35 if row['categoria'] == 'LMP' else 30
+        size_marker = 28 if row['categoria'] == 'LMP' else 24
         
         fig_timeline.add_trace(go.Scatter(
             x=[row['año'] + x_offset],
@@ -1423,12 +1423,12 @@ if st.session_state.pagina == "Inicio":
                 size=size_marker, 
                 color=color, 
                 symbol=simbolos.get(row['categoria'], 'square'),
-                line=dict(color='white', width=2.5),
+                line=dict(color='white', width=2),
                 opacity=0.95
             ),
             text=str(row['año']),
             textposition='middle center',
-            textfont=dict(color='white', size=10, family='Inter', weight='bold'),
+            textfont=dict(color='white', size=9, family='Inter', weight='bold'),
             name=row['categoria'],
             legendgroup=row['categoria'],
             showlegend=mostrar_leyenda,
