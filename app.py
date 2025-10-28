@@ -2491,69 +2491,203 @@ elif st.session_state.pagina == "Normativas":
     
     st.plotly_chart(fig_comp, use_container_width=True)
 
-# Footer
+# Footer espectacular
 st.markdown("<br><br>", unsafe_allow_html=True)
-st.markdown("---")
 
-col_f1, col_f2, col_f3 = st.columns(3)
+st.markdown("""
+<style>
+.footer-container {
+    background: linear-gradient(135deg, rgba(0, 184, 217, 0.1) 0%, rgba(19, 47, 76, 0.95) 100%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin-top: 3rem;
+    border: 1px solid rgba(0, 184, 217, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
 
-with col_f1:
-    st.markdown("""
-    <div style='text-align: left;'>
-        <h3 style='color: #00B8D9; font-size: 1.2rem; margin-bottom: 1rem;'>🌍 Marco Normativo</h3>
-        <p style='font-size: 0.9rem; color: rgba(255,255,255,0.9);'>
-            Sistema integral de consulta de normativas ambientales para 
-            la gestión y control de la calidad del aire en el Perú.
-        </p>
+.footer-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #00B8D9, #0065FF, #00B8D9);
+    background-size: 200% 100%;
+    animation: gradientMove 3s ease infinite;
+}
+
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    border-left: 3px solid #00B8D9;
+    transition: all 0.3s ease;
+}
+
+.footer-section:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 184, 217, 0.2);
+}
+
+.footer-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #00B8D9;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-title .emoji {
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 10px rgba(0, 184, 217, 0.5));
+}
+
+.footer-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0.5rem 0;
+}
+
+.footer-text strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 0.4rem 0;
+}
+
+.footer-link:hover {
+    color: #00B8D9;
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-copyright {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-badge {
+    background: linear-gradient(135deg, #00B8D9, #0065FF);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 184, 217, 0.3);
+}
+</style>
+
+<div class='footer-container'>
+    <div class='footer-grid'>
+        <div class='footer-section'>
+            <div class='footer-title'>
+                <span class='emoji'>🌍</span>
+                <span>Marco Normativo</span>
+            </div>
+            <p class='footer-text'>
+                Sistema integral de consulta de normativas ambientales para la gestión 
+                y control de la calidad del aire en el Perú.
+            </p>
+            <p class='footer-text' style='margin-top: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.7);'>
+                Herramienta educativa para estudiantes, profesionales y autoridades ambientales.
+            </p>
+        </div>
+        
+        <div class='footer-section'>
+            <div class='footer-title'>
+                <span class='emoji'>🎓</span>
+                <span>Institución</span>
+            </div>
+            <p class='footer-text'>
+                <strong>Universidad Nacional de Moquegua</strong>
+            </p>
+            <p class='footer-text' style='font-size: 0.9rem; color: rgba(255,255,255,0.85);'>
+                Facultad de Ingeniería y Arquitectura
+            </p>
+            <p class='footer-text' style='font-size: 0.9rem; color: rgba(255,255,255,0.85);'>
+                Escuela Profesional de Ingeniería Ambiental
+            </p>
+            <div style='margin-top: 1rem; padding: 0.8rem; background: rgba(0, 184, 217, 0.1); border-radius: 10px;'>
+                <p style='font-size: 0.85rem; color: #00B8D9; margin: 0; font-weight: 600;'>
+                    🏛️ Moquegua, Perú
+                </p>
+            </div>
+        </div>
+        
+        <div class='footer-section'>
+            <div class='footer-title'>
+                <span class='emoji'>👨‍🏫</span>
+                <span>Docente Responsable</span>
+            </div>
+            <p class='footer-text'>
+                <strong>Prof. Dr. José Antonio Valeriano Zapana</strong>
+            </p>
+            <div style='margin-top: 1rem;'>
+                <a href='mailto:contacto@unam.edu.pe' class='footer-link'>
+                    <span>📧</span>
+                    <span>contacto@unam.edu.pe</span>
+                </a>
+                <a href='tel:+51961854041' class='footer-link'>
+                    <span>📱</span>
+                    <span>+51 961 854 041</span>
+                </a>
+            </div>
+            <div style='margin-top: 1rem; padding: 0.8rem; background: rgba(0, 184, 217, 0.1); border-radius: 10px;'>
+                <p style='font-size: 0.85rem; color: #00B8D9; margin: 0; font-weight: 600;'>
+                    💼 Especialista en Calidad del Aire
+                </p>
+            </div>
+        </div>
     </div>
-    """, unsafe_allow_html=True)
-
-with col_f2:
-    st.markdown("""
-    <div style='text-align: left;'>
-        <h3 style='color: #00B8D9; font-size: 1.2rem; margin-bottom: 1rem;'>🎓 Institución</h3>
-        <p style='font-size: 0.9rem; color: rgba(255,255,255,0.9); margin: 0.2rem 0;'>
-            <strong>Universidad Nacional de Moquegua</strong>
-        </p>
-        <p style='font-size: 0.85rem; color: rgba(255,255,255,0.8); margin: 0.2rem 0;'>
-            Facultad de Ingeniería y Arquitectura
-        </p>
-        <p style='font-size: 0.85rem; color: rgba(255,255,255,0.8); margin: 0.2rem 0;'>
-            Escuela Profesional de Ingeniería Ambiental
-        </p>
+    
+    <div class='footer-bottom'>
+        <div class='footer-copyright'>
+            <span>©</span>
+            <span>2024 UNAM - Todos los derechos reservados</span>
+        </div>
+        <div class='footer-badge'>
+            📅 Última actualización: Octubre 2024
+        </div>
     </div>
-    """, unsafe_allow_html=True)
-
-with col_f3:
-    st.markdown("""
-    <div style='text-align: left;'>
-        <h3 style='color: #00B8D9; font-size: 1.2rem; margin-bottom: 1rem;'>👨‍🏫 Docente</h3>
-        <p style='font-size: 0.9rem; color: rgba(255,255,255,0.9); margin: 0.2rem 0;'>
-            <strong>Prof. Dr. José Antonio Valeriano Zapana</strong>
-        </p>
-        <p style='font-size: 0.85rem; color: rgba(255,255,255,0.8); margin: 0.2rem 0;'>
-            📧 contacto@unam.edu.pe
-        </p>
-        <p style='font-size: 0.85rem; color: rgba(255,255,255,0.8); margin: 0.2rem 0;'>
-            📱 +51 961 854 041
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-st.markdown("<br>", unsafe_allow_html=True)
-st.markdown("---")
-
-col_copy1, col_copy2 = st.columns(2)
-with col_copy1:
-    st.markdown("""
-    <p style='text-align: left; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin: 0;'>
-        © 2024 UNAM - Todos los derechos reservados
-    </p>
-    """, unsafe_allow_html=True)
-
-with col_copy2:
-    st.markdown("""
-    <p style='text-align: right; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin: 0;'>
-        📅 Última actualización: Octubre 2024
-    </p>
-    """, unsafe_allow_html=True)
+</div>
+""", unsafe_allow_html=True)
