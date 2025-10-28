@@ -951,6 +951,22 @@ if st.session_state.pagina == "Inicio":
         
         
         # ========== TIMELINE HORIZONTAL CON CONTROLES ==========
+        
+        # Primero el JavaScript para las flechas
+        st.markdown("""
+        <script>
+        function scrollTimeline(direction) {
+            const wrapper = document.getElementById('tlWrap');
+            if (wrapper) {
+                wrapper.scrollBy({
+                    left: direction * 300,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        </script>
+        """, unsafe_allow_html=True)
+        
         timeline_full_html = """<style>
 .tl-wrap{position:relative;width:100%;overflow-x:auto;overflow-y:hidden;padding:4rem 2rem;background:linear-gradient(135deg,rgba(10,25,41,0.4),rgba(19,47,76,0.3));border-radius:20px;margin:2rem 0;scroll-behavior:smooth}
 .tl-wrap::-webkit-scrollbar{height:10px}
@@ -967,18 +983,17 @@ if st.session_state.pagina == "Inicio":
 .tl-dsc{color:#B2BAC2;font-size:0.8rem;margin:0}
 .tl-ln{width:2px;height:2rem;opacity:0.3}
 .tl-dot{width:20px;height:20px;border-radius:50%;border:4px solid rgba(10,25,41,1)}
-.tl-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;background:linear-gradient(135deg,#0052CC,#00B8D9);border:2px solid rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all 0.3s;box-shadow:0 4px 15px rgba(0,82,204,0.4)}
-.tl-nav:hover{transform:translateY(-50%) scale(1.1);box-shadow:0 6px 25px rgba(0,82,204,0.6)}
+.tl-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;background:linear-gradient(135deg,#0052CC,#00B8D9);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all 0.3s;box-shadow:0 4px 15px rgba(0,82,204,0.4);color:#FFF;font-size:24px;font-weight:bold}
+.tl-nav:hover{transform:translateY(-50%) scale(1.15);box-shadow:0 6px 25px rgba(0,82,204,0.6)}
 .tl-nav-left{left:1rem}
 .tl-nav-right{right:1rem}
-.tl-nav svg{width:24px;height:24px;fill:#FFF}
-.tl-hint{position:absolute;right:4rem;top:50%;transform:translateY(-50%);background:rgba(0,184,217,0.2);border:2px solid #00B8D9;border-radius:25px;padding:0.5rem 1.5rem;color:#00B8D9;font-size:0.85rem;font-weight:600;animation:pulse-hint 2s infinite;pointer-events:none}
-@keyframes pulse-hint{0%,100%{opacity:0.6;transform:translateY(-50%) translateX(0)}50%{opacity:1;transform:translateY(-50%) translateX(-10px)}}
+.tl-hint{position:absolute;right:5rem;top:50%;transform:translateY(-50%);background:rgba(0,184,217,0.2);border:2px solid #00B8D9;border-radius:25px;padding:0.5rem 1.5rem;color:#00B8D9;font-size:0.85rem;font-weight:600;animation:pulse-hint 2s infinite;pointer-events:none;z-index:5}
+@keyframes pulse-hint{0%,100%{opacity:0.6}50%{opacity:1}}
 .tl-scroll-hint{text-align:center;color:#00B8D9;font-size:0.9rem;margin-top:1rem;opacity:0.7}
 </style>
 <div style="position:relative">
-<button class="tl-nav tl-nav-left" onclick="document.getElementById('tlWrap').scrollBy({left:-300,behavior:'smooth'})"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
-<div class="tl-hint">Desliza para ver más →</div>
+<button class="tl-nav tl-nav-left" onclick="scrollTimeline(-1)">←</button>
+<div class="tl-hint">Desliza →</div>
 <div id="tlWrap" class="tl-wrap"><div class="tl-line"></div><div class="tl-cont">"""
         
         cats = {
@@ -994,26 +1009,11 @@ if st.session_state.pagina == "Inicio":
             timeline_full_html += f"""<div class='tl-box'><div class='tl-card'><div class='tl-ico' style='background:{c["color"]}15;color:{c["color"]}'>{c["icon"]}</div><div class='tl-yr'>{row['año']}</div><span class='tl-bdg' style='color:{c["color"]};border-color:{c["color"]};background:{c["color"]}10'>{row['categoria']}</span><h4 class='tl-ttl'>{row['titulo']}</h4><p class='tl-dsc'>{row['descripcion']}</p></div><div class='tl-ln' style='background:linear-gradient(180deg,{c["color"]},transparent)'></div><div class='tl-dot' style='background:{c["color"]};box-shadow:0 0 15px {c["color"]}80'></div></div>"""
         
         timeline_full_html += """</div></div>
-<button class="tl-nav tl-nav-right" onclick="document.getElementById('tlWrap').scrollBy({left:300,behavior:'smooth'})"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg></button>
+<button class="tl-nav tl-nav-right" onclick="scrollTimeline(1)">→</button>
 </div>
-<p class="tl-scroll-hint">💡 Usa las flechas ← → o arrastra horizontalmente para explorar toda la línea de tiempo</p>"""
+<p class="tl-scroll-hint">💡 Usa las flechas o arrastra para ver todos los eventos</p>"""
         
         st.markdown(timeline_full_html, unsafe_allow_html=True)
-        
-        # JavaScript separado para evitar problemas de escapado
-        st.components.v1.html("""
-        <script>
-        setTimeout(function() {
-            var wrapper = document.getElementById('tlWrap');
-            var hint = document.querySelector('.tl-hint');
-            if(wrapper && hint) {
-                wrapper.addEventListener('scroll', function() {
-                    hint.style.opacity = '0';
-                }, {once: true});
-            }
-        }, 1000);
-        </script>
-        """, height=0)
         # ========== FIN TIMELINE ==========
         
         
