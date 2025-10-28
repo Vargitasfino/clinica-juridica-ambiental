@@ -950,51 +950,42 @@ if st.session_state.pagina == "Inicio":
         df_timeline = pd.DataFrame(timeline_data)
         
         
-        # ========== TIMELINE HORIZONTAL CON CONTROLES ==========
+        # ========== TIMELINE HORIZONTAL SIMPLE (SIN JAVASCRIPT) ==========
         
-        # Primero el JavaScript para las flechas
         st.markdown("""
-        <script>
-        function scrollTimeline(direction) {
-            const wrapper = document.getElementById('tlWrap');
-            if (wrapper) {
-                wrapper.scrollBy({
-                    left: direction * 300,
-                    behavior: 'smooth'
-                });
-            }
-        }
-        </script>
+        <div style='text-align:center;margin:1rem 0;padding:1rem;background:rgba(0,184,217,0.1);border-radius:10px;border:1px solid rgba(0,184,217,0.3)'>
+            <p style='color:#00B8D9;font-size:1rem;margin:0;font-weight:600'>
+                👉 Arrastra horizontalmente para ver toda la línea de tiempo 👈
+            </p>
+        </div>
         """, unsafe_allow_html=True)
         
-        timeline_full_html = """<style>
-.tl-wrap{position:relative;width:100%;overflow-x:auto;overflow-y:hidden;padding:4rem 2rem;background:linear-gradient(135deg,rgba(10,25,41,0.4),rgba(19,47,76,0.3));border-radius:20px;margin:2rem 0;scroll-behavior:smooth}
-.tl-wrap::-webkit-scrollbar{height:10px}
-.tl-wrap::-webkit-scrollbar-thumb{background:linear-gradient(90deg,#0052CC,#00B8D9);border-radius:10px}
-.tl-cont{display:inline-flex;flex-direction:row;gap:0;position:relative}
-.tl-line{position:absolute;top:50%;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,#00B8D9,transparent);transform:translateY(-50%);z-index:1}
-.tl-box{display:inline-flex;flex-direction:column;align-items:center;padding:0 1.5rem;z-index:2}
-.tl-card{width:220px;background:rgba(19,47,76,0.9);border-radius:16px;padding:1.5rem;margin-bottom:2rem;border:1px solid rgba(255,255,255,0.1);box-shadow:0 10px 30px rgba(0,0,0,0.4);transition:all 0.3s;cursor:pointer;position:relative}
-.tl-card:hover{transform:translateY(-10px);box-shadow:0 15px 45px rgba(0,82,204,0.5)}
-.tl-ico{position:absolute;top:-12px;right:12px;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
-.tl-yr{font-size:2rem;font-weight:800;background:linear-gradient(135deg,#00B8D9,#0065FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 0.5rem 0}
-.tl-bdg{display:inline-block;padding:0.35rem 0.9rem;border-radius:15px;font-size:0.65rem;font-weight:700;text-transform:uppercase;margin-bottom:0.8rem;border:1px solid}
-.tl-ttl{color:#FFF;font-size:0.9rem;font-weight:600;margin:0 0 0.6rem 0}
-.tl-dsc{color:#B2BAC2;font-size:0.8rem;margin:0}
-.tl-ln{width:2px;height:2rem;opacity:0.3}
-.tl-dot{width:20px;height:20px;border-radius:50%;border:4px solid rgba(10,25,41,1)}
-.tl-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;background:linear-gradient(135deg,#0052CC,#00B8D9);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all 0.3s;box-shadow:0 4px 15px rgba(0,82,204,0.4);color:#FFF;font-size:24px;font-weight:bold}
-.tl-nav:hover{transform:translateY(-50%) scale(1.15);box-shadow:0 6px 25px rgba(0,82,204,0.6)}
-.tl-nav-left{left:1rem}
-.tl-nav-right{right:1rem}
-.tl-hint{position:absolute;right:5rem;top:50%;transform:translateY(-50%);background:rgba(0,184,217,0.2);border:2px solid #00B8D9;border-radius:25px;padding:0.5rem 1.5rem;color:#00B8D9;font-size:0.85rem;font-weight:600;animation:pulse-hint 2s infinite;pointer-events:none;z-index:5}
-@keyframes pulse-hint{0%,100%{opacity:0.6}50%{opacity:1}}
-.tl-scroll-hint{text-align:center;color:#00B8D9;font-size:0.9rem;margin-top:1rem;opacity:0.7}
+        timeline_html = """<style>
+.tl-wrapper{width:100%;padding:1rem 0;margin:2rem 0}
+.tl-scroll{width:100%;overflow-x:auto;overflow-y:hidden;padding:4rem 2rem 3rem 2rem;background:linear-gradient(135deg,rgba(10,25,41,0.4),rgba(19,47,76,0.3));border-radius:20px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+.tl-scroll::-webkit-scrollbar{height:12px}
+.tl-scroll::-webkit-scrollbar-track{background:rgba(19,47,76,0.5);border-radius:10px}
+.tl-scroll::-webkit-scrollbar-thumb{background:linear-gradient(90deg,#0052CC,#00B8D9);border-radius:10px;border:2px solid rgba(19,47,76,0.5)}
+.tl-scroll::-webkit-scrollbar-thumb:hover{background:linear-gradient(90deg,#0065FF,#00E5FF)}
+.tl-container{display:inline-flex;flex-direction:row;gap:0;position:relative;min-width:max-content}
+.tl-track{position:absolute;top:50%;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent 2%,#00B8D9 50%,transparent 98%);transform:translateY(-50%);z-index:1;box-shadow:0 0 10px rgba(0,184,217,0.4)}
+.tl-item{display:inline-flex;flex-direction:column;align-items:center;padding:0 1.5rem;z-index:2;min-width:260px}
+.tl-card{width:230px;background:rgba(19,47,76,0.9);backdrop-filter:blur(15px);border-radius:16px;padding:1.5rem;margin-bottom:2.5rem;border:1px solid rgba(255,255,255,0.1);box-shadow:0 10px 30px rgba(0,0,0,0.4);transition:all 0.4s cubic-bezier(0.4,0,0.2,1);cursor:pointer;position:relative}
+.tl-card:hover{transform:translateY(-12px);box-shadow:0 20px 50px rgba(0,82,204,0.6);border-color:rgba(0,184,217,0.5)}
+.tl-icon{position:absolute;top:-14px;right:14px;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;border:1px solid rgba(255,255,255,0.15);transition:all 0.3s}
+.tl-card:hover .tl-icon{transform:scale(1.15) rotate(5deg)}
+.tl-year{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,#00B8D9,#0065FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 0.6rem 0;line-height:1}
+.tl-badge{display:inline-block;padding:0.4rem 1rem;border-radius:18px;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.9rem;border:1px solid}
+.tl-title{color:#FFF;font-size:0.92rem;font-weight:600;margin:0 0 0.7rem 0;line-height:1.4}
+.tl-desc{color:#B2BAC2;font-size:0.82rem;line-height:1.6;margin:0}
+.tl-connector{width:2px;height:2.5rem;opacity:0.4;margin-bottom:0.5rem}
+.tl-dot{width:22px;height:22px;border-radius:50%;border:4px solid rgba(10,25,41,1);transition:all 0.3s;box-shadow:0 0 0 0 transparent}
+.tl-item:hover .tl-dot{transform:scale(1.4);box-shadow:0 0 20px currentColor}
 </style>
-<div style="position:relative">
-<button class="tl-nav tl-nav-left" onclick="scrollTimeline(-1)">←</button>
-<div class="tl-hint">Desliza →</div>
-<div id="tlWrap" class="tl-wrap"><div class="tl-line"></div><div class="tl-cont">"""
+<div class='tl-wrapper'>
+<div class='tl-scroll'>
+<div class='tl-track'></div>
+<div class='tl-container'>"""
         
         cats = {
             'ECA': {'icon': '⭐', 'color': '#00C853'},
@@ -1006,14 +997,32 @@ if st.session_state.pagina == "Inicio":
         
         for idx, row in df_timeline.iterrows():
             c = cats[row['categoria']]
-            timeline_full_html += f"""<div class='tl-box'><div class='tl-card'><div class='tl-ico' style='background:{c["color"]}15;color:{c["color"]}'>{c["icon"]}</div><div class='tl-yr'>{row['año']}</div><span class='tl-bdg' style='color:{c["color"]};border-color:{c["color"]};background:{c["color"]}10'>{row['categoria']}</span><h4 class='tl-ttl'>{row['titulo']}</h4><p class='tl-dsc'>{row['descripcion']}</p></div><div class='tl-ln' style='background:linear-gradient(180deg,{c["color"]},transparent)'></div><div class='tl-dot' style='background:{c["color"]};box-shadow:0 0 15px {c["color"]}80'></div></div>"""
-        
-        timeline_full_html += """</div></div>
-<button class="tl-nav tl-nav-right" onclick="scrollTimeline(1)">→</button>
+            timeline_html += f"""
+<div class='tl-item'>
+<div class='tl-card'>
+<div class='tl-icon' style='background:{c["color"]}15;color:{c["color"]}'>{c["icon"]}</div>
+<div class='tl-year'>{row['año']}</div>
+<span class='tl-badge' style='color:{c["color"]};border-color:{c["color"]};background:{c["color"]}12'>{row['categoria']}</span>
+<h4 class='tl-title'>{row['titulo']}</h4>
+<p class='tl-desc'>{row['descripcion']}</p>
 </div>
-<p class="tl-scroll-hint">💡 Usa las flechas o arrastra para ver todos los eventos</p>"""
+<div class='tl-connector' style='background:linear-gradient(180deg,{c["color"]},transparent)'></div>
+<div class='tl-dot' style='background:{c["color"]};box-shadow:0 0 15px {c["color"]}90'></div>
+</div>"""
         
-        st.markdown(timeline_full_html, unsafe_allow_html=True)
+        timeline_html += """
+</div></div></div>"""
+        
+        st.markdown(timeline_html, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div style='text-align:center;margin-top:1.5rem'>
+            <p style='color:#B2BAC2;font-size:0.9rem'>
+                💻 En computadora: Click y arrastra | 📱 En móvil: Desliza con el dedo
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
         # ========== FIN TIMELINE ==========
         
         
