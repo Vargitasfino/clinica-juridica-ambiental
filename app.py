@@ -963,11 +963,11 @@ if st.session_state.pagina == "Inicio":
         timeline_html = """<style>
 .tl-wrapper{width:100%;padding:1rem 0;margin:2rem 0}
 .tl-scroll{width:100%;overflow-x:auto;overflow-y:hidden;padding:4rem 2rem 3rem 2rem;background:linear-gradient(135deg,rgba(10,25,41,0.4),rgba(19,47,76,0.3));border-radius:20px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
-.tl-scroll::-webkit-scrollbar{height:16px;background:rgba(255,255,255,0.1);border-radius:10px}
-.tl-scroll::-webkit-scrollbar-track{background:rgba(255,255,255,0.15);border-radius:10px;border:2px solid rgba(255,255,255,0.05)}
-.tl-scroll::-webkit-scrollbar-thumb{background:linear-gradient(90deg,#00E5FF,#00B8D9,#0091EA);border-radius:10px;border:3px solid rgba(255,255,255,0.3);box-shadow:0 0 10px rgba(0,184,217,0.5),inset 0 0 10px rgba(255,255,255,0.3)}
-.tl-scroll::-webkit-scrollbar-thumb:hover{background:linear-gradient(90deg,#ffffff,#00E5FF,#00B8D9);box-shadow:0 0 20px rgba(0,184,217,0.8),inset 0 0 15px rgba(255,255,255,0.5);border-color:rgba(255,255,255,0.6)}
-.tl-scroll::-webkit-scrollbar-thumb:active{background:#ffffff;box-shadow:0 0 25px rgba(255,255,255,0.9)}
+.tl-scroll::-webkit-scrollbar{height:20px;background:rgba(255,255,255,0.25);border-radius:12px;border:2px solid rgba(255,255,255,0.1)}
+.tl-scroll::-webkit-scrollbar-track{background:linear-gradient(180deg,rgba(255,255,255,0.2),rgba(255,255,255,0.3));border-radius:12px;box-shadow:inset 0 0 10px rgba(0,0,0,0.2)}
+.tl-scroll::-webkit-scrollbar-thumb{background:linear-gradient(90deg,#ffffff,#00E5FF,#00B8D9,#00E5FF,#ffffff);border-radius:12px;border:3px solid rgba(255,255,255,0.4);box-shadow:0 0 15px rgba(255,255,255,0.8),inset 0 1px 0 rgba(255,255,255,0.6),inset 0 -1px 0 rgba(255,255,255,0.6)}
+.tl-scroll::-webkit-scrollbar-thumb:hover{background:linear-gradient(90deg,#ffffff,#ffffff,#00E5FF,#ffffff,#ffffff);box-shadow:0 0 25px rgba(255,255,255,1),0 0 40px rgba(0,229,255,0.8),inset 0 0 20px rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.8);transform:scaleY(1.1)}
+.tl-scroll::-webkit-scrollbar-thumb:active{background:#ffffff;box-shadow:0 0 30px rgba(255,255,255,1),0 0 50px rgba(0,229,255,1)}
 .tl-container{display:inline-flex;flex-direction:row;gap:0;position:relative;min-width:max-content}
 .tl-track{position:absolute;top:50%;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent 2%,#00B8D9 50%,transparent 98%);transform:translateY(-50%);z-index:1;box-shadow:0 0 10px rgba(0,184,217,0.4)}
 .tl-item{display:inline-flex;flex-direction:column;align-items:center;padding:0 1.5rem;z-index:2;min-width:260px}
