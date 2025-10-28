@@ -988,6 +988,7 @@ if st.session_state.pagina == "Inicio":
         .horizontal-timeline {
             position: relative;
             display: flex;
+            flex-direction: row;
             gap: 0;
             min-width: max-content;
             padding: 2rem 0;
