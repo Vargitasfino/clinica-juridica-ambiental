@@ -1058,7 +1058,8 @@ if st.session_state.pagina == "Inicio":
             x=0.5,
             bgcolor='rgba(19, 47, 76, 0.8)',
             bordercolor='rgba(255,255,255,0.2)',
-            borderwidth=1
+            borderwidth=1,
+            font=dict(size=12, color='#FFFFFF', family='Inter')  # Texto blanco en la leyenda
         ),
         barmode='group',
         bargap=0.15,
@@ -1366,7 +1367,7 @@ if st.session_state.pagina == "Inicio":
         
         # Layout mejorado con mejor espaciado y diseño
         fig_timeline.update_layout(
-            height=600,
+            height=700,  # Aumentado de 600 para mejor visualización con mayor separación
             showlegend=True,
             plot_bgcolor='rgba(10, 25, 41, 0.3)',
             paper_bgcolor='rgba(0,0,0,0)',
