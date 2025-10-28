@@ -953,21 +953,23 @@ if st.session_state.pagina == "Inicio":
         # ========== TIMELINE HORIZONTAL SIMPLE (SIN JAVASCRIPT) ==========
         
         st.markdown("""
-        <div style='text-align:center;margin:1rem 0;padding:1rem;background:rgba(0,184,217,0.1);border-radius:10px;border:1px solid rgba(0,184,217,0.3)'>
-            <p style='color:#00B8D9;font-size:1rem;margin:0;font-weight:600'>
-                👉 Arrastra horizontalmente para ver toda la línea de tiempo 👈
+        <div style='text-align:center;margin:1rem 0;padding:1rem;background:rgba(0,184,217,0.1);border-radius:10px;border:2px solid rgba(0,184,217,0.3)'>
+            <p style='color:#00B8D9;font-size:1.1rem;margin:0;font-weight:600'>
+                ⬅️ ARRASTRA AQUÍ ABAJO PARA VER MÁS EVENTOS ➡️
             </p>
         </div>
         """, unsafe_allow_html=True)
         
         timeline_html = """<style>
 .tl-wrapper{width:100%;padding:1rem 0;margin:2rem 0}
-.tl-scroll{width:100%;overflow-x:auto;overflow-y:hidden;padding:4rem 2rem 4rem 2rem;background:linear-gradient(135deg,rgba(10,25,41,0.4),rgba(19,47,76,0.3));border-radius:20px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
-.tl-scroll::-webkit-scrollbar{height:28px;background:rgba(0,0,0,0.3);border-radius:15px;border:2px solid rgba(255,255,255,0.1)}
-.tl-scroll::-webkit-scrollbar-track{background:rgba(0,0,0,0.4);border-radius:15px;box-shadow:inset 0 0 10px rgba(0,0,0,0.5)}
-.tl-scroll::-webkit-scrollbar-thumb{background:#FFFFFF;border-radius:15px;border:3px solid #FFFFFF;box-shadow:0 0 25px rgba(255,255,255,1),0 0 40px rgba(255,255,255,0.8),0 4px 15px rgba(255,255,255,0.6),inset 0 0 20px rgba(255,255,255,0.3)}
-.tl-scroll::-webkit-scrollbar-thumb:hover{background:#FFFFFF;box-shadow:0 0 40px rgba(255,255,255,1),0 0 60px rgba(255,255,255,1),0 0 80px rgba(255,255,255,0.8);border:4px solid #FFFFFF;transform:scaleY(1.2)}
-.tl-scroll::-webkit-scrollbar-thumb:active{background:#FFFFFF;box-shadow:0 0 50px rgba(255,255,255,1),0 0 80px rgba(255,255,255,1)}
+.tl-scroll{width:100%;overflow-x:scroll !important;overflow-y:hidden;padding:4rem 2rem 4rem 2rem;background:linear-gradient(135deg,rgba(10,25,41,0.4),rgba(19,47,76,0.3));border-radius:20px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;position:relative}
+.tl-scroll::-webkit-scrollbar{height:30px !important;background:#000000 !important;border-radius:15px !important}
+.tl-scroll::-webkit-scrollbar-track{background:#1a1a1a !important;border-radius:15px !important;border:2px solid #000000 !important}
+.tl-scroll::-webkit-scrollbar-thumb{background:#FFFFFF !important;border-radius:12px !important;border:4px solid #FFFFFF !important;box-shadow:0 0 30px #FFFFFF !important,0 0 50px #FFFFFF !important,0 0 70px rgba(255,255,255,0.8) !important;min-width:100px !important}
+.tl-scroll::-webkit-scrollbar-thumb:hover{background:#FFFFFF !important;box-shadow:0 0 50px #FFFFFF !important,0 0 80px #FFFFFF !important;cursor:grab !important}
+.tl-scroll::-webkit-scrollbar-thumb:active{cursor:grabbing !important}
+.scroll-indicator{position:absolute;bottom:35px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.95);color:#0052CC;padding:0.5rem 2rem;border-radius:25px;font-weight:700;font-size:0.9rem;box-shadow:0 4px 15px rgba(255,255,255,0.5);animation:bounce-hint 2s infinite;z-index:100;pointer-events:none}
+@keyframes bounce-hint{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
 .tl-container{display:inline-flex;flex-direction:row;gap:0;position:relative;min-width:max-content}
 .tl-track{position:absolute;top:50%;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent 2%,#00B8D9 50%,transparent 98%);transform:translateY(-50%);z-index:1;box-shadow:0 0 10px rgba(0,184,217,0.4)}
 .tl-item{display:inline-flex;flex-direction:column;align-items:center;padding:0 1.5rem;z-index:2;min-width:260px}
@@ -985,6 +987,7 @@ if st.session_state.pagina == "Inicio":
 </style>
 <div class='tl-wrapper'>
 <div class='tl-scroll'>
+<div class='scroll-indicator'>⬅️ Arrastra aquí ➡️</div>
 <div class='tl-track'></div>
 <div class='tl-container'>"""
         
