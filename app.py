@@ -2494,66 +2494,182 @@ elif st.session_state.pagina == "Normativas":
 # ==================== FOOTER PREMIUM ====================
 st.markdown("<br><br>", unsafe_allow_html=True)
 
-# Contenedor con estilo
+# Contenedor con mucho mejor contraste
 st.markdown("""
 <style>
-.footer-container {
-    background: linear-gradient(135deg, rgba(0, 184, 217, 0.08) 0%, rgba(19, 47, 76, 0.95) 100%);
-    border-radius: 25px;
-    padding: 3rem 2.5rem 2rem 2.5rem;
-    border: 1px solid rgba(0, 184, 217, 0.25);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+.super-footer {
+    background: linear-gradient(135deg, rgba(0, 184, 217, 0.25) 0%, rgba(19, 47, 76, 1) 100%);
+    border-radius: 30px;
+    padding: 4rem 3rem;
+    border: 3px solid #00B8D9;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 184, 217, 0.3);
     margin-top: 3rem;
+    position: relative;
+}
+
+.super-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #00B8D9, #0065FF, #00FFB8, #00B8D9);
+    background-size: 300% 100%;
+    animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.footer-title {
+    color: #00E5FF !important;
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 1.5rem !important;
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    letter-spacing: 0.5px;
+}
+
+.footer-text-white {
+    color: #FFFFFF !important;
+    font-size: 1.1rem !important;
+    line-height: 1.9 !important;
+    font-weight: 500 !important;
+}
+
+.footer-text-bright {
+    color: #00FFB8 !important;
+    font-size: 1rem !important;
+    line-height: 1.8 !important;
+}
+
+.footer-highlight-box {
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.25), rgba(0, 101, 255, 0.25)) !important;
+    padding: 1.2rem 1.5rem !important;
+    border-radius: 18px !important;
+    border: 2px solid #00E5FF !important;
+    margin-top: 1.5rem !important;
+    box-shadow: 0 8px 25px rgba(0, 229, 255, 0.3) !important;
+}
+
+.footer-icon-big {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.8));
 }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="footer-container">', unsafe_allow_html=True)
+st.markdown('<div class="super-footer">', unsafe_allow_html=True)
 
-# === SECCIÓN 1: TRES COLUMNAS PRINCIPALES ===
+# === TRES COLUMNAS CON MEJOR DISEÑO ===
 col1, col2, col3 = st.columns(3, gap="large")
 
 with col1:
-    st.markdown("### 🌍 Marco Normativo")
+    st.markdown('<p class="footer-icon-big">🌍</p>', unsafe_allow_html=True)
+    st.markdown('<h2 class="footer-title">Marco Normativo</h2>', unsafe_allow_html=True)
     st.markdown("""
+    <p class="footer-text-white">
     Sistema integral de consulta de normativas ambientales para la gestión 
-    y control de la **calidad del aire** en el Perú.
-    """)
-    st.info("📚 **Herramienta Educativa & Profesional**")
+    y control de la <strong style="color: #00FFB8;">calidad del aire</strong> en el Perú.
+    </p>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="footer-highlight-box">
+        <p style="margin: 0; color: #00FFB8; font-size: 1.1rem; font-weight: 700;">
+            📚 Herramienta Educativa & Profesional
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 with col2:
-    st.markdown("### 🎓 Institución")
-    st.markdown("**Universidad Nacional de Moquegua**")
-    st.caption("Facultad de Ingeniería y Arquitectura")
-    st.caption("Escuela Profesional de Ingeniería Ambiental")
-    st.success("🏛️ **Moquegua, Perú**")
+    st.markdown('<p class="footer-icon-big">🎓</p>', unsafe_allow_html=True)
+    st.markdown('<h2 class="footer-title">Institución</h2>', unsafe_allow_html=True)
+    st.markdown("""
+    <p class="footer-text-white" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">
+        Universidad Nacional de Moquegua
+    </p>
+    <p class="footer-text-bright">
+        Facultad de Ingeniería y Arquitectura
+    </p>
+    <p class="footer-text-bright">
+        Escuela Profesional de Ingeniería Ambiental
+    </p>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="footer-highlight-box">
+        <p style="margin: 0; color: #00FFB8; font-size: 1.1rem; font-weight: 700;">
+            🏛️ Moquegua, Perú
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 with col3:
-    st.markdown("### 👨‍🏫 Docente Responsable")
-    st.markdown("**Prof. Dr. José Antonio Valeriano Zapana**")
-    st.markdown("📧 contacto@unam.edu.pe")
-    st.markdown("📱 +51 961 854 041")
-    st.info("💼 **Especialista en Calidad del Aire**")
+    st.markdown('<p class="footer-icon-big">👨‍🏫</p>', unsafe_allow_html=True)
+    st.markdown('<h2 class="footer-title">Docente Responsable</h2>', unsafe_allow_html=True)
+    st.markdown("""
+    <p class="footer-text-white" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.2rem;">
+        Prof. Dr. José Antonio<br>Valeriano Zapana
+    </p>
+    <p class="footer-text-white" style="font-size: 1.05rem; margin: 0.8rem 0;">
+        📧 <a href="mailto:contacto@unam.edu.pe" style="color: #00FFB8; text-decoration: none; font-weight: 600;">contacto@unam.edu.pe</a>
+    </p>
+    <p class="footer-text-white" style="font-size: 1.05rem; margin: 0.8rem 0;">
+        📱 <span style="color: #00FFB8; font-weight: 600;">+51 961 854 041</span>
+    </p>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="footer-highlight-box">
+        <p style="margin: 0; color: #00FFB8; font-size: 1.1rem; font-weight: 700;">
+            💼 Especialista en Calidad del Aire
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
-# === SEPARADOR ===
-st.markdown("---")
+# === SEPARADOR BRILLANTE ===
+st.markdown("""
+<div style="
+    margin: 3rem 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00E5FF, #0065FF, #00E5FF, transparent);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+"></div>
+""", unsafe_allow_html=True)
 
-# === SECCIÓN 2: COPYRIGHT Y FECHA ===
-col_left, col_right = st.columns([2, 1])
+# === COPYRIGHT Y FECHA ===
+col_left, col_right = st.columns([1.5, 1])
 
 with col_left:
-    st.caption("© 2024 UNAM - Todos los derechos reservados")
+    st.markdown("""
+    <p style="
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.05rem;
+        font-weight: 500;
+        margin: 0;
+    ">
+        © 2024 UNAM - Todos los derechos reservados
+    </p>
+    """, unsafe_allow_html=True)
 
 with col_right:
     st.markdown("""
-    <div style='text-align: right;'>
-        <span style='background: linear-gradient(135deg, #00B8D9, #0065FF); 
-                     padding: 0.6rem 1.2rem; 
-                     border-radius: 20px; 
-                     color: white;
-                     font-weight: 600;
-                     font-size: 0.85rem;
-                     display: inline-block;'>
+    <div style="text-align: right;">
+        <span style="
+            background: linear-gradient(135deg, #00E5FF, #0065FF);
+            padding: 1rem 1.8rem;
+            border-radius: 30px;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-block;
+            box-shadow: 0 8px 30px rgba(0, 229, 255, 0.5);
+            border: 2px solid #00FFB8;
+        ">
             📅 Octubre 2024
         </span>
     </div>
