@@ -1803,18 +1803,6 @@ elif st.session_state.pagina == "LMP":
     </div>
     """, unsafe_allow_html=True)
     
-    # LMP Minero-Metalúrgico
-    st.markdown("""
-    <div class='normative-card vigente'>
-        <div class='status-badge vigente'>✅ VIGENTE</div>
-        <h3>🏭 R.M. N° 315-96-EM/VMM</h3>
-        <p><strong>Título:</strong> Niveles Máximos Permisibles de Emisión de Gases y Partículas para las Actividades Minero-Metalúrgicas</p>
-        <p><strong>Publicación:</strong> 19 de julio de 1996</p>
-        <p><strong>Alcance:</strong> Fundiciones, refinerías y plantas de procesamiento minero-metalúrgico</p>
-        <p><strong>Contaminantes regulados:</strong> PM, SO2, Pb, As</p>
-        <p><strong>Nota:</strong> Documento histórico de referencia técnica</p>
-    </div>
-    """, unsafe_allow_html=True)
     
     # LMP Termoeléctrico
     st.markdown("""
