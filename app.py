@@ -2418,7 +2418,7 @@ elif st.session_state.pagina == "Medidas":
     """, unsafe_allow_html=True)
     
     st.markdown("""
-    <a href='https://www.minam.gob.pe/wp-content/uploads/2013/10/DS_019-2009-MINAM.pdf' 
+    <a href='https://sinia.minam.gob.pe/normas/reglamento-sistema-nacional-evaluacion-fiscalizacion-ambiental' 
        target='_blank' class='corporate-button'>
         📄 Ver D.S. N° 019-2009-MINAM
     </a>
