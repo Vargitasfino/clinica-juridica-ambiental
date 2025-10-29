@@ -1147,10 +1147,10 @@ if st.session_state.pagina == "Inicio":
             y=1.02,
             xanchor='center',
             x=0.5,
-            bgcolor='rgba(19, 47, 76, 0.8)',
-            bordercolor='rgba(255,255,255,0.2)',
-            borderwidth=1,
-            font=dict(size=12, color='#FFFFFF', family='Inter')
+            bgcolor='rgba(19, 47, 76, 0.9)',
+            bordercolor='rgba(255,255,255,0.3)',
+            borderwidth=2,
+            font=dict(size=16, color='#FFFFFF', family='Inter, sans-serif')
         ),
         barmode='group',
         bargap=0.15,
@@ -1468,10 +1468,10 @@ if st.session_state.pagina == "Inicio":
             y=-0.20, 
             xanchor='center', 
             x=0.5,
-            bgcolor='rgba(19, 47, 76, 0.8)',
-            bordercolor='rgba(255, 255, 255, 0.2)',
-            borderwidth=1,
-            font=dict(size=11, color='#E3E8EF')
+            bgcolor='rgba(19, 47, 76, 0.9)',
+            bordercolor='rgba(255, 255, 255, 0.3)',
+            borderwidth=2,
+            font=dict(size=16, color='#FFFFFF', family='Inter, sans-serif')
         ),
         hovermode='closest',
         margin=dict(l=50, r=50, t=40, b=110),
@@ -2941,10 +2941,10 @@ elif st.session_state.pagina == "Normativas":
             y=1.02,
             xanchor='center',
             x=0.5,
-            bgcolor='rgba(19, 47, 76, 0.8)',
-            bordercolor='rgba(255,255,255,0.1)',
-            borderwidth=1,
-            font=dict(size=12)
+            bgcolor='rgba(19, 47, 76, 0.9)',
+            bordercolor='rgba(255,255,255,0.3)',
+            borderwidth=2,
+            font=dict(size=16, color='#FFFFFF', family='Inter, sans-serif')
         ),
         margin=dict(t=60, b=80, l=70, r=40)
     )
