@@ -2410,11 +2410,13 @@ elif st.session_state.pagina == "Normativas":
     
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Tabla comparativa internacional
+    # Tabla comparativa internacional con diseño mejorado
     st.markdown("""
-    <div class='corporate-card'>
-        <h3>📊 Comparativa de Estándares Internacionales</h3>
-        <p style='font-size: 0.95rem;'>Valores de principales contaminantes (µg/m³)</p>
+    <div class='corporate-card fade-in'>
+        <h2>📊 Comparativa de Estándares Internacionales</h2>
+        <p style='color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem;'>
+            Valores de principales contaminantes según normativas vigentes
+        </p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -2425,29 +2427,77 @@ elif st.session_state.pagina == "Normativas":
         'OMS 2021 🌍': [5, 15, 15, 45, 40, 10, 100, '-'],
         'EPA USA 🇺🇸': [9, 35, '-', 150, '-', 53, 137, 10000],
         'Canadá 🇨🇦': [8.8, 27, '-', '-', 70, '-', 126, '-'],
-        'Unidad': ['µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³']
+        'Unidad': ['μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³']
     })
     
-    st.dataframe(comp_intl_data, use_container_width=True, hide_index=True)
+    # Aplicar estilo personalizado a la tabla
+    st.markdown("""
+    <style>
+    .dataframe-container {
+        background: rgba(19, 47, 76, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    </style>
+    """, unsafe_allow_html=True)
     
-    st.warning("""
-    ⚠️ **Análisis comparativo:**
+    st.markdown('<div class="dataframe-container">', unsafe_allow_html=True)
+    st.dataframe(
+        comp_intl_data, 
+        use_container_width=True, 
+        hide_index=True,
+        height=350
+    )
+    st.markdown('</div>', unsafe_allow_html=True)
     
-    - **PM2.5 Anual:** Perú (25 µg/m³) es **5x más permisivo** que OMS (5 µg/m³) y **2.8x** más que EPA (9 µg/m³)
+    st.markdown("""
+    <div class='warning-box' style='margin-top: 1.5rem;'>
+        <h4 style='color: #FFB300; margin-top: 0; font-size: 1.2rem;'>⚠️ Análisis Comparativo Crítico</h4>
+        <p style='margin-bottom: 1rem;'><strong>Brechas identificadas respecto a estándares internacionales:</strong></p>
+        
+        <div style='background: rgba(255, 179, 0, 0.1); padding: 0.8rem; border-radius: 8px; margin: 0.8rem 0; border-left: 3px solid #FFB300;'>
+            <p style='margin: 0;'><strong style='color: #FFB300;'>PM2.5 Anual:</strong> 
+            Perú (25 μg/m³) es <span style='color: #FF6F00; font-weight: 700;'>5x más permisivo</span> que OMS (5 μg/m³) 
+            y <span style='color: #FF6F00; font-weight: 700;'>2.8x</span> más que EPA (9 μg/m³)</p>
+        </div>
+        
+        <div style='background: rgba(255, 179, 0, 0.1); padding: 0.8rem; border-radius: 8px; margin: 0.8rem 0; border-left: 3px solid #FFB300;'>
+            <p style='margin: 0;'><strong style='color: #FFB300;'>PM2.5 24h:</strong> 
+            Perú (50 μg/m³) es <span style='color: #FF6F00; font-weight: 700;'>3.3x más permisivo</span> que OMS (15 μg/m³) 
+            y <span style='color: #FF6F00; font-weight: 700;'>1.4x</span> más que EPA (35 μg/m³)</p>
+        </div>
+        
+        <div style='background: rgba(255, 179, 0, 0.1); padding: 0.8rem; border-radius: 8px; margin: 0.8rem 0; border-left: 3px solid #FFB300;'>
+            <p style='margin: 0;'><strong style='color: #FFB300;'>NO2 Anual:</strong> 
+            Perú (100 μg/m³) es <span style='color: #FF6F00; font-weight: 700;'>10x más permisivo</span> que OMS (10 μg/m³) 
+            y <span style='color: #FF6F00; font-weight: 700;'>1.9x</span> más que EPA (53 μg/m³)</p>
+        </div>
+        
+        <p style='margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid rgba(255, 179, 0, 0.3);'>
+            <strong style='color: #00FFB8;'>💡 Recomendación:</strong> 
+            Se sugiere actualización gradual de ECA peruanos hacia estándares OMS 2021 mediante 
+            metas intermedias (IT-1 a IT-4) con plazos de 5 a 10 años
+        </p>
+    </div>
+    """
+    , unsafe_allow_html=True)
     
-    - **PM2.5 24h:** Perú (50 µg/m³) es **3.3x más permisivo** que OMS (15 µg/m³) y **1.4x** más que EPA (35 µg/m³)
-    
-    - **NO2 Anual:** Perú (100 µg/m³) es **10x más permisivo** que OMS (10 µg/m³) y **1.9x** más que EPA (53 µg/m³)
-    
-    **Recomendación:** Se sugiere actualización gradual de ECA peruanos hacia estándares OMS 2021
-    """)
-    
-    # Gráfico de barras comparativo
-    st.markdown("<br>", unsafe_allow_html=True)
+    # Gráfico de barras comparativo mejorado
+    st.markdown("""
+    <div class='corporate-card fade-in' style='margin-top: 2rem;'>
+        <h2>📈 Visualización Comparativa: PM2.5</h2>
+        <p style='color: var(--text-secondary); margin-bottom: 1rem;'>
+            Análisis gráfico de estándares de material particulado fino (PM2.5) - El contaminante más crítico para salud pública
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
     fig_comp = go.Figure()
     
-    paises = ['Perú', 'OMS 2021', 'EPA USA', 'Canadá']
+    paises = ['Perú 🇵🇪', 'OMS 2021 🌍', 'EPA USA 🇺🇸', 'Canadá 🇨🇦']
     pm25_anual = [25, 5, 9, 8.8]
     pm25_24h = [50, 15, 35, 27]
     
@@ -2455,38 +2505,62 @@ elif st.session_state.pagina == "Normativas":
         name='PM2.5 Anual',
         x=paises,
         y=pm25_anual,
-        marker=dict(color=['#FF6F00', '#00C853', '#0065FF', '#D32F2F']),
+        marker=dict(
+            color=['#FF6F00', '#00C853', '#0065FF', '#8b5cf6'],
+            line=dict(color='rgba(255, 255, 255, 0.2)', width=1)
+        ),
         text=pm25_anual,
-        texttemplate='%{text} µg/m³',
-        textposition='outside'
+        texttemplate='%{text} μg/m³',
+        textposition='outside',
+        textfont=dict(size=13, color='#E3E8EF', family='Inter')
     ))
     
     fig_comp.add_trace(go.Bar(
-        name='PM2.5 24h',
+        name='PM2.5 24 horas',
         x=paises,
         y=pm25_24h,
-        marker=dict(color=['#FFB300', '#00E676', '#60A5FA', '#EF5350']),
+        marker=dict(
+            color=['#FFB300', '#00E676', '#60A5FA', '#c084fc'],
+            line=dict(color='rgba(255, 255, 255, 0.2)', width=1)
+        ),
         text=pm25_24h,
-        texttemplate='%{text} µg/m³',
-        textposition='outside'
+        texttemplate='%{text} μg/m³',
+        textposition='outside',
+        textfont=dict(size=13, color='#E3E8EF', family='Inter')
     ))
     
     fig_comp.update_layout(
-        title='Comparación PM2.5: Perú vs Estándares Internacionales',
-        height=500,
-        plot_bgcolor='rgba(10, 25, 41, 0.3)',
+        height=550,
+        plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='#E3E8EF', family='Inter'),
-        xaxis=dict(title='País/Organización'),
-        yaxis=dict(title='Concentración (µg/m³)'),
+        font=dict(color='#E3E8EF', size=13, family='Inter'),
+        xaxis=dict(
+            showgrid=False,
+            title='',
+            tickfont=dict(size=13)
+        ),
+        yaxis=dict(
+            showgrid=True,
+            gridcolor='rgba(255,255,255,0.06)',
+            title='Concentración (μg/m³)',
+            range=[0, 60],
+            tickfont=dict(size=12)
+        ),
         barmode='group',
+        bargap=0.15,
+        bargroupgap=0.1,
         legend=dict(
             orientation='h',
             yanchor='bottom',
             y=1.02,
             xanchor='center',
-            x=0.5
-        )
+            x=0.5,
+            bgcolor='rgba(19, 47, 76, 0.8)',
+            bordercolor='rgba(255,255,255,0.1)',
+            borderwidth=1,
+            font=dict(size=12)
+        ),
+        margin=dict(t=60, b=80, l=70, r=40)
     )
     
     st.plotly_chart(fig_comp, use_container_width=True)
