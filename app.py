@@ -2185,13 +2185,6 @@ elif st.session_state.pagina == "Lineamiento":
     </div>
     """, unsafe_allow_html=True)
     
-    st.markdown("""
-    <a href='https://www.minam.gob.pe/wp-content/uploads/2013/09/ds_009-2003-sa.pdf' 
-       target='_blank' class='corporate-button'>
-        📄 Ver D.S. N° 009-2003-SA
-    </a>
-    """, unsafe_allow_html=True)
-    
     # Lineamiento de Planes de Acción
     st.markdown("""
     <div class='normative-card vigente'>
