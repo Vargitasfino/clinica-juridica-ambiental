@@ -2684,6 +2684,62 @@ with col3:
 
 st.divider()
 
+# Sección de Equipo de Desarrollo
+st.markdown("""
+<div style='background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(26, 58, 82, 0.9) 100%);
+            padding: 2rem; border-radius: 16px; margin: 2rem 0;
+            border: 1px solid rgba(0, 184, 217, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);'>
+    <div style='text-align: center; margin-bottom: 1.5rem;'>
+        <h2 style='color: #00E5FF; font-size: 1.8rem; font-weight: 800; margin: 0 0 0.5rem 0;'>
+            👥 Equipo de Desarrollo
+        </h2>
+        <p style='color: rgba(255,255,255,0.8); font-size: 1rem; margin: 0;'>
+            Estudiantes de Ingeniería Ambiental - UNAM
+        </p>
+    </div>
+    <div style='display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem;'>
+        <div style='background: rgba(0, 184, 217, 0.1); padding: 1rem; border-radius: 10px; border-left: 3px solid #00B8D9;'>
+            <p style='color: white; font-size: 0.95rem; font-weight: 600; margin: 0;'>
+                🎓 CHURA ORCONI, JHON ANTONY
+            </p>
+        </div>
+        <div style='background: rgba(0, 184, 217, 0.1); padding: 1rem; border-radius: 10px; border-left: 3px solid #00B8D9;'>
+            <p style='color: white; font-size: 0.95rem; font-weight: 600; margin: 0;'>
+                🎓 MORA PERALTA, JESUS RAPHAEL
+            </p>
+        </div>
+        <div style='background: rgba(0, 184, 217, 0.1); padding: 1rem; border-radius: 10px; border-left: 3px solid #00B8D9;'>
+            <p style='color: white; font-size: 0.95rem; font-weight: 600; margin: 0;'>
+                🎓 FLORES SOSA, ANGELICA JUDITH
+            </p>
+        </div>
+        <div style='background: rgba(0, 184, 217, 0.1); padding: 1rem; border-radius: 10px; border-left: 3px solid #00B8D9;'>
+            <p style='color: white; font-size: 0.95rem; font-weight: 600; margin: 0;'>
+                🎓 VARGAS FLORES, SEBASTIAN DANILO
+            </p>
+        </div>
+        <div style='background: rgba(0, 184, 217, 0.1); padding: 1rem; border-radius: 10px; border-left: 3px solid #00B8D9;'>
+            <p style='color: white; font-size: 0.95rem; font-weight: 600; margin: 0;'>
+                🎓 ORELLANA ROSADO, DANNA LYSSETH
+            </p>
+        </div>
+        <div style='background: rgba(0, 184, 217, 0.1); padding: 1rem; border-radius: 10px; border-left: 3px solid #00B8D9;'>
+            <p style='color: white; font-size: 0.95rem; font-weight: 600; margin: 0;'>
+                🎓 RONCEROS LOOKUY, SAILEEN DEL ROSARIO
+            </p>
+        </div>
+        <div style='background: rgba(0, 184, 217, 0.1); padding: 1rem; border-radius: 10px; border-left: 3px solid #00B8D9;'>
+            <p style='color: white; font-size: 0.95rem; font-weight: 600; margin: 0;'>
+                🎓 TINAJEROS VALDIVIA, VALLERY CAROLINA
+            </p>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+st.divider()
+
 col_a, col_b = st.columns([2, 1])
 with col_a:
     st.markdown("<p style='color: white; font-size: 0.95rem;'>© 2024 UNAM - Todos los derechos reservados</p>", unsafe_allow_html=True)
