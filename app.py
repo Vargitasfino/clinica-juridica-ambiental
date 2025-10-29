@@ -2433,25 +2433,111 @@ elif st.session_state.pagina == "Normativas":
     # Aplicar estilo personalizado a la tabla
     st.markdown("""
     <style>
-    .dataframe-container {
-        background: rgba(19, 47, 76, 0.6);
-        backdrop-filter: blur(10px);
-        border-radius: 12px;
-        padding: 1rem;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    /* Estilos específicos para la tabla comparativa internacional */
+    div[data-testid="stDataFrame"] > div {
+        background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(26, 58, 82, 0.9) 100%) !important;
+        backdrop-filter: blur(20px) saturate(180%) !important;
+        border-radius: 16px !important;
+        padding: 1.5rem !important;
+        border: 1px solid rgba(0, 184, 217, 0.3) !important;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) inset !important;
+    }
+    
+    div[data-testid="stDataFrame"] table {
+        background: transparent !important;
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+    }
+    
+    div[data-testid="stDataFrame"] thead tr th {
+        background: linear-gradient(135deg, #0052CC 0%, #0065FF 100%) !important;
+        color: white !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        font-size: 0.9rem !important;
+        letter-spacing: 0.05em !important;
+        padding: 1.2rem 1rem !important;
+        border: none !important;
+        text-align: center !important;
+    }
+    
+    div[data-testid="stDataFrame"] thead tr th:first-child {
+        border-radius: 12px 0 0 0 !important;
+        text-align: left !important;
+    }
+    
+    div[data-testid="stDataFrame"] thead tr th:last-child {
+        border-radius: 0 12px 0 0 !important;
+    }
+    
+    div[data-testid="stDataFrame"] tbody tr {
+        background: rgba(19, 47, 76, 0.4) !important;
+        border-bottom: 1px solid rgba(0, 184, 217, 0.15) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    div[data-testid="stDataFrame"] tbody tr:hover {
+        background: rgba(0, 101, 255, 0.15) !important;
+        transform: translateX(4px) !important;
+        box-shadow: -4px 0 0 0 #00B8D9 !important;
+    }
+    
+    div[data-testid="stDataFrame"] tbody tr td {
+        color: rgba(255, 255, 255, 0.95) !important;
+        padding: 1rem !important;
+        border: none !important;
+        font-size: 1rem !important;
+        font-weight: 500 !important;
+        text-align: center !important;
+    }
+    
+    div[data-testid="stDataFrame"] tbody tr td:first-child {
+        color: #00E5FF !important;
+        font-weight: 600 !important;
+        text-align: left !important;
+        padding-left: 1.5rem !important;
+    }
+    
+    div[data-testid="stDataFrame"] tbody tr:last-child td:first-child {
+        border-radius: 0 0 0 12px !important;
+    }
+    
+    div[data-testid="stDataFrame"] tbody tr:last-child td:last-child {
+        border-radius: 0 0 12px 0 !important;
+    }
+    
+    /* Resaltar valores de Perú */
+    div[data-testid="stDataFrame"] tbody tr td:nth-child(2) {
+        color: #FFB300 !important;
+        font-weight: 700 !important;
+    }
+    
+    /* Resaltar valores de OMS */
+    div[data-testid="stDataFrame"] tbody tr td:nth-child(3) {
+        color: #00C853 !important;
+        font-weight: 700 !important;
+    }
+    
+    /* Resaltar valores de EPA */
+    div[data-testid="stDataFrame"] tbody tr td:nth-child(4) {
+        color: #60A5FA !important;
+        font-weight: 700 !important;
+    }
+    
+    /* Resaltar valores de Canadá */
+    div[data-testid="stDataFrame"] tbody tr td:nth-child(5) {
+        color: #BA68C8 !important;
+        font-weight: 700 !important;
     }
     </style>
     """, unsafe_allow_html=True)
     
-    st.markdown('<div class="dataframe-container">', unsafe_allow_html=True)
     st.dataframe(
         comp_intl_data, 
         use_container_width=True, 
         hide_index=True,
-        height=350
+        height=380
     )
-    st.markdown('</div>', unsafe_allow_html=True)
     
     # Análisis comparativo con componentes nativos
     st.warning("### ⚠️ Análisis Comparativo Crítico\n\n**Brechas identificadas respecto a estándares internacionales:**")
