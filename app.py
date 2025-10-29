@@ -2043,17 +2043,6 @@ elif st.session_state.pagina == "Protocolo":
     </div>
     """, unsafe_allow_html=True)
     
-    # Protocolo ISO
-    st.markdown("""
-    <div class='normative-card referencia'>
-        <div class='status-badge ntp'>🔬 REFERENCIA TÉCNICA</div>
-        <h3>📖 NTP-ISO 9169:2008</h3>
-        <p><strong>Título:</strong> Calidad del Aire - Determinación de características de funcionamiento de los métodos de medición</p>
-        <p><strong>Estado:</strong> Norma técnica peruana adoptada de ISO 9169</p>
-        <p><strong>Aplicación:</strong> Validación de métodos analíticos en monitoreo de aire</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
     st.markdown("<br>", unsafe_allow_html=True)
     
     # Proceso de monitoreo
