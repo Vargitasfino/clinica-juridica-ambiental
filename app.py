@@ -2263,6 +2263,7 @@ elif st.session_state.pagina == "Lineamiento":
             </tbody>
         </table>
     </div>
+    
     """, unsafe_allow_html=True)
     
     
