@@ -2428,20 +2428,8 @@ elif st.session_state.pagina == "Normativas":
     </div>
     """, unsafe_allow_html=True)
     
-    # Datos de la tabla comparativa
-    comparativa_data = [
-        ['PM2.5 (Anual)', '25', '5', '9', '8.8', 'μg/m³'],
-        ['PM2.5 (24h)', '50', '15', '35', '27', 'μg/m³'],
-        ['PM10 (Anual)', '50', '15', '-', '-', 'μg/m³'],
-        ['PM10 (24h)', '100', '45', '150', '-', 'μg/m³'],
-        ['SO2 (24h)', '250', '40', '-', '70', 'μg/m³'],
-        ['NO2 (Anual)', '100', '10', '53', '-', 'μg/m³'],
-        ['O3 (8h)', '100', '100', '137', '126', 'μg/m³'],
-        ['CO (8h)', '10000', '-', '10000', '-', 'μg/m³']
-    ]
-    
-    # Crear la tabla HTML
-    tabla_comparativa_html = """
+    # Crear la tabla HTML completa como un solo string
+    st.markdown("""
     <div style='overflow-x: auto; border-radius: 12px; 
                 border: 1px solid rgba(0, 184, 217, 0.3); 
                 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); 
@@ -2488,61 +2476,86 @@ elif st.session_state.pagina == "Normativas":
                 </tr>
             </thead>
             <tbody>
-    """
-    
-    # Agregar las filas de datos
-    for i, fila in enumerate(comparativa_data):
-        border_style = '' if i == len(comparativa_data) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
-        
-        # Determinar el color del contaminante basado en el nombre
-        if 'PM2.5' in fila[0]:
-            color_contaminante = '#8B5CF6'
-        elif 'PM10' in fila[0]:
-            color_contaminante = '#3B82F6'
-        elif 'SO2' in fila[0]:
-            color_contaminante = '#EAB308'
-        elif 'NO2' in fila[0]:
-            color_contaminante = '#EF4444'
-        elif 'O3' in fila[0]:
-            color_contaminante = '#06B6D4'
-        elif 'CO' in fila[0]:
-            color_contaminante = '#A855F7'
-        else:
-            color_contaminante = '#00B8D9'
-        
-        tabla_comparativa_html += f"""
-                <tr style='{border_style} transition: all 0.3s ease;' 
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease;' 
                     onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"; this.style.transform="scale(1.01)";' 
                     onmouseout='this.style.background="transparent"; this.style.transform="scale(1)";'>
-                    <td style='color: {color_contaminante}; padding: 1rem 1.5rem; 
-                               font-weight: 700; border: none; font-size: 1rem;'>
-                        {fila[0]}
-                    </td>
-                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; 
-                               border: none; font-size: 1rem; font-weight: 500;'>
-                        {fila[1]}
-                    </td>
-                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; 
-                               border: none; font-size: 1rem; font-weight: 500;
-                               background: rgba(0, 200, 83, 0.05);'>
-                        {fila[2]}
-                    </td>
-                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; 
-                               border: none; font-size: 1rem; font-weight: 500;'>
-                        {fila[3]}
-                    </td>
-                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; 
-                               border: none; font-size: 1rem; font-weight: 500;'>
-                        {fila[4]}
-                    </td>
-                    <td style='color: rgba(255, 255, 255, 0.7); padding: 1rem 1.5rem; 
-                               text-align: center; border: none; font-size: 0.9rem;'>
-                        {fila[5]}
-                    </td>
+                    <td style='color: #8B5CF6; padding: 1rem 1.5rem; font-weight: 700; border: none; font-size: 1rem;'>PM2.5 (Anual)</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>25</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500; background: rgba(0, 200, 83, 0.05);'>5</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>9</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>8.8</td>
+                    <td style='color: rgba(255, 255, 255, 0.7); padding: 1rem 1.5rem; text-align: center; border: none; font-size: 0.9rem;'>μg/m³</td>
                 </tr>
-        """
-    
-    tabla_comparativa_html += """
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease;' 
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"; this.style.transform="scale(1.01)";' 
+                    onmouseout='this.style.background="transparent"; this.style.transform="scale(1)";'>
+                    <td style='color: #8B5CF6; padding: 1rem 1.5rem; font-weight: 700; border: none; font-size: 1rem;'>PM2.5 (24h)</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>50</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500; background: rgba(0, 200, 83, 0.05);'>15</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>35</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>27</td>
+                    <td style='color: rgba(255, 255, 255, 0.7); padding: 1rem 1.5rem; text-align: center; border: none; font-size: 0.9rem;'>μg/m³</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease;' 
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"; this.style.transform="scale(1.01)";' 
+                    onmouseout='this.style.background="transparent"; this.style.transform="scale(1)";'>
+                    <td style='color: #3B82F6; padding: 1rem 1.5rem; font-weight: 700; border: none; font-size: 1rem;'>PM10 (Anual)</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>50</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500; background: rgba(0, 200, 83, 0.05);'>15</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>-</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>-</td>
+                    <td style='color: rgba(255, 255, 255, 0.7); padding: 1rem 1.5rem; text-align: center; border: none; font-size: 0.9rem;'>μg/m³</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease;' 
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"; this.style.transform="scale(1.01)";' 
+                    onmouseout='this.style.background="transparent"; this.style.transform="scale(1)";'>
+                    <td style='color: #3B82F6; padding: 1rem 1.5rem; font-weight: 700; border: none; font-size: 1rem;'>PM10 (24h)</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>100</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500; background: rgba(0, 200, 83, 0.05);'>45</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>150</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>-</td>
+                    <td style='color: rgba(255, 255, 255, 0.7); padding: 1rem 1.5rem; text-align: center; border: none; font-size: 0.9rem;'>μg/m³</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease;' 
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"; this.style.transform="scale(1.01)";' 
+                    onmouseout='this.style.background="transparent"; this.style.transform="scale(1)";'>
+                    <td style='color: #EAB308; padding: 1rem 1.5rem; font-weight: 700; border: none; font-size: 1rem;'>SO2 (24h)</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>250</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500; background: rgba(0, 200, 83, 0.05);'>40</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>-</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>70</td>
+                    <td style='color: rgba(255, 255, 255, 0.7); padding: 1rem 1.5rem; text-align: center; border: none; font-size: 0.9rem;'>μg/m³</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease;' 
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"; this.style.transform="scale(1.01)";' 
+                    onmouseout='this.style.background="transparent"; this.style.transform="scale(1)";'>
+                    <td style='color: #EF4444; padding: 1rem 1.5rem; font-weight: 700; border: none; font-size: 1rem;'>NO2 (Anual)</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>100</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500; background: rgba(0, 200, 83, 0.05);'>10</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>53</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>-</td>
+                    <td style='color: rgba(255, 255, 255, 0.7); padding: 1rem 1.5rem; text-align: center; border: none; font-size: 0.9rem;'>μg/m³</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease;' 
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"; this.style.transform="scale(1.01)";' 
+                    onmouseout='this.style.background="transparent"; this.style.transform="scale(1)";'>
+                    <td style='color: #06B6D4; padding: 1rem 1.5rem; font-weight: 700; border: none; font-size: 1rem;'>O3 (8h)</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>100</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500; background: rgba(0, 200, 83, 0.05);'>100</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>137</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>126</td>
+                    <td style='color: rgba(255, 255, 255, 0.7); padding: 1rem 1.5rem; text-align: center; border: none; font-size: 0.9rem;'>μg/m³</td>
+                </tr>
+                <tr style='transition: all 0.3s ease;' 
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"; this.style.transform="scale(1.01)";' 
+                    onmouseout='this.style.background="transparent"; this.style.transform="scale(1)";'>
+                    <td style='color: #A855F7; padding: 1rem 1.5rem; font-weight: 700; border: none; font-size: 1rem;'>CO (8h)</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>10000</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500; background: rgba(0, 200, 83, 0.05);'>-</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>10000</td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>-</td>
+                    <td style='color: rgba(255, 255, 255, 0.7); padding: 1rem 1.5rem; text-align: center; border: none; font-size: 0.9rem;'>μg/m³</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -2566,9 +2579,7 @@ elif st.session_state.pagina == "Normativas":
             </div>
         </div>
     </div>
-    """
-    
-    st.markdown(tabla_comparativa_html, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
     
     # Gráfico de barras comparativo mejorado
     st.markdown("""
