@@ -2410,220 +2410,165 @@ elif st.session_state.pagina == "Normativas":
     
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Tabla comparativa internacional con diseño mejorado
+    # Tabla comparativa internacional con diseño HTML personalizado
     st.markdown("""
-    <div class='corporate-card fade-in'>
-        <h2>📊 Comparativa de Estándares Internacionales</h2>
-        <p style='color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem;'>
+    <div style='background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(10, 25, 41, 0.98) 100%); 
+                padding: 2rem; border-radius: 16px; margin: 2rem 0; 
+                border: 1px solid rgba(0, 184, 217, 0.3);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);'>
+        <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+            <div style='font-size: 2.5rem;'>📊</div>
+            <h2 style='color: #FFFFFF; margin: 0; font-size: 1.8rem; font-weight: 700;'>
+                Comparativa de Estándares Internacionales
+            </h2>
+        </div>
+        <p style='color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; margin: 0.5rem 0 0 0;'>
             Valores de principales contaminantes según normativas vigentes
         </p>
     </div>
     """, unsafe_allow_html=True)
     
-    comp_intl_data = pd.DataFrame({
-        'Contaminante': ['PM2.5 (Anual)', 'PM2.5 (24h)', 'PM10 (Anual)', 'PM10 (24h)', 
-                        'SO2 (24h)', 'NO2 (Anual)', 'O3 (8h)', 'CO (8h)'],
-        'Perú 🇵🇪': [25, 50, 50, 100, 250, 100, 100, 10000],
-        'OMS 2021 🌍': [5, 15, 15, 45, 40, 10, 100, '-'],
-        'EPA USA 🇺🇸': [9, 35, '-', 150, '-', 53, 137, 10000],
-        'Canadá 🇨🇦': [8.8, 27, '-', '-', 70, '-', 126, '-'],
-        'Unidad': ['μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³']
-    })
+    # Datos de la tabla comparativa
+    comparativa_data = [
+        ['PM2.5 (Anual)', '25', '5', '9', '8.8', 'μg/m³'],
+        ['PM2.5 (24h)', '50', '15', '35', '27', 'μg/m³'],
+        ['PM10 (Anual)', '50', '15', '-', '-', 'μg/m³'],
+        ['PM10 (24h)', '100', '45', '150', '-', 'μg/m³'],
+        ['SO2 (24h)', '250', '40', '-', '70', 'μg/m³'],
+        ['NO2 (Anual)', '100', '10', '53', '-', 'μg/m³'],
+        ['O3 (8h)', '100', '100', '137', '126', 'μg/m³'],
+        ['CO (8h)', '10000', '-', '10000', '-', 'μg/m³']
+    ]
     
-    # Estilos CSS profesionales para la tabla comparativa
-    st.markdown("""
-    <style>
-    /* Contenedor principal de la tabla */
-    [data-testid="stDataFrame"] {
-        background: linear-gradient(135deg, #0a1929 0%, #132f4c 100%) !important;
-        border-radius: 20px !important;
-        padding: 2rem !important;
-        border: 2px solid #00B8D9 !important;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 
-                    0 0 40px rgba(0, 184, 217, 0.2),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-    }
+    # Crear la tabla HTML
+    tabla_comparativa_html = """
+    <div style='overflow-x: auto; border-radius: 12px; 
+                border: 1px solid rgba(0, 184, 217, 0.3); 
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); 
+                margin: 2rem 0;'>
+        <table style='width: 100%; border-collapse: collapse; 
+                      background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(26, 58, 82, 0.9) 100%);'>
+            <thead>
+                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+                    <th style='color: #FFFFFF; padding: 1.2rem 1.5rem; text-align: left; 
+                               font-weight: 700; text-transform: uppercase; font-size: 0.9rem; 
+                               border: none; min-width: 180px;'>
+                        Contaminante
+                    </th>
+                    <th style='color: #FFFFFF; padding: 1.2rem 1.5rem; text-align: center; 
+                               font-weight: 700; text-transform: uppercase; font-size: 0.9rem; 
+                               border: none; min-width: 120px;'>
+                        Perú 🇵🇪
+                    </th>
+                    <th style='color: #FFFFFF; padding: 1.2rem 1.5rem; text-align: center; 
+                               font-weight: 700; text-transform: uppercase; font-size: 0.9rem; 
+                               border: none; min-width: 140px;'>
+                        <div style='display: flex; align-items: center; justify-content: center; gap: 0.5rem;'>
+                            <span>OMS 2021</span>
+                            <span style='display: inline-block; width: 12px; height: 12px; 
+                                         background: #00C853; border-radius: 50%; 
+                                         box-shadow: 0 0 8px rgba(0, 200, 83, 0.6);'></span>
+                        </div>
+                    </th>
+                    <th style='color: #FFFFFF; padding: 1.2rem 1.5rem; text-align: center; 
+                               font-weight: 700; text-transform: uppercase; font-size: 0.9rem; 
+                               border: none; min-width: 140px;'>
+                        EPA USA 🇺🇸
+                    </th>
+                    <th style='color: #FFFFFF; padding: 1.2rem 1.5rem; text-align: center; 
+                               font-weight: 700; text-transform: uppercase; font-size: 0.9rem; 
+                               border: none; min-width: 140px;'>
+                        Canadá 🇨🇦
+                    </th>
+                    <th style='color: #FFFFFF; padding: 1.2rem 1.5rem; text-align: center; 
+                               font-weight: 700; text-transform: uppercase; font-size: 0.9rem; 
+                               border: none; min-width: 100px;'>
+                        Unidad
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+    """
     
-    /* Tabla */
-    [data-testid="stDataFrame"] table {
-        background: transparent !important;
-    }
+    # Agregar las filas de datos
+    for i, fila in enumerate(comparativa_data):
+        border_style = '' if i == len(comparativa_data) - 1 else 'border-bottom: 1px solid rgba(255, 255, 255, 0.08);'
+        
+        # Determinar el color del contaminante basado en el nombre
+        if 'PM2.5' in fila[0]:
+            color_contaminante = '#8B5CF6'
+        elif 'PM10' in fila[0]:
+            color_contaminante = '#3B82F6'
+        elif 'SO2' in fila[0]:
+            color_contaminante = '#EAB308'
+        elif 'NO2' in fila[0]:
+            color_contaminante = '#EF4444'
+        elif 'O3' in fila[0]:
+            color_contaminante = '#06B6D4'
+        elif 'CO' in fila[0]:
+            color_contaminante = '#A855F7'
+        else:
+            color_contaminante = '#00B8D9'
+        
+        tabla_comparativa_html += f"""
+                <tr style='{border_style} transition: all 0.3s ease;' 
+                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"; this.style.transform="scale(1.01)";' 
+                    onmouseout='this.style.background="transparent"; this.style.transform="scale(1)";'>
+                    <td style='color: {color_contaminante}; padding: 1rem 1.5rem; 
+                               font-weight: 700; border: none; font-size: 1rem;'>
+                        {fila[0]}
+                    </td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; 
+                               border: none; font-size: 1rem; font-weight: 500;'>
+                        {fila[1]}
+                    </td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; 
+                               border: none; font-size: 1rem; font-weight: 500;
+                               background: rgba(0, 200, 83, 0.05);'>
+                        {fila[2]}
+                    </td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; 
+                               border: none; font-size: 1rem; font-weight: 500;'>
+                        {fila[3]}
+                    </td>
+                    <td style='color: #FFFFFF; padding: 1rem 1.5rem; text-align: center; 
+                               border: none; font-size: 1rem; font-weight: 500;'>
+                        {fila[4]}
+                    </td>
+                    <td style='color: rgba(255, 255, 255, 0.7); padding: 1rem 1.5rem; 
+                               text-align: center; border: none; font-size: 0.9rem;'>
+                        {fila[5]}
+                    </td>
+                </tr>
+        """
     
-    /* HEADERS - Azul brillante con gradiente */
-    [data-testid="stDataFrame"] thead th {
-        background: linear-gradient(135deg, #0052CC 0%, #0065FF 100%) !important;
-        color: #FFFFFF !important;
-        font-weight: 800 !important;
-        text-transform: uppercase !important;
-        font-size: 0.95rem !important;
-        letter-spacing: 0.1em !important;
-        padding: 1.5rem 1rem !important;
-        border: none !important;
-        text-align: center !important;
-        box-shadow: 0 4px 12px rgba(0, 82, 204, 0.4) !important;
-    }
+    tabla_comparativa_html += """
+            </tbody>
+        </table>
+    </div>
     
-    [data-testid="stDataFrame"] thead th:first-child {
-        border-radius: 15px 0 0 0 !important;
-        text-align: left !important;
-        padding-left: 2rem !important;
-    }
-    
-    [data-testid="stDataFrame"] thead th:last-child {
-        border-radius: 0 15px 0 0 !important;
-    }
-    
-    /* FILAS - Con efecto hover */
-    [data-testid="stDataFrame"] tbody tr {
-        background: rgba(19, 47, 76, 0.6) !important;
-        border-bottom: 2px solid rgba(0, 184, 217, 0.2) !important;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    }
-    
-    [data-testid="stDataFrame"] tbody tr:hover {
-        background: rgba(0, 101, 255, 0.25) !important;
-        transform: translateX(8px) scale(1.02) !important;
-        box-shadow: -6px 0 0 0 #00E5FF, 0 4px 20px rgba(0, 229, 255, 0.3) !important;
-    }
-    
-    [data-testid="stDataFrame"] tbody tr:last-child {
-        border-bottom: none !important;
-    }
-    
-    /* CELDAS - Primera columna (Contaminante) */
-    [data-testid="stDataFrame"] tbody td:first-child {
-        color: #00E5FF !important;
-        font-weight: 700 !important;
-        font-size: 1.05rem !important;
-        text-align: left !important;
-        padding-left: 2rem !important;
-        text-shadow: 0 0 10px rgba(0, 229, 255, 0.5) !important;
-    }
-    
-    /* Columna Perú - NARANJA BRILLANTE */
-    [data-testid="stDataFrame"] tbody td:nth-child(2) {
-        color: #FFB300 !important;
-        font-weight: 800 !important;
-        font-size: 1.1rem !important;
-        text-shadow: 0 0 10px rgba(255, 179, 0, 0.5) !important;
-        background: rgba(255, 179, 0, 0.1) !important;
-    }
-    
-    /* Columna OMS - VERDE BRILLANTE */
-    [data-testid="stDataFrame"] tbody td:nth-child(3) {
-        color: #00E676 !important;
-        font-weight: 800 !important;
-        font-size: 1.1rem !important;
-        text-shadow: 0 0 10px rgba(0, 230, 118, 0.5) !important;
-        background: rgba(0, 230, 118, 0.1) !important;
-    }
-    
-    /* Columna EPA USA - AZUL BRILLANTE */
-    [data-testid="stDataFrame"] tbody td:nth-child(4) {
-        color: #60A5FA !important;
-        font-weight: 800 !important;
-        font-size: 1.1rem !important;
-        text-shadow: 0 0 10px rgba(96, 165, 250, 0.5) !important;
-        background: rgba(96, 165, 250, 0.1) !important;
-    }
-    
-    /* Columna Canadá - PÚRPURA BRILLANTE */
-    [data-testid="stDataFrame"] tbody td:nth-child(5) {
-        color: #C084FC !important;
-        font-weight: 800 !important;
-        font-size: 1.1rem !important;
-        text-shadow: 0 0 10px rgba(192, 132, 252, 0.5) !important;
-        background: rgba(192, 132, 252, 0.1) !important;
-    }
-    
-    /* Columna Unidad - BLANCO */
-    [data-testid="stDataFrame"] tbody td:last-child {
-        color: rgba(255, 255, 255, 0.85) !important;
-        font-weight: 500 !important;
-        font-size: 0.95rem !important;
-        font-style: italic !important;
-    }
-    
-    /* Todas las celdas de datos */
-    [data-testid="stDataFrame"] tbody td {
-        padding: 1.2rem 1rem !important;
-        border: none !important;
-        text-align: center !important;
-    }
-    
-    /* Bordes redondeados en esquinas inferiores */
-    [data-testid="stDataFrame"] tbody tr:last-child td:first-child {
-        border-radius: 0 0 0 15px !important;
-    }
-    
-    [data-testid="stDataFrame"] tbody tr:last-child td:last-child {
-        border-radius: 0 0 15px 0 !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-    
-    st.dataframe(
-        comp_intl_data, 
-        use_container_width=True, 
-        hide_index=True,
-        height=400
-    )
-    
-    # Análisis comparativo con componentes nativos
-    st.warning("### ⚠️ Análisis Comparativo Crítico\n\n**Brechas identificadas respecto a estándares internacionales:**")
-    
-    col_a, col_b, col_c = st.columns(3)
-    
-    with col_a:
-        st.markdown("""
-        <div style='background: linear-gradient(135deg, rgba(255, 179, 0, 0.2), rgba(255, 152, 0, 0.15)); 
-                    padding: 1.2rem; border-radius: 12px; border-left: 4px solid #FFB300; height: 100%;'>
-            <h4 style='color: #FFB300; margin-top: 0;'>PM2.5 Anual</h4>
-            <p style='color: white; margin: 0.5rem 0;'>
-                Perú: <strong style='color: #FFB300;'>25 μg/m³</strong><br>
-                OMS: <strong style='color: #00C853;'>5 μg/m³</strong><br>
-                EPA: <strong style='color: #0065FF;'>9 μg/m³</strong>
-            </p>
-            <p style='color: #FF6F00; font-weight: 700; margin: 0.8rem 0 0 0; font-size: 1.1rem;'>
-                5x más permisivo que OMS
-            </p>
+    <div style='background: linear-gradient(135deg, rgba(255, 179, 0, 0.15) 0%, rgba(255, 152, 0, 0.1) 100%);
+                border-left: 4px solid #FFB300; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;
+                backdrop-filter: blur(10px);'>
+        <div style='display: flex; align-items: flex-start; gap: 1rem;'>
+            <div style='font-size: 2rem; line-height: 1;'>⚠️</div>
+            <div>
+                <h4 style='color: #FFB300; margin: 0 0 0.5rem 0; font-size: 1.1rem;'>
+                    Análisis Comparativo Crítico
+                </h4>
+                <p style='color: #FFFFFF; margin: 0; line-height: 1.7;'>
+                    El estándar peruano de <strong>PM2.5 anual (25 μg/m³)</strong> es 
+                    <span style='color: #FFB300; font-weight: 700;'>5 veces más permisivo</span> que la 
+                    recomendación de la OMS (5 μg/m³) y <span style='color: #FFB300; font-weight: 700;'>2.8 veces más alto</span> 
+                    que el estándar de EPA USA (9 μg/m³). Se recomienda evaluar una actualización gradual de los ECA nacionales 
+                    para mejor protección de la salud pública.
+                </p>
+            </div>
         </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """
     
-    with col_b:
-        st.markdown("""
-        <div style='background: linear-gradient(135deg, rgba(255, 179, 0, 0.2), rgba(255, 152, 0, 0.15)); 
-                    padding: 1.2rem; border-radius: 12px; border-left: 4px solid #FFB300; height: 100%;'>
-            <h4 style='color: #FFB300; margin-top: 0;'>PM2.5 24 horas</h4>
-            <p style='color: white; margin: 0.5rem 0;'>
-                Perú: <strong style='color: #FFB300;'>50 μg/m³</strong><br>
-                OMS: <strong style='color: #00C853;'>15 μg/m³</strong><br>
-                EPA: <strong style='color: #0065FF;'>35 μg/m³</strong>
-            </p>
-            <p style='color: #FF6F00; font-weight: 700; margin: 0.8rem 0 0 0; font-size: 1.1rem;'>
-                3.3x más permisivo que OMS
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col_c:
-        st.markdown("""
-        <div style='background: linear-gradient(135deg, rgba(255, 179, 0, 0.2), rgba(255, 152, 0, 0.15)); 
-                    padding: 1.2rem; border-radius: 12px; border-left: 4px solid #FFB300; height: 100%;'>
-            <h4 style='color: #FFB300; margin-top: 0;'>NO2 Anual</h4>
-            <p style='color: white; margin: 0.5rem 0;'>
-                Perú: <strong style='color: #FFB300;'>100 μg/m³</strong><br>
-                OMS: <strong style='color: #00C853;'>10 μg/m³</strong><br>
-                EPA: <strong style='color: #0065FF;'>53 μg/m³</strong>
-            </p>
-            <p style='color: #FF6F00; font-weight: 700; margin: 0.8rem 0 0 0; font-size: 1.1rem;'>
-                10x más permisivo que OMS
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    st.info("**💡 Recomendación:** Se sugiere actualización gradual de ECA peruanos hacia estándares OMS 2021 mediante metas intermedias (IT-1 a IT-4) con plazos de 5 a 10 años")
-    
+    st.markdown(tabla_comparativa_html, unsafe_allow_html=True)
     
     # Gráfico de barras comparativo mejorado
     st.markdown("""
