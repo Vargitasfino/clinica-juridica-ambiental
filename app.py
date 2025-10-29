@@ -2100,65 +2100,120 @@ elif st.session_state.pagina == "Lineamiento":
     </div>
     """, unsafe_allow_html=True)
     
-    # Crear tabla con HTML compacto
-    tabla_html = """
+    # Usar components.html para renderizado garantizado
+    import streamlit.components.v1 as components
+    
+    html_tabla = """
     <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); margin: 2rem 0;'>
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);'>
         <table style='width: 100%; border-collapse: collapse; 
                       background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(26, 58, 82, 0.9) 100%);'>
             <thead>
                 <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
-                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: left; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.9rem; border: none; min-width: 180px;'>Contaminante</th>
-                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.9rem; border: none; min-width: 150px;'>Nivel de Alerta</th>
-                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.9rem; border: none; min-width: 150px;'>Umbral (µg/m³)</th>
-                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 700; 
-                               text-transform: uppercase; font-size: 0.9rem; border: none; min-width: 150px;'>Color de Alerta</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; border: none;'>Contaminante</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; border: none;'>Nivel de Alerta</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; border: none;'>Umbral (µg/m³)</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; border: none;'>Color de Alerta</th>
                 </tr>
             </thead>
             <tbody>
-    """
-    
-    # Datos de la tabla
-    datos = [
-        ('PM10 (24h)', '#3B82F6', 'Cuidado', 250, '#FDD835', '🟡 Amarillo'),
-        ('PM10 (24h)', '#3B82F6', 'Peligro', 350, '#FF9800', '🟠 Naranja'),
-        ('PM10 (24h)', '#3B82F6', 'Emergencia', 420, '#F44336', '🔴 Rojo'),
-        ('SO2 (24h)', '#EAB308', 'Cuidado', 600, '#FDD835', '🟡 Amarillo'),
-        ('SO2 (24h)', '#EAB308', 'Peligro', 1500, '#FF9800', '🟠 Naranja'),
-        ('SO2 (24h)', '#EAB308', 'Emergencia', 2500, '#F44336', '🔴 Rojo'),
-        ('NO2 (1h)', '#EF4444', 'Cuidado', 1200, '#FDD835', '🟡 Amarillo'),
-        ('NO2 (1h)', '#EF4444', 'Peligro', 2300, '#FF9800', '🟠 Naranja'),
-        ('NO2 (1h)', '#EF4444', 'Emergencia', 3000, '#F44336', '🔴 Rojo'),
-        ('CO (8h)', '#A855F7', 'Cuidado', 15000, '#FDD835', '🟡 Amarillo'),
-        ('CO (8h)', '#A855F7', 'Peligro', 30000, '#FF9800', '🟠 Naranja'),
-        ('CO (8h)', '#A855F7', 'Emergencia', 40000, '#F44336', '🔴 Rojo'),
-        ('O3 (8h)', '#06B6D4', 'Cuidado', 300, '#FDD835', '🟡 Amarillo'),
-        ('O3 (8h)', '#06B6D4', 'Peligro', 500, '#FF9800', '🟠 Naranja'),
-        ('O3 (8h)', '#06B6D4', 'Emergencia', 700, '#F44336', '🔴 Rojo'),
-    ]
-    
-    # Generar filas
-    for contam, color_cont, nivel, umbral, color_umb, color_alert in datos:
-        tabla_html += f"""
-                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' 
-                    onmouseover='this.style.background="rgba(0, 184, 217, 0.15)"' 
-                    onmouseout='this.style.background="transparent"'>
-                    <td style='color: {color_cont}; padding: 1rem 1.5rem; font-weight: 700; border: none; font-size: 1rem;'>{contam}</td>
-                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem; font-weight: 500;'>{nivel}</td>
-                    <td style='color: {color_umb}; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1.1rem; font-weight: 700;'>{umbral}</td>
-                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; border: none; font-size: 1rem;'>{color_alert}</td>
-                </tr>"""
-    
-    tabla_html += """
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #3B82F6; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>PM10 (24h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Cuidado</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>250</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🟡 Amarillo</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #3B82F6; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>PM10 (24h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Peligro</td>
+                    <td style='color: #FF9800; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>350</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🟠 Naranja</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #3B82F6; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>PM10 (24h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Emergencia</td>
+                    <td style='color: #F44336; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>420</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🔴 Rojo</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EAB308; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>SO2 (24h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Cuidado</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>600</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🟡 Amarillo</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EAB308; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>SO2 (24h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Peligro</td>
+                    <td style='color: #FF9800; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>1500</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🟠 Naranja</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EAB308; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>SO2 (24h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Emergencia</td>
+                    <td style='color: #F44336; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>2500</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🔴 Rojo</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EF4444; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>NO2 (1h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Cuidado</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>1200</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🟡 Amarillo</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EF4444; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>NO2 (1h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Peligro</td>
+                    <td style='color: #FF9800; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>2300</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🟠 Naranja</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EF4444; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>NO2 (1h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Emergencia</td>
+                    <td style='color: #F44336; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>3000</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🔴 Rojo</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #A855F7; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>CO (8h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Cuidado</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>15000</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🟡 Amarillo</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #A855F7; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>CO (8h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Peligro</td>
+                    <td style='color: #FF9800; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>30000</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🟠 Naranja</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #A855F7; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>CO (8h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Emergencia</td>
+                    <td style='color: #F44336; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>40000</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🔴 Rojo</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #06B6D4; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>O3 (8h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Cuidado</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>300</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🟡 Amarillo</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #06B6D4; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>O3 (8h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Peligro</td>
+                    <td style='color: #FF9800; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>500</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🟠 Naranja</td>
+                </tr>
+                <tr onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #06B6D4; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>O3 (8h)</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>Emergencia</td>
+                    <td style='color: #F44336; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>700</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 1rem;'>🔴 Rojo</td>
+                </tr>
             </tbody>
         </table>
     </div>
     """
     
-    st.markdown(tabla_html, unsafe_allow_html=True)
+    components.html(html_tabla, height=700, scrolling=True)
+    
     
     
     st.warning("""
