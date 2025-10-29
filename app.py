@@ -2453,36 +2453,61 @@ elif st.session_state.pagina == "Normativas":
     )
     st.markdown('</div>', unsafe_allow_html=True)
     
-    st.markdown("""
-    <div class='warning-box' style='margin-top: 1.5rem;'>
-        <h4 style='color: #FFB300; margin-top: 0; font-size: 1.2rem;'>⚠️ Análisis Comparativo Crítico</h4>
-        <p style='margin-bottom: 1rem;'><strong>Brechas identificadas respecto a estándares internacionales:</strong></p>
-        
-        <div style='background: rgba(255, 179, 0, 0.1); padding: 0.8rem; border-radius: 8px; margin: 0.8rem 0; border-left: 3px solid #FFB300;'>
-            <p style='margin: 0;'><strong style='color: #FFB300;'>PM2.5 Anual:</strong> 
-            Perú (25 μg/m³) es <span style='color: #FF6F00; font-weight: 700;'>5x más permisivo</span> que OMS (5 μg/m³) 
-            y <span style='color: #FF6F00; font-weight: 700;'>2.8x</span> más que EPA (9 μg/m³)</p>
+    # Análisis comparativo con componentes nativos
+    st.warning("### ⚠️ Análisis Comparativo Crítico\n\n**Brechas identificadas respecto a estándares internacionales:**")
+    
+    col_a, col_b, col_c = st.columns(3)
+    
+    with col_a:
+        st.markdown("""
+        <div style='background: linear-gradient(135deg, rgba(255, 179, 0, 0.2), rgba(255, 152, 0, 0.15)); 
+                    padding: 1.2rem; border-radius: 12px; border-left: 4px solid #FFB300; height: 100%;'>
+            <h4 style='color: #FFB300; margin-top: 0;'>PM2.5 Anual</h4>
+            <p style='color: white; margin: 0.5rem 0;'>
+                Perú: <strong style='color: #FFB300;'>25 μg/m³</strong><br>
+                OMS: <strong style='color: #00C853;'>5 μg/m³</strong><br>
+                EPA: <strong style='color: #0065FF;'>9 μg/m³</strong>
+            </p>
+            <p style='color: #FF6F00; font-weight: 700; margin: 0.8rem 0 0 0; font-size: 1.1rem;'>
+                5x más permisivo que OMS
+            </p>
         </div>
-        
-        <div style='background: rgba(255, 179, 0, 0.1); padding: 0.8rem; border-radius: 8px; margin: 0.8rem 0; border-left: 3px solid #FFB300;'>
-            <p style='margin: 0;'><strong style='color: #FFB300;'>PM2.5 24h:</strong> 
-            Perú (50 μg/m³) es <span style='color: #FF6F00; font-weight: 700;'>3.3x más permisivo</span> que OMS (15 μg/m³) 
-            y <span style='color: #FF6F00; font-weight: 700;'>1.4x</span> más que EPA (35 μg/m³)</p>
+        """, unsafe_allow_html=True)
+    
+    with col_b:
+        st.markdown("""
+        <div style='background: linear-gradient(135deg, rgba(255, 179, 0, 0.2), rgba(255, 152, 0, 0.15)); 
+                    padding: 1.2rem; border-radius: 12px; border-left: 4px solid #FFB300; height: 100%;'>
+            <h4 style='color: #FFB300; margin-top: 0;'>PM2.5 24 horas</h4>
+            <p style='color: white; margin: 0.5rem 0;'>
+                Perú: <strong style='color: #FFB300;'>50 μg/m³</strong><br>
+                OMS: <strong style='color: #00C853;'>15 μg/m³</strong><br>
+                EPA: <strong style='color: #0065FF;'>35 μg/m³</strong>
+            </p>
+            <p style='color: #FF6F00; font-weight: 700; margin: 0.8rem 0 0 0; font-size: 1.1rem;'>
+                3.3x más permisivo que OMS
+            </p>
         </div>
-        
-        <div style='background: rgba(255, 179, 0, 0.1); padding: 0.8rem; border-radius: 8px; margin: 0.8rem 0; border-left: 3px solid #FFB300;'>
-            <p style='margin: 0;'><strong style='color: #FFB300;'>NO2 Anual:</strong> 
-            Perú (100 μg/m³) es <span style='color: #FF6F00; font-weight: 700;'>10x más permisivo</span> que OMS (10 μg/m³) 
-            y <span style='color: #FF6F00; font-weight: 700;'>1.9x</span> más que EPA (53 μg/m³)</p>
+        """, unsafe_allow_html=True)
+    
+    with col_c:
+        st.markdown("""
+        <div style='background: linear-gradient(135deg, rgba(255, 179, 0, 0.2), rgba(255, 152, 0, 0.15)); 
+                    padding: 1.2rem; border-radius: 12px; border-left: 4px solid #FFB300; height: 100%;'>
+            <h4 style='color: #FFB300; margin-top: 0;'>NO2 Anual</h4>
+            <p style='color: white; margin: 0.5rem 0;'>
+                Perú: <strong style='color: #FFB300;'>100 μg/m³</strong><br>
+                OMS: <strong style='color: #00C853;'>10 μg/m³</strong><br>
+                EPA: <strong style='color: #0065FF;'>53 μg/m³</strong>
+            </p>
+            <p style='color: #FF6F00; font-weight: 700; margin: 0.8rem 0 0 0; font-size: 1.1rem;'>
+                10x más permisivo que OMS
+            </p>
         </div>
-        
-        <p style='margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid rgba(255, 179, 0, 0.3);'>
-            <strong style='color: #00FFB8;'>💡 Recomendación:</strong> 
-            Se sugiere actualización gradual de ECA peruanos hacia estándares OMS 2021 mediante 
-            metas intermedias (IT-1 a IT-4) con plazos de 5 a 10 años
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
+    
+    st.info("**💡 Recomendación:** Se sugiere actualización gradual de ECA peruanos hacia estándares OMS 2021 mediante metas intermedias (IT-1 a IT-4) con plazos de 5 a 10 años")
+    
     
     # Gráfico de barras comparativo mejorado
     st.markdown("""
