@@ -2409,29 +2409,6 @@ elif st.session_state.pagina == "Medidas":
     st.markdown("""
     <div class='normative-card vigente'>
         <div class='status-badge vigente'>✅ VIGENTE</div>
-        <h3>⚖️ Ley N° 30754 - Ley Marco sobre Cambio Climático</h3>
-        <p><strong>Publicación:</strong> 18 de abril de 2018</p>
-        <p><strong>Objetivo:</strong> Gestión integral del cambio climático, incluyendo mitigación de emisiones de GEI</p>
-        <p><strong>Medidas relacionadas con calidad del aire:</strong></p>
-        <ul style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
-            <li>Reducción de emisiones de carbono negro (black carbon - componente de PM2.5)</li>
-            <li>Promoción de energías renovables y eficiencia energética</li>
-            <li>Transporte sostenible y movilidad limpia</li>
-            <li>Inventario Nacional de Gases de Efecto Invernadero (incluye contaminantes criterio)</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown("""
-    <a href='https://www.minam.gob.pe/wp-content/uploads/2018/04/Ley-N%C2%B0-30754.pdf' 
-       target='_blank' class='corporate-button'>
-        📄 Ver Ley N° 30754
-    </a>
-    """, unsafe_allow_html=True)
-    
-    st.markdown("""
-    <div class='normative-card vigente'>
-        <div class='status-badge vigente'>✅ VIGENTE</div>
         <h3>⚖️ D.S. N° 019-2009-MINAM - Sistema de Fiscalización Ambiental</h3>
         <p><strong>Publicación:</strong> 25 de septiembre de 2009</p>
         <p><strong>Contenido:</strong> Reglamento del Sistema Nacional de Evaluación y Fiscalización Ambiental (SINEFA)</p>
