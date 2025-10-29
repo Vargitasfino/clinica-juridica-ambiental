@@ -1576,25 +1576,132 @@ elif st.session_state.pagina == "ECA":
     
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Tabla de ECA vigentes
+    # Tabla de ECA vigentes con diseño azul profesional
     st.markdown("""
-    <div class='corporate-card'>
-        <h3>📊 Valores de Estándares de Calidad Ambiental (ECA) Vigentes</h3>
-        <p style='font-size: 0.95rem;'>Valores según D.S. N° 003-2017-MINAM y modificatorias</p>
+    <div style='background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(10, 25, 41, 0.98) 100%); 
+                padding: 2rem; border-radius: 16px; margin: 2rem 0; 
+                border: 1px solid rgba(0, 184, 217, 0.3);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);'>
+        <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;'>
+            <div style='font-size: 2.5rem;'>📊</div>
+            <h2 style='color: #FFFFFF; margin: 0; font-size: 1.8rem; font-weight: 700;'>
+                Valores de Estándares de Calidad Ambiental (ECA) Vigentes
+            </h2>
+        </div>
+        <p style='color: rgba(255, 255, 255, 0.8); font-size: 1rem; margin: 0.5rem 0 0 0;'>
+            Valores según D.S. N° 003-2017-MINAM y modificatorias
+        </p>
     </div>
     """, unsafe_allow_html=True)
     
-    eca_data = pd.DataFrame({
-        'Contaminante': ['PM2.5', 'PM2.5', 'PM10', 'PM10', 'SO2', 'NO2', 'NO2', 'CO', 'O3', 'Pb', 'BaP', 'H2S'],
-        'Período': ['24 horas', 'Anual', '24 horas', 'Anual', '24 horas', '1 hora', 'Anual', '8 horas', '8 horas', 'Anual', 'Anual', '24 horas'],
-        'Valor': [50, 25, 100, 50, 250, 200, 100, 10000, 100, 0.5, 0.0001, 150],
-        'Unidad': ['µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³', 'µg/m³'],
-        'Método de Análisis': ['Separación inercial/filtración', 'Separación inercial/filtración', 'Separación inercial/filtración', 
-                              'Separación inercial/filtración', 'Fluorescencia UV', 'Quimioluminiscencia', 'Quimioluminiscencia',
-                              'Infrarrojo no dispersivo', 'Fotometría UV', 'Espectrometría de masas', 'Cromatografía', 'Fluorescencia UV']
-    })
+    # Usar components.html para renderizado garantizado
+    import streamlit.components.v1 as components
     
-    st.dataframe(eca_data, use_container_width=True, hide_index=True)
+    html_eca = """
+    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);'>
+        <table style='width: 100%; border-collapse: collapse; 
+                      background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(26, 58, 82, 0.9) 100%);'>
+            <thead>
+                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: left; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; border: none;'>Contaminante</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; border: none;'>Período</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; border: none;'>Valor</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; border: none;'>Unidad</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; border: none;'>Método de Análisis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #3B82F6; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>PM2.5</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>24 horas</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>50</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Separación inercial/filtración</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #3B82F6; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>PM2.5</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>Anual</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>25</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Separación inercial/filtración</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #8B5CF6; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>PM10</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>24 horas</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>100</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Separación inercial/filtración</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #8B5CF6; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>PM10</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>Anual</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>50</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Separación inercial/filtración</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EAB308; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>SO2</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>24 horas</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>250</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Fluorescencia UV</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EF4444; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>NO2</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>1 hora</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>200</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Quimioluminiscencia</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EF4444; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>NO2</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>Anual</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>100</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Quimioluminiscencia</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #A855F7; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>CO</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>8 horas</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>10000</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Infrarrojo no dispersivo</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #06B6D4; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>O3</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>8 horas</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>100</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Fotometría UV</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #F59E0B; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>Pb</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>Anual</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>0.5</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Espectrometría de masas</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #10B981; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>BaP</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>Anual</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>0.0001</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Cromatografía</td>
+                </tr>
+                <tr onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EC4899; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;'>H2S</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>24 horas</td>
+                    <td style='color: #FDD835; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 700;'>150</td>
+                    <td style='color: #00B8D9; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>µg/m³</td>
+                    <td style='color: rgba(255,255,255,0.9); padding: 1rem 1.5rem; text-align: center; font-size: 0.9rem;'>Fluorescencia UV</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    """
+    
+    components.html(html_eca, height=600, scrolling=True)
     
     st.markdown("<br>", unsafe_allow_html=True)
     
