@@ -1970,6 +1970,733 @@ elif st.session_state.pagina == "LMP":
     
     st.info("📌 **Nota:** Los valores son referenciales y pueden variar según las condiciones específicas de cada normativa (temperatura, oxígeno de referencia, etc.)")
 
+# ===================== PÁGINA PROTOCOLO =====================
+elif st.session_state.pagina == "Protocolo":
+    st.markdown("""
+    <div class='corporate-card fade-in'>
+        <h2>📖 Protocolos de Monitoreo de Calidad del Aire</h2>
+        <p style='font-size: 1.05rem; line-height: 1.8;'>
+            Los <strong>protocolos de monitoreo</strong> establecen los procedimientos técnicos estandarizados para la 
+            medición de contaminantes atmosféricos, asegurando la <strong>calidad, comparabilidad y validez</strong> 
+            de los datos obtenidos en las redes de monitoreo ambiental.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Protocolo DIGESA 2005
+    st.markdown("""
+    <div class='normative-card vigente'>
+        <div class='status-badge vigente'>✅ VIGENTE</div>
+        <h3>📖 R.D. N° 1404-2005/DIGESA/SA</h3>
+        <p><strong>Título:</strong> Protocolo de Monitoreo de Calidad del Aire y Gestión de los Datos</p>
+        <p><strong>Publicación:</strong> 2 de noviembre de 2005</p>
+        <p><strong>Emisor:</strong> Dirección General de Salud Ambiental (DIGESA)</p>
+        <p><strong>Alcance:</strong> Aplicable a nivel nacional para el monitoreo de aire ambiente</p>
+        <p><strong>Contenido:</strong></p>
+        <ul style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
+            <li>Métodos de muestreo activo y pasivo</li>
+            <li>Equipos de monitoreo automático y manual</li>
+            <li>Ubicación y cantidad de estaciones de monitoreo</li>
+            <li>Frecuencia de medición y períodos de muestreo</li>
+            <li>Procedimientos de calibración y control de calidad</li>
+            <li>Gestión y validación de datos</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <a href='http://www.digesa.minsa.gob.pe/DEPA/protocolo_calidad_aire.pdf' 
+       target='_blank' class='corporate-button'>
+        📄 Ver Protocolo DIGESA 2005
+    </a>
+    """, unsafe_allow_html=True)
+    
+    # Protocolo de Industrias
+    st.markdown("""
+    <div class='normative-card vigente'>
+        <div class='status-badge vigente'>✅ VIGENTE</div>
+        <h3>📖 R.M. N° 026-2000-ITINCI/DM</h3>
+        <p><strong>Título:</strong> Protocolo de Monitoreo de Calidad del Aire y Emisiones para Actividades Industriales</p>
+        <p><strong>Publicación:</strong> 28 de enero de 2000</p>
+        <p><strong>Alcance:</strong> Monitoreo de emisiones en fuentes fijas industriales</p>
+        <p><strong>Aplicación:</strong> Industrias manufactureras, cemento, fundición, etc.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <a href='https://www.minam.gob.pe/wp-content/uploads/2013/09/rm_026-2000-itinci-dm.pdf' 
+       target='_blank' class='corporate-button'>
+        📄 Ver R.M. N° 026-2000-ITINCI/DM
+    </a>
+    """, unsafe_allow_html=True)
+    
+    # Protocolo para Centrales Termoeléctricas
+    st.markdown("""
+    <div class='normative-card vigente'>
+        <div class='status-badge vigente'>✅ VIGENTE</div>
+        <h3>📖 R.D. N° 195-2010-MEM/DGE</h3>
+        <p><strong>Título:</strong> Protocolo de Monitoreo de Emisiones Atmosféricas de Centrales Termoeléctricas</p>
+        <p><strong>Publicación:</strong> 15 de diciembre de 2010</p>
+        <p><strong>Alcance:</strong> Complementa el D.S. N° 003-2010-MINAM</p>
+        <p><strong>Contenido específico:</strong></p>
+        <ul style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
+            <li>Metodología de medición continua de emisiones (CEMS)</li>
+            <li>Parámetros operacionales y de referencia</li>
+            <li>Frecuencia de reporte y auditorías</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Protocolo ISO
+    st.markdown("""
+    <div class='normative-card referencia'>
+        <div class='status-badge ntp'>🔬 REFERENCIA TÉCNICA</div>
+        <h3>📖 NTP-ISO 9169:2008</h3>
+        <p><strong>Título:</strong> Calidad del Aire - Determinación de características de funcionamiento de los métodos de medición</p>
+        <p><strong>Estado:</strong> Norma técnica peruana adoptada de ISO 9169</p>
+        <p><strong>Aplicación:</strong> Validación de métodos analíticos en monitoreo de aire</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Proceso de monitoreo
+    st.markdown("""
+    <div class='corporate-card'>
+        <h3>🔄 Proceso de Monitoreo de Calidad del Aire</h3>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        <div class='process-card'>
+            <h3>1️⃣ Planificación</h3>
+            <p>• Definir objetivos del monitoreo</p>
+            <p>• Seleccionar ubicaciones estratégicas</p>
+            <p>• Determinar contaminantes a medir</p>
+            <p>• Establecer frecuencia de muestreo</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='process-card'>
+            <h3>2️⃣ Implementación</h3>
+            <p>• Instalación de equipos de monitoreo</p>
+            <p>• Calibración y verificación inicial</p>
+            <p>• Capacitación de personal operativo</p>
+            <p>• Inicio de operación y registro</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='process-card'>
+            <h3>3️⃣ Control de Calidad</h3>
+            <p>• Calibraciones periódicas (semanales/mensuales)</p>
+            <p>• Verificación de cero y span</p>
+            <p>• Auditorías internas y externas</p>
+            <p>• Mantenimiento preventivo y correctivo</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class='process-card'>
+            <h3>4️⃣ Gestión de Datos</h3>
+            <p>• Descarga y almacenamiento de datos</p>
+            <p>• Validación y filtrado de datos anómalos</p>
+            <p>• Cálculo de promedios según normativa</p>
+            <p>• Generación de reportes técnicos</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='process-card'>
+            <h3>5️⃣ Análisis y Reporte</h3>
+            <p>• Comparación con ECA y LMP</p>
+            <p>• Identificación de tendencias</p>
+            <p>• Análisis de fuentes de emisión</p>
+            <p>• Reporte a autoridades competentes</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='process-card'>
+            <h3>6️⃣ Difusión</h3>
+            <p>• Publicación de índice de calidad del aire</p>
+            <p>• Alertas a población en tiempo real</p>
+            <p>• Reportes mensuales y anuales</p>
+            <p>• Acceso público a datos históricos</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+# ===================== PÁGINA LINEAMIENTO =====================
+elif st.session_state.pagina == "Lineamiento":
+    st.markdown("""
+    <div class='corporate-card fade-in'>
+        <h2>📐 Lineamientos y Guías Técnicas</h2>
+        <p style='font-size: 1.05rem; line-height: 1.8;'>
+            Los <strong>lineamientos técnicos</strong> son documentos orientadores que establecen criterios, 
+            metodologías y buenas prácticas para la implementación de sistemas de gestión de calidad del aire, 
+            complementando la normativa obligatoria.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Lineamiento de Inventario de Emisiones
+    st.markdown("""
+    <div class='normative-card vigente'>
+        <div class='status-badge vigente'>✅ VIGENTE</div>
+        <h3>📐 R.M. N° 181-2016-MINAM</h3>
+        <p><strong>Título:</strong> Lineamientos para la Elaboración del Inventario de Emisiones Atmosféricas de Fuentes Fijas</p>
+        <p><strong>Publicación:</strong> 31 de julio de 2016</p>
+        <p><strong>Objetivo:</strong> Estandarizar la metodología para cuantificar emisiones de contaminantes atmosféricos</p>
+        <p><strong>Alcance:</strong> Aplicable a todas las actividades productivas con fuentes fijas</p>
+        <p><strong>Contenido:</strong></p>
+        <ul style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
+            <li>Identificación y clasificación de fuentes de emisión</li>
+            <li>Métodos de cuantificación (medición directa, factores de emisión, balance de masa)</li>
+            <li>Factores de emisión por sector industrial</li>
+            <li>Cálculo de emisiones totales y específicas</li>
+            <li>Formato de reporte y periodicidad</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <a href='https://www.minam.gob.pe/wp-content/uploads/2016/07/RM-N%C2%B0-181-2016-MINAM.pdf' 
+       target='_blank' class='corporate-button'>
+        📄 Ver R.M. N° 181-2016-MINAM
+    </a>
+    """, unsafe_allow_html=True)
+    
+    # Lineamiento de Estados de Alerta
+    st.markdown("""
+    <div class='normative-card vigente'>
+        <div class='status-badge vigente'>✅ VIGENTE</div>
+        <h3>📐 D.S. N° 009-2003-SA</h3>
+        <p><strong>Título:</strong> Aprueban el Reglamento de los Niveles de Estados de Alerta Nacionales para Contaminantes del Aire</p>
+        <p><strong>Publicación:</strong> 25 de junio de 2003</p>
+        <p><strong>Objetivo:</strong> Establecer niveles de concentración que activan medidas de prevención y control</p>
+        <p><strong>Estados de Alerta:</strong></p>
+        <ul style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
+            <li><strong style='color: #FFB300;'>Estado de Cuidado:</strong> Primeras acciones preventivas</li>
+            <li><strong style='color: #FF6F00;'>Estado de Peligro:</strong> Medidas de control adicionales</li>
+            <li><strong style='color: #D32F2F;'>Estado de Emergencia:</strong> Medidas restrictivas inmediatas</li>
+        </ul>
+        <p><strong>Medidas:</strong> Restricción vehicular, reducción de actividades industriales, alertas sanitarias</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <a href='https://www.minam.gob.pe/wp-content/uploads/2013/09/ds_009-2003-sa.pdf' 
+       target='_blank' class='corporate-button'>
+        📄 Ver D.S. N° 009-2003-SA
+    </a>
+    """, unsafe_allow_html=True)
+    
+    # Lineamiento de Planes de Acción
+    st.markdown("""
+    <div class='normative-card vigente'>
+        <div class='status-badge vigente'>✅ VIGENTE</div>
+        <h3>📐 D.S. N° 1278 (Ley N° 28245)</h3>
+        <p><strong>Título:</strong> Ley Marco del Sistema Nacional de Gestión Ambiental - Planes de Acción para la Mejora de la Calidad del Aire</p>
+        <p><strong>Objetivo:</strong> Establecer mecanismos de planificación para zonas con problemas de calidad del aire</p>
+        <p><strong>Contenido:</strong></p>
+        <ul style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
+            <li>Declaración de Zonas de Atención Prioritaria (ZAP)</li>
+            <li>Elaboración de Planes de Acción (Plan A Limpiar el Aire)</li>
+            <li>Medidas de prevención, control y mitigación</li>
+            <li>Cronograma de implementación y cumplimiento de ECA</li>
+            <li>Participación de gobiernos locales, regionales y sociedad civil</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <a href='https://www.minam.gob.pe/wp-content/uploads/2017/04/Ley-N%C2%B0-28245.pdf' 
+       target='_blank' class='corporate-button'>
+        📄 Ver Ley N° 28245
+    </a>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Tabla de Estados de Alerta
+    st.markdown("""
+    <div style='background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(10, 25, 41, 0.98) 100%); 
+                padding: 2rem; border-radius: 16px; margin: 2rem 0; 
+                border: 1px solid rgba(0, 184, 217, 0.3);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);'>
+        <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;'>
+            <div style='font-size: 2.5rem;'>🚨</div>
+            <h2 style='color: #FFFFFF; margin: 0; font-size: 1.8rem; font-weight: 900;'>
+                Niveles de Estados de Alerta Nacional
+            </h2>
+        </div>
+        <p style='color: rgba(255, 255, 255, 0.8); font-size: 1rem; margin: 0.5rem 0 0 0;'>
+            Según D.S. N° 009-2003-SA
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    html_alerta = """
+    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);'>
+        <table style='width: 100%; border-collapse: collapse; 
+                      background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(26, 58, 82, 0.9) 100%);'>
+            <thead>
+                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: left; font-weight: 900; text-transform: uppercase; font-size: 0.95rem; border: none;'>Contaminante</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 900; text-transform: uppercase; font-size: 0.95rem; border: none;'>Cuidado</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 900; text-transform: uppercase; font-size: 0.95rem; border: none;'>Peligro</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 900; text-transform: uppercase; font-size: 0.95rem; border: none;'>Emergencia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #3B82F6; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>PM2.5 (µg/m³)</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>155</td>
+                    <td style='color: #FF6F00; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>235</td>
+                    <td style='color: #D32F2F; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>500</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #8B5CF6; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>PM10 (µg/m³)</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>250</td>
+                    <td style='color: #FF6F00; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>350</td>
+                    <td style='color: #D32F2F; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>500</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EAB308; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>SO2 (µg/m³)</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>500</td>
+                    <td style='color: #FF6F00; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>1000</td>
+                    <td style='color: #D32F2F; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>1600</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EF4444; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>NO2 (µg/m³)</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>1000</td>
+                    <td style='color: #FF6F00; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>2000</td>
+                    <td style='color: #D32F2F; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>3000</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #06B6D4; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>O3 (µg/m³)</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>200</td>
+                    <td style='color: #FF6F00; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>400</td>
+                    <td style='color: #D32F2F; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>600</td>
+                </tr>
+                <tr onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #A855F7; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>CO (µg/m³)</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>15000</td>
+                    <td style='color: #FF6F00; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>30000</td>
+                    <td style='color: #D32F2F; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>50000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    """
+    
+    components.html(html_alerta, height=450, scrolling=True)
+
+# ===================== PÁGINA MEDIDAS DE CONTROL =====================
+elif st.session_state.pagina == "Medidas":
+    st.markdown("""
+    <div class='corporate-card fade-in'>
+        <h2>🛡️ Tecnologías y Medidas de Control de Emisiones</h2>
+        <p style='font-size: 1.05rem; line-height: 1.8;'>
+            Las <strong>tecnologías de control de emisiones</strong> son sistemas diseñados para reducir o eliminar 
+            contaminantes atmosféricos antes de su liberación al ambiente, junto con el <strong>marco legal</strong> 
+            que regula su implementación en el Perú.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Tecnologías para Material Particulado
+    st.markdown("""
+    <div class='corporate-card'>
+        <h3>💨 Tecnologías para Control de Material Particulado</h3>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        <div class='pollutant-card'>
+            <h3 style='color: #00C853;'>🌀 Ciclones</h3>
+            <p><strong>Principio:</strong> Separación por fuerza centrífuga</p>
+            <p><strong>Eficiencia:</strong> 50-90% para partículas >10 µm</p>
+            <p><strong>Ventajas:</strong> Bajo costo, mantenimiento simple</p>
+            <p><strong>Aplicación:</strong> Pretratamiento, industria minera y cemento</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='pollutant-card'>
+            <h3 style='color: #0091EA;'>⚡ Precipitadores Electrostáticos (ESP)</h3>
+            <p><strong>Principio:</strong> Ionización y atracción electrostática</p>
+            <p><strong>Eficiencia:</strong> 95-99.9% para PM2.5 y PM10</p>
+            <p><strong>Ventajas:</strong> Alta eficiencia, bajo consumo energético</p>
+            <p><strong>Aplicación:</strong> Termoeléctricas, cementeras, fundiciones</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class='pollutant-card'>
+            <h3 style='color: #8E24AA;'>🧲 Filtros de Mangas (Baghouse)</h3>
+            <p><strong>Principio:</strong> Filtración mediante telas sintéticas</p>
+            <p><strong>Eficiencia:</strong> 99-99.9% para PM2.5 y PM10</p>
+            <p><strong>Ventajas:</strong> Máxima eficiencia, opera a altas temperaturas</p>
+            <p><strong>Aplicación:</strong> Cemento, metalurgia, incineración</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='pollutant-card'>
+            <h3 style='color: #FF6F00;'>💧 Torres de Lavado (Scrubbers Húmedos)</h3>
+            <p><strong>Principio:</strong> Absorción de partículas en medio líquido</p>
+            <p><strong>Eficiencia:</strong> 80-95% para PM</p>
+            <p><strong>Ventajas:</strong> Control simultáneo de gases y partículas</p>
+            <p><strong>Aplicación:</strong> Industria química, fundiciones</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Tecnologías para Gases
+    st.markdown("""
+    <div class='corporate-card'>
+        <h3>☁️ Tecnologías para Control de Gases Contaminantes</h3>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        <div class='pollutant-card'>
+            <h3 style='color: #FFB300;'>🌊 Desulfuración de Gases (FGD - Flue Gas Desulfurization)</h3>
+            <p><strong>Objetivo:</strong> Remoción de SO2</p>
+            <p><strong>Tecnologías:</strong></p>
+            <p>• <strong>FGD Húmedo:</strong> Cal/caliza + agua (eficiencia >95%)</p>
+            <p>• <strong>FGD Seco:</strong> Inyección de sorbente seco (80-90%)</p>
+            <p><strong>Aplicación:</strong> Termoeléctricas a carbón, fundiciones</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='pollutant-card'>
+            <h3 style='color: #00B8D9;'>🔥 Oxidación Catalítica para CO</h3>
+            <p><strong>Principio:</strong> Oxidación de CO a CO2 con catalizador</p>
+            <p><strong>Eficiencia:</strong> >98% de conversión</p>
+            <p><strong>Aplicación:</strong> Escapes vehiculares, procesos industriales</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class='pollutant-card'>
+            <h3 style='color: #D32F2F;'>⚗️ Reducción Catalítica Selectiva (SCR - Selective Catalytic Reduction)</h3>
+            <p><strong>Objetivo:</strong> Reducción de NOx a N2 y H2O</p>
+            <p><strong>Reactivo:</strong> Amoniaco (NH3) o urea</p>
+            <p><strong>Eficiencia:</strong> 80-95% de reducción de NOx</p>
+            <p><strong>Aplicación:</strong> Termoeléctricas, motores diésel, calderas</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class='pollutant-card'>
+            <h3 style='color: #9C27B0;'>🧪 Adsorción con Carbón Activado</h3>
+            <p><strong>Objetivo:</strong> Captura de VOCs, H2S, mercurio</p>
+            <p><strong>Principio:</strong> Adsorción física/química en superficie porosa</p>
+            <p><strong>Aplicación:</strong> Industria química, tratamiento de gases residuales</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Marco Legal
+    st.markdown("""
+    <div class='corporate-card'>
+        <h3>⚖️ Marco Legal para Control de Emisiones</h3>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='normative-card vigente'>
+        <div class='status-badge vigente'>✅ VIGENTE</div>
+        <h3>⚖️ Ley N° 28611 - Ley General del Ambiente</h3>
+        <p><strong>Publicación:</strong> 15 de octubre de 2005</p>
+        <p><strong>Artículos relevantes:</strong></p>
+        <ul style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
+            <li><strong>Art. 113:</strong> Calidad ambiental - Obligación de cumplir ECA y LMP</li>
+            <li><strong>Art. 114:</strong> Control de emisiones - Instrumentos de prevención y mitigación</li>
+            <li><strong>Art. 115:</strong> Mejores tecnologías disponibles - Promoción de tecnologías limpias</li>
+            <li><strong>Art. 31:</strong> Estándar de Calidad Ambiental (ECA) - Definición y aplicación</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <a href='https://www.minam.gob.pe/wp-content/uploads/2017/04/Ley-N%C2%B0-28611.pdf' 
+       target='_blank' class='corporate-button'>
+        📄 Ver Ley N° 28611
+    </a>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='normative-card vigente'>
+        <div class='status-badge vigente'>✅ VIGENTE</div>
+        <h3>⚖️ Ley N° 30754 - Ley Marco sobre Cambio Climático</h3>
+        <p><strong>Publicación:</strong> 18 de abril de 2018</p>
+        <p><strong>Objetivo:</strong> Gestión integral del cambio climático, incluyendo mitigación de emisiones de GEI</p>
+        <p><strong>Medidas relacionadas con calidad del aire:</strong></p>
+        <ul style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
+            <li>Reducción de emisiones de carbono negro (black carbon - componente de PM2.5)</li>
+            <li>Promoción de energías renovables y eficiencia energética</li>
+            <li>Transporte sostenible y movilidad limpia</li>
+            <li>Inventario Nacional de Gases de Efecto Invernadero (incluye contaminantes criterio)</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <a href='https://www.minam.gob.pe/wp-content/uploads/2018/04/Ley-N%C2%B0-30754.pdf' 
+       target='_blank' class='corporate-button'>
+        📄 Ver Ley N° 30754
+    </a>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class='normative-card vigente'>
+        <div class='status-badge vigente'>✅ VIGENTE</div>
+        <h3>⚖️ D.S. N° 019-2009-MINAM - Sistema de Fiscalización Ambiental</h3>
+        <p><strong>Publicación:</strong> 25 de septiembre de 2009</p>
+        <p><strong>Contenido:</strong> Reglamento del Sistema Nacional de Evaluación y Fiscalización Ambiental (SINEFA)</p>
+        <p><strong>Entidad fiscalizadora:</strong> OEFA (Organismo de Evaluación y Fiscalización Ambiental)</p>
+        <p><strong>Funciones:</strong> Supervisión, fiscalización y sanción del cumplimiento de LMP y ECA</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <a href='https://www.minam.gob.pe/wp-content/uploads/2013/10/DS_019-2009-MINAM.pdf' 
+       target='_blank' class='corporate-button'>
+        📄 Ver D.S. N° 019-2009-MINAM
+    </a>
+    """, unsafe_allow_html=True)
+
+# ===================== PÁGINA NORMATIVAS INTERNACIONALES =====================
+elif st.session_state.pagina == "Normativas":
+    st.markdown("""
+    <div class='corporate-card fade-in'>
+        <h2>🌍 Normativas Internacionales de Calidad del Aire</h2>
+        <p style='font-size: 1.05rem; line-height: 1.8;'>
+            Comparativa de los estándares peruanos con las principales <strong>normativas internacionales</strong> 
+            establecidas por organismos de referencia mundial como la OMS, EPA (Estados Unidos) y Health Canada.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # OMS
+    st.markdown("""
+    <div class='normative-card internacional'>
+        <div class='status-badge internacional'>🌐 INTERNACIONAL</div>
+        <h3>🏥 OMS - Guías de Calidad del Aire 2021</h3>
+        <p><strong>Organización:</strong> Organización Mundial de la Salud (WHO - World Health Organization)</p>
+        <p><strong>Actualización:</strong> Septiembre 2021</p>
+        <p><strong>Base científica:</strong> Revisión exhaustiva de >500 estudios epidemiológicos</p>
+        <p><strong>Característica:</strong> Estándares más estrictos a nivel mundial, basados en evidencia de efectos en salud a bajas concentraciones</p>
+        <p><strong>Objetivo:</strong> Protección de salud pública en todo el mundo</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <a href='https://www.who.int/publications/i/item/9789240034228' 
+       target='_blank' class='corporate-button'>
+        📄 Ver Guías OMS 2021
+    </a>
+    """, unsafe_allow_html=True)
+    
+    # EPA USA
+    st.markdown("""
+    <div class='normative-card internacional'>
+        <div class='status-badge internacional'>🌐 INTERNACIONAL</div>
+        <h3>🇺🇸 EPA USA - NAAQS (National Ambient Air Quality Standards)</h3>
+        <p><strong>Organización:</strong> Environmental Protection Agency (EPA) - Estados Unidos</p>
+        <p><strong>Última actualización:</strong> 2024 (PM2.5), revisiones periódicas cada 5 años</p>
+        <p><strong>Marco legal:</strong> Clean Air Act (1970, enmendado 1990)</p>
+        <p><strong>Clasificación:</strong></p>
+        <ul style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
+            <li><strong>Estándares Primarios:</strong> Protección de salud pública (incluyendo grupos sensibles)</li>
+            <li><strong>Estándares Secundarios:</strong> Protección de bienestar público (visibilidad, ecosistemas)</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <a href='https://www.epa.gov/criteria-air-pollutants/naaqs-table' 
+       target='_blank' class='corporate-button'>
+        📄 Ver NAAQS EPA
+    </a>
+    """, unsafe_allow_html=True)
+    
+    # Canadá
+    st.markdown("""
+    <div class='normative-card internacional'>
+        <div class='status-badge internacional'>🌐 INTERNACIONAL</div>
+        <h3>🇨🇦 Canadá - CAAQS (Canadian Ambient Air Quality Standards)</h3>
+        <p><strong>Organización:</strong> Environment and Climate Change Canada + Health Canada</p>
+        <p><strong>Implementación:</strong> Sistema federal desde 2013</p>
+        <p><strong>Enfoque:</strong> Gestión de calidad del aire basada en estándares alcanzables progresivamente</p>
+        <p><strong>Características:</strong></p>
+        <ul style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
+            <li>Sistema de gestión por zonas atmosféricas (Air Zones)</li>
+            <li>Revisión y ajuste cada 5 años hacia estándares más estrictos</li>
+            <li>Enfoque colaborativo federal-provincial</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <a href='https://www.canada.ca/en/environment-climate-change/services/air-quality-health-index/about.html' 
+       target='_blank' class='corporate-button'>
+        📄 Ver CAAQS Canadá
+    </a>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Tabla comparativa completa
+    st.markdown("""
+    <div style='background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(10, 25, 41, 0.98) 100%); 
+                padding: 2rem; border-radius: 16px; margin: 2rem 0; 
+                border: 1px solid rgba(0, 184, 217, 0.3);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);'>
+        <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;'>
+            <div style='font-size: 2.5rem;'>🌍</div>
+            <h2 style='color: #FFFFFF; margin: 0; font-size: 1.8rem; font-weight: 900;'>
+                Comparativa Internacional de Estándares de Calidad del Aire
+            </h2>
+        </div>
+        <p style='color: rgba(255, 255, 255, 0.8); font-size: 1rem; margin: 0.5rem 0 0 0;'>
+            Valores de PM2.5, PM10, SO2, NO2, CO y O3 por país/organismo
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    html_internacional = """
+    <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);'>
+        <table style='width: 100%; border-collapse: collapse; 
+                      background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(26, 58, 82, 0.9) 100%);'>
+            <thead>
+                <tr style='background: linear-gradient(135deg, #0052CC 0%, #00B8D9 100%);'>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: left; font-weight: 900; text-transform: uppercase; font-size: 0.95rem; border: none;'>Contaminante</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 900; text-transform: uppercase; font-size: 0.95rem; border: none;'>Período</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 900; text-transform: uppercase; font-size: 0.95rem; border: none;'>Perú</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 900; text-transform: uppercase; font-size: 0.95rem; border: none;'>OMS 2021</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 900; text-transform: uppercase; font-size: 0.95rem; border: none;'>EPA USA</th>
+                    <th style='color: #FFF; padding: 1.2rem 1.5rem; text-align: center; font-weight: 900; text-transform: uppercase; font-size: 0.95rem; border: none;'>Canadá</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #3B82F6; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>PM2.5</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>Anual</td>
+                    <td style='color: #FF6F00; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>25</td>
+                    <td style='color: #00C853; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>5</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>9</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>8.8</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #3B82F6; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>PM2.5</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>24 horas</td>
+                    <td style='color: #FF6F00; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>50</td>
+                    <td style='color: #00C853; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>15</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>35</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>27</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #8B5CF6; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>PM10</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>Anual</td>
+                    <td style='color: #FF6F00; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>50</td>
+                    <td style='color: #00C853; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>15</td>
+                    <td style='color: rgba(255,255,255,0.5); padding: 1rem 1.5rem; text-align: center; font-size: 1.05rem; font-weight: 900;'>-</td>
+                    <td style='color: rgba(255,255,255,0.5); padding: 1rem 1.5rem; text-align: center; font-size: 1.05rem; font-weight: 900;'>-</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #8B5CF6; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>PM10</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>24 horas</td>
+                    <td style='color: #FF6F00; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>100</td>
+                    <td style='color: #00C853; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>45</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>150</td>
+                    <td style='color: rgba(255,255,255,0.5); padding: 1rem 1.5rem; text-align: center; font-size: 1.05rem; font-weight: 900;'>-</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EAB308; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>SO2</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>24 horas</td>
+                    <td style='color: #D32F2F; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>250</td>
+                    <td style='color: #00C853; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>40</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>196</td>
+                    <td style='color: rgba(255,255,255,0.5); padding: 1rem 1.5rem; text-align: center; font-size: 1.05rem; font-weight: 900;'>-</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EF4444; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>NO2</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>Anual</td>
+                    <td style='color: #D32F2F; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>100</td>
+                    <td style='color: #00C853; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>10</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>100</td>
+                    <td style='color: rgba(255,255,255,0.5); padding: 1rem 1.5rem; text-align: center; font-size: 1.05rem; font-weight: 900;'>-</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #EF4444; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>NO2</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>1 hora</td>
+                    <td style='color: #FF6F00; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>200</td>
+                    <td style='color: #00C853; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>25</td>
+                    <td style='color: rgba(255,255,255,0.5); padding: 1rem 1.5rem; text-align: center; font-size: 1.05rem; font-weight: 900;'>-</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>60</td>
+                </tr>
+                <tr style='border-bottom: 1px solid rgba(255, 255, 255, 0.08);' onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #A855F7; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>CO</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>8 horas</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>10000</td>
+                    <td style='color: #00C853; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>4000</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>10000</td>
+                    <td style='color: rgba(255,255,255,0.5); padding: 1rem 1.5rem; text-align: center; font-size: 1.05rem; font-weight: 900;'>-</td>
+                </tr>
+                <tr onmouseover='this.style.background="rgba(0,184,217,0.15)"' onmouseout='this.style.background="transparent"'>
+                    <td style='color: #06B6D4; padding: 1rem 1.5rem; font-weight: 900; font-size: 1.05rem;'>O3</td>
+                    <td style='color: #FFF; padding: 1rem 1.5rem; text-align: center; font-size: 0.95rem;'>8 horas</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>100</td>
+                    <td style='color: #00C853; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>100</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>137</td>
+                    <td style='color: #FFB300; padding: 1rem 1.5rem; text-align: center; font-size: 1.1rem; font-weight: 900;'>63</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style='margin-top: 1rem; padding: 1rem; background: rgba(19, 47, 76, 0.6); border-radius: 8px;'>
+        <p style='color: rgba(255,255,255,0.9); margin: 0; font-size: 0.9rem;'>
+            <strong>Nota:</strong> Todos los valores en µg/m³. Los colores indican el nivel de protección:
+            <span style='color: #00C853;'>●</span> Más estricto (mayor protección),
+            <span style='color: #FFB300;'>●</span> Moderado,
+            <span style='color: #FF6F00;'>●</span> Menos estricto,
+            <span style='color: #D32F2F;'>●</span> Significativamente menos estricto
+        </p>
+    </div>
+    """
+    
+    components.html(html_internacional, height=650, scrolling=True)
+    
+    st.warning("""
+    **⚠️ Análisis Comparativo:**
+    
+    Los estándares peruanos son considerablemente más permisivos que los recomendados por la OMS 2021 y, 
+    en varios casos, también más laxos que los de EPA USA y Canadá. Esto sugiere la necesidad de una 
+    **actualización gradual** de los ECA nacionales para mejorar la protección de la salud pública.
+    """)
+
 # Footer
 st.markdown("<br>", unsafe_allow_html=True)
 
