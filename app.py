@@ -2491,208 +2491,68 @@ elif st.session_state.pagina == "Normativas":
     
     st.plotly_chart(fig_comp, use_container_width=True)
 
-# ==================== FOOTER PREMIUM ====================
+
+# ==================== FOOTER LIMPIO Y PROFESIONAL ====================
 st.markdown("<br><br>", unsafe_allow_html=True)
 
-# Contenedor mejorado sin espacios vacíos
+# Estilo CSS minimalista
 st.markdown("""
 <style>
-.premium-footer {
-    background: linear-gradient(135deg, rgba(0, 184, 217, 0.2) 0%, rgba(19, 47, 76, 0.98) 100%);
-    border-radius: 30px;
-    padding: 3rem 2.5rem;
-    border: 3px solid #00B8D9;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 184, 217, 0.2);
-    margin-top: 3rem;
-    position: relative;
-}
-
-.premium-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #00B8D9, #0065FF, #00FFB8, #00B8D9);
-    background-size: 300% 100%;
-    animation: shimmer 3s linear infinite;
-    border-radius: 30px 30px 0 0;
-}
-
-@keyframes shimmer {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 300% 50%; }
-}
-
-.footer-section {
-    padding: 1.5rem;
-    background: rgba(0, 184, 217, 0.05);
-    border-radius: 20px;
-    border: 1px solid rgba(0, 184, 217, 0.2);
-    height: 100%;
-}
-
-.footer-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    display: inline-block;
-    filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.6));
-}
-
-.footer-title-big {
-    color: #00E5FF;
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin: 0.5rem 0 1rem 0;
-    text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
-}
-
-.footer-text-content {
-    color: #FFFFFF;
-    font-size: 1rem;
-    line-height: 1.7;
-    margin: 0.6rem 0;
-}
-
-.footer-highlight {
-    background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(0, 101, 255, 0.2));
-    padding: 0.9rem 1.2rem;
+.clean-footer {
+    background: #0d1b2a;
+    padding: 3rem 2rem;
     border-radius: 15px;
-    border: 2px solid #00B8D9;
-    margin-top: 1rem;
-    box-shadow: 0 5px 20px rgba(0, 184, 217, 0.3);
+    border-top: 4px solid #00B8D9;
+    margin-top: 3rem;
 }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="premium-footer">', unsafe_allow_html=True)
+st.markdown('<div class="clean-footer">', unsafe_allow_html=True)
 
-# Texto introductorio arriba
-st.markdown("""
-<div style='text-align: center; margin-bottom: 2.5rem;'>
-    <h1 style='
-        color: #00E5FF;
-        font-size: 2.2rem;
-        font-weight: 800;
-        margin-bottom: 0.8rem;
-        text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
-    '>
-        📚 Marco Normativo de Calidad del Aire - Perú
-    </h1>
-    <p style='
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.15rem;
-        line-height: 1.6;
-        max-width: 900px;
-        margin: 0 auto;
-    '>
-        Sistema integral desarrollado para consultar y comprender las normativas ambientales 
-        vigentes en el Perú relacionadas con la gestión de la calidad del aire
-    </p>
-</div>
-""", unsafe_allow_html=True)
-
-# === TRES COLUMNAS ===
-col1, col2, col3 = st.columns(3, gap="medium")
+# Tres columnas limpias
+col1, col2, col3 = st.columns([1.2, 1, 1])
 
 with col1:
-    st.markdown("""
-    <div class='footer-section'>
-        <div class='footer-icon'>🌍</div>
-        <h2 class='footer-title-big'>Marco Normativo</h2>
-        <p class='footer-text-content'>
-            Sistema integral de consulta de normativas ambientales para la gestión 
-            y control de la <strong style='color: #00FFB8;'>calidad del aire</strong> en el Perú.
-        </p>
-        <div class='footer-highlight'>
-            <p style='margin: 0; color: #00FFB8; font-size: 1rem; font-weight: 700;'>
-                📚 Herramienta Educativa
-            </p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("### 🌍 Marco Normativo")
+    st.write("""
+    Sistema integral de consulta de normativas ambientales para la gestión 
+    y control de la **calidad del aire** en el Perú.
+    """)
+    st.info("📚 Herramienta Educativa & Profesional")
 
 with col2:
-    st.markdown("""
-    <div class='footer-section'>
-        <div class='footer-icon'>🎓</div>
-        <h2 class='footer-title-big'>Institución</h2>
-        <p class='footer-text-content' style='font-size: 1.15rem; font-weight: 700;'>
-            Universidad Nacional de Moquegua
-        </p>
-        <p class='footer-text-content' style='font-size: 0.95rem; color: rgba(255,255,255,0.85);'>
-            Facultad de Ingeniería y Arquitectura
-        </p>
-        <p class='footer-text-content' style='font-size: 0.95rem; color: rgba(255,255,255,0.85);'>
-            Escuela Profesional de Ingeniería Ambiental
-        </p>
-        <div class='footer-highlight'>
-            <p style='margin: 0; color: #00FFB8; font-size: 1rem; font-weight: 700;'>
-                🏛️ Moquegua, Perú
-            </p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("### 🎓 Institución")
+    st.markdown("**Universidad Nacional de Moquegua**")
+    st.write("Facultad de Ingeniería y Arquitectura")
+    st.write("Escuela Profesional de Ingeniería Ambiental")
+    st.success("🏛️ Moquegua, Perú")
 
 with col3:
-    st.markdown("""
-    <div class='footer-section'>
-        <div class='footer-icon'>👨‍🏫</div>
-        <h2 class='footer-title-big'>Docente</h2>
-        <p class='footer-text-content' style='font-size: 1.15rem; font-weight: 700; margin-bottom: 1.2rem;'>
-            Prof. Dr. José Antonio<br>Valeriano Zapana
-        </p>
-        <p class='footer-text-content'>
-            📧 <a href='mailto:contacto@unam.edu.pe' style='color: #00FFB8; text-decoration: none; font-weight: 600;'>contacto@unam.edu.pe</a>
-        </p>
-        <p class='footer-text-content'>
-            📱 <span style='color: #00FFB8; font-weight: 600;'>+51 961 854 041</span>
-        </p>
-        <div class='footer-highlight'>
-            <p style='margin: 0; color: #00FFB8; font-size: 1rem; font-weight: 700;'>
-                💼 Especialista en Calidad del Aire
-            </p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("### 👨‍🏫 Docente")
+    st.markdown("**Prof. Dr. José Antonio Valeriano Zapana**")
+    st.write("📧 contacto@unam.edu.pe")
+    st.write("📱 +51 961 854 041")
+    st.info("💼 Especialista en Calidad del Aire")
 
-# === SEPARADOR ===
-st.markdown("""
-<div style='
-    margin: 2.5rem 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #00E5FF, #0065FF, #00E5FF, transparent);
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
-'></div>
-""", unsafe_allow_html=True)
+# Línea separadora
+st.divider()
 
-# === COPYRIGHT ===
-col_left, col_right = st.columns([1.5, 1])
-
-with col_left:
-    st.markdown("""
-    <p style='color: rgba(255, 255, 255, 0.9); font-size: 1rem; margin: 0;'>
-        © 2024 UNAM - Todos los derechos reservados
-    </p>
-    """, unsafe_allow_html=True)
-
-with col_right:
+# Parte inferior
+col_a, col_b = st.columns([2, 1])
+with col_a:
+    st.caption("© 2024 UNAM - Todos los derechos reservados")
+with col_b:
     st.markdown("""
     <div style='text-align: right;'>
         <span style='
-            background: linear-gradient(135deg, #00E5FF, #0065FF);
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
+            background: linear-gradient(90deg, #00B8D9, #0065FF);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
             color: white;
-            font-weight: 700;
-            font-size: 0.95rem;
-            display: inline-block;
-            box-shadow: 0 6px 25px rgba(0, 229, 255, 0.4);
-            border: 2px solid #00FFB8;
-        '>
-            📅 Octubre 2024
-        </span>
+            font-size: 0.85rem;
+            font-weight: 600;
+        '>📅 Octubre 2024</span>
     </div>
     """, unsafe_allow_html=True)
 
