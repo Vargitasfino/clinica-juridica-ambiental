@@ -2430,104 +2430,134 @@ elif st.session_state.pagina == "Normativas":
         'Unidad': ['μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³', 'μg/m³']
     })
     
-    # Aplicar estilo personalizado a la tabla
+    # Estilos CSS profesionales para la tabla comparativa
     st.markdown("""
     <style>
-    /* Estilos específicos para la tabla comparativa internacional */
-    div[data-testid="stDataFrame"] > div {
-        background: linear-gradient(135deg, rgba(19, 47, 76, 0.95) 0%, rgba(26, 58, 82, 0.9) 100%) !important;
-        backdrop-filter: blur(20px) saturate(180%) !important;
-        border-radius: 16px !important;
-        padding: 1.5rem !important;
-        border: 1px solid rgba(0, 184, 217, 0.3) !important;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) inset !important;
+    /* Contenedor principal de la tabla */
+    [data-testid="stDataFrame"] {
+        background: linear-gradient(135deg, #0a1929 0%, #132f4c 100%) !important;
+        border-radius: 20px !important;
+        padding: 2rem !important;
+        border: 2px solid #00B8D9 !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 
+                    0 0 40px rgba(0, 184, 217, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
     }
     
-    div[data-testid="stDataFrame"] table {
+    /* Tabla */
+    [data-testid="stDataFrame"] table {
         background: transparent !important;
-        border-collapse: separate !important;
-        border-spacing: 0 !important;
     }
     
-    div[data-testid="stDataFrame"] thead tr th {
+    /* HEADERS - Azul brillante con gradiente */
+    [data-testid="stDataFrame"] thead th {
         background: linear-gradient(135deg, #0052CC 0%, #0065FF 100%) !important;
-        color: white !important;
-        font-weight: 700 !important;
+        color: #FFFFFF !important;
+        font-weight: 800 !important;
         text-transform: uppercase !important;
-        font-size: 0.9rem !important;
-        letter-spacing: 0.05em !important;
+        font-size: 0.95rem !important;
+        letter-spacing: 0.1em !important;
+        padding: 1.5rem 1rem !important;
+        border: none !important;
+        text-align: center !important;
+        box-shadow: 0 4px 12px rgba(0, 82, 204, 0.4) !important;
+    }
+    
+    [data-testid="stDataFrame"] thead th:first-child {
+        border-radius: 15px 0 0 0 !important;
+        text-align: left !important;
+        padding-left: 2rem !important;
+    }
+    
+    [data-testid="stDataFrame"] thead th:last-child {
+        border-radius: 0 15px 0 0 !important;
+    }
+    
+    /* FILAS - Con efecto hover */
+    [data-testid="stDataFrame"] tbody tr {
+        background: rgba(19, 47, 76, 0.6) !important;
+        border-bottom: 2px solid rgba(0, 184, 217, 0.2) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    [data-testid="stDataFrame"] tbody tr:hover {
+        background: rgba(0, 101, 255, 0.25) !important;
+        transform: translateX(8px) scale(1.02) !important;
+        box-shadow: -6px 0 0 0 #00E5FF, 0 4px 20px rgba(0, 229, 255, 0.3) !important;
+    }
+    
+    [data-testid="stDataFrame"] tbody tr:last-child {
+        border-bottom: none !important;
+    }
+    
+    /* CELDAS - Primera columna (Contaminante) */
+    [data-testid="stDataFrame"] tbody td:first-child {
+        color: #00E5FF !important;
+        font-weight: 700 !important;
+        font-size: 1.05rem !important;
+        text-align: left !important;
+        padding-left: 2rem !important;
+        text-shadow: 0 0 10px rgba(0, 229, 255, 0.5) !important;
+    }
+    
+    /* Columna Perú - NARANJA BRILLANTE */
+    [data-testid="stDataFrame"] tbody td:nth-child(2) {
+        color: #FFB300 !important;
+        font-weight: 800 !important;
+        font-size: 1.1rem !important;
+        text-shadow: 0 0 10px rgba(255, 179, 0, 0.5) !important;
+        background: rgba(255, 179, 0, 0.1) !important;
+    }
+    
+    /* Columna OMS - VERDE BRILLANTE */
+    [data-testid="stDataFrame"] tbody td:nth-child(3) {
+        color: #00E676 !important;
+        font-weight: 800 !important;
+        font-size: 1.1rem !important;
+        text-shadow: 0 0 10px rgba(0, 230, 118, 0.5) !important;
+        background: rgba(0, 230, 118, 0.1) !important;
+    }
+    
+    /* Columna EPA USA - AZUL BRILLANTE */
+    [data-testid="stDataFrame"] tbody td:nth-child(4) {
+        color: #60A5FA !important;
+        font-weight: 800 !important;
+        font-size: 1.1rem !important;
+        text-shadow: 0 0 10px rgba(96, 165, 250, 0.5) !important;
+        background: rgba(96, 165, 250, 0.1) !important;
+    }
+    
+    /* Columna Canadá - PÚRPURA BRILLANTE */
+    [data-testid="stDataFrame"] tbody td:nth-child(5) {
+        color: #C084FC !important;
+        font-weight: 800 !important;
+        font-size: 1.1rem !important;
+        text-shadow: 0 0 10px rgba(192, 132, 252, 0.5) !important;
+        background: rgba(192, 132, 252, 0.1) !important;
+    }
+    
+    /* Columna Unidad - BLANCO */
+    [data-testid="stDataFrame"] tbody td:last-child {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-weight: 500 !important;
+        font-size: 0.95rem !important;
+        font-style: italic !important;
+    }
+    
+    /* Todas las celdas de datos */
+    [data-testid="stDataFrame"] tbody td {
         padding: 1.2rem 1rem !important;
         border: none !important;
         text-align: center !important;
     }
     
-    div[data-testid="stDataFrame"] thead tr th:first-child {
-        border-radius: 12px 0 0 0 !important;
-        text-align: left !important;
+    /* Bordes redondeados en esquinas inferiores */
+    [data-testid="stDataFrame"] tbody tr:last-child td:first-child {
+        border-radius: 0 0 0 15px !important;
     }
     
-    div[data-testid="stDataFrame"] thead tr th:last-child {
-        border-radius: 0 12px 0 0 !important;
-    }
-    
-    div[data-testid="stDataFrame"] tbody tr {
-        background: rgba(19, 47, 76, 0.4) !important;
-        border-bottom: 1px solid rgba(0, 184, 217, 0.15) !important;
-        transition: all 0.3s ease !important;
-    }
-    
-    div[data-testid="stDataFrame"] tbody tr:hover {
-        background: rgba(0, 101, 255, 0.15) !important;
-        transform: translateX(4px) !important;
-        box-shadow: -4px 0 0 0 #00B8D9 !important;
-    }
-    
-    div[data-testid="stDataFrame"] tbody tr td {
-        color: rgba(255, 255, 255, 0.95) !important;
-        padding: 1rem !important;
-        border: none !important;
-        font-size: 1rem !important;
-        font-weight: 500 !important;
-        text-align: center !important;
-    }
-    
-    div[data-testid="stDataFrame"] tbody tr td:first-child {
-        color: #00E5FF !important;
-        font-weight: 600 !important;
-        text-align: left !important;
-        padding-left: 1.5rem !important;
-    }
-    
-    div[data-testid="stDataFrame"] tbody tr:last-child td:first-child {
-        border-radius: 0 0 0 12px !important;
-    }
-    
-    div[data-testid="stDataFrame"] tbody tr:last-child td:last-child {
-        border-radius: 0 0 12px 0 !important;
-    }
-    
-    /* Resaltar valores de Perú */
-    div[data-testid="stDataFrame"] tbody tr td:nth-child(2) {
-        color: #FFB300 !important;
-        font-weight: 700 !important;
-    }
-    
-    /* Resaltar valores de OMS */
-    div[data-testid="stDataFrame"] tbody tr td:nth-child(3) {
-        color: #00C853 !important;
-        font-weight: 700 !important;
-    }
-    
-    /* Resaltar valores de EPA */
-    div[data-testid="stDataFrame"] tbody tr td:nth-child(4) {
-        color: #60A5FA !important;
-        font-weight: 700 !important;
-    }
-    
-    /* Resaltar valores de Canadá */
-    div[data-testid="stDataFrame"] tbody tr td:nth-child(5) {
-        color: #BA68C8 !important;
-        font-weight: 700 !important;
+    [data-testid="stDataFrame"] tbody tr:last-child td:last-child {
+        border-radius: 0 0 15px 0 !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -2536,7 +2566,7 @@ elif st.session_state.pagina == "Normativas":
         comp_intl_data, 
         use_container_width=True, 
         hide_index=True,
-        height=380
+        height=400
     )
     
     # Análisis comparativo con componentes nativos
