@@ -2492,330 +2492,71 @@ elif st.session_state.pagina == "Normativas":
     st.plotly_chart(fig_comp, use_container_width=True)
 
 # ==================== FOOTER PREMIUM ====================
-st.markdown("<br><br><br>", unsafe_allow_html=True)
+st.markdown("<br><br>", unsafe_allow_html=True)
 
-# Contenedor del footer con diseño premium
+# Contenedor con estilo
 st.markdown("""
-<div style='
-    background: linear-gradient(180deg, transparent 0%, rgba(10, 25, 41, 0.6) 50%, rgba(10, 25, 41, 0.95) 100%);
-    padding: 0;
-    margin-top: 4rem;
-'>
-    <div style='
-        max-width: 1400px;
-        margin: 0 auto;
-        background: linear-gradient(135deg, rgba(0, 184, 217, 0.08) 0%, rgba(19, 47, 76, 0.95) 100%);
-        border-radius: 25px;
-        padding: 3.5rem 3rem 2.5rem 3rem;
-        border: 1px solid rgba(0, 184, 217, 0.25);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(0, 184, 217, 0.1);
-        position: relative;
-        overflow: hidden;
-    '>
-        <!-- Borde superior animado -->
-        <div style='
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #00B8D9, #0065FF, #00B8D9, transparent);
-            background-size: 200% 100%;
-            animation: shimmer 3s linear infinite;
-        '></div>
-        
-        <style>
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        </style>
+<style>
+.footer-container {
+    background: linear-gradient(135deg, rgba(0, 184, 217, 0.08) 0%, rgba(19, 47, 76, 0.95) 100%);
+    border-radius: 25px;
+    padding: 3rem 2.5rem 2rem 2.5rem;
+    border: 1px solid rgba(0, 184, 217, 0.25);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    margin-top: 3rem;
+}
+</style>
 """, unsafe_allow_html=True)
 
-# Grid de 3 columnas con diseño mejorado
-col1, col2, col3 = st.columns([1, 1, 1], gap="large")
+st.markdown('<div class="footer-container">', unsafe_allow_html=True)
+
+# === SECCIÓN 1: TRES COLUMNAS PRINCIPALES ===
+col1, col2, col3 = st.columns(3, gap="large")
 
 with col1:
+    st.markdown("### 🌍 Marco Normativo")
     st.markdown("""
-    <div style='padding-right: 1.5rem;'>
-        <div style='
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        '>
-            <div style='
-                font-size: 2.5rem;
-                background: linear-gradient(135deg, #00B8D9, #0065FF);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                filter: drop-shadow(0 0 20px rgba(0, 184, 217, 0.6));
-            '>🌍</div>
-            <h3 style='
-                color: #00B8D9;
-                font-size: 1.5rem;
-                font-weight: 700;
-                margin: 0;
-                letter-spacing: -0.5px;
-            '>Marco Normativo</h3>
-        </div>
-        
-        <p style='
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        '>
-            Sistema integral de consulta de normativas ambientales para la gestión 
-            y control de la <strong style='color: #00B8D9;'>calidad del aire</strong> en el Perú.
-        </p>
-        
-        <div style='
-            background: linear-gradient(135deg, rgba(0, 184, 217, 0.15), rgba(0, 101, 255, 0.15));
-            padding: 1rem 1.3rem;
-            border-radius: 15px;
-            border-left: 4px solid #00B8D9;
-            box-shadow: 0 4px 15px rgba(0, 184, 217, 0.2);
-        '>
-            <p style='
-                margin: 0;
-                font-size: 0.9rem;
-                color: #00B8D9;
-                font-weight: 600;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            '>
-                <span style='font-size: 1.2rem;'>📚</span>
-                Herramienta Educativa & Profesional
-            </p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    Sistema integral de consulta de normativas ambientales para la gestión 
+    y control de la **calidad del aire** en el Perú.
+    """)
+    st.info("📚 **Herramienta Educativa & Profesional**")
 
 with col2:
-    st.markdown("""
-    <div style='padding: 0 1.5rem; border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1);'>
-        <div style='
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        '>
-            <div style='
-                font-size: 2.5rem;
-                background: linear-gradient(135deg, #00B8D9, #0065FF);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                filter: drop-shadow(0 0 20px rgba(0, 184, 217, 0.6));
-            '>🎓</div>
-            <h3 style='
-                color: #00B8D9;
-                font-size: 1.5rem;
-                font-weight: 700;
-                margin: 0;
-                letter-spacing: -0.5px;
-            '>Institución</h3>
-        </div>
-        
-        <p style='
-            color: white;
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin: 0 0 0.8rem 0;
-            line-height: 1.4;
-        '>
-            Universidad Nacional<br>de Moquegua
-        </p>
-        
-        <p style='
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-            margin: 0.3rem 0;
-            line-height: 1.6;
-        '>
-            Facultad de Ingeniería y Arquitectura
-        </p>
-        
-        <p style='
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.9rem;
-            margin: 0.3rem 0 1.5rem 0;
-            line-height: 1.6;
-        '>
-            Escuela Profesional de Ingeniería Ambiental
-        </p>
-        
-        <div style='
-            background: rgba(0, 184, 217, 0.12);
-            padding: 0.9rem 1.2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 184, 217, 0.3);
-            display: inline-block;
-        '>
-            <p style='
-                margin: 0;
-                font-size: 0.9rem;
-                color: #00B8D9;
-                font-weight: 600;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            '>
-                <span style='font-size: 1.1rem;'>🏛️</span>
-                Moquegua, Perú
-            </p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("### 🎓 Institución")
+    st.markdown("**Universidad Nacional de Moquegua**")
+    st.caption("Facultad de Ingeniería y Arquitectura")
+    st.caption("Escuela Profesional de Ingeniería Ambiental")
+    st.success("🏛️ **Moquegua, Perú**")
 
 with col3:
-    st.markdown("""
-    <div style='padding-left: 1.5rem;'>
-        <div style='
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        '>
-            <div style='
-                font-size: 2.5rem;
-                background: linear-gradient(135deg, #00B8D9, #0065FF);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                filter: drop-shadow(0 0 20px rgba(0, 184, 217, 0.6));
-            '>👨‍🏫</div>
-            <h3 style='
-                color: #00B8D9;
-                font-size: 1.5rem;
-                font-weight: 700;
-                margin: 0;
-                letter-spacing: -0.5px;
-            '>Docente</h3>
-        </div>
-        
-        <p style='
-            color: white;
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin: 0 0 1.2rem 0;
-            line-height: 1.4;
-        '>
-            Prof. Dr. José Antonio<br>Valeriano Zapana
-        </p>
-        
-        <div style='margin-bottom: 1.5rem;'>
-            <a href='mailto:contacto@unam.edu.pe' style='
-                display: flex;
-                align-items: center;
-                gap: 0.7rem;
-                color: rgba(255, 255, 255, 0.85);
-                text-decoration: none;
-                margin: 0.7rem 0;
-                transition: all 0.3s ease;
-                padding: 0.5rem;
-                border-radius: 8px;
-            ' onmouseover="this.style.color='#00B8D9'; this.style.backgroundColor='rgba(0,184,217,0.1)'; this.style.transform='translateX(5px)';" 
-               onmouseout="this.style.color='rgba(255,255,255,0.85)'; this.style.backgroundColor='transparent'; this.style.transform='translateX(0)';">
-                <span style='font-size: 1.2rem;'>📧</span>
-                <span style='font-size: 0.95rem;'>contacto@unam.edu.pe</span>
-            </a>
-            
-            <a href='tel:+51961854041' style='
-                display: flex;
-                align-items: center;
-                gap: 0.7rem;
-                color: rgba(255, 255, 255, 0.85);
-                text-decoration: none;
-                margin: 0.7rem 0;
-                transition: all 0.3s ease;
-                padding: 0.5rem;
-                border-radius: 8px;
-            ' onmouseover="this.style.color='#00B8D9'; this.style.backgroundColor='rgba(0,184,217,0.1)'; this.style.transform='translateX(5px)';" 
-               onmouseout="this.style.color='rgba(255,255,255,0.85)'; this.style.backgroundColor='transparent'; this.style.transform='translateX(0)';">
-                <span style='font-size: 1.2rem;'>📱</span>
-                <span style='font-size: 0.95rem;'>+51 961 854 041</span>
-            </a>
-        </div>
-        
-        <div style='
-            background: linear-gradient(135deg, rgba(0, 184, 217, 0.15), rgba(0, 101, 255, 0.15));
-            padding: 1rem 1.3rem;
-            border-radius: 15px;
-            border-left: 4px solid #0065FF;
-            box-shadow: 0 4px 15px rgba(0, 101, 255, 0.2);
-        '>
-            <p style='
-                margin: 0;
-                font-size: 0.9rem;
-                color: #00B8D9;
-                font-weight: 600;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            '>
-                <span style='font-size: 1.2rem;'>💼</span>
-                Especialista en Calidad del Aire
-            </p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("### 👨‍🏫 Docente Responsable")
+    st.markdown("**Prof. Dr. José Antonio Valeriano Zapana**")
+    st.markdown("📧 contacto@unam.edu.pe")
+    st.markdown("📱 +51 961 854 041")
+    st.info("💼 **Especialista en Calidad del Aire**")
 
-# Separador elegante
-st.markdown("""
-    <div style='
-        margin: 2.5rem 0 2rem 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(0, 184, 217, 0.5), transparent);
-    '></div>
-""", unsafe_allow_html=True)
+# === SEPARADOR ===
+st.markdown("---")
 
-# Footer bottom
-col_copy1, col_copy2 = st.columns([1, 1])
+# === SECCIÓN 2: COPYRIGHT Y FECHA ===
+col_left, col_right = st.columns([2, 1])
 
-with col_copy1:
-    st.markdown("""
-    <div style='
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    '>
-        <span style='
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.2rem;
-        '>©</span>
-        <span style='
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-        '>2024 UNAM - Todos los derechos reservados</span>
-    </div>
-    """, unsafe_allow_html=True)
+with col_left:
+    st.caption("© 2024 UNAM - Todos los derechos reservados")
 
-with col_copy2:
+with col_right:
     st.markdown("""
     <div style='text-align: right;'>
-        <div style='
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            background: linear-gradient(135deg, #00B8D9, #0065FF);
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            box-shadow: 0 4px 20px rgba(0, 184, 217, 0.4);
-        '>
-            <span style='font-size: 1.1rem;'>📅</span>
-            <span style='
-                color: white;
-                font-size: 0.9rem;
-                font-weight: 600;
-                letter-spacing: 0.3px;
-            '>Actualización: Octubre 2024</span>
-        </div>
+        <span style='background: linear-gradient(135deg, #00B8D9, #0065FF); 
+                     padding: 0.6rem 1.2rem; 
+                     border-radius: 20px; 
+                     color: white;
+                     font-weight: 600;
+                     font-size: 0.85rem;
+                     display: inline-block;'>
+            📅 Octubre 2024
+        </span>
     </div>
     """, unsafe_allow_html=True)
 
-# Cerrar contenedor
-st.markdown("""
-    </div>
-</div>
-""", unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
