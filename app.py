@@ -2167,23 +2167,6 @@ elif st.session_state.pagina == "Lineamiento":
     </a>
     """, unsafe_allow_html=True)
     
-    # Lineamiento de Estados de Alerta
-    st.markdown("""
-    <div class='normative-card vigente'>
-        <div class='status-badge vigente'>✅ VIGENTE</div>
-        <h3>📐 D.S. N° 009-2003-SA</h3>
-        <p><strong>Título:</strong> Aprueban el Reglamento de los Niveles de Estados de Alerta Nacionales para Contaminantes del Aire</p>
-        <p><strong>Publicación:</strong> 25 de junio de 2003</p>
-        <p><strong>Objetivo:</strong> Establecer niveles de concentración que activan medidas de prevención y control</p>
-        <p><strong>Estados de Alerta:</strong></p>
-        <ul style='color: rgba(255,255,255,0.95); line-height: 1.8;'>
-            <li><strong style='color: #FFB300;'>Estado de Cuidado:</strong> Primeras acciones preventivas</li>
-            <li><strong style='color: #FF6F00;'>Estado de Peligro:</strong> Medidas de control adicionales</li>
-            <li><strong style='color: #D32F2F;'>Estado de Emergencia:</strong> Medidas restrictivas inmediatas</li>
-        </ul>
-        <p><strong>Medidas:</strong> Restricción vehicular, reducción de actividades industriales, alertas sanitarias</p>
-    </div>
-    """, unsafe_allow_html=True)
     
     # Lineamiento de Planes de Acción
     st.markdown("""
