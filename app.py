@@ -1812,14 +1812,8 @@ elif st.session_state.pagina == "LMP":
         <p><strong>Publicación:</strong> 19 de julio de 1996</p>
         <p><strong>Alcance:</strong> Fundiciones, refinerías y plantas de procesamiento minero-metalúrgico</p>
         <p><strong>Contaminantes regulados:</strong> PM, SO2, Pb, As</p>
+        <p><strong>Nota:</strong> Documento histórico de referencia técnica</p>
     </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown("""
-    <a href='https://www.minem.gob.pe/minem/archivos/file/Mineria/LEGISLACION/1996/julio/RM315-96.pdf' 
-       target='_blank' class='corporate-button'>
-        📄 Ver R.M. N° 315-96-EM/VMM
-    </a>
     """, unsafe_allow_html=True)
     
     # LMP Termoeléctrico
