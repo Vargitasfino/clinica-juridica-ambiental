@@ -2492,70 +2492,34 @@ elif st.session_state.pagina == "Normativas":
     st.plotly_chart(fig_comp, use_container_width=True)
 
 
-# ==================== FOOTER CON ALTO CONTRASTE ====================
+# ==================== FOOTER ====================
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Tres columnas con diseño compacto
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("## 🌍 Marco Normativo")
-    st.markdown("""
-    <p style='color: white; font-size: 1.05rem; line-height: 1.6;'>
-    Sistema integral de consulta de normativas ambientales para la gestión 
-    y control de la <span style='color: #00FFB8; font-weight: bold;'>calidad del aire</span> en el Perú.
-    </p>
-    """, unsafe_allow_html=True)
-    st.info("📚 **Herramienta Educativa & Profesional**")
+    st.markdown("<h3 style='color: #00E5FF;'>🌍 Marco Normativo</h3>", unsafe_allow_html=True)
+    st.write("Sistema integral de consulta de normativas ambientales para la gestión y control de la calidad del aire en el Perú.")
+    st.info("📚 Herramienta Educativa & Profesional")
 
 with col2:
-    st.markdown("## 🎓 Institución")
-    st.markdown("""
-    <p style='color: white; font-size: 1.1rem; font-weight: bold; margin-bottom: 0.5rem;'>
-    Universidad Nacional de Moquegua
-    </p>
-    <p style='color: rgba(255,255,255,0.9); font-size: 0.95rem; margin: 0.3rem 0;'>
-    Facultad de Ingeniería y Arquitectura
-    </p>
-    <p style='color: rgba(255,255,255,0.9); font-size: 0.95rem; margin: 0.3rem 0;'>
-    Escuela Profesional de Ingeniería Ambiental
-    </p>
-    """, unsafe_allow_html=True)
-    st.success("🏛️ **Moquegua, Perú**")
+    st.markdown("<h3 style='color: #00E5FF;'>🎓 Institución</h3>", unsafe_allow_html=True)
+    st.write("**Universidad Nacional de Moquegua**")
+    st.write("Facultad de Ingeniería y Arquitectura")
+    st.write("Escuela Profesional de Ingeniería Ambiental")
+    st.success("🏛️ Moquegua, Perú")
 
 with col3:
-    st.markdown("## 👨‍🏫 Docente")
-    st.markdown("""
-    <p style='color: white; font-size: 1.1rem; font-weight: bold; margin-bottom: 0.8rem;'>
-    Prof. Dr. José Antonio Valeriano Zapana
-    </p>
-    <p style='color: white; font-size: 1rem; margin: 0.4rem 0;'>
-    📧 <a href='mailto:contacto@unam.edu.pe' style='color: #00FFB8; text-decoration: none; font-weight: 600;'>contacto@unam.edu.pe</a>
-    </p>
-    <p style='color: white; font-size: 1rem; margin: 0.4rem 0;'>
-    📱 <span style='color: #00FFB8; font-weight: 600;'>+51 961 854 041</span>
-    </p>
-    """, unsafe_allow_html=True)
-    st.info("💼 **Especialista en Calidad del Aire**")
+    st.markdown("<h3 style='color: #00E5FF;'>👨‍🏫 Docente</h3>", unsafe_allow_html=True)
+    st.write("**Prof. Dr. José Antonio Valeriano Zapana**")
+    st.write("📧 contacto@unam.edu.pe")
+    st.write("📱 +51 961 854 041")
+    st.info("💼 Especialista en Calidad del Aire")
 
-# Separador
-st.markdown("---")
+st.divider()
 
-# Copyright
 col_a, col_b = st.columns([2, 1])
 with col_a:
-    st.markdown("<p style='color: white; font-size: 0.95rem;'>© 2024 UNAM - Todos los derechos reservados</p>", unsafe_allow_html=True)
+    st.write("© 2024 UNAM - Todos los derechos reservados")
 with col_b:
-    st.markdown("""
-    <div style='text-align: right;'>
-        <span style='
-            background: linear-gradient(90deg, #00B8D9, #0065FF);
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(0, 184, 217, 0.5);
-        '>📅 Octubre 2024</span>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("<div style='text-align:right'><span style='background: linear-gradient(90deg, #00B8D9, #0065FF); padding: 0.5rem 1rem; border-radius: 15px; color: white; font-weight: 600;'>📅 Octubre 2024</span></div>", unsafe_allow_html=True)
