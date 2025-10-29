@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
+import streamlit.components.v1 as components
 
 # Configuración de página
 st.set_page_config(
@@ -1594,9 +1595,6 @@ elif st.session_state.pagina == "ECA":
     </div>
     """, unsafe_allow_html=True)
     
-    # Usar components.html para renderizado garantizado
-    import streamlit.components.v1 as components
-    
     html_eca = """
     <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
                 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);'>
@@ -1894,8 +1892,6 @@ elif st.session_state.pagina == "LMP":
     </div>
     """, unsafe_allow_html=True)
     
-    # Usar components.html para renderizado garantizado
-    import streamlit.components.v1 as components
     
     html_lmp = """
     <div style='overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0, 184, 217, 0.3); 
