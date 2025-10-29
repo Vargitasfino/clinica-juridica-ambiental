@@ -2482,8 +2482,7 @@ elif st.session_state.pagina == "Normativas":
             metas intermedias (IT-1 a IT-4) con plazos de 5 a 10 años
         </p>
     </div>
-    """
-    , unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
     
     # Gráfico de barras comparativo mejorado
     st.markdown("""
